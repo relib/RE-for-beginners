@@ -1,11 +1,11 @@
-\subsection{MSVC: SYSTEMTIME example}
+﻿\subsection{MSVC: SYSTEMTIME example}
 \label{sec:SYSTEMTIME}
 
 \newcommand{\FNSYSTEMTIME}{\footnote{\href{http://go.yurichev.com/17260}{MSDN: SYSTEMTIME structure}}}
 
-Let's take the SYSTEMTIME\FNSYSTEMTIME{} win32 structure that describes time.
+時間を表現する SYSTEMTIME\FNSYSTEMTIME{} win32構造体をとりあげましょう。
 
-This is how it's defined:
+このように定義されます。
 
 \begin{lstlisting}[caption=WinBase.h,style=customc]
 typedef struct _SYSTEMTIME {
@@ -20,54 +20,52 @@ typedef struct _SYSTEMTIME {
 } SYSTEMTIME, *PSYSTEMTIME;
 \end{lstlisting}
 
-Let's write a C function to get the current time:
+現在時刻を取得するCの関数を書いてみましょう。
 
 \lstinputlisting[style=customc]{patterns/15_structs/1_systemtime/systemtime.c}
 
-We get (MSVC 2010):
+次の結果を得ます。(MSVC 2010)
 
 \lstinputlisting[caption=MSVC 2010 /GS-,style=customasmx86]{patterns/15_structs/1_systemtime/systemtime.asm}
 
-16 bytes are allocated for this structure in the local stack~---that is exactly \TT{sizeof(WORD)*8}
-(there are 8 WORD variables in the structure).
+16バイトがローカルスタック上に構造体のために確保されていて、これはちょうど\TT{sizeof(WORD)*8}です。
+（構造体にあるWORD変数8つ分です）
 
 \newcommand{\FNMSDNGST}{\footnote{\href{http://go.yurichev.com/17261}{MSDN: GetSystemTime function}}}
 
-Pay attention to the fact that the structure begins with the \TT{wYear} field.
-It can be said that a pointer to the SYSTEMTIME structure is passed to the \TT{GetSystemTime()}\FNSYSTEMTIME,
-but it is also can be said that a pointer to the \TT{wYear} field is passed, and that is the same!
-\TT{GetSystemTime()} writes the current year to the WORD pointer pointing to, then shifts 2 bytes
-ahead, writes current month, etc., etc.
+構造体は\TT{wYear}フィールドから始まるという事実に注意してください。
+SYSTEMTIME構造体へのポインタが \TT{GetSystemTime()}\FNSYSTEMTIME に渡されますが、
+\TT{wYear}フィールドへのポインタが渡されているとも言えます。そしてこれは同じです！
+\TT{GetSystemTime()}は現在の年をWORDポインタが示すところに書き込み、それから2バイトを前方にシフト
+し、現在の月を書き込み、などなど。
 
-\input{patterns/15_structs/1_systemtime/olly_EN.tex}
+\input{patterns/15_structs/1_systemtime/olly_JPN.tex}
 
-\subsubsection{Replacing the structure with array}
+\subsubsection{構造体を配列で置き換える}
 
-The fact that the structure fields are just variables located side-by-side, can be easily demonstrated by doing the following.
-Keeping in mind the \TT{SYSTEMTIME} structure description, it's possible to rewrite this simple example like this:
+構造体のフィールドは単に隣り合った変数で、以下のようにすることで簡単にデモンストレーションできます。
+\TT{SYSTEMTIME}構造体の表現を覚えておいて、この簡単な例をこのように書き換えることが可能です。
 
 \lstinputlisting[style=customc]{patterns/15_structs/1_systemtime/systemtime2.c}
 
-The compiler grumbles a bit:
+コンパイラは少し不満を言います。
 
 \begin{lstlisting}
 systemtime2.c(7) : warning C4133: 'function' : incompatible types - from 'WORD [8]' to 'LPSYSTEMTIME'
 \end{lstlisting}
 
-But nevertheless, it produces this code:
+とはいえ、このようなコードを生成します。
 
 \lstinputlisting[caption=\NonOptimizing MSVC 2010,style=customasmx86]{patterns/15_structs/1_systemtime/systemtime2.asm}
 
-And it works just as the same!
+そして同じように機能します！
 
-It is very interesting that the
-result in assembly form cannot be distinguished from the result of the previous compilation.
+アセンブリ形式の結果が前のコンパイルの結果と区別できないことは非常に興味深いことです。
 
-So by looking at this code, one cannot say for sure if there was a structure declared, or an array. 
+だから、このコードを見て、構造体が宣言されているか、配列なのかははっきりと言うことができません。
 
-Nevertheless, no sane person would do it, as it is not convenient. 
+とはいえ、普通の人は都合がよいわけではないのでこういうことはしません。
 
-Also the structure fields may be changed by developers, swapped, etc.
+また、構造体のフィールドは開発者によって変更されたり、スワップされたりすることがあります。
 
-We will not study this example in \olly, because it will be just the same as in the case with the structure.
-
+この例は、構造体の場合とまったく同じであるため、 \olly ではこの例を学習しません。

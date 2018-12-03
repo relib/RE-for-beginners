@@ -2,7 +2,7 @@
 
 This compiles to:
 
-\lstinputlisting[caption=MSVC 2012 /GS- /Ob0,label=src:struct_packing_4,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_EN.asm}
+\lstinputlisting[caption=MSVC 2012 /GS- /Ob0,label=src:struct_packing_4,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_JPN.asm}
 
 We pass the structure as a whole, but in fact, as we can see, the structure
 is being copied to a temporary one (a place in stack is allocated in line 10 for it,
@@ -25,7 +25,7 @@ However, it is not very economical.
 Let's try to compile it with option (\TT{/Zp1}) 
 (\IT{/Zp[n] pack structures on n-byte boundary}).
 
-\lstinputlisting[caption=MSVC 2012 /GS- /Zp1,label=src:struct_packing_1,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_msvc_Zp1_EN.asm}
+\lstinputlisting[caption=MSVC 2012 /GS- /Zp1,label=src:struct_packing_1,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_msvc_Zp1_JPN.asm}
 
 Now the structure takes only 10 bytes and each \Tchar value takes 1 byte. What does it give to us?
 Size economy. And as drawback~---the CPU accessing these fields slower than it could.
@@ -88,4 +88,4 @@ The file PshPack1.h looks like:
 
 This tell the compiler how to pack the structures defined after \TT{\#pragma pack}.
 
-\input{patterns/15_structs/4_packing/olly_EN.tex}
+\input{patterns/15_structs/4_packing/olly_JPN.tex}

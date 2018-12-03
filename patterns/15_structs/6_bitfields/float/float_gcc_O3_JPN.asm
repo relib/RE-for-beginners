@@ -1,4 +1,4 @@
-; f(float)
+﻿; f(float)
        public _Z1ff
 _Z1ff  proc near
 
@@ -9,14 +9,14 @@ arg_0  = dword ptr  8
        mov     ebp, esp
        sub     esp, 4
        mov     eax, [ebp+arg_0]
-       or      eax, 80000000h  ; set minus sign
+       or      eax, 80000000h  ; マイナス符号を設定
        mov     edx, eax
-       and     eax, 807FFFFFh  ; leave only sign and significand in EAX
-       shr     edx, 23         ; prepare exponent
-       add     edx, 2          ; add 2
-       movzx   edx, dl         ; clear all bits except 7:0 in EAX
-       shl     edx, 23         ; shift new calculated exponent to its place
-       or      eax, edx        ; join new exponent and original value without exponent
+       and     eax, 807FFFFFh  ; EAXに符号と仮数部のみを残す
+       shr     edx, 23         ; 指数を準備
+       add     edx, 2          ; 2を加算
+       movzx   edx, dl         ; EAXの7:0を除くビットをすべてクリア
+       shl     edx, 23         ; 新しく計算された指数をその場所に移す
+       or      eax, edx        ; 指数なしで新しい指数と元の値を結合する
        mov     [ebp+var_4], eax
        fld     [ebp+var_4]
        leave

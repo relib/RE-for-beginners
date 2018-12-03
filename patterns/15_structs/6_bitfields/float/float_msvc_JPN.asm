@@ -1,4 +1,4 @@
-_t$ = -8   ; size = 4
+﻿_t$ = -8   ; size = 4
 _f$ = -4   ; size = 4
 __in$ = 8  ; size = 4
 ?f@@YAMM@Z PROC ; f
@@ -18,19 +18,19 @@ __in$ = 8  ; size = 4
     add    esp, 12
 
     mov    edx, DWORD PTR _t$[ebp]
-    or     edx, -2147483648 ; 80000000H - set minus sign
+    or     edx, -2147483648 ; 80000000H - マイナスの符号を設定
     mov    DWORD PTR _t$[ebp], edx
 
     mov    eax, DWORD PTR _t$[ebp]
-    shr    eax, 23          ; 00000017H - drop significand
-    and    eax, 255         ; 000000ffH - leave here only exponent
-    add    eax, 2           ; add 2 to it
+    shr    eax, 23          ; 00000017H - 指数を落とす
+    and    eax, 255         ; 000000ffH - 指数のみを残す
+    add    eax, 2           ; 2を加算
     and    eax, 255         ; 000000ffH
-    shl    eax, 23          ; 00000017H - shift result to place of bits 30:23
+    shl    eax, 23          ; 00000017H - ビット30:23の場所に結果をシフトする
     mov    ecx, DWORD PTR _t$[ebp]
-    and    ecx, -2139095041 ; 807fffffH - drop exponent
+    and    ecx, -2139095041 ; 807fffffH - 指数を落とす
 
-; add original value without exponent with new calculated exponent:
+; 新しく計算された指数で指数なしの元の値を追加する
     or     ecx, eax         
     mov    DWORD PTR _t$[ebp], ecx
 

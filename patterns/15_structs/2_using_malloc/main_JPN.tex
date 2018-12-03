@@ -1,44 +1,42 @@
-\subsection{Let's allocate space for a structure using malloc()}
+﻿\subsection{malloc()を使って構造体のための領域を割り当てよう}
 \label{struct_malloc_example}
 
 
-Sometimes it is simpler to place structures not the in local stack, but in the \gls{heap}:
+場合によっては、ローカルスタックではなく\gls{heap}内に構造体を配置する方が簡単な場合があります。
 
 \lstinputlisting[style=customc]{patterns/15_structs/2_using_malloc/systemtime_malloc.c}
 
 
-Let's compile it now with optimization (\Ox) so it would be easy to see what we need.
+最適化（\Ox）でコンパイルして、必要なものを見るのは簡単です。
 
 \lstinputlisting[caption=\Optimizing MSVC,style=customasmx86]{patterns/15_structs/2_using_malloc/systemtime_malloc.asm}
 
 \myindex{\CStandardLibrary!malloc()}
 
-So, \TT{sizeof(SYSTEMTIME) = 16} and that is exact number of bytes to be allocated by \TT{malloc()}.
-It returns a pointer to a freshly allocated memory block in the \EAX register,
-which is then moved into the \ESI register.
-\TT{GetSystemTime()} win32 function takes care of saving value in \ESI,
-and that is why it is not saved here and continues to be used after the \TT{GetSystemTime()} call.
+したがって、\TT{sizeof(SYSTEMTIME) = 16}であり、これはmalloc（）によって割り当てられる正確なバイト数です。 
+\EAX レジスタ内の新しく割り当てられたメモリブロックへのポインタを返し、
+\ESI レジスタに移動します。
+\TT{GetSystemTime()} win32関数は \ESI の値を保存するため、
+ここで保存されず、\TT{GetSystemTime()}呼び出しの後も引き続き使用されます。
 
 \myindex{x86!\Instructions!MOVZX}
 
-New instruction~---\MOVZX (\IT{Move with Zero eXtend}).
-It may be used in most cases as \MOVSX, but it sets the remaining bits to 0.
-That's because \printf requires a 32-bit \Tint, but we got a WORD in the structure~---that
-is 16-bit unsigned type.
-That's why by copying the value from a WORD into \Tint{}, bits from 16 to 31 must be cleared, 
-because a random noise may be there, which is left from the previous operations on the register(s).
+新しい命令~---\MOVZX (\IT{Move with Zero eXtend})。 
+ほとんどの場合、 \MOVSX として使用できますが、残りのビットは0に設定されます。
+これは \printf が32ビットの \Tint を必要とするためですが、構造体にWORDがあるためです。
+つまり、16ビットの符号なし型です。 
+そのため、WORDの値を \Tint{} にコピーすることにより、16から31までのビットをクリアする必要があります。
+ランダムノイズが存在する可能性があります。これはレジスタの前の操作から残されているためです。
 
-
-In this example, it's possible to represent the structure as an array of 8 WORDs:
+この例では、構造を8つのWORDの配列として表すことができます。
 
 \lstinputlisting[style=customc]{patterns/15_structs/2_using_malloc/systemtime_malloc2.c}
 
-We get:
+次の結果を得ます。
 
 \lstinputlisting[caption=\Optimizing MSVC,style=customasmx86]{patterns/15_structs/2_using_malloc/systemtime_malloc2.asm}
 
 
-Again, we got the code that cannot be distinguished from the previous one.
+ここでも、前のコードと区別できないコードがあります。
 
-And again it has to be noted, you haven't to do this in practice, unless you really know what you are doing.
-
+また、実際にあなたが何をしているのか分からない限り、実際にはこれをしないことに注意しなければなりません。

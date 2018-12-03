@@ -17,7 +17,7 @@ we thereby multiply the whole number by \TT{$2^2$}, i.e., by 4.
 
 Let's compile in MSVC 2008 without optimization turned on:
 
-\lstinputlisting[caption=\NonOptimizing MSVC 2008,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_msvc_EN.asm}
+\lstinputlisting[caption=\NonOptimizing MSVC 2008,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_msvc_JPN.asm}
 
 A bit redundant.
 If it was compiled with \Ox flag there would be no \TT{memcpy()} call,
@@ -26,7 +26,7 @@ But it is easier to understand by looking at the unoptimized version.
 
 What would GCC 4.4.1 with \Othree do?
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.1,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_gcc_O3_EN.asm}
+\lstinputlisting[caption=\Optimizing GCC 4.4.1,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_gcc_O3_JPN.asm}
 
 The \ttf function is almost understandable. However, what is interesting is that GCC was able to calculate
 the result of \TT{f(1.234)} during compilation despite all this hodge-podge with the structure fields

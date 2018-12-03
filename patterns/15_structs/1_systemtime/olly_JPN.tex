@@ -2,40 +2,40 @@
 \subsubsection{\olly}
 \myindex{\olly}
 
-Let's compile this example in MSVC 2010 with \TT{/GS- /MD} keys and run it in \olly.
+この例を\TT{/GS- /MD}オプション付きでMSVC 2010でコンパイルし \olly で実行してみましょう。
 
-Let's open windows for data and stack at the address which is passed as the first argument of the
-\TT{GetSystemTime()} function, and let's wait until it's executed. We see this:
+データのウィンドウを開き、\TT{GetSystemTime()}関数の最初の引数として渡されたアドレスにスタックし、
+実行されるまで待機しましょう。 このようになります。
 
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/15_structs/1_systemtime/olly_systemtime1.png}
-\caption{\olly: \TT{GetSystemTime()} just executed}
+\caption{\olly: \TT{GetSystemTime()} が実行された}
 \label{fig:struct_olly_1}
 \end{figure}
 
-The system time of the function execution on my computer is 9 December 2014, 22:29:52:
+私のコンピュータ上での関数のシステム時間は2014年12月9日、22時29分52秒です。
 
 \lstinputlisting[caption=\printf output]{patterns/15_structs/1_systemtime/console.txt}
 
-So we see these 16 bytes in the
-data window: 
+このような16バイトをデータウィンドウに
+みることができます。
 \begin{lstlisting}
 DE 07 0C 00 02 00 09 00 16 00 1D 00 34 00 D4 03
 \end{lstlisting}
 
-Each two bytes represent one field of the structure. 
-Since the \gls{endianness} is \IT{little endian}, 
-we see the low byte first and then the high one.
+各2バイトが構造体のフィールドを表します。
+\gls{endianness}は\IT{リトルエンディアン}なので、
+低位バイトが最初に見え、高位バイトがその後です。
 
-Hence, these are the values currently stored in memory:
+したがって、これらは現在メモリに格納されている値です。
 
 \begin{center}
 \begin{tabular}{ | l | l | l | }
 \hline
-\headercolor{} Hexadecimal number & 
-\headercolor{} decimal number & 
-\headercolor{} field name \\
+\headercolor{} 16進数 & 
+\headercolor{} 10進数 & 
+\headercolor{} フィールド名 \\
 \hline
 0x07DE & 2014	& wYear \\
 \hline
@@ -56,10 +56,9 @@ Hence, these are the values currently stored in memory:
 \end{tabular}
 \end{center}
 
-The same values are seen in the stack window, but they are grouped as 32-bit values.
+同じ値がスタックウィンドウに表示されますが、32ビットの値としてグループ分けされています。
 
-And then \printf just takes the values it needs and outputs them to the console.
+そして、 \printf は必要な値だけを取り出してコンソールに出力します。
 
-Some values aren't output by \printf  (\TT{wDayOfWeek} and \TT{wMilliseconds}), 
-but they are in memory right now, available for use.
-
+いくつかの値は \printf （\TT{wDayOfWeek} と \TT{wMilliseconds}）
+によって出力されませんが、使用可能なメモリ上にあります。

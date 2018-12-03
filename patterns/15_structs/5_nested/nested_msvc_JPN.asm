@@ -1,4 +1,4 @@
-$SG2802	DB    'a=%d; b=%d; c.a=%d; c.b=%d; d=%d; e=%d', 0aH, 00H
+﻿$SG2802	DB    'a=%d; b=%d; c.a=%d; c.b=%d; d=%d; e=%d', 0aH, 00H
 
 _TEXT    SEGMENT
 _s$ = 8
@@ -30,7 +30,7 @@ _main    PROC
     mov    ecx, 2
     sub    esp, 24
     mov    eax, esp
-; from this moment, EAX is synonymous to ESP:
+; この瞬間から、EAXはESPと同義
     mov    BYTE PTR _s$[esp+60], 1
     mov    ebx, DWORD PTR _s$[esp+60]
     mov    DWORD PTR [eax], ebx

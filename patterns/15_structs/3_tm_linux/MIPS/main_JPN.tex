@@ -1,10 +1,9 @@
-\subsubsection{MIPS}
+﻿\subsubsection{MIPS}
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),numbers=left,style=customasmMIPS]{patterns/15_structs/3_tm_linux/MIPS/MIPS_O3_IDA_EN.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),numbers=left,style=customasmMIPS]{patterns/15_structs/3_tm_linux/MIPS/MIPS_O3_IDA_JPN.lst}
 
-This is an example where the branch delay slots can confuse us.
+これは、分岐遅延スロットが私たちを混乱させる可能性のある例です。
 
-For example, there is the instruction \INS{addiu \$a1, 1900} at line 35 which adds 1900 to the year number.
+たとえば、35行目に\INS{addiu \$a1, 1900}という命令があり、年に1900が加算されます。
 
-It's executed before the corresponding \INS{JALR} at line 34, do not forget about it.
-
+これは34行目の対応する\INS{JALR}の前に実行されますが、それを忘れないでください。

@@ -1,6 +1,6 @@
-main:
+﻿main:
 
-; IDA is not aware of structure field names, we named them manually:
+; IDAは構造体のフィールド名がわからないので、手動で名前を付けます
 
 var_40          = -0x40
 var_38          = -0x38
@@ -18,53 +18,53 @@ var_4           = -4
                 sw      $ra, 0x50+var_4($sp)
                 sw      $gp, 0x50+var_40($sp)
                 lw      $t9, (time & 0xFFFF)($gp)
-                or      $at, $zero ; load delay slot, NOP
+                or      $at, $zero ; ロード遅延スロット, NOP
                 jalr    $t9
-                move    $a0, $zero ; branch delay slot, NOP
+                move    $a0, $zero ; 分岐遅延スロット, NOP
                 lw      $gp, 0x50+var_40($sp)
                 addiu   $a0, $sp, 0x50+var_38
                 lw      $t9, (localtime_r & 0xFFFF)($gp)
                 addiu   $a1, $sp, 0x50+seconds
                 jalr    $t9
-                sw      $v0, 0x50+var_38($sp) ; branch delay slot
+                sw      $v0, 0x50+var_38($sp) ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+year($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 la      $a0, $LC0        # "Year: %d\n"
                 jalr    $t9
-                addiu   $a1, 1900 ; branch delay slot
+                addiu   $a1, 1900 ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+month($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 lui     $a0, ($LC1 >> 16)  # "Month: %d\n"
                 jalr    $t9
-                la      $a0, ($LC1 & 0xFFFF)  # "Month: %d\n" ; branch delay slot
+                la      $a0, ($LC1 & 0xFFFF)  # "Month: %d\n" ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+day($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 lui     $a0, ($LC2 >> 16)  # "Day: %d\n"
                 jalr    $t9
-                la      $a0, ($LC2 & 0xFFFF)  # "Day: %d\n" ; branch delay slot
+                la      $a0, ($LC2 & 0xFFFF)  # "Day: %d\n" ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+hour($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 lui     $a0, ($LC3 >> 16)  # "Hour: %d\n"
                 jalr    $t9
-                la      $a0, ($LC3 & 0xFFFF)  # "Hour: %d\n" ; branch delay slot
+                la      $a0, ($LC3 & 0xFFFF)  # "Hour: %d\n" ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+minutes($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 lui     $a0, ($LC4 >> 16)  # "Minutes: %d\n"
                 jalr    $t9
-                la      $a0, ($LC4 & 0xFFFF)  # "Minutes: %d\n" ; branch delay slot
+                la      $a0, ($LC4 & 0xFFFF)  # "Minutes: %d\n" ; 分岐遅延スロット
                 lw      $gp, 0x50+var_40($sp)
                 lw      $a1, 0x50+seconds($sp)
                 lw      $t9, (printf & 0xFFFF)($gp)
                 lui     $a0, ($LC5 >> 16)  # "Seconds: %d\n"
                 jalr    $t9
-                la      $a0, ($LC5 & 0xFFFF)  # "Seconds: %d\n" ; branch delay slot
+                la      $a0, ($LC5 & 0xFFFF)  # "Seconds: %d\n" ; 分岐遅延スロット
                 lw      $ra, 0x50+var_4($sp)
-                or      $at, $zero ; load delay slot, NOP
+                or      $at, $zero ; ロード遅延スロット, NOP
                 jr      $ra
                 addiu   $sp, 0x50
 
