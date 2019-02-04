@@ -1,0 +1,57 @@
+﻿\mysection{整数オーバーフロー}
+
+私は意図的にこのセクションを符号付き数表現に関するセクションの後に置きました。
+
+最初に、 \InSqBrackets{\KRBook}の\emph{itoa()}関数の実装について見てみましょう 。
+
+\begin{lstlisting}[style=customc]
+void itoa(int n, char s[])
+{
+        int i, sign;
+        if ((sign = n) < 0) /* 符号を記録する */
+                n = -n; /* nを正の数にする */
+        i = 0;
+        do { /* 数を逆順で生成する */
+                s[i++] = n % 10 + '0'; /* 次の数を取得 */
+        } while ((n /= 10) > 0); /* 削除 */
+        if (sign < 0)
+                s[i++] = '-';
+        s[i] = '\0';
+        strrev(s);
+}
+\end{lstlisting}
+
+（完全なソースコードは：\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/fundamentals/itoa_KR.c}）
+
+微妙なバグがあります。見つけてみてください。ソースコードをダウンロードし、コンパイル等してください。
+答えは次のページです。
+
+\clearpage
+
+\InSqBrackets{\KRBook}より：
+
+\begin{framed}
+\begin{quotation}
+演習3-4 2の補数表現では、我々の\emph{itoa}は
+負の最大数を扱いません。つまり、\emph{n}の値が$-(2^{wordsize-1})$
+に等しくなります。なぜ扱わないのか説明してください。実行するマシンに
+関係なく、値を正しく表示するように修正してください。
+\end{quotation}
+\end{framed}
+
+答えは次のとおりです。関数は負の最大数（INT\_MIN または 0x80000000 または -2147483648）を正しく処理できません。
+
+符号を変える方法は？ ビットをすべて反転し、1を加えます。
+INT\_MIN値（0x80000000）のすべてのビットを反転する場合は、0x7fffffffになります。1を加えると再度0x80000000になります。
+そのため、符号を変化しても効果はありません。
+2の補数システムにおける重要な結果です。
+
+参考文献：
+
+\begin{itemize}
+\item blexim -- 基本的なバッファオーバーフロー\footnote{\url{http://phrack.org/issues/60/10.html}}
+
+\item Yannick Moy, Nikolaj Bjﾃｸrner, および David Sielaff -- 整数オーバーフローに対するバグ検出モジュール：健全で効率的な
+ビット精度の静的解析\footnote{\url{https://yurichev.com/mirrors/SMT/z3prefix.pdf}}
+\end{itemize}
+

@@ -1,0 +1,157 @@
+﻿\mysection{XOR (排他的論理和)}
+\label{XOR_property}
+
+\input{fundamentals/XOR_property_JA}
+
+\subsection{Logical difference}
+
+\myindex{Cray}
+In Cray-1 supercomputer (1976-1977) manual
+\footnote{\url{http://www.bitsavers.org/pdf/cray/CRAY-1/HR-0004-CRAY_1_Hardware_Reference_Manual-PRELIMINARY-1975.OCR.pdf}},
+you can find XOR instruction was called \emph{logical difference}.
+
+Indeed, XOR(a,b)=1 if a!=b.
+
+\subsection{日常語}
+
+XOR演算は一般的な日常会話に存在します。
+誰かが ``りんごやバナナを買ってください``
+と尋ねるとき、これは通常 ``最初の物か二番目の物を買うが両方ではない'' という意味です。
+論理ORは ``両方の物も良い'' を意味するからです。
+
+排他的論理和ではなく論理和を使用することを強調するために、
+日常会話では ``and/or'' を使用することをお勧めします：\url{https://en.wikipedia.org/wiki/And/or}
+
+\subsection{暗号化}
+
+XORは、（少なくとも\emph{Feistelネットワークでは}）アマチュア（\ref{simple_XOR_encryption}）と\emph{実際の}暗号化の両方で頻繁に使用されています。
+
+XORは、$cipher\_text = plain\_text \oplus key$ であり、
+$(plain\_text \oplus key) \oplus key = plain\_text$
+であるため、ここでは非常に便利です。
+
+\subsection{\ac{RAID}4}
+\index{RAID4}
+
+\ac{RAID}4は、ハードディスクを保護するための非常に簡単な方法を提供します。
+たとえば、複数のディスク（$D_1$, $D_2$, $D_3$ など）と1つのパリティディスク（$P$）があります。
+パリティディスクに書き込まれる各ビット/バイトは、計算されてオンザフライで書き込まれます。
+
+\begin{equation} \label{eq:RAID4}
+P = D_1 \oplus D_2 \oplus D_3
+\end{equation}
+
+$D_2$など、いずれかのディスクに障害が発生した場合は、まったく同じ方法で復元されます。
+
+\begin{equation}
+D_2 = D_1 \oplus P \oplus D_3
+\end{equation}
+
+パリティディスクが故障した場合は、\ref{eq:RAID4}の方法を使用して復元されます。
+いずれかのディスクが2台故障した場合、両方を復元することは不可能です。
+
+\ac{RAID}5はより高度ですが、このXORプロパティはまだそこで利用されています。
+
+そのため、 \ac{RAID} コントローラには、大量の書き込みデータをオンザフライでXOR処理するためのハードウェア 
+''XORアクセラレータ'' があります。コンピュータがどんどん速くなると、 \ac{SIMD} を使ってソフトウェアレベルで実行できるようになります。
+
+\subsection{XORスワップアルゴリズム}
+
+信じがたいことですが、このコードは他の追加のレジスタやメモリセルを使わずに \EAX と \EBX の値を入れ替えます。
+
+\begin{lstlisting}[style=customasmx86]
+xor eax, ebx
+xor ebx, eax
+xor eax, ebx
+\end{lstlisting}
+
+それがどのように機能するのか調べてみましょう。
+まず、x86アセンブリ言語とは別にステップを書き換えます。
+
+\begin{lstlisting}
+X = X XOR Y
+Y = Y XOR X
+X = X XOR Y
+\end{lstlisting}
+
+各ステップでXとYは何を持っていますか？
+単純な規則を覚えておいてください：XとYの値はどれでも $(X \oplus Y) \oplus Y = X$
+
+みてみましょう。
+最初のステップの後の $X$ には $X \oplus Y$ があります。
+2ステップ目以降の $Y$ は $Y \oplus (X \oplus Y) = X$ です。
+3ステップ後の $X$ は $(X \oplus Y) \oplus X = Y$ です。
+
+誰かがこのトリックを使うべきかどうかを言うのは難しいですが、それはXORプロパティの良いデモンストレーションの例として役立ちます。
+
+ウィキペディアの記事(\url{https://en.wikipedia.org/wiki/XOR_swap_algorithm})にはまた別の説明があります。
+XORの代わりに加算および減算演算を使用できます。
+
+\begin{lstlisting}
+X = X + Y
+Y = X - Y
+X = X - Y
+\end{lstlisting}
+
+Let's see:
+$X$ after 1st step has $X+Y$;
+$Y$ after 2nd step has $X+Y-Y=X$;
+$X$ after 3rd step has $X+Y-X=Y$.
+
+\subsection{XORリンクリスト}
+\index{Doubly linked list}
+
+二重リンクリストは、各要素が前の要素と次の要素へのリンクを持つリストです。
+したがって、リストを前後にトラバースするのはとても簡単です。 
+C++の\TT{std::list}は、この本でも検討されている二重リンクリストを実装しています：\ref{std_list}
+
+つまり、各要素には2つのポインタがあります。
+おそらく小さい\ac{RAM}の環境では可能でしょうか。フットプリント、2つではなく1つのポインタですべての機能を維持するには？
+はい、それが $prev \oplus next$ の値であればこのメモリセルに格納されます。これは通常``link''と呼ばれます。
+
+たぶん、前の要素へのアドレスは次の要素のアドレスを使って「暗号化」され、そうでなければ
+次の要素アドレスは前の要素アドレスを使って「暗号化」されると言うことができます。
+
+このリストを前方にたどると、常に前の要素のアドレスがわかるので、このフィールドを「復号化」して
+次の要素のアドレスを取得できます。
+同様に、このリストを逆方向にたどり、次の要素のアドレスを使用してこのフィールドを「復号化」することもできます。
+
+ただし、最初の要素のアドレスがわからないと、特定の要素の前後の要素のアドレスを
+見つけることはできません。
+
+この解決策を完成させるためのいくつかのこと：最初の要素はXORを行わずに次の要素のアドレスを持ち、
+最後の要素はXORを行わずに前の要素のアドレスを持つようになります。
+
+それでは要約しましょう。これは5要素の二重リンクリストの例です。 
+$A_x$は要素のアドレスです。
+
+\begin{center}
+\begin{tabular}{ | l | l | }
+	\hline
+	\HeaderColor アドレス & \HeaderColor \emph{link} フィールドの中身 \\
+	\hline
+	$A_0$ & $A_1$ \\
+	\hline
+	$A_1$ & $A_0 \oplus A_2$ \\
+	\hline
+	$A_2$ & $A_1 \oplus A_3$ \\
+	\hline
+	$A_3$ & $A_2 \oplus A_4$ \\
+	\hline
+	$A_4$ & $A_3$ \\
+	\hline
+\end{tabular}
+\end{center}
+
+繰り返しになりますが、このトリッキーなハックを誰かが使用する必要があるかどうかは言い難いですが、これもXORプロパティの優れたデモンストレーションです。
+XORスワップアルゴリズムと同様に、それに関するウィキペディアの記事でもXORの代わりに加算または減算を使用する方法を提供しています：
+\url{https://en.wikipedia.org/wiki/XOR_linked_list}
+
+% subsection:
+\input{fundamentals/XOR_switch_JA}
+\input{fundamentals/zobrist_JA}
+
+\subsection{ところで}
+
+通常の\emph{OR}は、\emph{排他的OR}とは対照的に、\emph{包含的OR}（または\emph{IOR}）と呼ばれることもあります。 
+1つの場所は、\emph{operator} Pythonライブラリです。ここでは、\emph{operator.ior}と呼ばれています。

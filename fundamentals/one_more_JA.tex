@@ -1,0 +1,57 @@
+﻿\subsection{2の補数の形式に関する加算の組}
+
+\epigraph{Exercise 2-1. Write a program to determine the ranges of \TT{char}, \TT{short}, \TT{int}, and \TT{long}
+variables, both \TT{signed} and \TT{unsigned}, by printing appropriate values from standard headers
+and by direct computation.}{\KRBook}
+
+\subsubsection{\gls{word}の最大数を取得する}
+
+符号なし数の最大値はすべてのビットがセットされている数：\emph{0xFF....FF} です。
+（\gls{word}が符号付き整数として扱われるの場合は-1になります）
+\gls{word}を取って、ビットをすべてセットし、値を取得します：
+
+\begin{lstlisting}[style=customc]
+#include <stdio.h>
+
+int main()
+{
+	unsigned int val=~0; // "unsigned char"に変更して、符号なし8ビットバイトの最大値を取得
+	// 0-1も動作する、または単に-1
+	printf ("%u\n", val); // %uで符号なし
+};
+\end{lstlisting}
+
+32ビット整数の場合、これは4294967295です。
+
+\subsubsection{ある符号付 \gls{word} の最小値を取得する}
+
+最小の符号付き整数は\emph{0x80....00}とエンコードされます。つまり、最上位ビットが設定され、その他はクリアされます。
+最大の符号付き整数も同じ方法でエンコードされますが、ビットはすべて反転されます：\emph{0x7F....FF}
+
+それが消えるまで少しだけ左にシフトしましょう：
+
+\begin{lstlisting}[style=customc]
+#include <stdio.h>
+
+int main()
+{
+	signed int val=1; // "signed char"に変更して、符号ありバイトの値を見つける
+	while (val!=0)
+	{
+		printf ("%d %d\n", val, ~val);
+		val=val<<1;
+	};
+};
+\end{lstlisting}
+
+出力は以下のとおりです。
+
+\begin{lstlisting}
+...
+
+536870912 -536870913
+1073741824 -1073741825
+-2147483648 2147483647
+\end{lstlisting}
+
+最後の2つの数字は、それぞれ最小および最大の符号付き32ビット \emph{int}です。

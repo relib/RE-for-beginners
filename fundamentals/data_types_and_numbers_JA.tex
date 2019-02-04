@@ -1,9 +1,10 @@
+<<<<<<< HEAD
 % TODO rework structure and hierarchy
-\mysection{Integral datatypes}
+\mysection{整数データ型}
 
 整数型とは、数値に変換できる値の型です。これには数値・列挙・ブール値などがあります。
 
-\subsection{Bit}
+\subsection{ビット}
 
 ビットの明確な使い方はブール値です。: 0は\emph{false}、1は\emph{true}になります.
 
@@ -16,19 +17,19 @@
 C/C++では0が\emph{false}、0以外の値が\emph{true}になります。
 例えば:
 
-\lstinputlisting[style=customc]{fundamentals/data_types_and_numbers_EN_lst1.c}
+\lstinputlisting[style=customc]{fundamentals/data_types_and_numbers_JA_lst1.c}
 
 これはCの文字列を列挙する一般的な方法です:
 
-\lstinputlisting[style=customc]{fundamentals/data_types_and_numbers_EN_lst2.c}
+\lstinputlisting[style=customc]{fundamentals/data_types_and_numbers_JA_lst2.c}
 
-\subsection{Nibble AKA nybble}
+\subsection{ニブル(nibble、別名nybble)}
 
 ハーフバイト、テトラデ\ac{として知られています}。4ビットに相当します。
 
 これらの用語はいずれも現在でも使用されています。
 
-\subsubsection{Binary-coded decimal (\ac{BCD})}
+\subsubsection{二進化十進数 (\ac{BCD})}
 \label{BCD}
 
 \myindex{Intel 4004}
@@ -72,333 +73,332 @@ x86の\ac{BCD}命令は他の目的、特に文書化されていない方法な
 \myparagraph{Z80}
 \myindex{Z80}
 
-Z80は8ビットのIntel 8080のCPUのクローンで、スペースの制約から4ビットの\ac{ALU}を持っています。
-この副作用として\emph{half-carry flag}が容易に、かつ自然に発生することがあります。
+Z80は8ビットIntel 8080 CPUのクローンであり、そしてスペースの制約のために、それは４ビット\ac{ALU}を持ちます。すなわち
+2つの8ビット数にわたる各操作は2段階で進められなければなりません。
+この副作用の1つは、\emph{ハーフキャリーフラグ}の簡単で自然な生成です。
 
-\subsection{Byte}
+\subsection{バイト}
 
-Byte is primarily used for character storage.
-8-bit bytes were not common as today.
-Punched tapes for teletypes had 5 and 6 possible holes, this is 5 or 6 bits for byte.
+バイトは主に文字の格納に使用されます。 
+8ビットバイトは今日のように一般的ではありませんでした。
+テレタイプ用のパンチテープには5つか6つの穴があります。これはバイトあたり5または6ビットです。
 
 \myindex{octet}
 \myindex{fetchmail}
-To emphasize the fact the byte has 8 bits, byte is sometimes called \emph{octet}:
-at least \emph{fetchmail} uses this terminology.
+バイトが8ビットであるという事実を強調するために、バイトは時々\emph{オクテット}と呼ばれます：
+少なくとも\emph{fetchmail}はこの用語を使います。
 
-9-bit bytes used to exist in 36-bit architectures: 4 9-bit bytes would fit in a single \gls{word}.
-Probably because of this fact, C/C++ standard tells that \emph{char} has to have a room for \emph{at least} 8 bits, but more
-bits are allowable.
+以前は36ビットアーキテクチャで9ビットバイトが存在していました。4 9ビットバイトは1ワードに収まります。
+おそらくこの事実のために、C/C++標準は\emph{char}が\emph{少なくとも}8ビットのための余地を持たなければならないと言いますが、
+もっと多くのビットが許されます。
 
-For example, in the early C language manual\footnote{\url{https://yurichev.com/mirrors/C/bwk-tutor.html}}, we can find this:
+例えば、初期のC言語マニュアル\footnote{\url{https://yurichev.com/mirrors/C/bwk-tutor.html}}では、このような例を見つけることができます。
 
 \begin{lstlisting}
 char  one byte character (PDP-11, IBM360: 8 bits; H6070: 9 bits)
 \end{lstlisting}
 
 \myindex{Honeywell 6070}
-By H6070 they probably meant Honeywell 6070, with 36-bit words.
+H6070までには、おそらくHoneywell 6070を意味し、36ビットの単語が含まれていました。
 
-\subsubsection{Standard ASCII table}
+\subsubsection{標準ASCIIテーブル}
 
-7-bit ASCII table is standard, which has only 128 possible characters.
-Early E-Mail transport software were operating only on 7-bit ASCII codes, so a \ac{MIME} standard needed to encode messages
-in non-Latin writing systems.
-7-bit ASCII code was augmented by parity bit, resulting in 8 bits.
+7ビットのASCIIテーブルは標準で128文字しか使用できません。
+初期のEメール転送ソフトウェアは7ビットのASCIIコードでしか動作しなかったため、\ac{MIME}規格ではラテン語以外の
+書記体系でメッセージをエンコードする必要がありました。 
+7ビットASCIIコードは、パリティビットで拡張され、結果として8ビットになりました。
 
-\emph{Data Encryption Standard} (\ac{DES}) has a 56 bits key, this is 8 7-bit bytes,
-leaving a space to parity bit for each character.
+\emph{Data Encryption Standard} (\ac{DES})には56ビットの鍵があります。これは8 7ビットバイトで、
+各文字ごとにパリティー・ビットまでのスペースがあります。
 
-There is no need to memorize whole \ac{ASCII} table, but rather ranges.
-\InSqBrackets{0..0x1F} are control characters (non-printable).
-\InSqBrackets{0x20..0x7E} are printable ones.
-Codes starting at 0x80 are usually used for non-Latin writing systems and/or pseudographics.
+\ac{ASCII}テーブル全体を暗記する必要はありませんが、範囲が重要です。
+\InSqBrackets{0..0x1F}は制御文字です（印刷不可）。
+\InSqBrackets{0x20..0x7E}は印刷可能文字です。
+0x80から始まるコードは通常、非ラテン系の書記体系や疑似文字、あるいはその両方に使用されます。
 
-Significant codes which will be easily memorized are:
-0 (end of C-string, \TT{'\textbackslash{}0'} in C/C++);
-0xA or 10 (\emph{line feed}, \TT{'\textbackslash{}n'} in C/C++);
-0xD or 13 (\emph{carriage return}, \TT{'\textbackslash{}r'} in C/C++).
+簡単に記憶される重要なコードは次のとおりです。
+0（C文字列の終わり、C/C++では\TT{'\textbackslash{}0'}）、
+0xAまたは10（\emph{line feed}、C/C++では\TT{'\textbackslash{}n'}）、
+0xDまたは13（\emph{carriage return}、C/C++では\TT{'\textbackslash{}r'}）。
 
-0x20 (space) is also often memorized.
+0x20（スペース）もよく記憶されています。
 
-\subsubsection{8-bit CPUs}
+\subsubsection{8ビットCPU}
 
-x86 has capability to work with byte(s) on register level (because they are descendants of 8-bit 8080 CPU),
-RISC CPUs like ARM and MIPS---not.
+x86は、ARMやMIPSのようなRISC CPUではないので（8ビット8080 CPUの子孫であるため）、
+レジスタレベルでバイトを処理することができます。
 
-\subsection{Wide char}
+\subsection{ワイドchar}
 \myindex{UTF-16}
 \myindex{UCS-2}
 
-This is an attempt to support multi-lingual environment by extending byte to 16-bit.
-Most well-known example is Windows NT kernel and win32 functions with \emph{W} suffix.
-This is why each Latin character in plain English text string is interleaved with zero byte.
-This encoding is called UCS-2 or UTF-16
+これは、バイトを16ビットに拡張することによって、多言語環境をサポートする試みです。
+最もよく知られている例は、Windows NTカーネルと\emph{W}サフィックスの付いたwin32関数です。
+平文の英語のテキスト文字列の各ラテン文字がゼロバイトでインターリーブされているのはこのためです。
+このエンコードはUCS-2またはUTF-16と呼ばれます。
 
-Usually, \emph{wchar\_t} is synonym to 16-bit \emph{short} data type.
+通常、\emph{wchar\_t}は16ビットの\emph{short}データ型の同義語です。
 
-\subsection{Signed integer vs unsigned}
+\subsection{符号付き整数と符号なし整数}
 
-Some may argue, why unsigned data types exist at first place, since any unsigned number can be represented as signed.
-Yes, but absence of sign bit in a value extends its range twice.
-Hence, signed byte has range of -128..127, and unsigned one: 0..255.
-Another benefit of using unsigned data types is self-documenting:
-you define a variable which can't be assigned to negative values.
+符号なしのデータ型は符号付きとして表すことができるため、最初は符号なしデータ型が存在するのはなぜかと主張する人もいます。
+はい、ただし値に符号ビットがないと、その範囲は2倍になります。
+したがって、符号付きバイトの範囲は-128..127、符号なしバイトの場合は0..255です。
+符号なしデータ型を使用するもう1つの利点は自己文書化です。
+負の値に代入できない変数を定義します。
 
 \myindex{Java}
-Unsigned data types are absent in Java, for which it's criticized.
-It's hard to implement cryptographical algorithms using boolean operations over signed data types.
+符号なしデータ型はJavaには存在しないため、批判されています。
+符号付きデータ型に対してブール演算を使用して暗号化アルゴリズムを実装するのは困難です。
 
-Values like 0xFFFFFFFF (-1) are used often, mostly as error codes.
+0xFFFFFFFF（-1）のような値は、主にエラーコードとしてよく使用されます。
 
-\subsection{Word}
+\subsection{ワード(Word)}
 
-\Gls{word} word is somewhat ambiguous term and usually denotes a data type fitting in \ac{GPR}.
-Bytes are practical for characters, but impractical for other arithmetical calculations.
+\Gls{word}はややあいまいな用語で、通常\ac{GPR}に適合するデータ型を表します。
+バイトは文字列には実用的ですが、他の算術計算には実用的ではありません。
 
-Hence, many \ac{CPU}s have \ac{GPR}s with width of 16, 32 or 64 bits.
-Even 8-bit CPUs like 8080 and Z80 offer to work with 8-bit register pairs, each pair forming a 16-bit \emph{pseudoregister}
-(\emph{BC}, \emph{DE}, \emph{HL}, etc.).
-Z80 has some capability to work with register pairs, and this is, in a sense, some kind of 16-bit CPU emulation.
+したがって、多くの\ac{CPU}には16、32、または64ビット幅の\ac{GPR}があります。 
+8080やZ80のような8ビットCPUでも、8ビットレジスタペアで動作するように提供されており、各ペアは16ビット\emph{疑似レジスタ}
+（\emph{BC}、\emph{DE}、\emph{HL}など）を形成します。 
+Z80はレジスタペアを扱う機能を持っています。これはある意味ではある種の16ビットCPUエミュレーションです。
 
-In general, if a CPU marketed as ``n-bit CPU'', this usually means it has n-bit \ac{GPR}s.
+一般に、CPUが``nビットCPU''として販売されている場合、これは通常、それがnビット\ac{GPR}を持っていることを意味します。
 
-There was a time when hard disks and \ac{RAM} modules were marketed as having \emph{n} kilo-words instead of
-\emph{b} kilobytes/megabytes.
+ハードディスクと\ac{RAM}モジュールが\emph{b}キロバイト/メガバイトの代わりに\emph{n}キロワードを
+持つものとして販売されていた時代がありました。
 
-For example, \emph{Apollo Guidance Computer}
-has 2048 words of \ac{RAM}.
-This was a 16-bit computer, so there was 4096 bytes of \ac{RAM}.
+例えば、\emph{Apollo Guidance Computer}\footnote{\url{https://en.wikipedia.org/wiki/Apollo_Guidance_Computer}}
+には2048ワードの\ac{RAM}があります。
+これは16ビットコンピュータだったので、4096バイトの\ac{RAM}がありました。
 
-\emph{TX-0} had 64K of 18-bit words of magnetic core memory,
-i.e., 64 kilo-words.
+\emph{TX-0}\footnote{\url{https://en.wikipedia.org/wiki/TX-0}}は64Kの18ビットワードの磁気コアメモリ、
+すなわち64キロワードを有していました。
 
-\emph{DECSYSTEM-2060}
-could have up to 4096 kilowords of \emph{solid state memory}
-(i.e., hard disks, tapes, etc).
-This was 36-bit computer, so this is 18432 kilobytes or ~18 megabytes.
-
-Essentially, why do you need bytes if you have words?
-Mostly for text strings processing.
-Words can be used in almost any other situations.
+\emph{DECSYSTEM-2060}\footnote{\url{https://en.wikipedia.org/wiki/DECSYSTEM-20}}
+は、最大4096キロワードの\emph{ソリッドステートメモリ}
+（すなわち、ハードディスク、テープなど）を有することができます。
+これは36ビットコンピュータだったので、これは18432キロバイトまたは18メガバイトです。
 
 \myhrule{}
 
-\emph{int} in C/C++ is almost always mapped to \gls{word}.
-(Except of AMD64 architecture where \emph{int} is still 32-bit one, perhaps, for the reason of better portability.)
+C/C++の\emph{int}はほとんどの場合\gls{word}にマップされます。
+（おそらく、よりよい移植性の理由で、AMD64アーキテクチャーを除いて\emph{int}がまだ32ビットのものであるため。）
 
-\emph{int} is 16-bit on PDP-11 and old MS-DOS compilers.
-\emph{int} is 32-bit on VAX, on x86 starting at 80386, etc.
+\emph{int}はPDP-11および古いMS-DOSコンパイラでは16ビットです。 
+\emph{int}はVAX上では32ビット、x86上では80386以降で32ビットです。
 
-Even more than that, if type declaration for a variable is omitted in C/C++ program, \emph{int} is used silently by default.
-Perhaps, this is inheritance of B programming language\footnote{\url{http://yurichev.com/blog/typeless/}}.
-
-\myhrule{}
-
-\ac{GPR} is usually fastest container for variable, faster than packed bit,
-and sometimes even faster than byte (because there is no need to isolate a single bit/byte from \ac{GPR}).
-Even if you use it as a container for loop counter in 0..99 range.
+さらに、C/C++プログラムで変数の型宣言が省略されている場合は、デフォルトで\emph{int}が暗黙的に使用されます。
+おそらく、これはBプログラミング言語\footnote{\url{http://yurichev.com/blog/typeless/}}の継承です。
 
 \myhrule{}
 
-\Gls{word} in assembly language is still 16-bit for x86, because it was so for 16-bit 8086.
-\emph{Double word} is 32-bit, \emph{quad word} is 64-bit.
-That's why 16-bit words are declared using \TT{DW} in x86 assembly, 32-bit ones using \TT{DD} and 64-bit ones using \TT{DQ}.
+\ac{GPR}は通常、変数の最速のコンテナであり、パックされたビットよりも速く、
+時にはバイトよりも速いこともあります（GPRからシングルビット/バイトを分離する必要がないため）。 
+0..99の範囲でループカウンター用のコンテナとして使用してもです。
 
-\Gls{word} is 32-bit for ARM, MIPS, etc., 16-bit data types are called \emph{half-word} there.
-Hence, \emph{double word} on 32-bit RISC is 64-bit data type.
+\myhrule{}
 
-\emph{GDB} has the following terminology: \emph{halfword} for 16-bit, \gls{word} for 32-bit and \emph{giant word} for 64-bit.
+アセンブリ言語の\Gls{word}は、16ビット8086でもそうだったので、x86ではまだ16ビットです。
+\emph{ダブルワード}は32ビット、\emph{クワッドワード}は64ビットです。 
+これが、16ビットワードがx86アセンブリで\TT{DW}を使用して宣言され、32ビットワードが\TT{DD}を使用し、64ビットワードが\TT{DW}を使用して宣言されている理由です。
 
-16-bit C/C++ environment on PDP-11 and MS-DOS has \emph{long} data type with width of 32 bits, perhaps,
-they meant \emph{long word} or \emph{long int}?
+\Gls{word}は、ARM、MIPSなどでは32ビットです。16ビットのデータ型は、\emph{ハーフワード}と呼ばれています。 
+したがって、32ビットRISCの\emph{ダブルワード}は64ビットデータ型です。
 
-32-bit C/C++ environment has \emph{long long} data type with width of 64 bits.
+\emph{GDB}には、16ビットの\emph{ハーフワード}、32ビットの\gls{word}、64ビットの\emph{giant word}という用語があります。
 
-Now you see why the \emph{word} word is ambiguous.
+PDP-11およびMS-DOS上の16ビットC/C++環境は、32ビット幅の\emph{long}データ型を持っています。おそらく、
+それらは\emph{long word}または\emph{long int}を意味するでしょうか？
 
-\subsubsection{Should I use \emph{int}?}
+32ビットC/C++環境には、64ビット幅の\emph{long long}データ型があります。
 
-Some people argue that \emph{int} shouldn't be used at all, because it ambiguity can lead to bugs.
-For example, well-known \emph{lzhuf} library uses \emph{int} at one point and everything works fine on 16-bit architecture.
-But if ported to architecture with 32-bit \emph{int}, it can crash: \url{http://yurichev.com/blog/lzhuf/}.
+単語\emph{word}が曖昧である理由を見ています。
 
-Less ambiguous types are defined in \emph{stdint.h} file:
-\emph{uint8\_t}, \emph{uint16\_t}, \emph{uint32\_t}, \emph{uint64\_t}, etc.
+\subsubsection{\emph{int}を使うべきでしょうか？}
+
+曖昧さがバグの原因になる可能性があるため、\emph{int}をまったく使用すべきではないと主張する人もいます。 
+たとえば、よく知られている\emph{lzhuf}ライブラリは、ある時点で\emph{int}を使用し、16ビットアーキテクチャではすべてうまく機能します。
+しかし、32ビット\emph{int}のアーキテクチャに移植すると、クラッシュする可能性があります：\url{http://yurichev.com/blog/lzhuf/}
+
+それほど曖昧でない型が\emph{stdint.h}ファイルで定義されています：
+\emph{uint8\_t}、 \emph{uint16\_t}、 \emph{uint32\_t}、 \emph{uint64\_t}など。
 
 \myindex{Donald E. Knuth}
-Some people like Donald E. Knuth proposed\footnote{\url{http://www-cs-faculty.stanford.edu/~uno/news98.html}}
-more sonorous words
-for these types: \emph{byte/wyde/tetrabyte/octabyte}.
-But these names are less popular than clear terms with inclusion of \emph{u} (\emph{unsigned}) character 
-and number right into the type name.
+ドナルドEクヌースのような人たちはこれらのタイプのために9つのより狂ったwordを提案しました\footnote{\url{http://www-cs-faculty.stanford.edu/~uno/news98.html}}：
+\emph{byte/wyde/tetrabyte/octabyte}
+しかし、これらの名前は、\emph{u}（符号なし）文字を含む明確な用語ほど一般的ではありません。
+そして型名の右側に番号を付けます。
 
-\subsubsection{Word-oriented computers}
+\subsubsection{Word志向のコンピュータ}
 
-Despite the ambiguity of the \gls{word} term, modern computers are still word-oriented: \ac{RAM} and all levels of cache
-are still organized by words, not by bytes.
-However, size in bytes is used in marketing.
+\gls{word}という言葉のあいまいさにもかかわらず、現代のコンピュータは依然としてワード指向です：\ac{RAM}とキャッシュの
+すべてのレベルは依然としてバイト単位ではなくワード単位で構成されています。 
+ただし、マーケティングではバイト単位のサイズが使用されます。
 % <!-- TODO word length on intel, etc... -->
 
-Access to RAM/cache by address aligned by word boundary is often cheaper than non-aligned.
+ワード境界で整列されたアドレスによるRAM/キャッシュへのアクセスは、多くの場合、整列されていない場合よりも安上りです。
 
-During data structures development, which are supposed to be fast and efficient,
-one should always take into consideration length of the \gls{word} on the CPU to be executed on.
-Sometimes the compiler will do this for programmer, sometimes not.
+高速かつ効率的であると考えられるデータ構造の開発は、
+実行するCPU上のワードの長さを常に考慮に入れる必要があります。 
+時にはコンパイラはプログラマーのためにこれをしてくれますし、時にはしてくれません。
 
-\subsection{Address register}
+\subsection{アドレスレジスタ}
 
-For those who fostered on 32-bit and/or 64-bit x86, and/or RISC of 90s like ARM, MIPS, PowerPC, it's natural that
-address bus has the same width as \ac{GPR} or \gls{word}.
-Nevertheless, width of address bus can be different on other architectures.
+ARM、MIPS、PowerPCなど、32ビットまたは64ビットのx86、あるいは90年代のRISCを使っている人にとっては、
+アドレスバスの幅が\ac{GPR}や\gls{word}と同じであるのは当然のことです。 
+それにもかかわらず、アドレスバスの幅は他のアーキテクチャでは異なる可能性があります。
 
-8-bit Z80 can address $2^{16}$ bytes, using 8-bit registers pairs or dedicated registers (\emph{IX}, \emph{IY}).
-\emph{SP} and \emph{PC} registers are also 16-bit ones.
+8ビットZ80は、8ビットレジスタペアまたは専用レジスタ（\emph{IX}、 \emph{IY}）を使用して$2^{16}$バイトをアドレス指定できます。 
+\emph{SP} および \emph{PC}レジスタも16ビットのものです。
 
-\myindex{Cray}
-Cray-1 supercomputer has 64-bit GPRs, but 24-bit address registers, so it can address $2^{24}$ 
-(16 megawords or 128 megabytes).
-RAM was very expensive in 1970s, and a typical Cray had 1048576 (0x100000) words of RAM or ~8MB.
-So why to allocate 64-bit register for address or pointer?
+\myindex{Cray-1}
+Cray-1スーパーコンピュータには64ビットのGPRがありますが、24ビットのアドレスレジスタがあるので、
+$2^{24}$（16メガワードまたは128メガバイト）をアドレス指定できます。 
+RAMは1970年代に非常に高価でした、そしてスーパーコンピューティング環境でさえそれがそれがもっとあるかもしれないと予想することができません。 
+それでは、なぜアドレスまたはポインタに64ビットレジスタを割り当てるのでしょうか？
 
-8086/8088 CPUs had a really weird addressing scheme:
-values of two 16-bit registers were summed in a weird manner resulting in a 20-bit address.
-Perhaps, this was some kind of toy-level virtualization (\myref{8086_memory_model})?
-8086 could run several programs (not simultaneously, though).
+8086/8088 CPUは本当に奇妙なアドレッシングスキームを持っていました：
+2つの16ビットレジスタの値は妙な方法で合計されて20ビットアドレスをもたらしました。 
+おそらく、これはある種のおもちゃレベルの仮想化でしょうか？（\myref{8086_memory_model}）
+8086は複数のプログラムを実行することができます（ただし同時にではありません）。
 
 \myindex{ARM!ARM1}
-Early ARM1 has an interesting artifact:
+初期のARM1には興味深いアーティファクトがあります。
 
 \begin{framed}
 \begin{quotation}
-Another interesting thing about the register file is the PC register is missing a few bits. Since the ARM1 uses 26-bit addresses, the top 6 bits are not used. Because all instructions are aligned on a 32-bit boundary, the bottom two address bits in the PC are always zero. These 8 bits are not only unused, they are omitted from the chip entirely.
+レジスタファイルに関する別の興味深い点は、PCレジスタに数ビット欠けていることです。 ARM1は26ビットアドレスを使用しているため、上位6ビットは使用されません。 すべての命令は32ビット境界で整列されているため、PCの下位2アドレスビットは常にゼロです。 これらの8ビットは未使用であるだけでなく、チップから完全に省かれています。
 \end{quotation}
 \end{framed}
 
 ( \url{http://www.righto.com/2015/12/reverse-engineering-arm1-ancestor-of.html} )
 
-Hence, it's physically not possible to push a value with one of two last bits set into PC register.
-Nor it's possible to set any bits in high 6 bits of PC.
+したがって、最後の2つのビットの1つをPCレジスタに設定して値をプッシュすることは物理的に不可能です。 
+PCの上位6ビットに任意のビットを設定することもできません。
 
-x86-64 architecture has virtual 64-bit pointers/addresses, but internally, width of address bus is 48 bits
-(seems enough to address 256TB of \ac{RAM}).
+x86-64アーキテクチャーには仮想64ビットのポインター/アドレスがありますが、内部的にはアドレスバスの幅は48ビットです
+（256TBの\ac{RAM}をアドレス指定するのに十分です）。
 
-\subsection{Numbers}
+\subsection{数値}
 
-What are numbers used for?
+数値は何に使われていますか？
 
-When you see some number(s) altering in a CPU register, you may be interested in what this number means.
-It's an important skill for a reverse engineer to determine possible data type from a set of changing numbers.
+CPUレジスタ内のいくつかの数値が変化しているのを見たとき、この数字が何を意味するのかに興味があるかもしれません。
+リバースエンジニアにとって、変化する数値のセットから可能なデータタイプを判断することは重要なスキルです。
 
-\subsubsection{Boolean}
+\subsubsection{ブール値}
 
-If the number is switching from 0 to 1 and back, most chances that this value has boolean data type.
+数値が0から1に切り替えられたり戻ったりしている場合、この値のデータ型がブール値である可能性が最も高いです。
 
-\subsubsection{Loop counter, array index}
+\subsubsection{ループカウンタ、配列のインデックス}
 
-Variable increasing from 0, like: 0, 1, 2, 3\dots---a good chance this is a loop counter and/or array index.
+0、1、2、3\dotsのように0から増加する変数。これはループカウンタや配列インデックスである可能性が高いです。
 
-\subsubsection{Signed numbers}
+\subsubsection{符号付き数}
 
-If you see a variable which holds very low numbers and sometimes very high numbers,
-like 0, 1, 2, 3, and 0xFFFFFFFF, 0xFFFFFFFE, 0xFFFFFFFD,
-there's a good chance it is a signed variable in \emph{two's complement} form (\myref{sec:signednumbers}),
-and last 3 numbers are -1, -2, -3.
+0、1、2、3、および0xFFFFFFFF、0xFFFFFFFE、0xFFFFFFFDのように、非常に小さい数、
+場合によっては非常に高い数を保持する変数がある場合、
+それは\emph{2の補数}形式（\myref{sec:signednumbers}）の符号付き変数である可能性が高いです。
+最後の3つの数字は-1、-2、-3です。
 
-\subsubsection{32-bit numbers}
-\label{MostPopularNumbers}
+\subsubsection{32ビット数}
 
-There are numbers so large,
-that there is even a special notation which exists to represent them (Knuth's up-arrow notation).
-These numbers are so large so these are not practical for engineering, science and mathematics.
+非常に大きい数\footnote{\url{https://en.wikipedia.org/wiki/Large_numbers}}があるので、
+それらを表すために存在する特別な記法さえあります（クヌースの上向き矢印記法
+\footnote{\url{https://en.wikipedia.org/wiki/Knuth\%27s_up-arrow_notation}}）。
+これらの数は非常に大きいので、これらは工学、科学および数学にとって実用的ではありません。
 
-Almost all engineers and scientists are happy with IEEE 754 double precision floating point, which has maximal
-value around $1.8 \cdot 10^{308}$.
-(As a comparison, the number of atoms in the observable universe, is estimated to be between
-$4 \cdot 10^{79}$ and $4 \cdot 10^{81}$.)
+ほとんどすべてのエンジニアや科学者はIEEE 754倍精度浮動小数点に満足しています。これは最大値が
+$1.8 \cdot 10^{308}$です
+（比較として、観測可能な宇宙の原子数は
+$4 \cdot 10^{79}$ と $4 \cdot 10^{81}$ の間と推定されます。）
 
-In fact, upper bound in practical computing is much, much lower.
-In MS-DOS era 16-bit \emph{int} was used almost for everything (array indices, loop counters),
-while 32-bit \emph{long} was used rarely.
+実際には、実用的なコンピューティングの上限ははるかに低いです。 
+PDP-11用のUNIX v6のソースコードを入手した場合は
+\footnote{\url{http://minnie.tuhs.org/Archive/PDP-11/Distributions/research/Dennis_v6/}}、
+どこでも16ビットの\emph{int}が使用されますが、32ビットの\emph{long}型はまったく使用されません。
 
-During advent of x86-64, it was decided for \emph{int} to stay as 32 bit size integer, because, probably,
-usage of 64-bit \emph{int} is even rarer.
+同じことがMS-DOS時代にもありました。16ビット\emph{int}がほとんどすべて（配列インデックス、ループカウンタ）
+に使われていましたが、32ビット\emph{long}はめったに使われませんでした。
 
-I would say, 16-bit numbers in range 0..65535 are probably most used numbers in computing.
+x86-64の登場時には、\emph{int}は32ビットサイズの整数のままにすることが決定されました。
+おそらく、64ビット\emph{int}の使用はもっとまれであるためです。
+
+私は、0..65535の範囲の16ビット数が、おそらくコンピューティングで最もよく使用される数であると言うでしょう。
 
 Given that, if you see unusually large 32-bit value like 0x87654321, this is a good chance this can be:
+それを考えると、あなたが0x87654321のような異常に大きい32ビット値を見るならば、以下のような可能性があるいい機会です。
 
 \begin{itemize}
 
-\item this can still be a 16-bit number, but signed, between 0xFFFF8000 (-32768) and 0xFFFFFFFF (-1).
+\item 16ビット数の場合もありますが、符号付きで0xFFFF8000（-32768）から0xFFFFFFFF（-1）までの間です
 % TODO: [Example](https://github.com/DennisYurichev/random_notes/blob/master/timedate.md).
-\item address of memory cell (can be checked using memory map feature of debugger).
-\item packed bytes (can be checked visually).
-\item bit flags.
-\item something related to (amateur) cryptography.
-\item magic number (\myref{magic_numbers}).
-\item IEEE 754 floating point number (can also be checked).
+\item メモリセルのアドレス（デバッガのメモリマップ機能を使用して確認できます）
+\item パックされたバイト（視覚的にチェックすることができます）
+\item ビットフラグ
+\item （素人の）暗号に関連するもの
+\item マジックナンバー(\myref{magic_numbers})
+\item IEEE 754浮動小数点数（チェックも可能）
 
 \end{itemize}
 
-Almost same story for 64-bit values.
+64ビット値についてもほぼ同じです。
 
-\myparagraph{\dots so 16-bit \emph{int} is enough for almost everything?}
+\myparagraph{\dots では、16ビットの\emph{int}はほとんどすべてのものに十分でしょうか？}
 
-It's interesting to note: in \InSqBrackets{\MAbrash{} chapter 13}
-we can find that there are plenty cases in which 16-bit variables are just enough.
-In a meantime, Michael Abrash has a pity that 80386 and 80486 CPUs has so little available registers, so he offers to put
-two 16-bit values into one 32-bit register and then to rotate it using
-\INS{ROR reg, 16} (on 80386 and later) (\INS{ROL reg, 16} will also work) or 
-\INS{BSWAP} (on 80486 and later) instruction.
+興味深いのは、\InSqBrackets{\MAbrash{} 13章}には、
+16ビット変数で十分なケースがたくさんあることがわかったことです。 
+それまでの間、Michael Abrashは、80386と80486のCPUには使用可能なレジスタがほとんどないという残念を抱いているので、
+2つの16ビット値を1つの32ビットレジスタに入れ、\INS{ROR reg, 16}（80386以降）（\INS{ROL reg, 16}でも動作します）または
+\INS{BSWAP}（80486以降）命令を使用して回転させます。
 
-That reminds us Z80 with alternate pack of registers (suffixed with apostrophe), to which CPU can switch
-(and then switch back) using \INS{EXX} instruction.
+これは、CPUに\INS{EXX}命令を使用して切り替えることができる（その後で元に戻すことができる）
+代替の一連のレジスタ（アポストロフィを付けたもの）をZ80に思い出させるものです。
 
-\subsubsection{Size of buffer}
+\subsubsection{バッファのサイズ}
 
-When a programmer needs to declare the size of some buffer, values in form of $2^x$ are usually used (512 bytes, 1024, etc.).
-Values in $2^x$ form are easily recognizable (\myref{2n_numbers_table}) in decimal, hexadecimal and binary base.
+プログラマがバッファのサイズを宣言する必要があるときは、通常$2^x$形式の値が使われます（512 バイト、1024など）。
+$2^x$形式の値は10進数、16進数、および2進数で簡単に認識できます（\myref{2n_numbers_table}）。
 
-But needless to say, programmers are still humans with their decimal culture.
-And somehow, in \ac{DBMS} area, size of textual database fields is often chosen as $10^x$ number, like 100, 200.
-They just think \q{Okay, 100 is enough, wait, 200 will be better}.
-And they are right, of course.
+しかし言うまでもなく、プログラマーはまだ彼らの十進文化を持つ人間です。 
+そしてどういうわけか、 \ac{DBMS}の領域ではでは、テキストデータベースフィールドのサイズは、100、200のように、$10^x$の数字が選択されます。 
+\q{100で十分、ちょっと待って、200がいいでしょう}と考えるだけかもしれません。
+そしてもちろん、それは正しいです。 
 
-Maximum width of \emph{VARCHAR2} data type in \oracle is 4000 characters, not 4096.
+\oracle の\emph{VARCHAR2}データ型の最大幅は 4096文字ではなく4000文字です。
 
-There is nothing wrong with this, this is just a place where numbers like $10^x$ can be encountered.
+これには何の問題もありません、これはちょうど$10^x$のような数字に出会うことができる場所です。
 
-\subsubsection{Address}
+\subsubsection{アドレス}
 
-It's always a good idea to keep in mind an approximate memory map of the process you currently debug.
-For example, many win32 executables started at 0x00401000, so an address like 0x00451230 is probably located inside
-executable section. You'll see addresses like these in the \TT{EIP} register.
+現在デバッグしているプロセスのおおよそのメモリマップを覚えておくことは常に良い考えです。
+たとえば、多くのwin32実行可能ファイルは0x00401000から始まっているので、0x00451230のようなアドレスはおそらく
+実行可能セクション内にあります。\TT{EIP}レジスタにこれらのアドレスが表示されます。 
 
-Stack is usually located somewhere below. % TODO
+スタックは通常下のどこかにあります。 % TODO
 
-Many debuggers are able to show the memory map of the debuggee, for example: \myref{olly_memory_map_example}.
+多くのデバッガはデバッグ対象のメモリマップを表示することができます、例えば：\myref{olly_memory_map_example}
 
-If a value is increasing by step 4 on 32-bit architecture or by step 8 on 64-bit one,
-this probably sliding address of some elements of array.
+32ビットアーキテクチャーでは4ステップ、64ビットアーキテクチャーでは8ステップで値が増加している場合、
+これはおそらく配列のいくつかの要素のアドレスのスライディングです。
 
-It's important to know that win32 doesn't use addresses below 0x10000, so if you see some number below this constant,
-this cannot be an address (see also: \url{https://msdn.microsoft.com/en-us/library/ms810627.aspx}).
+win32が0x10000以下のアドレスを使用していないことを知っておくことは重要です。この定数よりも小さい値を見たら、
+これをアドレスにすることはできません（\url{https://msdn.microsoft.com/en-us/library/ms810627.aspx}も参照）。
 
-Anyway, many debuggers can show you if the value in a register can be an address to something.
-OllyDbg can also show an ASCII string if the value is an address of it.
+とにかく、多くのデバッガはレジスタの値が何かへのアドレスになることができるかどうかをあなたに見せることができます。 
+OllyDbgは値がアドレスの場合は、ASCII文字列も表示できます。
 
-\subsubsection{Bit field}
+\subsubsection{ビットフィールド}
 
-If you see a value where one (or more) bit(s) are flipping from time to time like 0xABCD1234 $\rightarrow$ 0xABCD1434 and back,
-this is probably a bit field (or bitmap).
+0xABCD1234 $\rightarrow$ 0xABCD1434のように、1ビット以上が反転している値が表示される場合、
+これはおそらくビットフィールド（またはビットマップ）です。
 
-\subsubsection{Packed bytes}
+\subsubsection{パックされたバイト}
 
 \myindex{\CStandardLibrary!strcmp()}
 \myindex{\CStandardLibrary!memcmp()}
-When \emph{strcmp()} or \emph{memcmp()} copies a buffer, it loads/stores 4 (or 8) bytes simultaneously,
-so if a string containing \q{4321}, and it would be copied to another place,
-at one point you'll see 0x31323334 value in some register.
-This is 4 packed bytes into a 32-bit value.
-
+\emph{strcmp()} または \emph{memcmp()}がバッファをコピーするとき、同時に4（または8）バイトをロード/格納します。
+\q{4321}が含まれていて、別の場所にコピーされたら、
+一時、0x31323334の値があるレジスタに表示されます。
+これは32ビット値に4バイトにパックされています。

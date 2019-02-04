@@ -1,0 +1,41 @@
+﻿\subsection{MULよりもIMULを使用する}
+\label{IMUL_over_MUL}
+
+\myindex{x86!\Instructions!MUL}
+\myindex{x86!\Instructions!IMUL}
+2つの符号なしの値が乗算される\lstref{unsigned_multiply_C}のような例では、 \MUL の代わりに \IMUL が使用される\lstref{unsigned_multiply_lst}にコンパイルされます。
+
+これは \MUL 命令と \IMUL 命令の両方の重要な特性です。
+まず、2つの32ビット値を乗算すると64ビット値が生成され、2つの64ビット値を乗算すると128ビット値が生成されます
+（32ビット環境で可能な最大\gls{product}は\GTT{0xffffffff*0xffffffff=0xfffffffe00000001}）。
+しかし、 \CCpp 標準では結果の上位半分にアクセスすることはできず、\gls{product}は常に被乗数と同じサイズになります。% TODO \gls{}?
+上位半分が無視された場合、 \MUL 命令と \IMUL 命令の両方が同じように機能します。つまり、両方とも
+同じ下位半分を生成します。
+これは、符号付き数字を表す\q{2の補数}の方法の重要な特性です。
+
+そのため、\CCpp コンパイラはこれらの命令をどれでも使用できます。
+
+\MUL は \AX/\EAX/\RAX レジスタに格納された被乗数の1つを必要としますが、 \IMUL は \MUL よりも汎用性があります。
+それ以上に：MULは32ビット環境では\GTT{EDX:EAX}ペア、64ビット環境では\GTT{RDX:RAX}ペアを格納するので、結果全体を常に計算します。
+それどころか、ペアではなくIMULを使用している間に単一のデスティネーションレジスタを設定し、次に\ac{CPU}を設定することは可能です。より低い半分だけを計算するでしょう、それはより速く働きます（[Torborn Granlundの\emph{Instruction latencies and throughput for AMD and Intel x86 processors}\footnote{\url{http://yurichev.com/mirrors/x86-timing.pdf}]}を参照）。
+
+以上より、 \CCpp コンパイラは \MUL よりも頻繁に \IMUL 命令を生成する可能性があります。
+
+\myindex{Compiler intrinsic}
+それにもかかわらず、コンパイラ組み込み関数を使用して、符号なし乗算を実行して\emph{完全}な結果を得ることは依然として可能です。
+これは\emph{拡張乗算}とも呼ばれます。 
+MSVCには、これに\emph{\_\_emul}\footnote{\url{https://msdn.microsoft.com/en-us/library/d2s81xt0(v=vs.80).aspx}}と呼ばれる組み込み関数と、もう1つ：
+\emph{\_umul128}\footnote{\url{https://msdn.microsoft.com/library/3dayytw9%28v=vs.100%29.aspx}} があります。 
+GCCは\emph{\_\_int128}データ型を提供しており、64ビットの被乗数が最初に128ビットの1に昇格されると、
+\gls{product}は別の\emph{\_\_int128}値に格納され、結果は64ビット右にシフトされ、
+結果の上位半分が得られます\footnote{例： \url{http://stackoverflow.com/a/13187798}}。
+
+\subsubsection{WindowsでのMulDiv()関数}
+\myindex{Windows!Win32!MulDiv()}
+
+WindowsにはMulDiv()関数
+\footnote{\url{https://msdn.microsoft.com/en-us/library/windows/desktop/aa383718(v=vs.85).aspx}}、
+融合乗算/除算関数があり、2つの32ビット整数を中間の64ビット値に乗算し、
+それを3番目の32ビット整数で除算します。 
+2つのコンパイラ組み込み関数を使用するよりも簡単なので、Microsoftの開発者はそのための特別な関数を作りました。 
+そして、これはその使用法から判断すると、忙しい機能です。

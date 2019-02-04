@@ -1,0 +1,46 @@
+﻿\subsection{Zobrist hashing / tabulation hashing}
+\myindex{Chess}
+\myindex{Zobrist hashing}
+\myindex{Tabulation hashing}
+
+If you work on a chess engine, you traverse a game tree many times per second, and often, you can encounter
+the same position, which has already been processed.
+
+So you have to use a method to store already calculated positions somewhere.
+But chess position can require a lot of memory, and a hash function would be used instead.
+
+Here is a way to compress a chess position into 64-bit value, called Zobrist hashing:
+
+\begin{lstlisting}[style=customc]
+// 8*8ボードと12ピースがあります（白側のために6つ、黒側のために6つ）
+
+uint64_t table[12][8][8]; // 乱数値で満たす
+
+int position[8][8]; // ボード上の各正方形に。 0 - ピースなし 1..12 - ピース
+
+uint64_t hash;
+
+for (int row=0; row<8; row++)
+	for (int col=0; col<8; col++)
+	{
+		int piece=position[row][col];
+
+		if (piece!=0)
+			hash=hash^table[piece][row][col];
+	};
+
+return hash;
+\end{lstlisting}
+
+Now the most interesting part: if the next (modified) chess position differs only by one (moved) piece,
+you don't need to recalculate hash for the whole position, all you need is:
+
+\begin{lstlisting}[style=customc]
+hash=...; // (すでに計算済み)
+
+// 古いピースに関する情報を差し引く
+hash=hash^table[old_piece][old_row][old_col];
+
+// 新しいピースに関する情報を加える
+hash=hash^table[new_piece][new_row][new_col];
+\end{lstlisting}

@@ -1,0 +1,148 @@
+﻿\mysection{\SignedNumbersSectionName}
+\label{sec:signednumbers}
+\myindex{Signed numbers}
+
+\newcommand{\URLS}{\href{http://go.yurichev.com/17117}{wikipedia}}
+
+符号付き数を表現するには方法がいくつかあります。
+しかし\q{2の補数}はコンピュータでは最もポピュラーです。
+
+これは、いくつかのバイト値の表です。
+
+\begin{center}
+\begin{tabular}{ | l | l | l | l | }
+\hline
+\HeaderColor 2進数 & \HeaderColor 16進数 & \HeaderColor 符号なし & \HeaderColor 符号あり \\
+\hline
+01111111 & 0x7f & 127 & 127 \\
+\hline
+01111110 & 0x7e & 126 & 126 \\
+\hline
+\multicolumn{4}{ |c| }{...} \\
+\hline
+00000110 & 0x6 & 6 & 6 \\
+\hline
+00000101 & 0x5 & 5 & 5 \\
+\hline
+00000100 & 0x4 & 4 & 4 \\
+\hline
+00000011 & 0x3 & 3 & 3 \\
+\hline
+00000010 & 0x2 & 2 & 2 \\
+\hline
+00000001 & 0x1 & 1 & 1 \\
+\hline
+00000000 & 0x0 & 0 & 0 \\
+\hline
+11111111 & 0xff & 255 & -1 \\
+\hline
+11111110 & 0xfe & 254 & -2 \\
+\hline
+11111101 & 0xfd & 253 & -3 \\
+\hline
+11111100 & 0xfc & 252 & -4 \\
+\hline
+11111011 & 0xfb & 251 & -5 \\
+\hline
+11111010 & 0xfa & 250 & -6 \\
+\hline
+\multicolumn{4}{ |c| }{...} \\
+\hline
+10000010 & 0x82 & 130 & -126 \\
+\hline
+10000001 & 0x81 & 129 & -127 \\
+\hline
+10000000 & 0x80 & 128 & -128 \\
+\hline
+\end{tabular}
+\end{center}
+
+\myindex{x86!\Instructions!JA}
+\myindex{x86!\Instructions!JB}
+\myindex{x86!\Instructions!JL}
+\myindex{x86!\Instructions!JG}
+符号付き数字と符号なし数字の違いは、\TT{0xFFFFFFFE} と \TT{0x00000002}を表す場合です。 
+符号なしの場合、最初の数字（4294967294）は2番目の数字（2）よりも大きいです。 
+それらを表すなら 両方とも符号付きで、最初のものは-2になり、2番目のものより小さくなります（2）。 
+それが、条件付きジャンプ（~(\myref{sec:Jcc})）は、符号付き（ \JG, \JL など）と符号なし（\INS{JA}、 \JB）の
+両方の操作に存在する理由です。
+
+簡単にするために、これは知っておくべきことです。
+
+\begin{itemize}
+\item 数値は符号付きでも符号なしでもかまいません。
+
+\item \CCpp の符号付き型
+
+  \begin{itemize}
+    \item \TT{int64\_t} (-9,223,372,036,854,775,808 .. 9,223,372,036,854,775,807)
+	  (-~9.2..~9.2 クィンティリオン) または \\
+                \TT{0x8000000000000000..0x7FFFFFFFFFFFFFFF}),
+    \item \Tint (-2,147,483,648..2,147,483,647 (-~2.15..~2.15Gb) または \\
+	    \TT{0x80000000..0x7FFFFFFF}),
+    \item \Tchar (-128..127 または \TT{0x80..0x7F}),
+    \item \TT{ssize\_t}.
+   \end{itemize}
+
+	符号なし
+  \begin{itemize}
+	  \item \TT{uint64\_t} (0..18,446,744,073,709,551,615 
+		  (~18 quintillions) または \TT{0..0xFFFFFFFFFFFFFFFF}),
+   \item \TT{unsigned int} (0..4,294,967,295 (~4.3Gb) または \TT{0..0xFFFFFFFF}),
+   \item \TT{unsigned char} (0..255 または \TT{0..0xFF}), 
+   \item \TT{size\_t}.
+  \end{itemize}
+
+\item 符号付きタイプは \ac{MSB}に 符号があります：1は\q{マイナス}、0は\q{プラス}を意味します。
+
+\item より大きなデータ型に拡張するのは簡単です：
+\myref{subsec:sign_extending_32_to_64}
+
+\label{sec:signednumbers:negation}
+\item 否定は簡単です。すべてのビットを反転して1を加えるだけです。
+
+反対側のゼロから同じ距離のところに多数の逆符号があることを頭に入れておくことができます。
+途中にゼロがあるので、1を加える必要があります。
+
+\myindex{x86!\Instructions!IDIV}
+\myindex{x86!\Instructions!DIV}
+\myindex{x86!\Instructions!IMUL}
+\myindex{x86!\Instructions!MUL}
+\myindex{x86!\Instructions!CBW}
+\myindex{x86!\Instructions!CWD}
+\myindex{x86!\Instructions!CWDE}
+\myindex{x86!\Instructions!CDQ}
+\myindex{x86!\Instructions!CDQE}
+\myindex{x86!\Instructions!MOVSX}
+\myindex{x86!\Instructions!SAR}
+\item 
+	加算演算と減算演算は、符号付き値と符号なし値の両方に適しています。
+	しかし、チップ分割と除算の操作、x86には異なる指示があります。
+	\TT{IDIV}/\TT{IMUL}は符号付き、\TT{DIV}/\TT{MUL}は符号なし用です。
+\item
+	符号付き番号を使用したその他の指示は次のとおりです。
+	\TT{CBW/CWD/CWDE/CDQ/CDQE} (\myref{ins:CBW_CWD_etc})、 \TT{MOVSX} (\myref{MOVSX})、 \TT{SAR} (\myref{ins:SAR})
+\end{itemize}
+
+いくつかの負および正の値（\ref{signed_tbl}）の表は、摂氏スケールの温度計のように見えます。
+これは、加算と減算が符号付きと符号なしの両方の数値で同じように機能する理由です。
+最初の加数が温度計のマークとして表され、2番目の加数を追加する必要がある場合は
+正です。 
+2回目の追加2番目の加数が負の場合は、2番目の加数の絶対値までマークを下げます。
+
+2つの負数の加算は次のように機能します。
+たとえば、16ビットレジスタを使用して-2と-3を追加する必要があります。 
+-2と-3は、それぞれ0xfffeと0xfffdです。
+これらの数字を符号なしとして追加すると、0xfffe+0xfffd=0x1fffbになります。
+しかし、16ビットレジスタを扱うので、結果は\emph{切り捨て}られ、最初の1はドロップされ、
+0xfffbは残され、これは-5です。
+これは、-2（または0xfffe）は、次のように平易な英語で表現できるためです。
+``2は、16ビットレジスタの最大値+ 1までの値に欠けています''。
+-3は、``\dots…3まではこの値が足りない''と表すことができます。 
+16ビットレジスタ+1の最大値は0x10000です。 
+2つの数の足し算と$2^{16}$の法による\emph{カットオフ}の間、$2+3=5$は\emph{欠けます}。
+
+% subsections:
+\input{fundamentals/MUL_IMUL_JA}
+\input{fundamentals/one_more_JA}
+
