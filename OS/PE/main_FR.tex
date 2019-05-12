@@ -169,6 +169,8 @@ Un process plantera s'il essaye d'écrire dans cette section.
 \myindex{BSS}
 Chaque section dans un fichier PE peut avoir un nom, toutefois, ce n'est pas très
 important.
+% TBT
+% (perhaps, \TT{.rdata} means \emph{read-only-data}).
 Souvent (mais pas toujours) la section de code est appelée \TT{.text}, la section
 de données---\TT{.data}, la section de données constante --- \TT{.rdata} \emph{(readable data)}.
 D'autres noms de section courants sont:
@@ -224,6 +226,14 @@ typedef struct _IMAGE_SECTION_HEADER {
 \myindex{Hiew}
 Un mot à propos de le terminilogie: \emph{PointerToRawData} est appelé \q{Offset} dans
 Hiew et \emph{VirtualAddress} est appelé \q{RVA} ici.
+
+% TBT
+%\subsubsection{.rdata --- read-only data section}
+
+%Strings are usually located here (because they have \TT{const char*} type), other variables marked as \emph{const},
+%imported function names.
+
+% See also: \ref{const_in_rdata}.
 
 \subsubsection{Relocs (relocalisation)}
 \label{subsec:relocs}

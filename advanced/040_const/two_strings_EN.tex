@@ -1,4 +1,4 @@
-\subsection{GCC---one more thing}
+\subsection{Overlapping const strings}
 \label{use_parts_of_C_strings}
 
 The fact that an \emph{anonymous} C-string has \emph{const} type (\myref{string_is_const_char}), 
@@ -29,7 +29,7 @@ int main()
 
 Common \CCpp{}-compilers (including MSVC) allocate two strings, but let's see what GCC 4.8.1 does:
 
-\lstinputlisting[caption=GCC 4.8.1 + IDA listing,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + IDA listing,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Indeed: when we print the \q{hello world} string
 these two words are positioned in memory adjacently and \puts called from \GTT{f2()}

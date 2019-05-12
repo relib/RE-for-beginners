@@ -1,3 +1,4 @@
+% TBT \subsection{Overlapping const strings}
 \subsection{GCC---un'altra cosa}
 \label{use_parts_of_C_strings}
 
@@ -29,7 +30,7 @@ int main()
 
 Compilatori \CCpp{} comuni (incluso MSVC) allocano due stringhe, ma vediamo cosa fa GCC 4.8.1:
 
-\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Infatti: quando stampiamo la stringa \q{hello world}
 queste due parole sono memorizzate in posizioni adiacenti in memoria e \puts chiamata dalla funzione \GTT{f2()}

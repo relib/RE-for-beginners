@@ -169,6 +169,8 @@ Ein Prozess wird abstürzen, wenn er versucht hier schreibend zuzugreifen.
 \myindex{BSS}
 Jede Sektion in einer PE-Datei kann einen Namen haben, auch wenn dieser nicht
 unbedingt wichtig ist.
+% TBT
+% (perhaps, \TT{.rdata} means \emph{read-only-data}).
 Oft (aber nicht immer) ist die Code-Sektion mit \TT{.text} benannt, die Datensektion
 mit \TT{.data}, und die Sektion mit konstanten Daten \TT{.rdata} für \emph{(readable data)}.
 
@@ -256,6 +258,14 @@ wie folgt anzeigen:
 
 ...
 \end{lstlisting}
+
+% TBT
+%\subsubsection{.rdata --- read-only data section}
+
+%Strings are usually located here (because they have \TT{const char*} type), other variables marked as \emph{const},
+%imported function names.
+
+% See also: \ref{const_in_rdata}.
 
 \subsubsection{Relocations (relocs)}
 \label{subsec:relocs}

@@ -1,4 +1,5 @@
-﻿\subsection{GCC---encore une chose}
+﻿% TBT \subsection{Overlapping const strings}
+\subsection{GCC---encore une chose}
 \label{use_parts_of_C_strings}
 
 Le fait est qu'une chaîne C \emph{anonyme} a un type \emph{const} (\myref{string_is_const_char}),
@@ -30,7 +31,7 @@ int main()
 
 La plupart des compilateurs \CCpp{} (MSVC inclus) allouent deux chaînes, mais voyons ce que fait GCC 4.8.1:
 
-\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Effectivement: lorsque nous affichons la chaîne \q{hello world} ses deux mots sont positionnés
 consécutivement en mémoire et l'appel à \puts depuis la fonction \GTT{f2()}

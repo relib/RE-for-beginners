@@ -1,3 +1,4 @@
+% TBT \subsection{Overlapping const strings}
 % TODO to be resynced with English version
 \subsection{GCC---Nog een ding}
 \label{use_parts_of_C_strings}
@@ -30,7 +31,7 @@ int main()
 
 Veelgebruikte \CCpp{}-compilers (inclusief MSVC) alloceren twee strings, maar laat ons eens kijken wat GCC 4.8.1 doet:
 
-\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Inderdaad: wanneer we de \q{hello world} string printen, 
 Worden deze twee woorden aangrenzend in het geheugen geplaatsd, en \puts, die geroepen wordt van de \GTT{f2()}

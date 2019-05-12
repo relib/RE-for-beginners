@@ -1,3 +1,4 @@
+% TBT \subsection{Overlapping const strings}
 \subsection{GCC --- ещё кое-что}
 \label{use_parts_of_C_strings}
 
@@ -30,7 +31,7 @@ int main()
 
 Среднестатистический компилятор с \CCpp (включая MSVC) выделит место для двух строк, но вот что делает GCC 4.8.1:
 
-\lstinputlisting[caption=GCC 4.8.1 + листинг в IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + листинг в IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Действительно, когда мы выводим строку \q{hello world}, 
 эти два слова расположены в памяти впритык друг к другу и \puts, вызываясь из функции \GTT{f2()}, вообще не знает,

@@ -1,3 +1,4 @@
+% TBT \subsection{Overlapping const strings}
 \subsection{GCC---もう1つ}
 \label{use_parts_of_C_strings}
 
@@ -29,7 +30,7 @@ int main()
 
 一般的な \CCpp{} コンパイラ（MSVCを含む）は2つの文字列を割り当てますが、GCC 4.8.1の動作を見てみましょう。
 
-\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 確かに、\q{hello world}という文字列を印刷すると、これらの2つの単語はメモリに隣接して配置され、\GTT{f2()}関数から呼び出される \puts 関数はこの文字列が分割されていることを認識しません。 
 実際、分割されていません。 このリストには、\q{仮想的に}分けられています。

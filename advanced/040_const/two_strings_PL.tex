@@ -1,3 +1,4 @@
+% TBT \subsection{Overlapping const strings}
 \subsection{GCC --- jeszcze co nieco}
 \label{use_parts_of_C_strings}
 
@@ -30,7 +31,7 @@ int main()
 
 Typowy kompilator \CCpp (w tym MSVC) przydzieli miejsce dla 2 linii, ale oto jest to co robi GCC 4.8.1:
 
-\lstinputlisting[caption=GCC 4.8.1 + listing w IDA,style=customasmx86]{patterns/01_helloworld/two_strings.asm}
+\lstinputlisting[caption=GCC 4.8.1 + listing w IDA,style=customasmx86]{\CURPATH/two_strings.asm}
 
 Naprawdę, kiedy printujemy linię \q{hello world}, 
 te dwa słowa są usytuowane w pamięci tuż obok siebie i \puts, będąc wywołane z funkcji \GTT{f2()}, w ogóle nie wie,

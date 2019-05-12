@@ -155,7 +155,8 @@ A process going to crash if it tries to write to this section.
 \myindex{BSS}
 Each section in PE-file may have a name, however, it is not very important.
 Often (but not always) the code section is named \TT{.text},
-the data section---\TT{.data}, the constant data section --- \TT{.rdata} \emph{(readable data)}.
+the data section---\TT{.data}, the constant data section --- \TT{.rdata} \emph{(readable data)}
+(perhaps, \TT{.rdata} means \emph{read-only-data}).
 Other popular section names are:
 
 \myindex{MIPS}
@@ -235,6 +236,13 @@ IDA can show the border between initialized and not initialized parts like that:
 
 ...
 \end{lstlisting}
+
+\subsubsection{.rdata --- read-only data section}
+
+Strings are usually located here (because they have \TT{const char*} type), other variables marked as \emph{const},
+imported function names.
+
+See also: \ref{const_in_rdata}.
 
 \subsubsection{Relocations (relocs)}
 \label{subsec:relocs}
