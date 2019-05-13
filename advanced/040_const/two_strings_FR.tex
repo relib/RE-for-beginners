@@ -36,7 +36,7 @@ La plupart des compilateurs \CCpp{} (MSVC inclus) allouent deux chaînes, mais v
 Effectivement: lorsque nous affichons la chaîne \q{hello world} ses deux mots sont positionnés
 consécutivement en mémoire et l'appel à \puts depuis la fonction \GTT{f2()}
 n'est pas au courant que la chaîne est divisée.
-En fait, elle n'est pas divisée; elle l'est \q{virtuellement}, dans ce listing.
+En fait, elle n'est pas divisée; elle l'est \emph{virtuellement}, dans ce listing.
 
 Lorsque \puts est appelé depuis \GTT{f1()}, il utilise la chaîne \q{world} ainsi qu'un
 octet à zéro. \puts ne sait pas qu'il y a quelque chose avant cette chaîne!

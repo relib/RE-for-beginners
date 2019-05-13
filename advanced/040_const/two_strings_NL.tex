@@ -36,7 +36,7 @@ Veelgebruikte \CCpp{}-compilers (inclusief MSVC) alloceren twee strings, maar la
 Inderdaad: wanneer we de \q{hello world} string printen, 
 Worden deze twee woorden aangrenzend in het geheugen geplaatsd, en \puts, die geroepen wordt van de \GTT{f2()}
 functie, is er zicht niet van bewust dat deze string opgedeeld is. 
-In feite is hij ook niet opgedeeld, hij is slechts \q{virtueel} opgedeeld in deze listing.
+In feite is hij ook niet opgedeeld, hij is slechts \emph{virtueel} opgedeeld in deze listing.
 
 Wanneer \puts aangeroepen wordt vanuit \GTT{f1()}, gebruikt het de \q{world} string plus een nulbyte. \puts is er zich niet van bewust dat er nog iets voor deze string staat!
 

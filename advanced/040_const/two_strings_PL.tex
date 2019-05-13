@@ -36,7 +36,7 @@ Typowy kompilator \CCpp (w tym MSVC) przydzieli miejsce dla 2 linii, ale oto jes
 Naprawdę, kiedy printujemy linię \q{hello world}, 
 te dwa słowa są usytuowane w pamięci tuż obok siebie i \puts, będąc wywołane z funkcji \GTT{f2()}, w ogóle nie wie,
 że te linię są rozdzielone. Tak naprawdę to one i nie są rozdzielone, są rozdzielone 
-tylko \q{wirtualnie}, w naszym listingu.
+tylko \emph{wirtualnie}, w naszym listingu.
 
 Kiedy \puts zostaje wywołane z \GTT{f1()}, ono wykorzystuje linię \q{world} + zerowy bajt. \puts w ogóle nie wie, że tam jest jeszcze jakaś linia przed tą!
 

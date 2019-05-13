@@ -35,7 +35,7 @@ Compilatori \CCpp{} comuni (incluso MSVC) allocano due stringhe, ma vediamo cosa
 Infatti: quando stampiamo la stringa \q{hello world}
 queste due parole sono memorizzate in posizioni adiacenti in memoria e \puts chiamata dalla funzione \GTT{f2()}
 non sa che questa stringa è divisa.
-In effett, non è veramente divisa; è separata solo \q{virtualmente}, in questo listato.
+In effett, non è veramente divisa; è separata solo \emph{virtualmente}, in questo listato.
 
 Quando \puts viene chiamato da \GTT{f1()}, usa la stringa \q{world} più un byte zero. \puts che è presente qualcosa prima di questa stringa!
 

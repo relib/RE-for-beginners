@@ -34,7 +34,7 @@ Common \CCpp{}-compilers (including MSVC) allocate two strings, but let's see wh
 Indeed: when we print the \q{hello world} string
 these two words are positioned in memory adjacently and \puts called from \GTT{f2()}
 function is not aware that this string is divided. 
-In fact, it's not divided; it's divided only \q{virtually}, in this listing.
+In fact, it's not divided; it's divided only \emph{virtually}, in this listing.
 
 When \puts is called from \GTT{f1()}, it uses the \q{world} string plus a zero byte. \puts is not aware that there is something before this string!
 
