@@ -55,6 +55,20 @@ However, non-optimizing MSVC 2015 x64 generates working code:
 
 Optimizing MSVC 2015 x64 also inlines the function, as in case of x86, and the resulting code also crashes.
 
+\myhrule{}
+
+This is a real piece of code from my \emph{octothorpe} library\footnote{\url{https://github.com/DennisYurichev/octothorpe}}, that worked and all tests passed.
+It was so, without \verb|return| for quite a time...
+
+\begin{lstlisting}
+uint32_t LPHM_u32_hash(void *key)
+{
+        jenkins_one_at_a_time_hash_u32((uint32_t)key);
+}
+\end{lstlisting}
+
+\myhrule{}
+
 The moral of the story: warnings are very important, use \TT{-Wall}, etc, etc...
 When \TT{return} statement is absent, compiler can just silently do nothing at that point.
 
