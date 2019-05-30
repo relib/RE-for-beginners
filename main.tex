@@ -260,10 +260,25 @@
 
 \begin{document}
 
-% fancyhdr
+% fancyhdr =============================================================================================================================
 \pagestyle{fancy}
 \setlength{\headheight}{13pt}
-\fancyhead[R]{} % suppress chapter name
+% https://tex.stackexchange.com/questions/10043/page-number-position
+\fancyhf{}
+\fancyhead[R]{\thepage} % suppress chapter name, add page number (upper right corner)
+
+\ifdefined\ENGLISH
+\cfoot{\small (For statistics collecting purposes) if you've read this far, please click \href{https://beginners.re/stat/EN \today p.\thepage}{here}. Thanks! \normalsize}
+% https://tex.stackexchange.com/questions/13406/how-to-add-a-horizontal-line-above-the-footer-with-fancyhdr
+\renewcommand{\footrulewidth}{0.4pt}
+\fi
+
+\ifdefined\RUSSIAN
+\cfoot{\small (В целях сбора статистики) если вы дочитали до этого места, пожалуйста, нажмите \href{https://beginners.re/stat/RU \today p.\thepage}{здесь}. Спасибо! \normalsize}
+% https://tex.stackexchange.com/questions/13406/how-to-add-a-horizontal-line-above-the-footer-with-fancyhdr
+\renewcommand{\footrulewidth}{0.4pt}
+\fi
+% ======================================================================================================================================
 
 \VerbatimFootnotes
 
