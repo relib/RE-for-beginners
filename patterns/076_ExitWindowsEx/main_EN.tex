@@ -4,7 +4,7 @@
 \myindex{user32.dll}
 I don't quite remember how I found the \verb|ExitWindowsEx()| function in Windows 98's (it was late 1990s) user32.dll file.
 Probably, I just spotted its self-describing name.
-When I did, I tried to \emph{block} it by patching its beginning by 0xC3 byte (\INS{RETN}).
+And then I tried to \emph{block} it by patching its beginning by 0xC3 byte (\INS{RETN}).
 
 The result was funny: Windows 98 cannot be shutted down anymore.
 Had to press reset button.

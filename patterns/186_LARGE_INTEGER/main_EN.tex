@@ -6,8 +6,8 @@
 Imagine this: late 1980s, you're Microsoft, and you're developing a new \emph{serious} \ac{OS} (Windows NT),
 that will compete with Unices.
 Target platforms has both 32-bit and 64-bit CPUs.
-And you need a 64-bit integer datatype for all sort of purposes, starting at
 \myindex{FILETIME}
+And you need a 64-bit integer datatype for all sort of purposes, starting at
 FILETIME\footnote{\url{https://docs.microsoft.com/en-us/windows/desktop/api/minwinbase/ns-minwinbase-filetime}} structure.
 
 The problem: not all target C/C++ compilers support 64-bit integer yet (this is late 1980s).
@@ -39,7 +39,7 @@ or using two 32-bit integers (if compiled using old one).
 
 QuadPart field is just absent here when compiled using old compiler.
 
-Order is crucial: first field maps to lower 4 bytes of 64-bit value, second field maps to higher 4 bytes.
+Order is crucial: first field (LowPart) maps to lower 4 bytes of 64-bit value, second field (HighPart) maps to higher 4 bytes.
 
 Microsoft also added utility functions for all the arithmetical operation, in a same manner as I already described:
 \ref{sec:64bit_in_32_env}.
@@ -145,7 +145,7 @@ RtlLargeIntegerAdd (
 }
 \end{lstlisting}
 
-All these functions can be dropped (in future), but now they just operate on QuadPart fields.
+All these functions can be dropped (in future), but now they just operate on QuadPart field.
 If this piece of code is to be compiled using a modern 32-bit compiler (that supports 64-bit integer),
 it will generate two 32-bit additions under the hood.
 From this moment, LowPart/HighPart fields can be dropped from the LARGE\_INTEGER union/structure.
@@ -153,7 +153,7 @@ From this moment, LowPart/HighPart fields can be dropped from the LARGE\_INTEGER
 Would you use such a technique today?
 Probably not, but if someone would need 128-bit integer data type, you can implement it just like this.
 
-Also, needless to say, this works thanks to little-endian (\ref{sec:endianness})
-(all architectures Windows NT was developed for are little-endian).
-This trick wouldn't be possible on big-endian architectures.
+Also, needless to say, this works thanks to \emph{little-endian} (\ref{sec:endianness})
+(all architectures Windows NT was developed for are \emph{little-endian}).
+This trick wouldn't be possible on a \emph{big-endian} architecture.
 
