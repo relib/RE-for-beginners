@@ -118,6 +118,16 @@ int *ptr=malloc(1000);
 strcpy (ptr, buf); // strcpy() termine silencieusement car MS-DOS n'a pas de protection de la mémoire
 \end{lstlisting}
 
+% TBT
+% \subsubsection{Writing on 0th address on purpose}
+%
+% \myindex{dmalloc}
+% \myindex{Core dump}
+% Here is an example from dmalloc\footnote{\url{http://dmalloc.com/}},
+% portable way of generating core dump, if other ways are not available:
+%
+% \lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
+
 \subsubsection{NULL en \CCpp}
 
 NULL en \CCpp est juste une macro qui est souvent définie comme ceci:

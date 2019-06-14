@@ -99,6 +99,15 @@ int *ptr=malloc(1000);
 strcpy (ptr, buf); // strcpy() terminates silently because MS-DOS has no memory protection
 \end{lstlisting}
 
+\subsubsection{Writing on 0th address on purpose}
+
+\myindex{dmalloc}
+\myindex{Core dump}
+Here is an example from dmalloc\footnote{\url{http://dmalloc.com/}},
+a portable way of generating core dump, if other ways are not available:
+
+\lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
+
 \subsubsection{NULL in \CCpp}
 
 NULL in C/C++ is just a macro which is often defined like this:

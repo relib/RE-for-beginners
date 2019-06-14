@@ -106,6 +106,15 @@ int *ptr=malloc(1000);
 strcpy (ptr, buf); // strcpy() завершает работу молча, потому что в MS-DOS нет защиты памяти
 \end{lstlisting}
 
+\subsubsection{Писать по нулевому адресу намеренно}
+
+\myindex{Core dump}
+\myindex{dmalloc}
+Вот пример из dmalloc\footnote{\url{http://dmalloc.com/}},
+портабельный (переносимый) способ сгенерировать core dump, в отсутствии иных способов:
+
+\lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
+
 \subsubsection{NULL в \CCpp}
 
 NULL в C/C++ это просто макрос, который часто определяют так:
