@@ -118,15 +118,14 @@ int *ptr=malloc(1000);
 strcpy (ptr, buf); // strcpy() termine silencieusement car MS-DOS n'a pas de protection de la mémoire
 \end{lstlisting}
 
-% TBT
-% \subsubsection{Writing on 0th address on purpose}
-%
-% \myindex{dmalloc}
-% \myindex{Core dump}
-% Here is an example from dmalloc\footnote{\url{http://dmalloc.com/}},
-% portable way of generating core dump, if other ways are not available:
-%
-% \lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
+\subsubsection{Écrire sciemment à l'adresse 0}
+
+\myindex{dmalloc}
+\myindex{Core dump}
+Voici un exemple tiré de dmalloc\footnote{\url{http://dmalloc.com/}},
+une façon portable de générer un core dump, si les autres moyens ne sont pas disponibles:
+
+\lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
 
 \subsubsection{NULL en \CCpp}
 
