@@ -124,7 +124,7 @@ The addition of one is needed because zero is present in the middle.
 	\TT{CBW/CWD/CWDE/CDQ/CDQE} (\myref{ins:CBW_CWD_etc}), \TT{MOVSX} (\myref{MOVSX}), \TT{SAR} (\myref{ins:SAR}).
 \end{itemize}
 
-A table of some negative and positive values (\ref{signed_tbl}) looks like thermometer with Celsius scale.
+A table of some negative and positive values (\myref{signed_tbl}) looks like thermometer with Celsius scale.
 This is why addition and subtraction works equally well for both signed and unsigned numbers:
 if the first addend is represented as mark on thermometer, and one need to add a second addend,
 and it's positive, we just shift mark up on thermometer by the value of second addend.
@@ -151,5 +151,5 @@ During addition of two numbers and \emph{cutting off} by $2^{16}$ modulo, $2+3=5
 Now you see that $-1$ is when all bits are set.
 Often, you can find the $-1$ constant in all sorts of code, where a constant with all bits set are needed, for example, a mask.
 
-For example: \ref{using_OR_instead_of_MOV}.
+For example: \myref{using_OR_instead_of_MOV}.
 
