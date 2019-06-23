@@ -18,7 +18,7 @@ or if it is related to what we are trying to find in the code.
 
 It is just absurd to rewrite all code in \CCpp to find what we're looking for.
 
-One of the primary tasks of a reverse engineer is to find quickly the code he/she needs.
+One of the primary tasks of a reverse engineer is to find quickly the code he/she needs, and what is not that important.
 
 \myindex{\GrepUsage}
 
@@ -114,4 +114,13 @@ which are seems unconnected to each other, this may be a result of such optimiza
 \subsection{\Cpp}
 
 \ac{RTTI}~(\myref{RTTI})-data may be also useful for \Cpp class identification.
+
+\subsection{Crash on purpose}
+
+Often you need to know, which function has been executed, and which is not.
+You can use a debugger, but on exotic architectures there may not be the one, so easiest way is to put there an invalid opcode,
+or something like \INS{INT3} (0xCC).
+The crash would signal about the very fact this instruction has been executed.
+
+Another example of crashing on purpose: \ref{dmalloc_KILL_PROCESS}.
 
