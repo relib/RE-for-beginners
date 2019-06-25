@@ -43,7 +43,7 @@ Plongeons un peu plus profondément dans le code du \ac{CRT} de Borland C++ 3.1,
 
 \lstinputlisting[style=customasmx86]{advanced/450_more_ptrs/tmp2.lst}
 
-Le modèle de mémoire de MS-DOS était vraiment bizarre (\ref{8086_memory_model}) et
+Le modèle de mémoire de MS-DOS était vraiment bizarre (\myref{8086_memory_model}) et
 ne vaut probablement pas la peine de s'y plonger, à moins d'être fan de rétro-computing
 ou de rétro-gaming.
 Une chose que nous devons garder à l'esprit est que le segment de mémoire (segment
@@ -118,15 +118,15 @@ int *ptr=malloc(1000);
 strcpy (ptr, buf); // strcpy() termine silencieusement car MS-DOS n'a pas de protection de la mémoire
 \end{lstlisting}
 
-% TBT
-% \subsubsection{Writing on 0th address on purpose}
-%
-% \myindex{dmalloc}
-% \myindex{Core dump}
-% Here is an example from dmalloc\footnote{\url{http://dmalloc.com/}},
-% portable way of generating core dump, if other ways are not available:
-%
-% \lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
+\subsubsection{Écrire sciemment à l'adresse 0}
+\label{dmalloc_KILL_PROCESS}
+
+\myindex{dmalloc}
+\myindex{Core dump}
+Voici un exemple tiré de dmalloc\footnote{\url{http://dmalloc.com/}},
+une façon portable de générer un core dump, si les autres moyens ne sont pas disponibles:
+
+\lstinputlisting{advanced/450_more_ptrs/dmalloc_KILL_PROCESS}
 
 \subsubsection{NULL en \CCpp}
 

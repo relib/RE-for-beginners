@@ -116,3 +116,37 @@ In file included from GCC_tm2.c:2:0:
 (\myref{sec:endianness})
 
 \lstinputlisting[caption=\Optimizing GCC 4.8.1,style=customasmx86]{patterns/15_structs/3_tm_linux/as_array/GCC_tm4_JA.lst}
+
+% TBT
+\iffalse
+\subsubsection{GNU Scientific Library: Representation of complex numbers}
+\myindex{GNU Scientific Library}
+
+This is a relatively rare case when an array is used instead of a structure, on purpose:
+
+\begin{lstlisting}
+Representation of complex numbers
+=================================
+
+Complex numbers are represented using the type :code:`gsl_complex`. The
+internal representation of this type may vary across platforms and
+should not be accessed directly. The functions and macros described
+below allow complex numbers to be manipulated in a portable way.
+
+For reference, the default form of the :code:`gsl_complex` type is
+given by the following struct::
+
+    typedef struct
+    {
+      double dat[2];
+    } gsl_complex;
+
+The real and imaginary part are stored in contiguous elements of a two
+element array. This eliminates any padding between the real and
+imaginary parts, :code:`dat[0]` and :code:`dat[1]`, allowing the struct to
+be mapped correctly onto packed complex arrays.
+\end{lstlisting}
+( \url{https://www.gnu.org/software/gsl/doc/html/complex.html#representation-of-complex-numbers} )
+\fi
+
+

@@ -24,7 +24,7 @@ exclusive OR: \url{https://en.wikipedia.org/wiki/And/or}.
 
 \subsection{Encryption}
 
-XOR is heavily used in both amateur (\ref{simple_XOR_encryption}) and \emph{real} encryption (at least in \emph{Feistel network}).
+XOR is heavily used in both amateur (\myref{simple_XOR_encryption}) and \emph{real} encryption (at least in \emph{Feistel network}).
 
 XOR is very useful here because:
 $cipher\_text = plain\_text \oplus key$ and then:
@@ -47,7 +47,7 @@ If any of disks is failed, for example, $D_2$, it's restored using the very same
 D_2 = D_1 \oplus P \oplus D_3
 \end{equation}
 
-If parity disk failed, it is restored using \ref{eq:RAID4} way.
+If parity disk failed, it is restored using \myref{eq:RAID4} way.
 If two of any disks are failed, then it wouldn't be possible to restore both.
 
 \ac{RAID}5 is more advanced, but this XOR property is still exploited there.
@@ -103,7 +103,7 @@ $X$ after 3rd step has $X+Y-X=Y$.
 
 Doubly linked list is a list in which each element has link to the previous element and to the next one.
 Hence, it's very easy to traverse list backwards or forward.
-\TT{std::list} in C++ implements doubly linked list which also is examined in this book: \ref{std_list}.
+\TT{std::list} in C++ implements doubly linked list which also is examined in this book: \myref{std_list}.
 
 So each element has two pointers.
 Is it possible, perhaps in environment of small \ac{RAM} footprint, to preserve all functionality with one pointer instead of two?

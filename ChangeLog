@@ -1,3 +1,5 @@
+(This file is poorly maintained, since there is no reason to keep it at all...)
+
    Jan-2019: There was a time when \IT macro was used for italic text and \ITA for Italian text.
              To be consistent, I'm using \emph for italic text now and \IT for Italian text.
              True for filename suffixes as well.
@@ -75,7 +77,7 @@
 10-Aug-2013: ARM CPU, C99 restrict keyword.
 03-Jul-2013: C++ objects, Oracle RDBMS examples.
 15-Mar-2013: Initial published version, TeX form.
-12-Mar-2013: First git commit, TeX form.
+12-Mar-2013: First ever git commit, TeX form.
 
 ...
 

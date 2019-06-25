@@ -27,6 +27,7 @@
 [см. Torborn Granlund, \emph{Instruction latencies and throughput for AMD and Intel x86 processors}\footnote{\url{http://yurichev.com/mirrors/x86-timing.pdf}]}).
 
 Учитывая это, компиляторы \CCpp могут генерировать инструкцию \IMUL чаще, чем \MUL.
+% FIXME: ... даже при работе с беззнаковыми...
 
 \myindex{Compiler intrinsic}
 Тем не менее, используя \emph{compiler intrinsic}, можно произвести беззнаковое умножение и получить \emph{полный} результат.

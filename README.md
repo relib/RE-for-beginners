@@ -7,7 +7,7 @@ Compiled versions can be found here:
 [Russian](http://beginners.re/RE4B-RU.pdf),
 [German](https://beginners.re/RE4B-DE.pdf),
 [French](https://beginners.re/RE4B-FR.pdf),
-[Japanese](https://beginners.re/RE4B-JP.pdf).
+[Japanese](https://beginners.re/RE4B-JA.pdf).
 
 See also the [ChangeLog](https://github.com/DennisYurichev/RE-for-beginners/blob/master/ChangeLog) for the latest changes.
 

@@ -39,7 +39,7 @@ Let's dig deeper into the source code of \ac{CRT} of Borland C++ 3.1, file \emph
 
 \lstinputlisting[style=customasmx86]{advanced/450_more_ptrs/tmp2.lst}
 
-The MS-DOS memory model was really weird (\ref{8086_memory_model}) and probably not worth looking into it unless you're fan of retrocomputing or retrogaming.
+The MS-DOS memory model was really weird (\myref{8086_memory_model}) and probably not worth looking into it unless you're fan of retrocomputing or retrogaming.
 One thing we have to keep in mind is that memory segment (included data segment) in MS-DOS is a memory segment in which code or data is stored,
 but unlike ``serious'' \ac{OS}es, it's started at address 0.
 
@@ -100,6 +100,7 @@ strcpy (ptr, buf); // strcpy() terminates silently because MS-DOS has no memory 
 \end{lstlisting}
 
 \subsubsection{Writing on 0th address on purpose}
+\label{dmalloc_KILL_PROCESS}
 
 \myindex{dmalloc}
 \myindex{Core dump}
