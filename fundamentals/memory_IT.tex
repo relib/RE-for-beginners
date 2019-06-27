@@ -6,8 +6,7 @@ Esistono 3 tipi principali di memoria:
 \item
 Memoria globale \ac{AKA} \q{allocazione statica di memoria}.
 L'allocazione di memoria non avviene esplicitamente ma semplicemente dichiarando variabili e/o arrays globalmente.
-Queste sono variabili globali e risiedono nei segmenti di dato o delle costanti.
-Questi sono disponibili globalmente (quindi sono considerati un \gls{anti-pattern}). % to be clarified here
+Queste sono variabili globali e risiedono nei segmenti di dato o delle costanti. Essendo variabili globali sono considerate un \gls{anti-pattern}.
 L'allocazione statica non è conveniente per buffer o arrays poiché devono avere una dimensione fissa e nota a priori.
 I buffer overflows che possono verificarsi in questa porzione di memoria solitamente sovrascrivono variabili o buffer che risiedono in locazioni contigue a questi in memoria.
 Un possibile esempio viene riportato in questo libro: \myref{scanf_global_variable}.
