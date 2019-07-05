@@ -15,7 +15,7 @@ Un possibile esempio viene riportato in questo libro: \myref{scanf_global_variab
 \item
 Stack \ac{AKA} \q{allocazione sullo stack}.
 L'allocazione avviene semplicemente dichiarando variabili e/o arrays localmente all'interno delle funzioni. Infatti si tratta solitamente di variabili locali ad una funzione.
-Alcune volte queste variabili locali sono disponibili in seguito ad una catena di chiamate a funzione (alle funzioni \gls{chiamate} se la funzione chiamante passa un puntatore ad una variabile ad una funzione \gls{chiamata} che deve essere eseguita).
+Alcune volte queste variabili locali sono disponibili in seguito ad una catena di chiamate a funzione (alle funzioni \glslink{callee}{chiamate} se la funzione chiamante passa un puntatore ad una variabile ad una funzione \glslink{callee}{chiamata} che deve essere eseguita).
 L'allocazione e la deallocazione sono molto veloci poiché lo \ac{SP} viene semplicemente riposizionato.
 
 \myindex{\CStandardLibrary!alloca()}
