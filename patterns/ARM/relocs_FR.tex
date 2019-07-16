@@ -1,13 +1,13 @@
 ﻿\newcommand{\ARMELF}{\InSqBrackets{\emph{ELF for the ARM 64-bit Architecture (AArch64)}, (2013)}\footnote{\AlsoAvailableAs \url{http://go.yurichev.com/17288}}}
 
-\subsection{Relocations en ARM64}
+\subsection{Relogement en ARM64}
 \label{ARM64_relocs}
 
 Comme nous le savons, il y a des instructions 4-octet en ARM64, donc il est impossible
 d'écrire un nombre large dans un registre en utilisant une seule instruction.
 
 Cependant, une image exécutable peut être chargée à n'importe quelle adresse aléatoire
-en mémoire, c'est pourquoi les relocations existent.
+en mémoire, c'est pourquoi les relogements existent.
 
 \myindex{ARM!\Instructions!ADRP/ADD pair}
 
@@ -45,7 +45,7 @@ OFFSET           TYPE              VALUE
 0000000000000010 R_AARCH64_CALL26  printf
 \end{lstlisting}
 
-Donc, il y a 3 relocations dans ce fichier objet.
+Donc, il y a 3 relogements dans ce fichier objet.
 
 \begin{itemize}
 \item 
@@ -69,7 +69,7 @@ donc on doit seulement encoder les 26 bits du haut de l'espace d'adresse de 28-b
 
 \end{itemize}
 
-Il n'y a pas de telles relocations dans le fichier exécutable: car l'adresse où se
+Il n'y a pas de tels relogements dans le fichier exécutable: car l'adresse où se
 trouve la chaîne \q{Hello!} est connue, la page, et l'adresse de \puts sont aussi
 connues.
 
@@ -113,4 +113,4 @@ Maintenant calculons l'adresse de destination: \TT{0x4005a0} + (\TT{-0x180}) = \
 courante du \ac{PC}, qui peut être différente!).
 Donc l'adresse de destination est \TT{0x400420}.\\
 \\
-Plus d'informations relatives aux relocations en ARM64: \ARMELF.
+Plus d'informations relatives aux relogements en ARM64: \ARMELF.
