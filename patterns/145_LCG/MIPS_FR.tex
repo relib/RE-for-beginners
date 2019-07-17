@@ -23,11 +23,11 @@ la mémoire fonctionnent.
 Les listings ici sont produits par IDA, qui cache certains détails.
 
 Nous allons lancer objdump deux fois: pour obtenir le listing désassemblé et aussi
-la liste des relocations:
+la liste des relogements:
 
 \lstinputlisting[caption=GCC 4.4.5 \Optimizing (objdump)]{patterns/145_LCG/MIPS_O3_objdump.txt}
 
-Considérons les deux relocations pour la fonction \TT{my\_srand()}.
+Considérons les deux relogements pour la fonction \TT{my\_srand()}.
 
 La première, pour l'adresse 0 a un type de \TT{R\_MIPS\_HI16} et la seconde pour
 l'adresse 8 a un type de \TT{R\_MIPS\_LO16}.
@@ -46,7 +46,7 @@ dans l'opérande de \LUI et la partie basse de l'adresse---dans l'opérande de \
 \SW va ajouter la partie basse de l'adresse avec le contenu du registre \$V0 (la
 partie haute y est).
 
-C'est la même histoire avec la fonction my\_rand(): la relocation R\_MIPS\_HI16 indique
+C'est la même histoire avec la fonction my\_rand(): la relogement R\_MIPS\_HI16 indique
 à l'éditeur de liens d'écrire la partie haute.
 
 Donc la partie haute de l'adresse de la variable rand\_state se trouve dans le registre
@@ -58,7 +58,7 @@ valeur de la variable rand\_state dans \$V0.
 L'instruction \SW à l'adresse 0x54 fait à nouveau la somme et stocke la nouvelle
 valeur dans la variable globale rand\_state.
 
-IDA traite les relocations pendant le chargement, cachant ainsi ces détails, mais
+IDA traite les relogements pendant le chargement, cachant ainsi ces détails, mais
 nous devons les garder à l'esprit.
 
 % TODO add example of compiled binary, GDB example, etc...

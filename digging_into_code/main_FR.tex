@@ -59,7 +59,7 @@ Immédiatement, il a essayé de googler le nom et a rapidement trouvé que la fo
 
 \url{http://www.google.com/search?q=CsDecomprLZC}
 
-Étonnament, les logiciels MaxDB et SAP 6.0 partagent du code comme ceci pour la compression/
+Étonnement, les logiciels MaxDB et SAP 6.0 partagent du code comme ceci pour la compression/
 décompression des paquets réseau.
 
 % binary files might be also here
@@ -128,13 +128,15 @@ qui ne semblent pas reliés les uns au autres, ceci peut résulter d'une telle o
 Les données \ac{RTTI}~(\myref{RTTI})- peuvent être utiles pour l'identification des
 classes \Cpp.
 
-%TBT
 %\subsection{Crash on purpose}
+\subsection{Crash délibéré}
 
-%Often you need to know, which function has been executed, and which is not.
-%You can use a debugger, but on exotic architectures there may not be the one, so easiest way is to put there an invalid opcode,
-%or something like \INS{INT3} (0xCC).
-%The crash would signal about the very fact this instruction has been executed.
+Souvent, vous voulez savoir quelle fonction a été exécutée, et laquelle ne l'a pas
+été.
+Vous pouvez utiliser un débogueur, mais sur des architectures exotiques, il peut
+ne pas en avoir, donc la façon la plus simple est d'y mettre un opcode invalide,
+ou quelque chose comme \INS{INT3} (0xCC).
+Le crash signalera le fait que l'instruction a été exécutée.
 
-%Another example of crashing on purpose: \myref{dmalloc_KILL_PROCESS}.
+Un autre exemple de crash délibéré: \myref{dmalloc_KILL_PROCESS}.
 

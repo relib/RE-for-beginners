@@ -40,12 +40,12 @@ As of \oracle version 11.2, there are 1023 table elements, i.e., in it are descr
 
 We are going to return to this number later.
 
-As we can see, there is not much information in these numbers in the fields. The first number is always equals to the name of the view (without the terminating zero).
+As we can see, there is not much information in these numbers in the fields. The first field is always equals to the name of the view (without the terminating zero).
 This is correct for each element. But this information is not very useful.
 
 We also know that the information about all fixed views can be retrieved from a \emph{fixed view} named \TT{V\$FIXED\_VIEW\_DEFINITION}
 (by the way, the information for this view is also taken from the \TT{kqfviw} and \TT{kqfvip} tables.)
-By the way, there are 1023 elements in those too. Coincidence? No.
+Incidentally, there are 1023 elements in those too. Coincidence? No.
 
 \lstinputlisting{examples/oracle/1_version/3.txt}
 
