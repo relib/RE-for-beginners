@@ -1,4 +1,4 @@
-\subsection{Table \TT{X\$KSMLRU} dans \oracle}
+﻿\subsection{Table \TT{X\$KSMLRU} dans \oracle}
 \myindex{\oracle}
 
 Il y a une mention d'une table spéciale dans la note \emph{Diagnosing and Resolving
@@ -98,7 +98,7 @@ et regardons ce qui se produit?
 
 Lançons \tracer avec les options suivantes: mettre un point d'arrêt en \TT{0x434C7A}
 (le point où les arguments sont passés à \TT{memset()}), afin que \tracer mette le compteur de programme \TT{EIP} au point
-oú les arguments passés à \TT{memset()} sont éffacés (en \TT{0x434C8A}).
+où les arguments passés à \TT{memset()} sont éffacés (en \TT{0x434C8A}).
 On peut dire que nous simulons juste un saut inconditionnel de l'adresse \TT{0x434C7A} à \TT{0x434C8A}.
 
 \begin{lstlisting}
@@ -111,7 +111,7 @@ En effet, nous pouvons maintenant interroger la table \TT{X\$KSMLRU} autant de f
 que nous voulons et elle n'est plus du tout effacée!
 
 % \sout{Do not try this at home ("MythBusters")}
-Au cas oú, n'essayez pas ceci sur vos serveurs de production.
+Au cas où, n'essayez pas ceci sur vos serveurs de production.
 
 Ce n'est probablement pas un comportement très utile ou souhaité, mais comme une
 expérience pour déterminer l'emplacement d'un bout de code dont nous avons besoin,
