@@ -14,7 +14,7 @@ arg_0  = dword ptr  8
        and     eax, 807FFFFFh  ; lasse nur Vorzeichen und Signifikanden in EAX
        shr     edx, 23         ; bereite Exponenten vor
        add     edx, 2          ; addiere 2
-       movzx   edx, dl         ; lösche alle Bits außer 7:0 in EAX
+       movzx   edx, dl         ; lösche alle Bits außer 7:0 in EDX
        shl     edx, 23         ; verschiebe berechneten Exponenten
        or      eax, edx        ; kombiniere neuen Exponenten und Originalwert ohne Exponenten
        mov     [ebp+var_4], eax

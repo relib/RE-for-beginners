@@ -14,7 +14,7 @@ arg_0  = dword ptr  8
        and     eax, 807FFFFFh  ; EAXに符号と仮数部のみを残す
        shr     edx, 23         ; 指数を準備
        add     edx, 2          ; 2を加算
-       movzx   edx, dl         ; EAXの7:0を除くビットをすべてクリア
+       movzx   edx, dl         ; EDXの7:0を除くビットをすべてクリア
        shl     edx, 23         ; 新しく計算された指数をその場所に移す
        or      eax, edx        ; 指数なしで新しい指数と元の値を結合する
        mov     [ebp+var_4], eax

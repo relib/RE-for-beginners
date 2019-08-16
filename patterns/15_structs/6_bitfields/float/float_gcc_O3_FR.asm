@@ -14,7 +14,7 @@ arg_0  = dword ptr  8
        and     eax, 807FFFFFh  ; Nous ne conservons que le signe et le signifiant dans EAX
        shr     edx, 23         ; Préparation de l'exposant
        add     edx, 2          ; Ajout de 2
-       movzx   edx, dl         ; RAZ de tous les octets dans EAX à l'exception des bits 7:0
+       movzx   edx, dl         ; RAZ de tous les octets dans EDX à l'exception des bits 7:0
        shl     edx, 23         ; Décalage du nouvel exposant pour qu'ils soit à sa place
        or      eax, edx        ; Consolidation du nouvel exposant et de la valeur originale de l'exposant
        mov     [ebp+var_4], eax
