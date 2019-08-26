@@ -7,8 +7,8 @@
 
 Il s'agit de la méthode la plus courante pour passer des arguments à une fonction en langage \CCpp.
 
-Après que le \gls{callee} ait rendu la main, le \gls{caller} doit ajuster la valeur du \gls{stack pointer}
-(\ESP) pour lui redonner la valeur qu'elle avait avant l'appel du \gls{callee}.
+Après que l'\glslink{callee}{appelé} ait rendu la main, l'\glslink{caller}{appelant} doit ajuster la valeur du \gls{stack pointer}
+(\ESP) pour lui redonner la valeur qu'elle avait avant l'appel de l'\glslink{callee}{appelé}.
 
 \begin{lstlisting}[caption=cdecl,style=customasmx86]
 push arg3
@@ -24,10 +24,10 @@ add esp, 12 ; returns ESP
 
 \newcommand{\SIZEOFINT}{La taille d'une variable de type \Tint est de 4 octets sur les systèmes x86 et de 8 octets sur les systèmes x64}
 
-Similaire à \emph{cdecl}, sauf que c'est le \gls{callee} qui doit réinitialise \ESP à sa valeur d'origine
+Similaire à \emph{cdecl}, sauf que c'est l'\glslink{callee}{appelé} qui doit réinitialise \ESP à sa valeur d'origine
 en utilisant l'instruction \TT{RET x} et non pas \RET, \\
 avec \TT{x = nb arguments * sizeof(int)\footnote{\SIZEOFINT}}.
-Après le retour du \gls{callee}, le \gls{caller} ne modifie pas le \gls{stack pointer}. Il ny' a donc pas d'instruction \TT{add esp, x}.
+Après le retour du \gls{callee}, l'\glslink{caller}{appelant} ne modifie pas le \gls{stack pointer}. Il ny' a donc pas d'instruction \TT{add esp, x}.
 
 \begin{lstlisting}[caption=stdcall,style=customasmx86]
 push arg3
@@ -53,7 +53,7 @@ int __stdcall f2 (int a, int b, int c)
 
 Le résultat de la compilation sera quasiment identique à celui de \myref{src:passing_arguments_ex_MSVC_cdecl}, 
 mais vous constatez la présence de \TT{RET 12} au lieu de \TT{RET}.
-Le \gls{caller} ne met pas à jour {SP} après l'appel.
+L' \glslink{caller}{appelant} ne met pas à jour {SP} après l'appel.
 
 Avec la convention \TT{\_\_stdcall}, on peut facilement déduire le nombre d'arguments de la fonction 
 appelée à partir de l'instruction \TT{RETN n}: divisez $n$ par 4.
@@ -72,7 +72,7 @@ possède aucune information sur le nombre d'arguments qu'elle va recevoir. Elle 
 deviner à partir du contenu du paramètre format.
 
 Si la convention \emph{stdcall} était utilisé pour la fonction \printf, elle devrait réajuster le 
-\gls{stack pointer} à sa valeur initiale en comptant le nombre d'arguments dans la chaîne de format.
+\glslink{stack pointer}{pointeur de pile} à sa valeur initiale en comptant le nombre d'arguments dans la chaîne de format.
 Cette situation serait dangereuse et pourrait provoquer un crash du programme à la moindre faute de
 frappe du programmeur.
 La convention \emph{stdcall} n'est donc pas adaptée à ce type de fonction. La convention \emph{cdecl} est préférable.
@@ -94,7 +94,7 @@ Prenez une DLL qui en utilise une autre compilée avec une interprétation diff�
 Les compilateurs MSVC et GCC passent les deux premiers arguments dans \ECX et \EDX, et le reste des
 arguments sur la pile.
 
-Le \gls{stack pointer} doit être restauré à sa valeur initiale par le \gls{callee} 
+Le \gls{stack pointer} doit être restauré à sa valeur initiale par l'\glslink{callee}{appelé} 
 (comme pour la convention \emph{stdcall}).
 
 \begin{lstlisting}[caption=fastcall,style=customasmx86]
@@ -121,7 +121,7 @@ Le résultat de la compilation est le suivant:
 
 \lstinputlisting[caption=MSVC 2010 optimisé/Ob0,style=customasmx86]{OS/calling_conventions/fastcall_ex.asm}
 
-Nous voyons que le \gls{callee} ajuste \ac{SP} en utilisant l'instruction \TT{RETN} suivie d'un opérande.
+Nous voyons que l'\glslink{callee}{appelé} ajuste \ac{SP} en utilisant l'instruction \TT{RETN} suivie d'un opérande.
 
 Le nombre d'arguments peut, encore une fois, être facilement déduit.
 
@@ -135,7 +135,7 @@ dans les registres. \EAX, \EDX et \ECX sont alors utilisés.
 
 Bien entendu si le nombre d'arguments est inférieur à 3, seuls les premiers registres sont utilisés.
 
-C'est le \gls{caller} qui effectue l'ajustement du \gls{stack pointer}.
+C'est l'\glslink{caller}{appelant} qui effectue l'ajustement du \gls{stack pointer}.
 
 Pour un exemple, voire (\myref{regparm}).
 
@@ -173,12 +173,12 @@ La méthode utilisée pour passer les arguments aux fonctions en environnement W
 beaucoup à la convention \TT{fastcall}.
 Les 4 premiers arguments sont passés dans les registres \RCX, \RDX, \Reg{8} et \Reg{9}, 
 les arguments suivants sont passés sur la pile.
-Le \gls{caller} doit également préparer un espace sur la pile pour 32 octets, soit 4 mots de 64 bits, 
-le \gls{callee} pourra y sauvegarder les 4 premiers arguments.
+L'\glslink{caller}{appelant} doit également préparer un espace sur la pile pour 32 octets, soit 4 mots de 64 bits, 
+l'\glslink{callee}{appelé} pourra y sauvegarder les 4 premiers arguments.
 Les fonctions suffisamment simples peuvent utiliser les paramètres directement depuis les registres. 
 Les fonctions plus complexes doivent sauvegarder les valeurs de paramètres afin de les utiliser plus tard.
 
-Le \gls{caller} est aussi responsable de rétablir la valeur du \gls{stack pointer} à la valeur qu'il 
+L'\glslink{caller}{appelé} est aussi responsable de rétablir la valeur du \glslink{stack pointer}{pointeur de pile} à la valeur qu'il 
 avait avant l'appel de la fonction.
 
 Cette convention est utilisée dans les DLLs Windows x86-64 (à la place de \emph{stdcall} en win32).
@@ -225,7 +225,7 @@ Pour un exemple, voir : \myref{simple_CPP_MSVC_x64}.
 
 Le passage d'arguments par Linux pour x86-64 est quasiment identique à celui de Windows, si ce n'est 
 que 6 registres sont utilisés au lieu de 4 (\RDI, \RSI, \RDX, \RCX, \Reg{8}, \Reg{9}) et qu'il n'existe
-pas de \q{scratch space}. Le \gls{callee} conserve la possibilité de sauvegarder les registres sur la 
+pas de \q{scratch space}. L'glslink{callee}{appelé} conserve la possibilité de sauvegarder les registres sur la 
 pile s'il le souhaite ou en a besoin.
 
 \lstinputlisting[caption=GCC 4.7.3 avec optimisation,style=customasmx86]{OS/calling_conventions/x64_linux_O3.s}
@@ -256,8 +256,8 @@ s'ils modifient la valeur des arguments dans la fonction appelée.
 
 La réponse est simple. Les arguments sont stockés sur la pile, et c'est elle qui est modifiée.
 
-Une fois que le \gls{callee} s'achève, la fonction appelante ne les utilise pas.
-(L'auteur de ces lignes n'a jamais constaté qu'il en aille autrement).
+Une fois que l'\glslink{callee}{appelé} s'achève, la fonction appelante ne les utilise pas.
+(Je n'a jamais constaté qu'il en aille autrement).
 
 \lstinputlisting[style=customc]{OS/calling_conventions/change_arguments.c}
 
@@ -270,7 +270,7 @@ Sous réserver que l'argument ne soit pas une \emph{references} en \Cpp{} (\myre
 et que vous ne modifiez pas la valeur qui est référencée par un pointeur, l'effet de votre modification 
 ne se propagera pas au dehors de la fonction.
 
-En théorie, après le retour du \gls{callee}, le \gls{caller} pourrait récupérer l'argument modifié et 
+En théorie, après le retour de l'\glslink{callee}{appelé}, l'\glslink{caller}{appelant} pourrait récupérer l'argument modifié et 
 l'utiliser à sa guise.
 Ceci pourrait peut être se faire dans un programme rédigé en assembleur.
 
