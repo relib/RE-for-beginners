@@ -47,13 +47,13 @@ fait maison.
 \myindex{SAP}
 \myindex{Windows!PDB}
 
-Par exemple, l'auteur de ces lignes a essayé une fois de comprendre comment la compression/décompression
+Par exemple, j'ai essayé une fois de comprendre comment la compression/décompression
 des paquets réseau fonctionne dans SAP 6.0.
 C'est un logiciel gigantesque, mais un .\gls{PDB} détaillé avec des informations
 de débogage est présent, et c'est pratique.
-Il en est finalement arrivé à l'idée que l'une des fonctions, qui était appelée par
+J'en suis finalement arrivé à l'idée que l'une des fonctions, qui était appelée par
 \emph{CsDecomprLZC}, effectuait la décompression des paquets réseau.
-Immédiatement, il a essayé de googler le nom et a rapidement trouvé que la fonction
+Immédiatement, j'ai essayé de googler le nom et rapidement trouvé que la fonction
 était utilisée dans MaxDB (c'est un projet open-source de SAP)
 \footnote{Plus sur ce sujet dans la section concernée~(\myref{sec:SAPGUI})}.
 
@@ -62,6 +62,7 @@ Immédiatement, il a essayé de googler le nom et a rapidement trouvé que la fo
 Étonnement, les logiciels MaxDB et SAP 6.0 partagent du code comme ceci pour la compression/
 décompression des paquets réseau.
 
+\input{digging_into_code/identification/exec_FR}
 % binary files might be also here
 
 \mysection{Communication avec le monde extérieur (niveau fonction)}
@@ -78,7 +79,17 @@ mais avez oublié tous les détails du mécanisme, vous pouvez seulement observe
 et la sortie, et trouver le diviseur rapidement.
 
 % sections:
+\input{digging_into_code/communication_win32_FR}
+\input{digging_into_code/strings_FR}
+\input{digging_into_code/assert_FR}
+\input{digging_into_code/constants_FR}
+%% TBT \input{digging_into_code/instructions_EN}
+%% TBT \input{digging_into_code/suspicious_code_EN}
+%% TBT \input{digging_into_code/magic_numbers_tracing_EN}
+\input{digging_into_code/loops_FR}
 \input{digging_into_code/binary/main_FR}
+%% TBT \input{digging_into_code/snapshots_comparing_EN}
+%% TBT \input{digging_into_code/ISA_detect_EN}
 
 \mysection{Autres choses}
 
