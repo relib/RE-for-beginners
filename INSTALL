@@ -33,3 +33,5 @@ Install TeXlive and use Cygwin.
 ... put gloss-japanese.ldf to the current directory.
 Download from https://github.com/reutenauer/polyglossia/pull/162/files
 
+This Ubuntu package is also to be installed: fonts-ipafont-gothic
+
