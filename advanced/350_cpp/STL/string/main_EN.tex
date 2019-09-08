@@ -68,7 +68,7 @@ then the process will crash.
 
 GCC's implementation of this structure has one more variable---reference count.
 
-One interesting fact is that in GCC a pointer an instance of std::string instance points not to
+One interesting fact is that in GCC, a pointer to an instance of std::string instance points not to
 the beginning of the structure, but to the buffer pointer.
 In \emph{libstdc++-v3\textbackslash{}include\textbackslash{}bits\textbackslash{}basic\_string.h}
 we can read that it was done for more convenient debugging:
