@@ -123,7 +123,7 @@ df6e3fe6019f5764fc9975e505a7395fed780fee50eb38dd4c0279cb114672e2 *test
 \end{lstlisting}
 
 Le temps de traitement est $\approx2..3$ secondes sur un Intel Xeon E3-1220 3.10 GHz 4-core.
-Dans le gestionnaire de taches nous voyons 5 threads:
+Dans le gestionnaire de tâches nous voyons 5 threads:
 1 thread principale + 4 autres.
 Il n'y a pas d'optimisations faites afin de garder cet exemple aussi petit et clair
 que possible.
@@ -132,7 +132,7 @@ Mon \ac{CPU} a 4 c\oe{}urs, c'est pourquoi OpenMP a démarré exactement 4 threa
 
 En regardant la table des statistiques, nous voyons clairement comment la boucle
 a été découpée en 4 parties égales.
-Ooui bon, presque égales, si nous ne tenons pas compte du dernier bit.
+Oui bon, presque égales, si nous ne tenons pas compte du dernier bit.
 
 Il y a aussi des pragmas pour les \glslink{atomic operation}{operations atomiques.}.
 
@@ -149,7 +149,7 @@ Voyons comment ce code est compilé:
 
 \lstinputlisting[caption=MSVC 2012,style=customasmx86]{advanced/700_openmp/MSVC_2.asm}
 
-Il semble que la fonction \TT{vcomp\_atomic\_add\_i4()} dans vcomp*.dll est juste
+Il semble que la fonction \TT{vcomp\_atomic\_add\_i4()} dans vcomp*.dll soit juste
 une minuscule fonction avec l'instruction \TT{LOCK XADD}\footnote{En savoir plus sur le préfixe LOCK: \myref{x86_lock}}
 dedans.
 
