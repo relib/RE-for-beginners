@@ -227,7 +227,6 @@
 \definecolor{col3}{RGB}{10,120,180}
 \definecolor{col4}{RGB}{106,164,108}
 
-
 \lstset{
     %backgroundcolor=\color{lstbgcolor},
     %backgroundcolor=\color{light-gray},
@@ -260,6 +259,7 @@
 
 \begin{document}
 
+\iffalse
 % fancyhdr =============================================================================================================================
 \pagestyle{fancy}
 \setlength{\headheight}{13pt}
@@ -279,6 +279,7 @@
 \renewcommand{\footrulewidth}{0.4pt}
 \fi
 % ======================================================================================================================================
+\fi
 
 \VerbatimFootnotes
 
@@ -290,12 +291,14 @@
 %\ES{\input{1st_page_ES}}
 %\CN{\input{1st_page_CN}}
 
+\iffalse
 \RU{\input{dedication_RU}}
 \EN{\input{dedication_EN}}
 \FR{\input{dedication_FR}}
 \JA{\input{dedication_JA}}
 \DE{\input{dedication_DE}}
 \IT{\input{dedication_IT}}
+\fi
 
 \input{page_after_cover}
 \input{call_for_translators}
