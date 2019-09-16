@@ -1,8 +1,8 @@
 % TODO proof-reading
 \subsection{Simple function calling}
 
-\TT{Math.random()} returns a pseudorandom number in range of [0.0 \dots 1.0), but let's say that
-for some reason we need to devise a function that returns a number in range of [0.0 \dots 0.5):
+\TT{Math.random()} returns a pseudorandom number in range of [0.0 \dots 1.0], but let's say that
+for some reason we need to devise a function that returns a number in range of [0.0 \dots 0.5]:
 
 
 \begin{lstlisting}[style=customjava]
@@ -107,7 +107,7 @@ public class HelloWorld
          0: getstatic     #2        // Field java/lang/System.out:Ljava/io/PrintStream;
          3: ldc           #3        // String Hello, World
          5: invokevirtual #4        // Method java/io/PrintStream.println:(Ljava/lang/String;)V
-         8: return        
+         8: return
 \end{lstlisting}
 
 \TT{ldc} at offset 3 takes a pointer to the \q{Hello, World} string in the constant pool
