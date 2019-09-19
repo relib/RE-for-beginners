@@ -2,7 +2,7 @@
 
 \myindex{\Cpp!exceptions}
 
-Microsoft a ajouté un mécanisme non standard de gestion d'exceptions à 
+Microsoft a ajouté un mécanisme non standard de gestion d'exceptions à
 MSVC\footnote{\href{http://go.yurichev.com/17057}{MSDN}} essentiellement à l'usage des programmeurs C.
 Ce mécanisme est totalement distinct de celui définit par le standard ISO du langage C++.
 
@@ -18,7 +18,7 @@ __except(filter code)
 }
 \end{lstlisting}
 
-A la place du gestionnaire d'exception, on peut trouver un block \q{Finally}:
+À la place du gestionnaire d'exception, on peut trouver un block \q{Finally}:
 
 \begin{lstlisting}[style=customc]
 __try
@@ -31,10 +31,10 @@ __finally
 }
 \end{lstlisting}
 
-Le code de filtrage est une expression. L'évaluation de celle-ci permet de définir si le gestionnaire 
+Le code de filtrage est une expression. L'évaluation de celle-ci permet de définir si le gestionnaire
 reconnaît l'exception qui a été déclenchée.
 
-Si votre filtre est trop complexe pour tenir dans une seule expression, une fonction de filtrage 
+Si votre filtre est trop complexe pour tenir dans une seule expression, une fonction de filtrage
 séparée peut être définie.\\
 \\
 Il existe de nombreuses constructions de ce type dans le noyau Windows.
@@ -49,7 +49,7 @@ Voici aussi un exemple de code de filtrage:
 \lstinputlisting[caption=WRK-v1.2/base/ntos/cache/copysup.c,style=customc]{OS/SEH/2/wrk_ex3.c}
 
 En interne, SEH est une extension du mécanisme de gestion des exceptions implémenté par l'OS.
-La fonction de gestion d'exceptions est \TT{\_except\_handler3} (pour SEH3) ou 
+La fonction de gestion d'exceptions est \TT{\_except\_handler3} (pour SEH3) ou
 \TT{\_except\_handler4} (pour SEH4).
 
 Le code de ce gestionnaire est propre à MSVC et est situé dans ses librairies, ou dans msvcr*.dll.
@@ -59,19 +59,19 @@ D'autres compilateurs win32 peuvent choisir un modèle totalement différent.
 
 \myparagraph{SEH3}
 
-SEH3 est géré par la fonction \TT{\_except\_handler3}. Il ajoute à la structure \TT{\_EXCEPTION\_REGISTRATION} 
+SEH3 est géré par la fonction \TT{\_except\_handler3}. Il ajoute à la structure \TT{\_EXCEPTION\_REGISTRATION}
 un pointeur vers une \emph{scope table} et une variable \emph{previous try level}.
-SEH4 de son côté ajoute 4 valeurs à la structure \emph{scope table} pour la gestion des dépassements 
+SEH4 de son côté ajoute 4 valeurs à la structure \emph{scope table} pour la gestion des dépassements
 de buffer.\\
 \\
-La structure \emph{scope table} est un ensemble de pointeurs vers les blocs de code du filtre et du 
+La structure \emph{scope table} est un ensemble de pointeurs vers les blocs de code du filtre et du
 gestionnaire de chaque niveau \emph{try/except} imbriqué.
 
 \input{OS/SEH/2/tikz}
 
-Il est essentiel de comprendre que l'\ac{OS} ne se préoccupe que des champs \emph{prev/handle} et de 
+Il est essentiel de comprendre que l'\ac{OS} ne se préoccupe que des champs \emph{prev/handle} et de
 rien d'autre.\\
-Les autres champs sont exploités par la fonction \TT{\_except\_handler3}, de même que le contenu 
+Les autres champs sont exploités par la fonction \TT{\_except\_handler3}, de même que le contenu
 de la structure \emph{scope table} afin de décider quel gestionnaire exécuter et quand.\\
 \\
 \myindex{Wine}
@@ -79,17 +79,17 @@ de la structure \emph{scope table} afin de décider quel gestionnaire exécuter 
 Le code source de la fonction \TT{\_except\_handler3} n'est pas public.
 
 Cependant, le système d'exploitation Sanos, possède un mode de compatibilité win32.
-Celui-ci réimplémente les mêmes fonctions d'une manière quasi équivalente à celle de Windows
+Celui-ci ré-implémente les mêmes fonctions d'une manière quasi équivalente à celle de Windows
 \footnote{\url{http://go.yurichev.com/17058}}.
-On trouve une autre réimplementation dans Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
+On trouve une autre ré-implémentation dans Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
 ainsi que dans ReactOS\footnote{\url{http://go.yurichev.com/17060}}.\\
 \\
-Lorsque le champ \emph{filter} est un pointeur NULL, le champ \emph{handler} est un pointeur vers un 
+Lorsque le champ \emph{filter} est un pointeur NULL, le champ \emph{handler} est un pointeur vers un
 bloc de code \emph{finally}.\\
 \\
-Au cours de l'exécution, la valeur du champe \emph{previous try level} change. \\
-Ceci permet à la 
-fonction \TT{\_except\_handler3} de connaître le niveau d'imbrication et donc de savoir quelle 
+Au cours de l'exécution, la valeur du champ \emph{previous try level} change. \\
+Ceci permet à la
+fonction \TT{\_except\_handler3} de connaître le niveau d'imbrication et donc de savoir quelle
 entrée de la table \emph{scope table} utiliser en cas d'exception.
 
 \myparagraph{SEH3: exemple de bloc try/except}
@@ -99,7 +99,7 @@ entrée de la table \emph{scope table} utiliser en cas d'exception.
 \lstinputlisting[caption=MSVC 2003,style=customasmx86]{OS/SEH/2/2_SEH3.asm}
 
 Nous voyons ici la manière dont le bloc SEH est construit sur la pile.
-La structure \emph{scope table} est présente dans le segment \TT{CONST} du programme--- ce qui est 
+La structure \emph{scope table} est présente dans le segment \TT{CONST} du programme--- ce qui est
 normal puisque son contenu n'a jamais besoin d'être changé.
 Un point intéressant est la manière dont la valeur de la variable \emph{previous try level} évolue.
 Sa valeur initiale est \TT{0xFFFFFFFF} ($-1$).
@@ -109,8 +109,8 @@ Nous voyons également l'adresse du bloc de filtrage et de celui du gestionnaire
 
 Nous pouvons donc observer facilement la présence de blocs \emph{try/except} dans la fonction.\\
 \\
-Le code d'initialisation des structures SEH dans le prologue de la fonction peut être partagé par 
-de nombreuses fonctions. Le compilateur choisi donc parfois d'insérer dans le prologue d'une fonction 
+Le code d'initialisation des structures SEH dans le prologue de la fonction peut être partagé par
+de nombreuses fonctions. Le compilateur choisi donc parfois d'insérer dans le prologue d'une fonction
 un appel à la fonction \TT{SEH\_prolog()} qui assure cette initialisation.
 
 Le code de nettoyage des structures SEH se trouve quant à lui dans la fonction \TT{SEH\_epilog()}.\\
@@ -167,7 +167,7 @@ La valeur de \emph{Previous try level} change selon que l'exécution entre ou so
 
 \lstinputlisting[caption=MSVC 2003,style=customasmx86]{OS/SEH/2/3_SEH3.asm}
 
-Si nous positionnons un point d'arrêt sur la fonction \printf{} qui est appelée par le gestionnaire, 
+Si nous positionnons un point d'arrêt sur la fonction \printf{} qui est appelée par le gestionnaire,
 nous pouvons constater comment un nouveau gestionnaire SEH est ajouté.
 
 Il s'agit peut-être d'un autre mécanisme interne de la gestion SEH.
@@ -203,20 +203,20 @@ scopetable entry[0]. previous try level=-2, filter=0x771f74d0 (ntdll.dll!___safe
 
 \myindex{\BufferOverflow}
 \myindex{Security cookie}
-Lors d'une attaque par dépassement de buffer (\myref{subsec:bufferoverflow}), l'adresse de la 
-\emph{scope table} peut être modifiée. C'est pourquoi à partir de MSVC 2005 SEH3 a été amélioré vers 
+Lors d'une attaque par dépassement de buffer (\myref{subsec:bufferoverflow}), l'adresse de la
+\emph{scope table} peut être modifiée. C'est pourquoi à partir de MSVC 2005 SEH3 a été amélioré vers
 SEH4 pour ajouter une protection contre ce type d'attaque.
-Le pointeur vers la structure \emph{scope table} est désormais \glslink{xoring}{xored} avec la valeur 
+Le pointeur vers la structure \emph{scope table} est désormais \glslink{xoring}{xored} avec la valeur
 d'un \gls{security cookie}.
-Par ailleurs, la structure \emph{scope table} a été étendue avec une en-tête contenant deux pointeurs 
+Par ailleurs, la structure \emph{scope table} a été étendue avec une en-tête contenant deux pointeurs
 vers des \emph{security cookies}.
 
-Chaque élément contient un offset dans la pile d'une valeur correspondant à: 
-adresse du \gls{stack frame} (\EBP) \glslink{xoring}{xored} avec la valeur du \TT{security\_cookie} 
+Chaque élément contient un offset dans la pile d'une valeur correspondant à:
+adresse du \gls{stack frame} (\EBP) \glslink{xoring}{xored} avec la valeur du \TT{security\_cookie}
 lui aussi situé sur la pile.
 
 Durant la gestion d'exception, l'intégrité de cette valeur est vérifiée.
-La valeur de chaque \emph{security cookie} situé sur la pile est aléatoire. Une attaque à distance ne 
+La valeur de chaque \emph{security cookie} situé sur la pile est aléatoire. Une attaque à distance ne
 pourra donc pas la deviner. \\
 \\
 Avec SEH4, la valeur initiale de \emph{previous try level} est de $-2$ et non de $-1$.
@@ -230,13 +230,13 @@ Voici deux exemples compilés avec MSVC 2012 et SEH4:
 
 \lstinputlisting[caption=MSVC 2012: exemple de deux blocs try,style=customasmx86]{OS/SEH/2/3_SEH4.asm}
 
-La signification de \emph{cookies} est la suivante: \TT{Cookie Offset} est la différence entre l'adresse 
-dans la pile de la dernière valeur sauvegardée du registre EBP et de l'adresse dans la pile du 
+La signification de \emph{cookies} est la suivante: \TT{Cookie Offset} est la différence entre l'adresse
+dans la pile de la dernière valeur sauvegardée du registre EBP et de l'adresse dans la pile du
 résultat de l'addition $EBP \oplus security\_cookie$.
-\TT{Cookie XOR Offset} est quant à lui la différence entre $EBP \oplus security\_cookie$ et la valeur 
+\TT{Cookie XOR Offset} est quant à lui la différence entre $EBP \oplus security\_cookie$ et la valeur
 conservée sur la pile.
 
-Si le prédicat ci-dessous n'est pas respecté, le processus est arrêté du fait d'une corruption 
+Si le prédicat ci-dessous n'est pas respecté, le processus est arrêté du fait d'une corruption
 de la pile:
 
 \begin{center}
@@ -249,6 +249,6 @@ Lorsque \TT{Cookie Offset} vaut $-2$, ceci indique qu'il n'est pas présent.
 La vérification des \emph{Cookies} est aussi implémentée dans mon \tracer{},
 voir \href{http://go.yurichev.com/17061}{GitHub} pour les détails.\\
 \\
-Pour les versions à partir de MSVC 2005, il est toujours possible de revenir à la version SEH3 
+Pour les versions à partir de MSVC 2005, il est toujours possible de revenir à la version SEH3
 en utilisant l'option \TT{/GS-}. Toutefois, le \ac{CRT} continue à utiliser SEH4.
 
