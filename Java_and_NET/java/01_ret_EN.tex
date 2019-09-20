@@ -4,7 +4,7 @@
 Probably the simplest Java function is the one which returns some value.
 
 Oh, and we must keep in mind that there are no \q{free} functions in Java in common sense,
-they are \q{methods}. 
+they are \q{methods}.
 
 Each method is related to some class, so it's not possible to define
 a method outside of a class.
@@ -14,7 +14,7 @@ But we'll call them \q{functions} anyway, for simplicity.
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static int main(String[] args) 
+	public static int main(String[] args)
 	{
 		return 0;
 	}
@@ -40,11 +40,11 @@ And we get:
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=1, locals=1, args_size=1
-         0: iconst_0      
-         1: ireturn       
+         0: iconst_0
+         1: ireturn
 \end{lstlisting}
 
-The Java developers decided that 0 is one of the busiest constants in programming, 
+The Java developers decided that 0 is one of the busiest constants in programming,
 so there is a separate short one-byte \GTT{iconst\_0} instruction which pushes 0
 
 \footnote{Just like in MIPS, where a separate register for zero constant exists: \myref{MIPS_zero_register}.}.
@@ -76,11 +76,11 @@ public class ret
     Code:
       stack=1, locals=1, args_size=1
          0: sipush        1234
-         3: ireturn       
+         3: ireturn
 \end{lstlisting}
 
 \GTT{sipush} (\emph{short integer}) pushes 1234 into the stack.
-\emph{short} in name implies a 16-bit value is to be pushed. 
+\emph{short} in name implies a 16-bit value is to be pushed.
 The number 1234 indeed fits well in a 16-bit value.
 
 What about larger values?
@@ -88,7 +88,7 @@ What about larger values?
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static int main(String[] args) 
+	public static int main(String[] args)
 	{
 		return 12345678;
 	}
@@ -107,10 +107,10 @@ public class ret
     Code:
       stack=1, locals=1, args_size=1
          0: ldc           #2                  // int 12345678
-         2: ireturn       
+         2: ireturn
 \end{lstlisting}
 
-It's not possible to encode a 32-bit number in a JVM instruction opcode, 
+It's not possible to encode a 32-bit number in a JVM instruction opcode,
 the developers didn't leave such possibility.
 
 So the 32-bit number 12345678 is stored in so called \q{constant pool} which is, let's say,
@@ -119,7 +119,7 @@ the library of most used constants (including strings, objects, etc.).
 This way of passing constants is not unique to JVM.
 
 MIPS, ARM and other RISC CPUs also can't encode a 32-bit number
-in a 32-bit opcode, so the RISC CPU code (including MIPS and ARM) has to construct the value 
+in a 32-bit opcode, so the RISC CPU code (including MIPS and ARM) has to construct the value
 in several steps, or to keep it in the data segment:
 \myref{ARM_big_constants}, \myref{MIPS_big_constants}.
 
@@ -134,7 +134,7 @@ Boolean:
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static boolean main(String[] args) 
+	public static boolean main(String[] args)
 	{
 		return true;
 	}
@@ -146,8 +146,8 @@ public class ret
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=1, locals=1, args_size=1
-         0: iconst_1      
-         1: ireturn       
+         0: iconst_1
+         1: ireturn
 \end{lstlisting}
 
 This JVM bytecode is no different from one returning integer 1.
@@ -161,7 +161,7 @@ It's the same story with a 16-bit \emph{short}:
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static short main(String[] args) 
+	public static short main(String[] args)
 	{
 		return 1234;
 	}
@@ -174,7 +174,7 @@ public class ret
     Code:
       stack=1, locals=1, args_size=1
          0: sipush        1234
-         3: ireturn       
+         3: ireturn
 \end{lstlisting}
 
 \dots and \emph{char}!
@@ -182,7 +182,7 @@ public class ret
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static char main(String[] args) 
+	public static char main(String[] args)
 	{
 		return 'A';
 	}
@@ -195,11 +195,11 @@ public class ret
     Code:
       stack=1, locals=1, args_size=1
          0: bipush        65
-         2: ireturn       
+         2: ireturn
 \end{lstlisting}
 
 \INS{bipush} means \q{push byte}.
-Needless to say that a \emph{char} in Java is 16-bit UTF-16 character, 
+Needless to say that a \emph{char} in Java is 16-bit UTF-16 character,
 and it's equivalent to \emph{short}, but the ASCII code of the \q{A} character is 65, and it's possible
 to use the instruction for pushing a byte in the stack.
 
@@ -208,7 +208,7 @@ Let's also try a \emph{byte}:
 \begin{lstlisting}[style=customjava]
 public class retc
 {
-	public static byte main(String[] args) 
+	public static byte main(String[] args)
 	{
 		return 123;
 	}
@@ -221,7 +221,7 @@ public class retc
     Code:
       stack=1, locals=1, args_size=1
          0: bipush        123
-         2: ireturn       
+         2: ireturn
 \end{lstlisting}
 
 One may ask, why bother with a 16-bit \emph{short} data type which internally works
@@ -236,7 +236,7 @@ an UTF-16 character, and not for some other integer value.
 
 When using \emph{short}, we show everyone that the variable's range is limited by 16 bits.
 
-It's a very good idea to use the \emph{boolean} type where needed to, 
+It's a very good idea to use the \emph{boolean} type where needed to,
 instead of the C-style \emph{int}.
 
 There is also a 64-bit integer data type in Java:
@@ -263,13 +263,13 @@ public class ret3
     Code:
       stack=2, locals=1, args_size=1
          0: ldc2_w        #2                  // long 1234567890123456789l
-         3: lreturn       
+         3: lreturn
 \end{lstlisting}
 
-The 64-bit number is also stored in a constant pool, \INS{ldc2\_w} loads it and \INS{lreturn} 
+The 64-bit number is also stored in a constant pool, \INS{ldc2\_w} loads it and \INS{lreturn}
 (\emph{long return}) returns it.
 
-The \INS{ldc2\_w} instruction is also used to load double precision floating point numbers 
+The \INS{ldc2\_w} instruction is also used to load double precision floating point numbers
 (which also occupy 64 bits) from a constant pool:
 
 \begin{lstlisting}[style=customjava]
@@ -294,7 +294,7 @@ public class ret
     Code:
       stack=2, locals=1, args_size=1
          0: ldc2_w        #2                  // double 123.456d
-         3: dreturn       
+         3: dreturn
 \end{lstlisting}
 
 \INS{dreturn} stands for \q{return double}.
@@ -323,7 +323,7 @@ public class ret
     Code:
       stack=1, locals=1, args_size=1
          0: ldc           #2                  // float 123.456f
-         2: freturn       
+         2: freturn
 \end{lstlisting}
 
 The \INS{ldc} instruction used here is the same one as for loading 32-bit integer numbers
@@ -336,7 +336,7 @@ Now what about function that return nothing?
 \begin{lstlisting}[style=customjava]
 public class ret
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		return;
 	}
@@ -348,12 +348,12 @@ public class ret
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=0, locals=1, args_size=1
-         0: return        
+         0: return
 \end{lstlisting}
 
-This means that the \INS{return} instruction is used to return control without returning 
+This means that the \INS{return} instruction is used to return control without returning
 an actual value.
 
-Knowing all this, it's very easy to deduce the function's (or method's) returning type 
+Knowing all this, it's very easy to deduce the function's (or method's) returning type
 from the last instruction.
 
