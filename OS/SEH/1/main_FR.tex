@@ -1,6 +1,6 @@
 ﻿\subsubsection{Oublions MSVC}
 
-Sous Windows, \ac{SEH} concerne la gestion d'exceptions. Ce mécanisme est indépendant du langage 
+Sous Windows, \ac{SEH} concerne la gestion d'exceptions. Ce mécanisme est indépendant du langage
 de programmation et n'est en aucun cas spécifique ni à \Cpp, ni à l'\ac{OOP}.
 
 Nous nous intéressons donc au \ac{SEH} indépendamment du C++ et des extensions du langage dans MSVC.
@@ -8,22 +8,22 @@ Nous nous intéressons donc au \ac{SEH} indépendamment du C++ et des extensions
 \myindex{Windows!TIB}
 \myindex{Windows!Win32!RaiseException()}
 
-A chaque processus est associé une chaîne de gestionnaires \ac{SEH}. A tout moment, chaque \ac{TIB} 
+À chaque processus est associé une chaîne de gestionnaires \ac{SEH}. A tout moment, chaque \ac{TIB}
 référence le gestionnaire le plus récent de la chaîne.
 
-Dès qu'une exception intervient (division par zéro, violation d'accès mémoire, exception explicitement 
-déclenchée par le programe en appelant la fonction \TT{RaiseException()} ...), l'OS retrouve dans le 
-\ac{TIB} le gestionnaire le plus récemment déclaré et l'appelle. Il lui fourni l'état de la \ac{CPU} 
+Dès qu'une exception intervient (division par zéro, violation d'accès mémoire, exception explicitement
+déclenchée par le programme en appelant la fonction \TT{RaiseException()} ...), l'OS retrouve dans le
+\ac{TIB} le gestionnaire le plus récemment déclaré et l'appelle. Il lui fourni l'état de la \ac{CPU}
 (contenu des registres ...) tels qu'ils étaient lors du déclenchement de l'exception.
 
-Le gestionnaire examine le type de l'exception et décide de la traiter s'il la reconnaît. Sinon, il 
-signale à l'\ac{OS} qu'il passe la main et celui-ci appelle le prochain gestionnaire dans la chaîne, 
-et ainsi de suite jusuqu'à ce qu'il trouve un gestionnaire qui soit capable de la traiter.
+Le gestionnaire examine le type de l'exception et décide de la traiter s'il la reconnaît. Sinon, il
+signale à l'\ac{OS} qu'il passe la main et celui-ci appelle le prochain gestionnaire dans la chaîne,
+et ainsi de suite jusqu'à ce qu'il trouve un gestionnaire qui soit capable de la traiter.
 
-A la toute fin de la chaîne se trouve un gestionnaire standard qui affiche la fameuse boîte de 
+À la toute fin de la chaîne se trouve un gestionnaire standard qui affiche la fameuse boîte de
 dialogue qui informe l'utilisateur que le processus va être avorté. Ce dialogue fournit quelques
-informations techniques au sujet de l'état de la \ac{CPU} au moment du crash, et propose de collecter 
-des informations techniques qui seront envoyées aux développeurs de Microsoft. 
+informations techniques au sujet de l'état de la \ac{CPU} au moment du crash, et propose de collecter
+des informations techniques qui seront envoyées aux développeurs de Microsoft.
 
 \begin{figure}[H]
 \centering
@@ -49,20 +49,20 @@ des informations techniques qui seront envoyées aux développeurs de Microsoft.
 \caption{Windows 8.1}
 \end{figure}
 
-Historiquement, cette chaîne de gestionnaires était connue sous l'appelation Dr. Watson
+Historiquement, cette chaîne de gestionnaires était connue sous l'appellation Dr. Watson
 \footnote{\href{http://go.yurichev.com/17046}{Wikipédia}}.
 
-Certains développeurs ont eu l'idée d'écrire leur propre gestionnaire d'exceptions pour recevoir 
+Certains développeurs ont eu l'idée d'écrire leur propre gestionnaire d'exceptions pour recevoir
 les informations relatives au crash.
 \myindex{Windows!Win32!SetUnhandledExceptionFilter()}
-Ils enregistrent leur gestionnaire en appelant la fonction \TT{SetUnhandledExceptionFilter()} qui 
+Ils enregistrent leur gestionnaire en appelant la fonction \TT{SetUnhandledExceptionFilter()} qui
 sera alors appelée si l'\ac{OS} ne trouve aucun autre gestionnaire qui souhaite gérer l'exception.
 
 \myindex{\oracle}
-\oracle--- en est un bon exemple qui sauvegarde un énorme fichier dump collectant toutes les 
+\oracle--- en est un bon exemple qui sauvegarde un énorme fichier dump collectant toutes les
 informations possibles concernant la \ac{CPU} et l'état de la mémoire.
 
-Ecrivons notre propre gestionnaire d'exception. Cet exemple s'appuie sur celui de \PietrekSEH.
+Écrivons notre propre gestionnaire d'exception. Cet exemple s'appuie sur celui de \PietrekSEH.
 Pour le compiler, il faut utiliser l'option SAFESEH : \TT{cl seh1.cpp /link /safeseh:no}.
 Vous trouverez plus d'informations concernant SAFESEH à: \href{http://go.yurichev.com/17252}{MSDN}.
 
@@ -70,10 +70,10 @@ Vous trouverez plus d'informations concernant SAFESEH à: \href{http://go.yurich
 
 En environnement win32, le registre de segment FS: contient l'adresse du \ac{TIB}.
 
-Le tout premier élément de la structure \ac{TIB} est un pointeur sur le premier gestionnaire de la 
+Le tout premier élément de la structure \ac{TIB} est un pointeur sur le premier gestionnaire de la
 chaîne de traitement des exceptions.
 Nous le sauvegardons sur la pile et remplaçons la valeur par celle de notre propre gestionnaire.
-La structure est du type \TT{\_EXCEPTION\_REGISTRATION}. Il s'agit d'une simple liste chaînée dont 
+La structure est du type \TT{\_EXCEPTION\_REGISTRATION}. Il s'agit d'une simple liste chaînée dont
 les éléments sont conservés sur la pile.
 
 \begin{lstlisting}[caption=MSVC/VC/crt/src/exsup.inc,style=customasmx86]
@@ -83,25 +83,25 @@ _EXCEPTION_REGISTRATION struc
 _EXCEPTION_REGISTRATION ends
 \end{lstlisting}
 
-Le champ \q{handler} contient l'adresse du gestionnaire et le champ \q{prev} celle de 
+Le champ \q{handler} contient l'adresse du gestionnaire et le champ \q{prev} celle de
 l'enregistrement suivant dans la chaîne.
-Le dernier enregistremThe last record contient la valeur \TT{0xFFFFFFFF} (-1) dans son champ \q{prev}.
+Le dernier enregistrement contient la valeur \TT{0xFFFFFFFF} (-1) dans son champ \q{prev}.
 
 \input{OS/SEH/1/tikz}
 
 Une fois notre gestionnaire installé, nous invoquons la fonction \TT{RaiseException()}
 \footnote{\href{http://go.yurichev.com/17253}{MSDN}}.
-Il s'agit d'une exception utilisateur. 
+Il s'agit d'une exception utilisateur.
 Le gestionnaire vérifie le code.
-Si le code est égal à \TT{0xE1223344}, il retourne la valeur \TT{ExceptionContinueExecution} qui 
-signifie que le gestionnaire a corrigé le contenu de la structure passée en paramètre qui décrit 
-l'état de la CPU. La modification concerne généralement les registres EIP/ESP. L'\ac{OS} peut alors 
+Si le code est égal à \TT{0xE1223344}, il retourne la valeur \TT{ExceptionContinueExecution} qui
+signifie que le gestionnaire a corrigé le contenu de la structure passée en paramètre qui décrit
+l'état de la CPU. La modification concerne généralement les registres EIP/ESP. L'\ac{OS} peut alors
 reprendre l'exécution du thread.
 
 Si vous modifiez légèrement le code pour que le gestionaire retourne la valeur \TT{ExceptionContinueSearch},
-l'\ac{OS} appelera les gestionnaires suivants dans la liste. Il est peu probable que l'un d'eux sache 
-la gérer puisqu'aucun d'eux ne la comprend, ni ne connait le code exception.
-Vous verrez donc apparaître la boîte de dialogue Windows précurseure du crash.
+l'\ac{OS} appellera les gestionnaires suivants dans la liste. Il est peu probable que l'un d'eux sache
+la gérer puisqu'aucun d'eux ne la comprend, ni ne connaît le code exception.
+Vous verrez donc apparaître la boîte de dialogue Windows précurseur du crash.
 
 Quelles sont les différences entre les exceptions système et les exceptions utilisateur ?
 Les exceptions système sont listées ci-dessous:
@@ -110,8 +110,8 @@ Les exceptions système sont listées ci-dessous:
 \begin{center}
 \begin{tabular}{ | l | l | l | }
 \hline
-\HeaderColor as defined in WinBase.h & 
-\HeaderColor as defined in ntstatus.h & 
+\HeaderColor as defined in WinBase.h &
+\HeaderColor as defined in ntstatus.h &
 \HeaderColor value \\
 \hline
 EXCEPTION\_ACCESS\_VIOLATION          & STATUS\_ACCESS\_VIOLATION           & 0xC0000005 \\
@@ -171,22 +171,22 @@ Le code de chaque exception se décompose comme suit:
 \begin{center}
 \begin{bytefield}[bitwidth=0.03\linewidth]{32}
 \bitheader[endianness=big]{31,29,28,27,16,15,0} \\
-\bitbox{2}{S} & 
+\bitbox{2}{S} &
 \bitbox{1}{U} &
-\bitbox{1}{0} & 
+\bitbox{1}{0} &
 \bitbox{12}{Facility code} &
 \bitbox{16}{Error code}
 \end{bytefield}
 \end{center}
 
-S est un code status de base: 
+S est un code status de base:
 11---erreur;
 10---warning;
 01---information;
 00---succès.
 U---lorsqu'il s'agit d'un code utilisateur.
 
-Voici pourquoi nous choisissons le code 0xE1223344---E\textsubscript{16} (1110\textsubscript{2}) 0xE (1110b) 
+Voici pourquoi nous choisissons le code 0xE1223344---E\textsubscript{16} (1110\textsubscript{2}) 0xE (1110b)
 qui signifie 1) qu'il s'agit d'une exception utilisateur; 2) qu'il s'agit d'une erreur.
 
 Pour être honnête, l'exemple fonctionne aussi bien sans ces bits de poids fort.
@@ -204,27 +204,27 @@ Le code qui lit la mémoire à l'adresse 0 ressemble à ceci:
 
 Serait-il possible de corriger cette erreur \q{on the fly} afin de continuer l'exécution du programme?
 
-Notre gestionnaire d'exception peut modifier la valeur du registre \EAX puis laisser l'\ac{OS} 
+Notre gestionnaire d'exception peut modifier la valeur du registre \EAX puis laisser l'\ac{OS}
 exécuter de nouveau l'instruction fautive.
-C'est ce que nous faisons et la raison pour laquelle \printf affiche 1234. Lorsque notre gestionnaire 
+C'est ce que nous faisons et la raison pour laquelle \printf affiche 1234. Lorsque notre gestionnaire
 a fini son travail, la valeur de \EAX n'est plus 0 mais l'adresse de la variable globale \TT{new\_value}.
 L'exécution du programme se poursuit donc.
 
-Voici ce qui se passe: le gestionnaire mémoire de la \ac{CPU} signale une erreur, la \ac{CPU} suspend 
-le thread, trouve le gestionnaire d'exception dans le noyau Windows, lequel à son tour appelle les 
+Voici ce qui se passe: le gestionnaire mémoire de la \ac{CPU} signale une erreur, la \ac{CPU} suspend
+le thread, trouve le gestionnaire d'exception dans le noyau Windows, lequel à son tour appelle les
 gestionnaires de la chaîne \ac{SEH} un par un.
 
-Nous utilisons ici le compilateur MSVC 2010. Bien entendu, il n'y a aucune garantie que celui-ci 
+Nous utilisons ici le compilateur MSVC 2010. Bien entendu, il n'y a aucune garantie que celui-ci
 décide d'utiliser le registre \EAX pour conserver la valeur du pointeur.
 
-Le truc du remplacement du contenu du registre n'est qu'une illustration de ce que peut être le 
+Le truc du remplacement du contenu du registre n'est qu'une illustration de ce que peut être le
 fonctionnement interne des \ac{SEH}.
 En pratique, il est très rare qu'il soit utilisé pour corriger \q{on-the-fly} une erreur.
 
-Pourquoi les enregistrements SEH sont-ils conservés directement sur la pile et non pas à un autre 
+Pourquoi les enregistrements SEH sont-ils conservés directement sur la pile et non pas à un autre
 endroit?
 
-L'explication la plus plausible est que l'\ac{OS} n'a ainsi pas besoin de libérer l'espace qu'ils 
+L'explication la plus plausible est que l'\ac{OS} n'a ainsi pas besoin de libérer l'espace qu'ils
 utilisent. Ces enregistrements sont automatiquement supprimés lorsque la fonction se termine.
 \myindex{\CStandardLibrary!alloca()}
 C'est un peu comme la fonction alloca(): (\myref{alloca}).
