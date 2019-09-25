@@ -3,7 +3,6 @@
 
 Toutes les opérations au niveau des bits fonctionnent comme sur les autres \ac{ISA}:
 
-
 \begin{lstlisting}[style=customjava]
 	public static int set (int a, int b)
 	{
@@ -44,11 +43,9 @@ Toutes les opérations au niveau des bits fonctionnent comme sur les autres \ac{
 
 \TT{iconst\_m1} charge $-1$ sur la pile, c'est la même chose que le nombre \TT{0xFFFFFFFF}.
 
- %%(\myref{XOR_property}).
 XORé avec \TT{0xFFFFFFFF} a le même effet qu'inverser tous les bits (\myref{XOR_property}).
 
 Étendons tous les types de données à 64-bit \emph{long}:
-
 
 \begin{lstlisting}[style=customjava]
 	public static long lset (long a, int b)
