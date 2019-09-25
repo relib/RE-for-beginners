@@ -22,12 +22,12 @@ Voici la sortie quand l'instruction \INS{iconst\_2} est utilisée :
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=2, locals=1, args_size=1
-         0: iload_0       
-         1: iconst_2      
-         2: idiv          
-         3: ireturn       
+         0: iload_0
+         1: iconst_2
+         2: idiv
+         3: ireturn
 \end{lstlisting}
-         
+
 \INS{iload\_0} prend le zéroième argument de la fonction et le pousse sur la pile.
 
 \INS{iconst\_2} pousse 2 sur la pile.
@@ -43,7 +43,7 @@ TOS ->| 2 |
       +---+
 \end{lstlisting}
 
-\INS{idiv} prend juste les deux valeurs depuis le \ac{TOS}, divise l'un par l'autre et laisse 
+\INS{idiv} prend juste les deux valeurs depuis le \ac{TOS}, divise l'un par l'autre et laisse
 le résultat au \ac{TOS}:
 
 
@@ -80,17 +80,17 @@ public class calc
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=4, locals=2, args_size=1
-         0: dload_0       
+         0: dload_0
          1: ldc2_w        #2                  // double 2.0d
-         4: ddiv          
-         5: dreturn       
+         4: ddiv
+         5: dreturn
 \end{lstlisting}
 
 C'est pareil, mais l'instruction \INS{ldc2\_w} est utilisée pour charger la constante
-2.0 depuis le pool de constantes.
+2.0 depuis le pool des constantes.
 
-Aussi, les trois autres instructions ont le \emph{d} en préfixe,
-ce qui signifie qu'elles fonctionnent avec des valeurs de type \emph{double}.
+Aussi, les trois autres instructions sont préfixées par \emph{d},
+ce qui signifie qu'elles travaillent avec des valeurs de type \emph{double}.
 
 
 Utilisons maintenant une fonction avec deux arguments :
@@ -110,10 +110,10 @@ public class calc
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=2, locals=2, args_size=2
-         0: iload_0       
-         1: iload_1       
-         2: iadd          
-         3: ireturn       
+         0: iload_0
+         1: iload_1
+         2: iadd
+         3: ireturn
 \end{lstlisting}
 
 \INS{iload\_0} charge le premier argument de la fonction (a), \INS{iload\_1}---le second (b).
@@ -154,10 +154,10 @@ TOS ->| resultat |
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=4, locals=4, args_size=2
-         0: lload_0       
-         1: lload_2       
-         2: ladd          
-         3: lreturn       
+         0: lload_0
+         1: lload_2
+         2: ladd
+         3: lreturn
 \end{lstlisting}
 
 La deuxième instruction \TT{lload} prend le second argument depuis la 2ème position.
@@ -183,12 +183,12 @@ public class calc
     flags: ACC_PUBLIC, ACC_STATIC
     Code:
       stack=2, locals=3, args_size=3
-         0: iload_0       
-         1: iload_1       
-         2: imul          
-         3: iload_2       
-         4: iadd          
-         5: ireturn       
+         0: iload_0
+         1: iload_1
+         2: imul
+         3: iload_2
+         4: iadd
+         5: ireturn
 \end{lstlisting}
 
 La première étape est la multiplication. Le produit est laissé au \ac{TOS}:

@@ -5,7 +5,7 @@
 
 
 Dans tout \ac{OS}, les sections critiques sont très importantes dans un système
-multithreadé,
+multi-threadé,
 principalement  pour donner la garantie qu'un seul thread peut
 accéder à certaines données à un instant précis, en bloquant les autres
 threads et les interruptions.
@@ -74,7 +74,7 @@ loc_7DE922DD:
 
 L'instruction la plus importante dans ce morceau de code est \TT{BTR} (préfixée avec \TT{LOCK}):
 
-Le bit d'index zéro est stocké dans le flag CF et est éffacé en mémoire.
+Le bit d'index zéro est stocké dans le flag CF et est effacé en mémoire.
 Ceci est une \glslink{atomic operation}{opération atomique}, bloquant tous les autres
 accès du CPU à cette zone de mémoire (regardez le préfixe \TT{LOCK} se trouvant avant
 l'instruction \TT{BTR}). Si le bit en \TT{LockCount} est 1,

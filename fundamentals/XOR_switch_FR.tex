@@ -1,0 +1,26 @@
+\subsection{Astuce d'échange de valeurs}
+
+... trouvé dans Jorg Arndt --- Matters Computational / Ideas, Algorithms, Source Code
+\footnote{https://www.jjj.de/fxt/fxtbook.pdf}.
+
+Vous voulez échanger de contenu d'une variable entre 123 et 456.
+Vous pourriez écrire quelque chose comme:
+
+\begin{lstlisting}
+if (a==123)
+    a=456;
+else
+    a=123;
+\end{lstlisting}
+
+Mais ceci peut être effectué en utilisant une unique opération:
+
+\lstinputlisting[style=customc]{fundamentals/XOR_switch.c}
+
+Ça fonctionne car $123 \oplus 123 \oplus 456=0 \oplus 456=456$ et
+$456 \oplus 123 \oplus 456=456 \oplus 456 \oplus 123=0 \oplus 123=123$.
+
+On pourrait discuter si ça vaut la peine ou non, particulièrement si on a à l'esprit
+la lisibilité du code.
+Mais ceci est une autre démonstration des propriétés de XOR.
+

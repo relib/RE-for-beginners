@@ -1,4 +1,4 @@
-﻿\subsubsection{Oublions MSVC}
+\subsubsection{Oublions MSVC}
 
 Sous Windows, \ac{SEH} concerne la gestion d'exceptions. Ce mécanisme est indépendant du langage
 de programmation et n'est en aucun cas spécifique ni à \Cpp, ni à l'\ac{OOP}.
@@ -98,7 +98,7 @@ signifie que le gestionnaire a corrigé le contenu de la structure passée en pa
 l'état de la CPU. La modification concerne généralement les registres EIP/ESP. L'\ac{OS} peut alors
 reprendre l'exécution du thread.
 
-Si vous modifiez légèrement le code pour que le gestionaire retourne la valeur \TT{ExceptionContinueSearch},
+Si vous modifiez légèrement le code pour que le gestionnaire retourne la valeur \TT{ExceptionContinueSearch},
 l'\ac{OS} appellera les gestionnaires suivants dans la liste. Il est peu probable que l'un d'eux sache
 la gérer puisqu'aucun d'eux ne la comprend, ni ne connaît le code exception.
 Vous verrez donc apparaître la boîte de dialogue Windows précurseur du crash.
@@ -202,7 +202,7 @@ Le code qui lit la mémoire à l'adresse 0 ressemble à ceci:
 
 \lstinputlisting[style=customasmx86,caption=MSVC 2010]{OS/SEH/1/1_fragment.asm}
 
-Serait-il possible de corriger cette erreur \q{on the fly} afin de continuer l'exécution du programme?
+Serait-il possible de corriger cette erreur \q{au vol} afin de continuer l'exécution du programme?
 
 Notre gestionnaire d'exception peut modifier la valeur du registre \EAX puis laisser l'\ac{OS}
 exécuter de nouveau l'instruction fautive.

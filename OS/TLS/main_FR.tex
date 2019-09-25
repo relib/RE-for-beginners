@@ -12,9 +12,9 @@ programme comportant plusieurs threads serait donc inadaptée dans ce cas. C'est
 \\
 \myindex{\Cpp!C++11}
 La version 11 du standard C++ a ajouté un nouveau modificateur \emph{thread\_local} qui indique que 
-chaque thread possède sa propre copie de la variable décorée par ce modificateur. La variable en 
-question est alors conservée dans l'espace \ac{TLS}
-\footnote{\myindex{C11} C11 also has thread support, optional though}:
+chaque thread possède sa propre copie de la variable, qui peut-être initialisée et est
+alors conservée dans l'espace \ac{TLS}
+\footnote{\myindex{C11} C11 supporte aussi les thread, mais optionel}:
 
 \begin{lstlisting}[caption=C++11,style=customc]
 #include <iostream>
