@@ -97,7 +97,7 @@ The \TT{a.length} expression in the source code is converted to an \TT{arrayleng
 it takes a \emph{reference} to the array and leaves the array size at \ac{TOS}.
 
 \TT{iaload} at offset 13 is used to load array elements, 
-it requires to array \emph{reference} be present
+it requires an array \emph{reference} to be present
 in the stack (prepared by \TT{aload\_0} at 11), 
 and also an index (prepared by \TT{iload\_1} at offset 12).
 
