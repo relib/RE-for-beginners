@@ -29,7 +29,7 @@ public class abs
          8: ireturn
 \end{lstlisting}
 
-\TT{ifge} saute à l'offset 7 si la valeur du \ac{TOS} est plus grand ou égal à 0.
+\TT{ifge} saute à l'offset 7 si la valeur du \ac{TOS} est plus grande ou égale à 0.
 
 N'oubliez pas que chaque instruction \TT{ifXX} supprime la valeur (qui doit être
 comparée) de la pile.
@@ -82,7 +82,7 @@ Quand nous définissons la fonction \TT{max()} \dots
 \end{lstlisting}
 
 \dots le code résultant est le même, mais les deux dernières instructions \TT{iload}
-(au offsets 5 et 7) sont échangées:
+(aux offsets 5 et 7) sont échangées:
 
 \begin{lstlisting}
   public static int max(int, int);
