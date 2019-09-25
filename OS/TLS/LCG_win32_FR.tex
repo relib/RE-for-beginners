@@ -15,15 +15,15 @@ Hiew nous montre alors qu'il existe une nouvelle section nommée \TT{.tls} dans 
 La variable \TT{rand\_state} se trouve donc maintenant dans le segment \ac{TLS} et chaque thread en
 possède sa propre version de cette variable.
 
-Voici comment elle est accédée. l'adresse du \ac{TIB} est chargée depuis FS:2Ch,
-un index est ajouté (si nécessaire), puis l'adresse du segemtn \ac{TLS} est calculée.
+Voici comment elle est accédée. L'adresse du \ac{TIB} est chargée depuis FS:2Ch,
+un index est ajouté (si nécessaire), puis l'adresse du segment \ac{TLS} est calculée.
 
 Il est ainsi possible d'accéder la valeur de la variable \TT{rand\_state} au travers du registre
 ECX qui contient une adresse propre à chaque thread.
 
 \myindex{x86!\Registers!FS}
 
-Le sélecteur \TT{FS:} est connu de tous les rétrp-ingénieur. Il est spécifiquement utilisé pour
+Le sélecteur \TT{FS:} est connu de tous les rétro-ingénieur. Il est spécifiquement utilisé pour
 toujours contenir l'adresse du \ac{TIB} du thread en cours d'exécution. L'accès aux données propres
 à chaque thread est donc une opération performante.
 
