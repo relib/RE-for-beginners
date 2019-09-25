@@ -66,7 +66,7 @@ nommée \TT{.idata} pour l'\ac{IAT}, même si l'\ac{IAT} fait partie d'une autre
 
 \subsubsection{Adresse de base}
 
-Le problème est que plusieurs auteurs de module pevent préparer des fichiers DLL
+Le problème est que plusieurs auteurs de module peuvent préparer des fichiers DLL
 pour que d'autres les utilisent et qu'il n'est pas possible de s'accorder pour assigner
 une adresse à ces modules.
 
@@ -93,7 +93,7 @@ dans ce cas. C'est l'\ac{ASLR}\footnote{\href{http://go.yurichev.com/17140}{Wiki
 \myindex{Shellcode}
 
 Un shellcode essayant d'être exécuté sur une système compromis doit appeler des fonctions
-systèmes, par conséquent, connaitre leurs adresses.
+systèmes, par conséquent, connaître leurs adresses.
 
 Dans les anciens \ac{OS} (dans la série \gls{Windows NT}: avant Windows Vista), les
 DLLs système (comme kernel32.dll, user32.dll) étaient toujours chargées à une adresse
@@ -162,7 +162,7 @@ et \emph{IMAGE\_SCN\_MEM\_WRITE}.
 \item Dans une section de données constantes (une qui est protégée contre l'écriture),
 les flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} et \emph{IMAGE\_SCN\_MEM\_READ} peuvent
 être mis, mais pas \emph{IMAGE\_SCN\_MEM\_WRITE}.
-Un process plantera s'il essaye d'écrire dans cette section.
+Un processus plantera s'il essaye d'écrire dans cette section.
 \end{itemize}
 
 \myindex{TLS}
@@ -177,7 +177,7 @@ D'autres noms de section courants sont:
 \myindex{MIPS}
 \begin{itemize}
 \item \TT{.idata}---section d'imports.
-\ac{IDA} peut créer une pseudo-setion appelée ainsi: \myref{IDA_idata}.
+\ac{IDA} peut créer une pseudo-section appelée ainsi: \myref{IDA_idata}.
 \item \TT{.edata}---section d'exports section (rare)
 \item \TT{.pdata}---section contenant toutes les informations sur les exceptions
 dans Windows NT pout MIPS, \ac{IA64} et x64: \myref{SEH_win64}
@@ -189,7 +189,7 @@ dans Windows NT pout MIPS, \ac{IA64} et x64: \myref{SEH_win64}
 anciennes versions de MSVC
 \end{itemize}
 
-Les packeurs/chiffreurs rendent souvent les noms de sections initelligibles ou les
+Les packeurs/chiffreurs rendent souvent les noms de sections inintelligibles ou les
 remplacent avec des noms qui leurs sont propres.
 
 \ac{MSVC} permet de déclarer des données dans une section de n'importe quel nom
@@ -223,12 +223,12 @@ typedef struct _IMAGE_SECTION_HEADER {
 \footnote{\href{http://go.yurichev.com/17048}{MSDN}}
 
 \myindex{Hiew}
-Un mot à propos de le terminilogie: \emph{PointerToRawData} est appelé \q{Offset} dans
+Un mot à propos de le terminologie: \emph{PointerToRawData} est appelé \q{Offset} dans
 Hiew et \emph{VirtualAddress} est appelé \q{RVA} ici.
 
 \subsubsection{.rdata --- section de données en lecture seule (read-only)}
 
-Les chaînes sont générallement situées ici (car elles ont le type \TT{const char*}),
+Les chaînes sont généralement situées ici (car elles ont le type \TT{const char*}),
 ainsi que d'autres variables marquées comme \emph{const}, les noms des fonctions
 importées.
 
@@ -247,7 +247,7 @@ ou tout autre code \ac{PIC}.
 À quoi servent-elles?
 
 Évidemment, les modules peuvent être chargés à différentes adresse de base, mais
-comment traiter les variables globales, par exemple? Elles doivent être accèdées
+comment traiter les variables globales, par exemple? Elles doivent être accédées
 par adresse. Une solution est le \PICcode{} (\myref{sec:PIC}).
 Mais ce n'est pas toujours pratique.
 
@@ -304,7 +304,7 @@ Comme nous le savons, tout programme exécutable doit utiliser les services de l
 et autres bibliothèques d'une manière ou d'une autre.
 
 On peut dire que les fonctions d'un module (en général DLL) doivent être reliées
-aux points de leur appel dans les autres modules (fichier .exe ou eutre DLL).
+aux points de leur appel dans les autres modules (fichier .exe ou autre DLL).
 
 Pour cela, chaque DLL a une table d'\q{exports}, qui consiste en les fonctions plus
 leur adresse dans le module.
@@ -314,7 +314,7 @@ pour l'exécution incluant une liste des noms de DLL.
 
 Après le chargement du fichier .exe principal, le chargeur de l'\ac{OS} traite la
 table des imports: il charge les fichiers DLL additionnels, trouve les noms des fonctions
-parmis les exports des DLL et écrit leur adresse dans le module \ac{IAT} de l'.exe
+parmi les exports des DLL et écrit leur adresse dans le module \ac{IAT} de l'.exe
 principal.
 
 \myindex{Windows!Win32!Ordinal}
@@ -373,7 +373,7 @@ l'adresse \ac{RVA} de l'endroit où le chargeur écrit l'adresse résolue de la 
 Les endroits où le chargeur écrit les adresses sont marqués par \IDA comme ceci:
 \emph{\_\_imp\_CreateFileA}, etc.
 
-Il y a au moins deux façons d'utiliser les adresses écritent par le chargeur.
+Il y a au moins deux façons d'utiliser les adresses écrites par le chargeur.
 
 \myindex{x86!\Instructions!CALL}
 \begin{itemize}
@@ -429,7 +429,7 @@ avec le code d'erreur 5 (access denied). \\
 \\
 On pourrait demander: pourrais-je fournir à un programme un ensemble de fichiers
 DLL qui n'est pas supposé changer (incluant les adresses des fonctions DLL), est-il
-possible d'accélèrer le processus de chargement?
+possible d'accélérer le processus de chargement?
 
 Oui, il est possible d'écrire les adresses des fonctions qui doivent être importées
 en avance dans le tableau FirstThunk. Le champ \emph{Timestamp} est présent dans la
@@ -445,7 +445,7 @@ Ceci est appelé \q{old-style binding}
 \myindex{BIND.EXE}
 
 L'utilitaire BIND.EXE dans le SDK est fait pour ça.
-Pour accélèrer le chargement de votre programme, Matt Pietrek dans \PietrekPEURL,
+Pour accélérer le chargement de votre programme, Matt Pietrek dans \PietrekPEURL,
 suggère de faire le binding juste après l'installation de votre programme sur l'ordinateur
 de l'utilisateur final. \\
 \\
@@ -469,7 +469,7 @@ Supposément, c'est fait par soucis d'optimisation.
 Pendant le chargement, le fichier .exe n'est pas chargé dans la mémoire d'un seul
 coup (rappelez-vous ces fichiers d'installation énormes qui sont démarrés de façon
 douteusement rapide), ils sont \q{mappés}, et chargés en mémoire par parties lorsqu'elles
-sont accèdées.
+sont accédées.
 
 Les développeurs de Microsoft ont sûrement décidé que ça serait plus rapide.
 
