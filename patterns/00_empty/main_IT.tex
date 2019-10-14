@@ -20,8 +20,8 @@ C'è solo un'istruzione: \RET, la quale ritorna l'esecuzione al \gls{caller}.
 
 \lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) \assemblyOutput,style=customasmARM]{patterns/00_empty/1_Keil_ARM_O3.s}
 
-L-indirizzo di ritorno non viene salvato nello stack locale nella \ac{ISA} ARM, ma invece nel registro link,
-quindi l-istruzione \INS{BX LR} causa l-esecuzione di un salto (jump) a quell'indirizzo---effettivamente ritornando l'esecuzione
+L'indirizzo di ritorno non viene salvato nello stack locale nella \ac{ISA} ARM, ma invece nel registro link,
+quindi l'istruzione \INS{BX LR} causa l'esecuzione di un salto (jump) a quell'indirizzo---effettivamente ritornando l'esecuzione
 al \gls{caller}.
 
 \subsection{MIPS}
@@ -29,7 +29,7 @@ al \gls{caller}.
 Esistono due convenzioni utilizzate nel mondo MIPS quando vengono chiamati i registri:
 per numero (da \$0 a \$31) o per pseudonimo (\$V0, \$A0, etc.).
 
-L'outputo in assembly di GCC qua sotto elenca i registri per numero:
+L'output in assembly di GCC qua sotto elenca i registri per numero:
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (\assemblyOutput),style=customasmMIPS]{patterns/00_empty/MIPS.s}
 

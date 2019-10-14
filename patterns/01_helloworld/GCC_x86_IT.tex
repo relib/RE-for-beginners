@@ -49,9 +49,9 @@ Otteniamo questo:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC.s}
 
-Il listato contiene molte macro (iniziano con il punto). Per il momento non ci interessano.
+Il listato contiene molte macro (iniziano con il punto). Attualmente non ci interessano.
 
-Per il momento, e solo per una questione di semplificazione, possiamo ignorarle (fatta eccezione per la macro \emph{.string} che codifica una sequenza di caratteri che termina con il null-byte (zero) proprio come una stringa C). Consideriamo soltanto questo
+Per il momento, è solo per una questione di semplificazione, possiamo ignorarle (fatta eccezione per la macro \emph{.string} che codifica una sequenza di caratteri che termina con il null-byte (zero) proprio come una stringa C). Consideriamo soltanto questo
 \footnote{Questa opzione di GCC può essere usata per eliminare le macro \q{superflue}: \emph{-fno-asynchronous-unwind-tables}}:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/01_helloworld/GCC_refined.s}
