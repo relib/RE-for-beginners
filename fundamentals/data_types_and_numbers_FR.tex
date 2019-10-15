@@ -38,7 +38,7 @@ Toutes ces expressions sont toujours en usage.
 Les demi-octets ont été utilisés par des CPU 4-bits tel que le Intel 4004 (utilisé dans les calculatrices).
 
 On notera que la représentation \emph{binary-coded decimal} (\ac{BCD}) a été utilisée pour représenter les nombres sur 4 bits.
-L'entier 0 est représenté par la valeur 0b0000, l'entier 9 par 0b1001 tandis que les valeurs supérieurs ne sont pas utilisées.
+L'entier 0 est représenté par la valeur 0b0000, l'entier 9 par 0b1001 tandis que les valeurs supérieures ne sont pas utilisées.
 La valeur décimale 1234 est ainsi représentée par 0x1234.
 Il est évident que cette représentation n'est pas la plus efficace en matière d'espace.
 
@@ -172,7 +172,7 @@ Les capacités des paires de registres du Z80 en font, en quelque sorte, un ému
 
 En règle générale, un CPU présenté comme ''CPU n-bits'' possède des \ac{GPR}s dont la taille est de n bits.
 
-A une certaine époque, les disques durs et les barettes de \ac{RAM} étaient caractérisés comme ayant \emph{n} kilo-mots
+À une certaine époque, les disques durs et les barettes de \ac{RAM} étaient caractérisés comme ayant \emph{n} kilo-mots
 et non pas \emph{b} kilooctets/megaoctets.
 
 Par exemple, \emph{Apollo Guidance Computer}\footnote{\url{https://en.wikipedia.org/wiki/Apollo_Guidance_Computer}}
@@ -220,7 +220,7 @@ En conséquence, un \emph{double word} sur une architecture RISC 32 bits est un 
 \emph{GDB} utilise la terminologie suivante : \emph{demi-mot} pour 16 bits, \glslink{word}{mot} pour 32 bits et \emph{mot géant} pour 64 bits.
 
 Les environnements C/C++ 16 bits sur PDP-11 et MS-DOS définissent le type \emph{long} comme ayant une taille de 32 bits,
-ce qui serait sans doute une abbréviation de \emph{long word} ou de \emph{long int}.
+ce qui serait sans doute une abréviation de \emph{long word} ou de \emph{long int}.
 
 Les environnements C/C++ 32 bits définissent le type \emph{long long} dont la taille est de 64 bits.
 
@@ -267,7 +267,7 @@ spécialisés (\emph{IX}, \emph{IY}). En outre sur ce processeur les registres \
 \myindex{Cray}
 Le super calculateur Cray-1 possèdent des registres généraux de 64-bit, et des registres d'adressage de 24 bits.
 Il peut donc adresser $2^{24}$ octets, soit (16 mega mots ou 128 mega octets).
-La RAM coutaît très cher, et un Cray typique avait 1048576 (0x100000) mots de RAM, soit ~8MB.
+La RAM coûtait très cher, et un Cray typique avait 1048576 (0x100000) mots de RAM, soit ~8MB.
 Dans les années 70, la RAM était très coûteuse. Il paraissait alors inconcevable qu'un tel calculateur atteigne
 les 128 Mo. Dès lors pourquoi aurait-on utilisé des registres 64 bits pour l'adressage?
 
@@ -277,7 +277,7 @@ S'agirait-il d'une sorte de virtualisation gadget (\myref{8086_memory_model})?
 Les processeurs 8086 pouvaient en effet faire fonctionner plusieurs programmes côte à côte (mais pas simultanément bien sûr).
 
 \myindex{ARM!ARM1}
-Les premiers processeurs ARM1 implémentent un artéfact intéressant:
+Les premiers processeurs ARM1 implémentent un artefact intéressant:
 
 \begin{framed}
 \begin{quotation}
@@ -361,7 +361,7 @@ bonne chance qu'il s'agisse :
 
 Il en va à peu près de même pour les valeurs sur 64 bits.
 
-\myparagraph{\dots donc un \emph{int} sur 16 bits est suffisant pout à peu près n'importe quoi?}
+\myparagraph{\dots donc un \emph{int} sur 16 bits est suffisant pour à peu près n'importe quoi?}
 
 Il est intéressant de constater que dans \InSqBrackets{\MAbrash{} chapitre 13}
 nous pouvons lire qu'il existe pléthore de cas pour lesquels des variables sur 16 bits sont largement suffisantes.

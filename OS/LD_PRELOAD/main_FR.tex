@@ -3,7 +3,7 @@
 \myindex{LD\_PRELOAD}
 \label{ld_preload}
 
-Cela permet de charger nos propres bibilothèques dynamiques avant les autres, même celle du système, comme libc.so.6.
+Cela permet de charger nos propres bibliothèques dynamiques avant les autres, même celle du système, comme libc.so.6.
 
 Cela permet de \q{substituer} nos propres fonctions, avant celles originales des bibliothèques du système.
 Par exemple, il est facile d'intercepter tous les appels à
@@ -47,13 +47,13 @@ Le second est la part de ce temps pendant lequel la machine était inoccupée, e
 \myindex{\CStandardLibrary!close()}
 
 Essayons d'écrire notre propre bibliothèque dynamique, avec les fonctions
-open(), read(), close() fonctionnants comme nous en avons besoin.
+open(), read(), close() fonctionnant comme nous en avons besoin.
 
 Tout d'abord, notre fonction open() va comparer le nom du fichier à ouvrir avec celui que l'on veut modifier,
 et si c'est le cas, sauver le descripteur du fichier ouvert.
 
 Ensuite, si read() est appelé avec ce descripteur de fichier, nous allons substituer la sortie,
-et dans les autres cas, nous appelerons la fonction read() originale de libc.so.6.
+et dans les autres cas, nous appellerons la fonction read() originale de libc.so.6.
 Et enfin close() fermera le fichier que nous suivons.
 
 \myindex{dlopen()}

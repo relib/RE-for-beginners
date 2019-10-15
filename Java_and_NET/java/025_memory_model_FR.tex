@@ -10,12 +10,12 @@ Elle a:
 
 \begin{itemize}
 \item Le tableau des variables locales, Local Variable Array (\ac{LVA}).
-Utilisé comme stockage pour les paramètres en entrée de fonction et les variables
+Il est utilisé comme stockage pour les paramètres en entrée de fonction et les variables
 locales.
 
 Des instructions comme \INS{iload\_0} charge une valeur depuis cet espace.
 
-\INS{istore} stocke des valeurs dedans.
+\INS{istore} y stocke des valeurs.
 Au début les paramètres de la fonction sont stockés: commençant à 0 ou à 1 (si l'indice
 0 est occupé par le pointeur \emph{this}).
 
@@ -37,7 +37,7 @@ Contrairement aux environnements bas niveau comme x86, il n'est pas possible d'a
 la pile.
 
 
-\item Heap. Est utilisé pour le stockage d'objets et de tableaux.
+\item Heap. Il est utilisé pour le stockage d'objets et de tableaux.
 
 \end{itemize}
 
