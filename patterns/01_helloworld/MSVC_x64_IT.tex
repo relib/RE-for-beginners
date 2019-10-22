@@ -8,8 +8,7 @@ Proviamo anche con MSVC a 64-bit:
 \myindex{fastcall}
 
 In x86-64, tutti i registri sono stati estesi a 64-bit ed il loro nome ha il prefisso \TT{R-}.
-Per usare lo stack meno spesso (in altre parole, per accedere meno spesso alla memoria esterna/cache), esiste un metodo molto diffuso per passare gli argomenti delle funzioni tramite i registri (\emph{fastcall})
-\myref{fastcall}.
+Per usare lo stack meno spesso (in altre parole, per accedere meno spesso alla memoria esterna/cache), esiste un metodo molto diffuso per passare gli argomenti delle funzioni tramite i registri (\emph{fastcall}) \myref{fastcall}.
 Ovvero, una parte degli argomenti viene passata attraverso i registri, il resto ---attraverso lo stack.
 In Win64, 4 argomenti di funzione sono passati nei registri \RCX, \RDX, \Reg{8}, \Reg{9}.
 Questo è ciò che vediamo qui: un puntatore alla stringa per \printf è adesso passato nel registro \RCX anziché tramite lo stack.

@@ -60,17 +60,10 @@ In \RitchieThompsonUNIX possiamo leggere:
 
 \begin{framed}
 \begin{quotation}
-The user-core part of an image is divided into three logical segments.
-The program text segment begins at location 0 in the virtual address space.
-During execution, this segment is write-protected and a single copy of it is shared among all processes executing the same program.
-At the first 8K byte boundary above the program text segment in the virtual address space begins a nonshared, writable data segment, the size of which may be extended by a system call.
-Starting at the highest address in the virtual address space is a stack segment, which automatically grows downward as the hardware's stack pointer fluctuates.
-
 Il nucleo utente di una immagine è diviso in tre segmenti logici.
 Il segmento text del programma inizia in posizione 0 nel virtual address space.
 Durante l'esecuzione questo segmento viene protetto da scrittura, ed una sua singola copia viene condivisa tra i processi che eseguono lo stesso programma.
-Al primo limite di 8K byte sopra il segmento text del programma, nel virtual address space comincia un segmento dati scrivibile, non condiviso, le cui dimensioni possono essere estese da una chiamata di sistema.
-A partire dall'indirizzo più alto nel virtual address space c'è lo stack segment, che automaticammente cresce verso il basso al variare dello stack pointer hardware.
+Al primo limite di 8K byte sopra il segmento text del programma, nel virtual address space comincia un segmento dati scrivibile, non condiviso, le cui dimensioni possono essere estese da una chiamata di sistema.A partire dall'indirizzo più alto nel virtual address space c'è lo stack segment, che automaticammente cresce verso il basso al variare dello stack pointer hardware.
 \end{quotation}
 \end{framed}
 
