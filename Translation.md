@@ -87,7 +87,7 @@ There was a time (before Jan-2019) when I wrote this:
 	For those, who interested, § symbol is in fact switches you into TeX mode, and you can write anything here as in .tex files, like `\IT{italic}`, etc.
 	This is why single `$` symbol cannot be used inside escaped line.
 
-In Jan-2019 I learnt about "texcl=true" and now comments in listings are in TeX mode.
+In Jan-2019 I learnt about "texcl=true" and now all comments in listings are already in TeX mode.
 But, several characters needs to be escaped, as in usual TeX code: $, #, %, \, etc.
 To be on safe side, use \verb|comment|.
 But if a comment itself contains pipe symbol ("|"), you can do this: \verb!comment!.
