@@ -52,7 +52,7 @@ L'exemple peut être compilé\footnote{Les fichiers sha512.(c|h) et u64.h peuven
 pris de la bibliothèque OpenSSL:
 \url{http://go.yurichev.com/17324}}
 dans MSVC 2012:
-% FIXME1: \footnote{other source code files can be downloaded here: ...} 
+% FIXME1: \footnote{other source code files can be downloaded here: ...}
 
 \begin{lstlisting}
 cl openmp_example.c sha512.obj /openmp /O1 /Zi /Faopenmp_example.asm
@@ -80,7 +80,7 @@ Regardons \TT{\_main\$omp\$1}:
 
 Cette fonction va être démarrée $n$ fois en parallèle, où $n$ est le nombre de c\oe{}urs
 du \ac{CPU}.\\
-\TT{vcomp\_for\_static\_simple\_init()} 
+\TT{vcomp\_for\_static\_simple\_init()}
 calcul l'intervalle pour la construction for() du thread courant, dépendant du numéro
 du thread courant.
 
@@ -124,7 +124,7 @@ df6e3fe6019f5764fc9975e505a7395fed780fee50eb38dd4c0279cb114672e2 *test
 
 Le temps de traitement est $\approx2..3$ secondes sur un Intel Xeon E3-1220 3.10 GHz 4-core.
 Dans le gestionnaire de tâches nous voyons 5 threads:
-1 thread principale + 4 autres.
+1 thread principal + 4 autres.
 Il n'y a pas d'optimisations faites afin de garder cet exemple aussi petit et clair
 que possible.
 Mais probablement qu'on pourrait le rendre plus rapide.
@@ -153,8 +153,8 @@ Il semble que la fonction \TT{vcomp\_atomic\_add\_i4()} dans vcomp*.dll soit jus
 une minuscule fonction avec l'instruction \TT{LOCK XADD}\footnote{En savoir plus sur le préfixe LOCK: \myref{x86_lock}}
 dedans.
 
-\TT{vcomp\_enter\_critsect()} 
-appelle éventuellement la fonction de l'\ac{API} win32 \\
+\TT{vcomp\_enter\_critsect()}
+appelle finalement la fonction de l'\ac{API} win32 \\
 \TT{EnterCriticalSection()}
 \footnote{Vous pouvez en lire plus sur les sections critiques ici: \myref{critical_sections}}.
 
@@ -176,22 +176,22 @@ Contrairement à l'implémentation de MSVC, ce que le code de GCC fait est de d�
 3 threads et lance la quatrième dans le thread courant. Il y a donc 4 threads au
 lieu de 5 dans MSVC.
 
-Voici les fonctions \TT{main.\_omp\_fn.0}: 
+Voici les fonctions \TT{main.\_omp\_fn.0}:
 
 \lstinputlisting[caption=GCC 4.8.1,style=customasmx86]{advanced/700_openmp/GCC_1.asm}
 
 Ici nous voyons la division clairement: en appelant
 \TT{omp\_get\_num\_threads()} et \TT{omp\_get\_thread\_num()}
 
-nous obtenons le nombre de threads lancées, le nombre courant de threads,
+nous obtenons le nombre de threads lancés, le nombre courant de threads,
 et ainsi détermine l'intervalle de la boucle.
 Ensuite nous lançons \TT{check\_nonce()}.
 
 GCC a également inséré l'instruction \TT{LOCK ADD} directement dans le code, contrairement
-à MSVC, qui génère un appel qui génère un appel à une fonction DLL séparée:
+à MSVC, qui génère un appel à une fonction DLL séparée:
 
 \lstinputlisting[caption=GCC 4.8.1,style=customasmx86]{advanced/700_openmp/GCC_2.asm}
 
-Les fonctions préfixées par GOMP sont de la bibliothèques GNU OpenMP.
+Les fonctions préfixées par GOMP sont de la bibliothèque GNU OpenMP.
 Contrairement à vcomp*.dll, son code source est librement disponible:
 \href{http://go.yurichev.com/17102}{GitHub}.
