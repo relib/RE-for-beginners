@@ -16,14 +16,14 @@ les objets seront rechargés dans le pool partagé.
 
 Une chose inhabituelle à propos de la table fixée X\$KSMLRU est que le contenu de la table fixée est écrasé à chaque fois que
 quelqu'uni effectue requête dans la table fixée. Ceci est fait puisque la table fixée ne contient que l'allocation la plus large
-qui s'est produite. Les valeurs sont réinitialisées après avoir été sélectionnées, de sorte que les allocations importantes 
+qui s'est produite. Les valeurs sont réinitialisées après avoir été sélectionnées, de sorte que les allocations importantes
 suivantes puissent ête inscrites, même si elles ne sont pas aussi laarges que celles qui se sont produites précédemment.
 À cause de cette réinitialisation, la sortie produite par la sélection de cette table doit être soigneusement conservée
 puisqu'elle ne peut plus être récupérée après que la requête a été faite.
 \end{quotation}
 \end{framed}
 
-Touttefois, comme on peut le vérifier facilement, le contenu de cette table est effacé à chaque fois qu'on l'interroge.
+Toutefois, comme on peut le vérifier facilement, le contenu de cette table est effacé à chaque fois qu'on l'interroge.
 Pouvons-nous trouver pourquoi?
 Retournons aux tables que nous connaissons déjà: \TT{kqftab} et \TT{kqftap} qui
 sont générées avec l'aide d'\oracletables, qui a toutes les informations concernant les table X\$-.

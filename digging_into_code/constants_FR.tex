@@ -110,36 +110,36 @@ Stuxnet utilise le nombre ``19790509'' (pas comme un nombre 32-bit, mais comme u
 chaîne, toutefois), et ça a conduit à spéculer que le malware était relié à Israël%
 \footnote{C'est la date d'exécution de Habib Elghanian, juif persan.}.
 
-Aussi, des nombre comme ceux-ci sont très répandus dans dans le chiffrement niveau
+Aussi, des nombres comme ceux-ci sont très répandus dans dans le chiffrement niveau
 amateur, par exemple, extrait de la \emph{fonction secrète} des entrailles du dongle
 HASP3\footnote{\url{https://web.archive.org/web/20160311231616/http://www.woodmann.com/fravia/bayu3.htm}}:
 
 \begin{lstlisting}[style=customc]
-void xor_pwd(void) 
-{ 
-	int i; 
-	
+void xor_pwd(void)
+{
+	int i;
+
 	pwd^=0x09071966;
-	for(i=0;i<8;i++) 
-	{ 
-		al_buf[i]= pwd & 7; pwd = pwd >> 3; 
-	} 
+	for(i=0;i<8;i++)
+	{
+		al_buf[i]= pwd & 7; pwd = pwd >> 3;
+	}
 };
 
 void emulate_func2(unsigned short seed)
-{ 
-	int i, j; 
-	for(i=0;i<8;i++) 
-	{ 
-		ch[i] = 0; 
-		
+{
+	int i, j;
+	for(i=0;i<8;i++)
+	{
+		ch[i] = 0;
+
 		for(j=0;j<8;j++)
-		{ 
-			seed *= 0x1989; 
-			seed += 5; 
-			ch[i] |= (tab[(seed>>9)&0x3f]) << (7-j); 
+		{
+			seed *= 0x1989;
+			seed += 5;
+			ch[i] |= (tab[(seed>>9)&0x3f]) << (7-j);
 		}
-	} 
+	}
 }
 \end{lstlisting}
 
