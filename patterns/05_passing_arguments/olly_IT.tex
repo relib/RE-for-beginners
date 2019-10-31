@@ -4,12 +4,12 @@ Illustriamo il funzionamento con \olly.
 Quando raggiungiamo la prima istruzione in \ttf che usa uno degli argomenti (il primo) 
 notiamo che \EBP punta allo \gls{stack frame}, indentificato dal riquadro rosso.
 
-Il primo elemento dello \gls{stack frame} e' il valore salvato di \EBP, 
-il secondo e' il \ac{RA}, il terzo rappresenta il primo argomento della funzione, seguito dal secondo e terzo argomento.
+Il primo elemento dello \gls{stack frame} è il valore salvato di \EBP, 
+il secondo è il \ac{RA}, il terzo rappresenta il primo argomento della funzione, seguito dal secondo e terzo argomento.
 
-Per accedere al primo argomento della funzione bisogna aggiungere esattamente 8 (2 word a 32-bit) a \EBP.
+Per accedere al primo argomento della funzione bisogna aggiungere esattamente 8 (2 wor a 32-bit) a \EBP.
 
-\olly e' in grado di distinguere gli argomenti in quesot modo, ed ha aggiunto dei commenti agli elementi dello stack, ad esempio:
+\olly è in grado di distinguere gli argomenti in questo modo, ed ha aggiunto dei commenti agli elementi dello stack, ad esempio:
 
 \q{RETURN from} and \q{Arg1 = \dots}, etc.
 
@@ -21,6 +21,6 @@ Pertanto \olly ha contrassegnato gli elementi \q{Arg} come membri di un altro st
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/05_passing_arguments/olly.png}
-\caption{\olly: inside of \ttf{} function}
+\caption{\olly: dentro la funzione \ttf{}}
 \label{fig:passing_arguments_olly}
 \end{figure}
