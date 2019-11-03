@@ -70,7 +70,7 @@ void call_as_ver2()
 	draw_circle(&s);
 };
 
-// latest, most advanced version
+// latest, the most extended version
 void call_as_ver3()
 {
 	struct ver3 s;
