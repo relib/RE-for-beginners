@@ -421,7 +421,7 @@ PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 \url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.txt}.
 
 Питоновский скрипт, который я использовал:
-\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/decrypt_blocks.py}.
+\url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypt_blocks.py}.
 
 Вероятно, автор хотел чтобы каждый блок шифровался немного иначе, так что он/она использовал OrderID как часть ключа.
 А еще можно было бы делать разный ключ для AES вместо \ac{IV}.
@@ -474,7 +474,7 @@ PID=2068|Process software.exe exited. ExitCode=0 (0x0)
 После каждой строки есть еще 12 байт.
 
 Используя этот скрипт
-(\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/dump_buffer_rest.py})
+(\url{\GitHubBlobMasterURL/examples/encrypted_DB1/dump_buffer_rest.py})
 я получил случайную выборку из \emph{хвостов}:
 
 \lstinputlisting{examples/encrypted_DB1/tails.lst}
@@ -552,7 +552,7 @@ OrderID= 5 name= LENA MARCUS sum= 179.0 date= 2004 / 6 / 3
 \end{lstlisting}
 
 См. еще: \url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.with_data.txt}.
-Или отфильтрованные: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/decrypted.short.txt}.
+Или отфильтрованные: \url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypted.short.txt}.
 Похоже всё корректно.
 
 Это что-то вроде сериализации в \ac{OOP}, т.е., запаковка значений с разными типами в бинарный буфер для хранения и/или
@@ -636,7 +636,7 @@ OrderID= 286 name= MELANIE KIRK sum= 161.0 date= 2004 / 9 / 2
 Даты и суммы были сгенерированы случайным образом.
 
 Все файлы использованные в этой части здесь:
-\url{https://github.com/DennisYurichev/RE-for-beginners/tree/master/examples/encrypted_DB1}.
+\url{\GitHubTreeMasterURL/examples/encrypted_DB1}.
 
 Тем не менее, многие особенности как здесь, я наблюдал в настоящем ПО.
 Этот пример основан на них.
