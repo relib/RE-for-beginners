@@ -1,0 +1,31 @@
+\subsubsection{Utilisation de pointeurs indirects}
+
+\begin{lstlisting}[style=customasmx86]
+dummy_data1	db	100h dup (0)
+message1	db	'hello world',0
+
+dummy_data2	db	200h dup (0)
+message2	db	'another message',0
+
+func		proc
+		...
+		mov	eax, offset dummy_data1 ; PE or ELF reloc here
+		add	eax, 100h
+		push	eax
+		call	dump_string
+		...
+		mov	eax, offset dummy_data2 ; PE or ELF reloc here
+		add	eax, 200h
+		push	eax
+		call	dump_string
+		...
+func		endp
+\end{lstlisting}
+
+\IDA{} montrera seulement les références à \TT{dummy\_data1} et \TT{dummy\_data2},
+mais pas aux chaînes de textes.
+
+Les variables globales et même les fonctions peuvent être accédées comme ça.
+
+% TBT to be synced with _EN file
+
