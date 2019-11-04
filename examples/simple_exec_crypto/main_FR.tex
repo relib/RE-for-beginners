@@ -1,7 +1,7 @@
 \mysection{Casser le simple exécutable cryptor}
 
 J'ai un fichier exécutable qui est chiffré par un chiffrement relativement simple.
-\href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/cipher.bin}{Il est ici}
+\href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/cipher.bin}{Il est ici}
 (seule la section exécutable est laissée ici).
 
 Tout d'abord, tout ce que fait la fonction de chiffrement, c'est d'ajouter l'index
@@ -180,7 +180,7 @@ for N in range(KEY_LEN):
 \end{lstlisting}
 
 (Le code source peut être téléchargé
-\href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt.py}{ici}.)
+\href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypt.py}{ici}.)
 
 Je le lance et voici une clef pour laquelle le nombre d'octets 00/FF/8B dans le buffer
 déchiffré est maximum:
@@ -263,7 +263,7 @@ fout.close()
 \end{lstlisting}
 
 (Le code source peut être téléchargé
-\href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypt2.py}
+\href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypt2.py}
 {ici}.)
 
 Vérifions le fichier résultant:
@@ -272,7 +272,7 @@ Vérifions le fichier résultant:
 
 Oui, ceci semble être un morceau correctement désassemblé de code x86.
 Le fichier déchiffré entier peut être téléchargé
-\href{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/simple_exec_crypto/files/decrypted.bin}{ici}.
+\href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypted.bin}{ici}.
 
 En fait, ceci est la section text du regedit.exe de Windows 7.
 Mais cet exemple est basé sur un cas réel que j'ai rencontré, seul l'exécutable est

@@ -424,7 +424,7 @@ Now I have decrypted the whole database:
 \url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.txt}.
 
 The Python script used for this is:
-\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/decrypt_blocks.py}.
+\url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypt_blocks.py}.
 
 Perhaps, the author wanted each block encrypted differently, so he/she used OrderID as part of key.
 It would be also possible to make different AES key instead of \ac{IV}.
@@ -477,7 +477,7 @@ The first byte (or 16-bit word) is seems string length, we can visually check it
 There are 12 more bytes after each string.
 
 Using this script
-(\url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/dump_buffer_rest.py})
+(\url{\GitHubBlobMasterURL/examples/encrypted_DB1/dump_buffer_rest.py})
 I've got random selection of the \emph{tails}:
 
 \lstinputlisting{examples/encrypted_DB1/tails.lst}
@@ -555,7 +555,7 @@ OrderID= 5 name= LENA MARCUS sum= 179.0 date= 2004 / 6 / 3
 \end{lstlisting}
 
 See more: \url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.with_data.txt}.
-Or filtered: \url{https://github.com/DennisYurichev/RE-for-beginners/blob/master/examples/encrypted_DB1/decrypted.short.txt}.
+Or filtered: \url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypted.short.txt}.
 Seems correct.
 
 This is some kind of \ac{OOP} serialization, i.e., packing differently typed values into binary buffer for storing and/or transmitting.
@@ -638,7 +638,7 @@ I've got most popular USA names and surnames from there: \url{http://stackoverfl
 and combined them randomly.
 Dates and sums were also generated randomly.
 
-All files used in this part are here: \url{https://github.com/DennisYurichev/RE-for-beginners/tree/master/examples/encrypted_DB1}.
+All files used in this part are here: \url{\GitHubTreeMasterURL/examples/encrypted_DB1}.
 
 Nevertheless, many features like these I've observed in real-world software applications.
 This example is based on them.

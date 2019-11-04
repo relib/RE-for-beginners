@@ -134,34 +134,7 @@ ins1_label:	instruction 1
 exit:
 \end{lstlisting}
 
-\subsubsection{Using indirect pointers}
-
-\begin{lstlisting}[style=customasmx86]
-dummy_data1	db	100h dup (0)
-message1	db	'hello world',0
-
-dummy_data2	db	200h dup (0)
-message2	db	'another message',0
-
-func		proc
-		...
-		mov	eax, offset dummy_data1 ; PE or ELF reloc here
-		add	eax, 100h
-		push	eax
-		call	dump_string
-		...
-		mov	eax, offset dummy_data2 ; PE or ELF reloc here
-		add	eax, 200h
-		push	eax
-		call	dump_string
-		...
-func		endp
-\end{lstlisting}
-
-\IDA{} will show references only to \TT{dummy\_data1} and \TT{dummy\_data2}, 
-but not to the text strings.
-
-Global variables and even functions may be accessed like that.
+\input{\CURPATH/indirect_EN}
 
 \subsection{Virtual machine / pseudo-code}
 
