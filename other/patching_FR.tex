@@ -1,21 +1,5 @@
 ﻿\mysection{Modification de fichier exécutable}
-
-\subsection{Chaînes de caractères}
-
-Les chaînes de caractères du langage C sont les plus faciles à modifier (sauf si elles sont chiffrées)
-avec un simple éditeur hexadécimal. La technique peut être mise en oeuvre même par ceux qui ne
-connaissent ni le langage machine, ni le format des fichiers exécutables.
-Il faut toutefois que la nouvelle chaîne de caractères ne soit pas plus longue que l'ancienne, sinon
-il existe un risque d'écraser une autre valeur ou du code exécutable.
-
-\myindex{MS-DOS}
-
-C'est en utilisant cette méthode que de nombreux programmes ont été traduits à l'époque de MS-DOS,
-du moins dans les années 80 et 90 dans l'ex-URSS. Elle aboutissait parfois à la présence de quelques abréviations folkloriques dans la traduction, faute de place pour des chaînes plus longues.
-
-\myindex{Borland Delphi}
-
-En ce qui concerne Delphi, la taille de la chaîne de caractères doit elle aussi être ajustée.
+\label{patching}
 
 \subsection{code x86}
 \label{x86_patching}

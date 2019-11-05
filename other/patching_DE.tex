@@ -1,23 +1,5 @@
 \mysection{Patchen von ausführbaren Dateien}
-
-\subsection{Zeichenketten}
-
-Zeichenketten in C können sehr einfach mit einem Hex-Editor verändert werden,
-sofern sie nicht verschlüsselt sind.
-Diese Technik kann sogar von denen angewandt werden, die nicht viel von Maschinencode
-und Formaten von ausführbaren Dateien verstehen.
-Die neue Zeichenkette darf nicht größer sein als die alte, da sonst die Gefahr
-groß ist, dass ein anderer Wert oder Code überschrieben wird.
-\myindex{MS-DOS}
-
-Mit dieser Methode wurde in der MS-DOS-Ära eine Vielzahl von Software \emph{übersetzt},
-zumindest in den ehemaligen USSR-Staaten in den 80er- und 90er-Jahren.
-Aus diesem Grund existieren einige seltsame Abkürzungen in den \emph{übersetzten}
-Programmen: es gab keinen Platz für längere Zeichenketten.
-
-\myindex{Borland Delphi}
-
-In Delphi müssen die Längen der Zeichenketten falls nötig korrigiert werden.
+\label{patching}
 
 \subsection{x86-Code}
 \label{x86_patching}
