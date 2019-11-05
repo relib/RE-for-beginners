@@ -1,5 +1,6 @@
 (This file is poorly maintained, since there is no reason to keep it at all...)
 
+   Nov-2019: Many blog posts from yurichev.com/blog has been copypasted into the book
    Jan-2019: There was a time when \IT macro was used for italic text and \ITA for Italian text.
              To be consistent, I'm using \emph for italic text now and \IT for Italian text.
              True for filename suffixes as well.
@@ -17,7 +18,7 @@
 20-Jul-2016: The book is now licensed under CC BY-SA 4.0 (like Wikipedia)
              instead of CC NC-ND 3.0.
 16-Jul-2016: Blog posts about C/C++ pointers has been copypasted into the book
-14-Jul-2016: No more LITE version, which was somewhat unpopular
+14-Jul-2016: No more LITE version, which was somewhat unwanted
 04-Nov-2015: All exercises has been moved to http://challenges.re
 21-Mar-2015: toupper() function example
 18-Mar-2015: Lite (introductory) version
