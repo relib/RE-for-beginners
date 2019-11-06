@@ -1,21 +1,5 @@
 \mysection{Executable files patching}
-
-\subsection{Text strings}
-
-The C strings are the thing that is the easiest to patch (unless they are encrypted) in any hex editor.
-This technique is available even for those who are not aware of machine code and executable file formats.
-The new string has not to be bigger than the old one, because there's a risk of overwriting another value or code
-there.
-\myindex{MS-DOS}
-
-Using this method, a lot of software was \emph{localized} in the MS-DOS era, at least in the ex-USSR countries in 80's
-and 90's.
-It was the reason why some weird abbreviations were present in the \emph{localized} software: there was no room for
-longer strings.
-
-\myindex{Borland Delphi}
-
-As for Delphi strings, the string's size must also be corrected, if needed.
+\label{patching}
 
 \subsection{x86 code}
 \label{x86_patching}
