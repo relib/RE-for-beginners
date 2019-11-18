@@ -19,10 +19,10 @@ La forma grezza di un jump condizionale e' la seguente:
 CMP register, register/value
 Jcc true ; cc=condition code
 false:
-... codice da eseguire se il risultato del confronto e' false ...
+... codice da eseguire se il risultato del confronto è false ...
 JMP exit 
 true:
-... codice da eseguire se il risultato del confronto e' true ...
+... codice da eseguire se il risultato del confronto è true ...
 exit:
 \end{lstlisting}
 
@@ -32,10 +32,10 @@ exit:
 CMP register, register/value
 Bcc true ; cc=condition code
 false:
-... codice da eseguire se il risultato del confronto e' false ...
+... codice da eseguire se il risultato del confronto è false ...
 JMP exit 
 true:
-... codice da eseguire se il risultato del confronto e' true ...
+... codice da eseguire se il risultato del confronto è true ...
 exit:
 \end{lstlisting}
 
@@ -78,16 +78,16 @@ BEQ REG1, label
 \myindex{ARM!\Instructions!MOVcc}
 \myindex{x86!\Instructions!CMOVcc}
 \myindex{ARM!\Instructions!CSEL}
-Se il corpo di uno statement condizionale e' molto piccolo, puo' essere utilizzata l'istruzione "move" condizionale: 
+Se il corpo di uno statement condizionale è molto piccolo, può essere utilizzata l'istruzione "move" condizionale: 
 \INS{MOVcc} in ARM (in ARM mode), \INS{CSEL} in ARM64, \INS{CMOVcc} in x86.
 
 \myparagraph{ARM}
 
-In ARM e' possibile usare suffissi condizionali per alcune istruzioni:
+In ARM è possibile usare suffissi condizionali per alcune istruzioni:
 
 \begin{lstlisting}[caption=ARM (\ARMMode),style=customasmARM]
 CMP register, register/value
-instr1_cc ; istruzione che sara' eseguita se il condition code e' true
+instr1_cc ; istruzione che sarà eseguita se il condition code è true
 instr2_cc ; altra istruzione che sara' eseguita se il condition code e' true
 ... etc...
 \end{lstlisting}
