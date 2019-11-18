@@ -3,7 +3,27 @@
 \label{Angband}
 
 An ancient rogue-like game from 1990's
-\footnote{\url{https://en.wikipedia.org/wiki/Angband_(video_game)}, \url{http://rephial.org/}} had a nice bug:
+\footnote{\url{https://en.wikipedia.org/wiki/Angband_(video_game)}, \url{http://rephial.org/}}
+had a nice bug in the spirit of
+the ``Roadside Picnic''\footnote{\url{https://en.wikipedia.org/wiki/Roadside_Picnic}} by Strugatsky brothers
+or ``The Lost Room'' TV series\footnote{\url{https://en.wikipedia.org/wiki/The_Lost_Room}}:
+
+\begin{framed}
+\begin{quotation}
+The frog-knows version was abundant of bugs.
+The funniest of them led to a cunning technique of cheating the game, that was called "mushroom farming".
+If there were more than a certain number (about five hundred) of objects in the labyrinth, the game would break,
+and many old things turned into objects thrown to the floor. Accordingly, the player went into the maze,
+he made such longitudinal grooves there (with a special spell), and walked along the grooves,
+creating mushrooms with another special spell.
+When there were a lot of mushrooms, the player put and took, put and took some useful item,
+and mushrooms one by one turned into this subject.
+After that, the player returned with hundreds of copies of the useful item.
+\end{quotation}
+\end{framed}
+( Misha ``tiphareth'' Verbitsky, \url{http://imperium.lenin.ru/CEBEP/arc/3/lightmusic/light.htm} )
+
+And some information from usenet:
 
 \begin{lstlisting}
 From: be...@uswest.com (George Bell)
@@ -112,9 +132,9 @@ Nicholas C. Weaver       perpetual ensign guppy      nwe...@soda.berkeley.edu
 
 The whole thread: \url{https://groups.google.com/forum/#!search/angband$202.4$20bug$20multiplying$20items/rec.games.moria/jItmfrdGyL8/FoQeiccewHAJ}.
 
-The author of these lines found the version with the bug (2.4 fk)
+The author of these lines has found the version with the bug (2.4 fk)
 \footnote{\url{http://rephial.org/release/2.4.fk}, \url{https://yurichev.com/mirrors/angband-2.4.fk.tar}},
-and we can clearly see how global arrays are declared:
+and we can clearly see how the global arrays are declared:
 
 \begin{lstlisting}[style=customc]
 /* Number of dungeon objects */
