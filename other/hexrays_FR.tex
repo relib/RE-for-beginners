@@ -79,7 +79,7 @@ f               proc    near
         	fadd    dword ptr [esp+8]
                 fst     dword ptr [esp+12]
 	        fcomp   ds:const_100
-                fld     dword ptr [esp+16]      ; commenter cette instruction et ça sera OK%% comment this instruction and it will be OK
+                fld     dword ptr [esp+16]      ; commenter cette instruction et ça sera OK
 	        fnstsw  ax
         	test    ah, 1
 
@@ -139,7 +139,6 @@ f               proc    near
 	        sub     eax, [esp+8]
         	; EAX=EAX-a2
 
-                %%; EAX at this point somehow gets promoted to 64-bit (RAX)
                 ; EAX à ce point est converti en 64-bit (RAX)
 
 	        cdq
@@ -461,7 +460,7 @@ Mathematica ajoute deux nouvelles variables: \TT{Compile`\$1} et  \TT{Compile`\$
 qui vont être ré-utilisées plusieurs fois dans l'expression.
 Donc, nous pouvons ajouter deux variables supplémentaires.
 
-%\input{other/DeMorgan_FR}
+\input{other/DeMorgan_FR}
 
 \subsection{Mon plan}
 
