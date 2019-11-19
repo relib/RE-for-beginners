@@ -57,6 +57,8 @@ There is also rafind2 in rada.re for the same purpose.
 \footnote{\href{http://go.yurichev.com/17031}{hex-rays.com/products/ida/support/download\_freeware.shtml}}.
 \ShortHotKeyCheatsheet: \myref{sec:IDA_cheatsheet}
 
+\item \emph{Ghidra}\footnote{\url{https://ghidra-sre.org/}} --- free alternative to IDA from \ac{NSA}.
+
 \item \emph{Binary Ninja}\footnote{\url{http://binary.ninja/}}
 
 \item (Free, open-source) \emph{zynamics BinNavi}\footnote{\url{https://www.zynamics.com/binnavi.html}}
@@ -69,10 +71,10 @@ dump information about ELF file.
 
 \subsection{Decompilers}
 
-There is only one known, publicly available, high-quality decompiler to C code: \emph{Hex-Rays}:\\
-\href{http://go.yurichev.com/17033}{hex-rays.com/products/decompiler/}
-
+The best known is \emph{Hex-Rays}: \url{http://hex-rays.com/products/decompiler/}.
 Read more about it: \myref{hex_rays}.
+
+There is also a free alternative from \ac{NSA}: \emph{Ghidra}\footnote{\url{https://ghidra-sre.org/}}.
 
 \subsection{Patch comparison/diffing}
 
@@ -213,6 +215,15 @@ Some useful options: \myref{sec:MSVC_options}.
 There is a website named ``Compiler Explorer'', allowing to compile small code snippets and see output
 in various GCC versions and architectures
 (at least x86, ARM, MIPS): \url{http://godbolt.org/}---I would have used it myself for the book if I would know about it!
+
+\subsection{SMT solvers}
+
+From the reverse engineer's perspective, SMT solvers are used when dealing with
+amateur cryptography,
+symbolic/concolic execution,
+ROP chains generation.
+
+For more information, read: \url{https://yurichev.com/writings/SAT_SMT_by_example.pdf}.
 
 \subsection{Calculators}
 
