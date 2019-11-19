@@ -48,11 +48,6 @@ Size economy. And as drawback~---the CPU accessing these fields slower than it c
 簡単に推測できるように、構造体が多くのソースファイルとオブジェクトファイルで使用されている場合、
 構造体パッキングについてはすべて同じ規則でコンパイルする必要があります。
 
-\newcommand{\FNURLMSDNZP}{\footnote{\href{http://go.yurichev.com/17067}
-{MSDN: Working with Packing Structures}}}
-\newcommand{\FNURLGCCPC}{\footnote{\href{http://go.yurichev.com/17068}
-{Structure-Packing Pragmas}}}
-
 各構造体フィールドの配置方法を設定するMSVC \TT{/Zp}オプションの他に、
 \TT{\#pragma pack}コンパイラオプションもあります。このオプションはソースコード内で直接定義できます。 
 MSVC\FNURLMSDNZP と GCC\FNURLGCCPC{} の両方で利用できます。

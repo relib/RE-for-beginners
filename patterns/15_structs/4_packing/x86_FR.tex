@@ -46,11 +46,6 @@ plus rapide qu'un appel à \TT{memcpy()}: \myref{copying_short_blocks}.
 Comme vous pouvez le deviner, si la structure est utilisée dans de nombreux fichiers sources et objets, ils 
 doivent tous être compilés avec la même convention de compactage de la structure.
 
-\newcommand{\FNURLMSDNZP}{\footnote{\href{http://go.yurichev.com/17067}
-{MSDN: Working with Packing Structures}}}
-\newcommand{\FNURLGCCPC}{\footnote{\href{http://go.yurichev.com/17068}
-{Structure-Packing Pragmas}}}
-
 Au delà de l'option MSVC \TT{/Zp} qui permet de définir l'alignement des champs des structures, il existe 
 également l'option du compilateur \TT{\#pragma pack} qui peut être utilisée directement dans le code source.
 Elle est supportée aussi bien par MSVC\FNURLMSDNZP que pars GCC\FNURLGCCPC{}.
