@@ -247,9 +247,10 @@ Now the \verb|invalid_parameter()| function:
 .text:6FFB6A0B                 pop     ebp
 .text:6FFB6A0C                 jmp     sub_6FFB6930
 .text:6FFB6A0C _invalid_parameter endp
+\end{lstlisting}
 
 The \verb|invalid_parameter()| function eventually calls the function with \verb|OutputDebugStringA()|:
-\ref{msvcrt_output}.
+\myref{msvcrt_output}.
 
 You see, the stricmp() code is like:
 
