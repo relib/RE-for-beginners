@@ -26,7 +26,7 @@ You compile your project, but the C file where \verb|printer()| is residing, isn
 because your \ac{IDE} or build system
 has no idea that module depends on a \emph{test} struct definition.
 Maybe because \verb|#include <new.h>| is omitted.
-Or maybe, \verb|new.h| header file is included \verb|in printer.c| via some other header file.
+Or maybe, \verb|new.h| header file is included in \verb|printer.c| via some other header file.
 The object file remains untouched (\ac{IDE} thinks it doesn't need to be recompiled),
 while \verb|setter()| function is already a new version.
 These two object files (old and new) eventually linked into an executable file.
