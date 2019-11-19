@@ -57,14 +57,5 @@ How to install and run Cyc?
 
 \myhrule{}
 
-A win32 process A is running.
-Process B is attaching to it as a debugger, or opens it using OpenProcess().
-ReadProcessMemory() works OK, but fails if it tries to read uncommited memory pages of process A.
-
-The problem: how to force the Windows Memory Manager to commit a page in process A from userland of process B?
-I can inject a read instruction into process A, run it, and the page would be committed, but this is not the solution.
-
-\myhrule{}
-
 If you know something, please help me: \EMAIL{}, Telegram: @yurichev
 
