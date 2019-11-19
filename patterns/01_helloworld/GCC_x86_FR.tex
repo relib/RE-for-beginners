@@ -15,7 +15,7 @@ En plus, le prologue de la fonction comprend \INS{AND ESP, 0FFFFFFF0h}~---cette
 instruction aligne le registre \ESP sur une limite de 16-octet.
 Ainsi, toutes les valeurs sur la pile seront alignées de la même manière (Le CPU
 est plus performant si les adresses avec lesquelles il travaille en mémoire sont
-alignées sur des limites de 4-octet ou 16-octet)\footnote{\URLWPDA}.
+alignées sur des limites de 4-octet ou 16-octet).
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} réserve 16 octets sur la pile. Pourtant, comme nous allons le voir, seuls 4 sont nécessaires ici.

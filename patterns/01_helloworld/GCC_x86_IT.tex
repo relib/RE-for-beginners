@@ -14,7 +14,7 @@ Il risultato è pressoché lo stesso.
 L'indirizzo della stringa \TT{hello, world} (memorizzato nel data segment) è caricato prima nel registro \EAX e successivamente salvato sullo stack.
 Inoltre, il prologo della funzione contiene \TT{AND ESP, 0FFFFFFF0h}~---questa
 istruzione allinea il valore del registro \ESP a 16-byte.
-Ciò fa sì che tutti i valori sullo stack siano allineati allo stesso modo (la CPU è più efficiente se i valori che tratta sono collocati in memoria ad indirizzi allineati a multipli di 4 o 16 byte)\footnote{\URLWPDA}.
+Ciò fa sì che tutti i valori sullo stack siano allineati allo stesso modo (la CPU è più efficiente se i valori che tratta sono collocati in memoria ad indirizzi allineati a multipli di 4 o 16 byte).
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} alloca 16 byte sullo stack. Tuttavia, come vedremo a breve, solo 4 sono necessari in questo caso.

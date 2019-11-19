@@ -92,8 +92,7 @@ alignés)---charge juste 16 octets depuis la mémoire dans un registre XMM.
 seuls les 32-bit bas du résultat sont stockés.
 Si un des opérandes de \PADDD est l'adresse d'une valeur en mémoire, alors l'adresse
 doit être alignée sur une limite de 16 octets.
-Si elle n'est pas alignée, une exception est levée\footnote{En savoir plus sur l'alignement
-des données: \URLWPDA}.
+Si elle n'est pas alignée, une exception est levée.
 
 \item
 \MOVDQA (\emph{Move Aligned Double Quadword}) est la même chose que \MOVDQU, mais nécessite

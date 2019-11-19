@@ -13,7 +13,7 @@ Die Adresse der \TT{hello, world}-Zeichenkette (im Daten-Segment) wird zunächst
 Zusätzlich beinhaltet der Funktions-Prolog \INS{AND ESP, 0FFFFFFF0h}~---diese
 Anweisung richtet den \ESP-Register-Wert an eine 16-Byte-Grenze aus.
 Dies führt dazu, dass alle Werte im Stack auf die gleiche Weise ausgerichtet sind.
-Die CPU kann Anweisungen schneller ausführen, wenn die zu verarbeitenden Daten auf einer an 4- oder 16-Byte-Grenzen ausgerichteten Adresse liegen\footnote{\URLWPDA}.
+Die CPU kann Anweisungen schneller ausführen, wenn die zu verarbeitenden Daten auf einer an 4- oder 16-Byte-Grenzen ausgerichteten Adresse liegen.
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} reserviert 16 Byte auf dem Stack, auch wenn - wie später gezeigt wird - nur 4 Byte benötigt werden.

@@ -82,8 +82,7 @@ Die SSE2-Befehle sind:
 Hier wird übrigens bei einem Überlauf keine Exception geworfen und auch keine Flags gesetzt, aber es werden dann nur die
 niederen 23 Bit des Ergebnisses gespeichert.
 Wenn einer der Operanden von \PADDD die Speicheradresse eines Wertes ist, muss sich die Adresse auf einer 16-Byte-Grenze
-befinden. Ist dies nicht der Fall, wird eine Exception ausgelöst\footnote{Mehr zur Anordnung von Daten im Speicher
-unter:\URLWPDA}.
+befinden. Ist dies nicht der Fall, wird eine Exception ausgelöst.
 
 \item
 \MOVDQA (\emph{Move Aligned Double Quadword}) entspricht \MOVDQU, verlangt aber, dass die Adresse des Wertes im Speicher

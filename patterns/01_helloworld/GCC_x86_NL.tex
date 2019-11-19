@@ -13,7 +13,7 @@ Het adres van de \TT{hello, world} string (opgeslagen in het data segment) wordt
 Daarbovenop vind je in de functie proloog hetvolgende terug: \TT{AND ESP, 0FFFFFFF0h}~---
 deze instructie lijnt de \ESP registerwaarde uit op een 16-byte begrenzing.
 Dit resulteert in het feit dat alle waarden op de stack op dezelfde manier uitgelijnd worden.
-De CPU presteert beter als de waarden die hij moet behandelen gelokaliseerd zijn in het geheugen op adressen die gealigneerd zijn op een 4-byte of 16-byte begrenzing.\footnote{URLWPDA}.
+De CPU presteert beter als de waarden die hij moet behandelen gelokaliseerd zijn in het geheugen op adressen die gealigneerd zijn op een 4-byte of 16-byte begrenzing.
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} reserveert 16 bytes op de stack. Zoals we hierna echter kunnen zijn, zijn er in dit geval slechts 4 nodig.

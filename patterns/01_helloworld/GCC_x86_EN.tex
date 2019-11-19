@@ -15,7 +15,7 @@ The address of the \TT{hello, world} string (stored in the data segment) is load
 In addition, the function prologue has \INS{AND ESP, 0FFFFFFF0h}~---this
 instruction aligns the \ESP register value on a 16-byte boundary.
 This results in all values in the stack being aligned the same way (The CPU performs better if the values it is dealing with are located in memory at addresses aligned
-on a 4-byte or 16-byte boundary)\footnote{\URLWPDA}.
+on a 4-byte or 16-byte boundary).
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} allocates 16 bytes on the stack. Although, as we can see hereafter, only 4 are necessary here.
