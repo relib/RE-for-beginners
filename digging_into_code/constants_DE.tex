@@ -17,10 +17,8 @@ und im \ac{ROM} von IBM-Kompatiblen Erweiterung Karten benutzt.
 Manche Algorithmen, speziell die Kryptografischen benutzen eindeutige Konstanten, die mit der Hilfe von \IDA einfach im Code zu finden sind.
 
 \myindex{MD5}
-\newcommand{\URLMD}{http://go.yurichev.com/17111}
 
-Zum Beispiel, der MD5\footnote{\href{\URLMD}{wikipedia}} Algorithmus initialisiert seine Internen Variablen wie folgt:
-
+Zum Beispiel, der MD5 Algorithmus initialisiert seine Internen Variablen wie folgt:
 
 \begin{verbatim}
 var int h0 := 0x67452301
@@ -51,14 +49,11 @@ In tabellenlosen CRC-Algorithmen werden bekannte Polynome benutzt, zum Beispiel,
 \subsection{Magic numbers}
 \label{magic_numbers}
 
-\newcommand{\FNURLMAGIC}{\footnote{\href{http://go.yurichev.com/17112}{wikipedia}}}
-
-Viele Datei-Formate definieren einen Standard-Dateiheader in dem eine \emph{magic number(s)}\FNURLMAGIC{} benutzt wird, einzelne oder sogar mehrere. 
+Viele Datei-Formate definieren einen Standard-Dateiheader in dem eine \emph{magic number(s)} benutzt wird, einzelne oder sogar mehrere. 
 
 \myindex{MS-DOS}
 
-Zum Beispiel, alle Win32 und MS-DOS executable starten mit zwei Zeichen \q{MZ}\footnote{\href{http://go.yurichev.com/17113}{wikipedia}}.
-
+Zum Beispiel, alle Win32 und MS-DOS executable starten mit zwei Zeichen \q{MZ}.
 
 \myindex{MIDI}
 

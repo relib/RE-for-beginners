@@ -7,25 +7,23 @@
 関数へのポインタは、他のポインタと同様に、コードセグメント内の関数の開始アドレスにすぎません。
 
 \myindex{Callbacks}
-それらはコールバック関数を呼び出すためによく使われます\footnote{\href{http://go.yurichev.com/17071}{wikipedia}}。
+それらはコールバック関数を呼び出すためによく使われます。
 
 よく知られている例は次のとおりです。
 
 \begin{itemize}
-\item 標準Cライブラリの \qsort\footnote{\href{http://go.yurichev.com/17072}{wikipedia}},
-{\TT{atexit()}}\footnote{\url{http://go.yurichev.com/17073}}
+\item 標準Cライブラリの \qsort,
+\TT{atexit()}
 
-\item *NIX OS シグナル\footnote{\href{http://go.yurichev.com/17074}{wikipedia}};
+\item *NIX OS シグナル
 
 \item スレッド開始: \TT{CreateThread()} (win32), \TT{pthread\_create()} (POSIX);
 
-\item 多くのwin32関数、例えば\TT{EnumChildWindows()}\footnote{\href{http://go.yurichev.com/17075}{MSDN}}.
+\item 多くのwin32関数、例えば\TT{EnumChildWindows()}.
 
-\item Linuxカーネル内部の色々なところで、例えばファイルシステムドライバ関数はコールバック経由で呼び出されます：
-\url{http://go.yurichev.com/17076}
+\item Linuxカーネル内部の色々なところで、例えばファイルシステムドライバ関数はコールバック経由で呼び出されます.
 
-\item GCCプラグイン関数もコールバック経由で呼び出されます：
-\url{http://go.yurichev.com/17077}
+\item GCCプラグイン関数もコールバック経由で呼び出されます.
 
 \end{itemize}
 

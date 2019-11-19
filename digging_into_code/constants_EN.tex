@@ -19,9 +19,8 @@ Some algorithms, especially cryptographical ones use distinct constants, which a
 in code using \IDA.
 
 \myindex{MD5}
-\newcommand{\URLMD}{http://go.yurichev.com/17111}
 
-For example, the MD5\footnote{\href{\URLMD}{wikipedia}} algorithm initializes its own internal variables like this:
+For example, the MD5 algorithm initializes its own internal variables like this:
 
 \begin{verbatim}
 var int h0 := 0x67452301
@@ -51,13 +50,11 @@ In tableless CRC algorithms well-known polynomials are used, for example, 0xEDB8
 \subsection{Magic numbers}
 \label{magic_numbers}
 
-\newcommand{\FNURLMAGIC}{\footnote{\href{http://go.yurichev.com/17112}{wikipedia}}}
-
-A lot of file formats define a standard file header where a \emph{magic number(s)}\FNURLMAGIC{} is used, single one or even several.
+A lot of file formats define a standard file header where a \emph{magic number(s)} is used, single one or even several.
 
 \myindex{MS-DOS}
 
-For example, all Win32 and MS-DOS executables start with the two characters \q{MZ}\footnote{\href{http://go.yurichev.com/17113}{wikipedia}}.
+For example, all Win32 and MS-DOS executables start with the two characters \q{MZ}.
 
 \myindex{MIDI}
 

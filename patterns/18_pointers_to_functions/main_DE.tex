@@ -7,26 +7,23 @@ Ein Pointer auf eine Funktion ist genau wie alle anderen Pointer nur die Adresse
 beginnt.
 
 \myindex{Callbacks}
-Sie werden oft für Callback-Funktionen verwendet\footnote{\href{http://go.yurichev.com/17071}{wikipedia}}.
+Sie werden oft für Callback-Funktionen verwendet.
 
 Bekannte Beispiele hierfür sind:
 
 \begin{itemize}
-\item \qsort\footnote{\href{http://go.yurichev.com/17072}{wikipedia}},
-{\TT{atexit()}}\footnote{\url{http://go.yurichev.com/17073}} aus der Standard C Bibliothek; 
+\item \qsort, \TT{atexit()} aus der Standard C Bibliothek; 
 
-\item *NIX OS Signale\footnote{\href{http://go.yurichev.com/17074}{wikipedia}};
+\item *NIX OS Signale;
 
 \item Thread Start: \TT{CreateThread()} (win32), \TT{pthread\_create()} (POSIX);
 
-\item viele win32 Funktionen wie \TT{EnumChildWindows()}\footnote{\href{http://go.yurichev.com/17075}{MSDN}}.
+\item viele win32 Funktionen wie \TT{EnumChildWindows()}.
 
 \item viele Stellen im Linux kernel, zum Beispiel werden die Treiber für das Dateisystem über Callback-Funktionen
-aufgerufen:
-\url{http://go.yurichev.com/17076}
+aufgerufen.
 
-\item Die GCC Plugin-Functions werden ebenfalls über Callbacks aufgerufen: 
-\url{http://go.yurichev.com/17077}
+\item Die GCC Plugin-Functions werden ebenfalls über Callbacks aufgerufen.
 \end{itemize}
 
 \myindex{\CStandardLibrary!qsort()}
