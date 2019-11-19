@@ -56,3 +56,8 @@ Indeed, if we look in the
 \ac{WRK} v1.2 source code, this code
 can be found easily in file \\
 \emph{WRK-v1.2\textbackslash{}base\textbackslash{}ntos\textbackslash{}ke\textbackslash{}i386\textbackslash{}cpu.asm}.
+
+\par 
+As of \INS{RCL}, I could find it in ntoskrnl.exe file from Windows 2003 x86 (MS Visual C compiler).
+It is occurred only once, in \TT{RtlExtendedLargeIntegerDivide()} function, and this might be inline assembler code case.
+

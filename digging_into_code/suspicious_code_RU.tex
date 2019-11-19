@@ -49,3 +49,7 @@
 Действительно, если заглянуть в исходные коды 
 \ac{WRK} v1.2, данный код можно найти в файле \\
 \emph{WRK-v1.2\textbackslash{}base\textbackslash{}ntos\textbackslash{}ke\textbackslash{}i386\textbackslash{}cpu.asm}.
+
+\par 
+А инструкцию \INS{RCL}, я смог найти в файле ntoskrnl.exe из Windows 2003 x86 (компилятор MS Visual C).
+Она встречается только один раз, в ф-ции \TT{RtlExtendedLargeIntegerDivide()}, и это может быть вставка на ассемблере.

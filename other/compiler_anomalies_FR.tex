@@ -33,7 +33,17 @@ référencée. Elle était donc inutile.
 Il s'agit probablement d'un bug du générateur de code du compilateur qui ne fut pas découvert durant 
 les tests de celui-ci car le code produit fonctionnait conformément aux résultats attendus.
 
+% TBT
+% Another example from \oracle 11.1.0.6.0 for win32.
+
+%\begin{lstlisting}
+%.text:0051FBF8 85 C0                             test    eax, eax
+%.text:0051FBFA 0F 84 8F 00 00 00                 jz      loc_51FC8F
+%.text:0051FC00 74 1D                             jz      short loc_51FC1F
+%\end{lstlisting}
+
 \input{other/anomaly2_FR}
+%\input{other/anomaly3_FR}
 
 \subsection{Résumé}
 
