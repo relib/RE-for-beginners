@@ -163,8 +163,7 @@ Here is how the Russian language string is encoded in UTF-16LE:
 \end{figure}
 
 What we can easily spot is that the symbols are interleaved by the diamond character (which has the ASCII code of 4).
-Indeed, the Cyrillic symbols are located in the fourth Unicode plane
-\footnote{\href{http://go.yurichev.com/17003}{wikipedia}}.
+Indeed, the Cyrillic symbols are located in the fourth Unicode plane.
 Hence, all Cyrillic symbols in UTF-16LE are located in the \TT{0x400-0x4FF} range.
 
 Let's go back to the example with the string written in multiple languages.

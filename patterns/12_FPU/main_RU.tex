@@ -1,13 +1,6 @@
 \mysection{\FPUChapterName}
 \label{sec:FPU}
 
-\newcommand{\FNURLSTACK}{\footnote{\href{http://go.yurichev.com/17123}{wikipedia.org/wiki/Stack\_machine}}}
-\newcommand{\FNURLFORTH}{\footnote{\href{http://go.yurichev.com/17124}{wikipedia.org/wiki/Forth\_(programming\_language)}}}
-\newcommand{\FNURLIEEE}{\footnote{\href{http://go.yurichev.com/17125}{wikipedia.org/wiki/IEEE\_floating\_point}}}
-\newcommand{\FNURLSP}{\footnote{\href{http://go.yurichev.com/17126}{wikipedia.org/wiki/Single-precision\_floating-point\_format}}}
-\newcommand{\FNURLDP}{\footnote{\href{http://go.yurichev.com/17127}{wikipedia.org/wiki/Double-precision\_floating-point\_format}}}
-\newcommand{\FNURLEP}{\footnote{\href{http://go.yurichev.com/17128}{wikipedia.org/wiki/Extended\_precision}}}
-
 \ac{FPU}~--- блок в процессоре работающий с числами с плавающей запятой.
 
 Раньше он назывался \q{сопроцессором} и он стоит немного в стороне от \ac{CPU}.
@@ -19,15 +12,14 @@
 
 \subsection{x86}
 
-Перед изучением \ac{FPU} в x86 полезно ознакомиться с тем как работают стековые машины\FNURLSTACK 
-или ознакомиться с основами языка Forth\FNURLFORTH.
+Перед изучением \ac{FPU} в x86 полезно ознакомиться с тем как работают стековые машины
+или ознакомиться с основами языка Forth.
 
 \myindex{Intel!80486}
 \myindex{Intel!FPU}
 Интересен факт, что в свое время (до 80486) сопроцессор был отдельным чипом на материнской плате, 
 и вследствие его высокой цены, он не всегда присутствовал. Его можно было докупить и установить отдельно
-\footnote{Например, Джон Кармак использовал в своей игре Doom числа с фиксированной запятой 
-(\href{http://go.yurichev.com/17357}{ru.wikipedia.org/wiki/Число\_с\_фиксированной\_запятой}), хранящиеся
+\footnote{Например, Джон Кармак использовал в своей игре Doom числа с фиксированной запятой, хранящиеся
 в обычных 32-битных \ac{GPR} (16 бит на целую часть и 16 на дробную),
 чтобы Doom работал на 32-битных компьютерах без FPU, т.е. 80386 и 80486 SX.}.
 Начиная с 80486 DX в состав процессора всегда входит FPU.
@@ -43,7 +35,7 @@
 FPU имеет стек из восьми 80-битных регистров: \ST{0}..\ST{7}.
 Для краткости, \IDA и \olly отображают \ST{0} как \GTT{ST},
 что в некоторых учебниках и документациях означает \q{Stack Top} (\q{вершина стека}).
-Каждый регистр может содержать число в формате IEEE 754\FNURLIEEE.
+Каждый регистр может содержать число в формате IEEE 754.
 
 \subsection{ARM, MIPS, x86/x64 SIMD}
 
@@ -56,16 +48,16 @@ FPU имеет стек из восьми 80-битных регистров: \S
 \myindex{float}
 \myindex{double}
 В стандартных \CCpp имеются два типа для работы с числами с плавающей запятой: 
-\Tfloat (\emph{число одинарной точности}\FNURLSP, 32 бита)
+\Tfloat (\emph{число одинарной точности}, 32 бита)
 \footnote{Формат представления чисел с плавающей точкой одинарной точности затрагивается в разделе 
 \emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}).}
-и \Tdouble (\emph{число двойной точности}\FNURLDP, 64 бита).
+и \Tdouble (\emph{число двойной точности}, 64 бита).
 
 В \InSqBrackets{\TAOCPvolII 246} мы можем найти что \emph{single-precision} означает, что значение с плавающей точкой может быть
 помещено в одно [32-битное] машинное слово, а \emph{doulbe-precision} означает, что оно размещено в двух словах (64 бита).
 
 \myindex{long double}
-GCC также поддерживает тип \emph{long double} (\emph{extended precision}\FNURLEP, 80 бит), но MSVC~--- нет.
+GCC также поддерживает тип \emph{long double} (\emph{extended precision}, 80 бит), но MSVC~--- нет.
 
 Несмотря на то, что \Tfloat занимает столько же места, сколько и \Tint на 32-битной архитектуре, 
 представление чисел, разумеется, совершенно другое.
@@ -95,8 +87,7 @@ IEEE 754 нужно использовать пару инструкций \INS{
 \subsection{Стек, калькуляторы и обратная польская запись}
 
 \myindex{Обратная польская запись}
-Теперь понятно, почему некоторые старые программируемые калькуляторы используют обратную польскую запись
-\footnote{\href{http://go.yurichev.com/17355}{ru.wikipedia.org/wiki/Обратная\_польская\_запись}}.
+Теперь понятно, почему некоторые старые программируемые калькуляторы используют обратную польскую запись.
 
 Например для сложения 12 и 34 нужно было набрать 12, потом 34, потом нажать знак \q{плюс}.
 

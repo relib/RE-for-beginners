@@ -45,10 +45,7 @@ used, because it's faster than a call to \TT{memcpy()}---for short blocks, of co
 As it can be easily guessed, if the structure is used in many source and object files,
 all these must be compiled with the same convention about structures packing.
 
-\newcommand{\FNURLMSDNZP}{\footnote{\href{http://go.yurichev.com/17067}
-{MSDN: Working with Packing Structures}}}
-\newcommand{\FNURLGCCPC}{\footnote{\href{http://go.yurichev.com/17068}
-{Structure-Packing Pragmas}}}
+
 
 Aside from MSVC \TT{/Zp} option which sets how to align each structure field, there is also
 the \TT{\#pragma pack} compiler option, which can be defined right in the source code.

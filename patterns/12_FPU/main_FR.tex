@@ -1,13 +1,6 @@
 ﻿\mysection{\FPUChapterName}
 \label{sec:FPU}
 
-\newcommand{\FNURLSTACK}{\footnote{\href{http://go.yurichev.com/17123}{wikipedia.org/wiki/Stack\_machine}}}
-\newcommand{\FNURLFORTH}{\footnote{\href{http://go.yurichev.com/17124}{wikipedia.org/wiki/Forth\_(programming\_language)}}}
-\newcommand{\FNURLIEEE}{\footnote{\href{http://go.yurichev.com/17125}{wikipedia.org/wiki/IEEE\_floating\_point}}}
-\newcommand{\FNURLSP}{\footnote{\href{http://go.yurichev.com/17126}{wikipedia.org/wiki/Single-precision\_floating-point\_format}}}
-\newcommand{\FNURLDP}{\footnote{\href{http://go.yurichev.com/17127}{wikipedia.org/wiki/Double-precision\_floating-point\_format}}}
-\newcommand{\FNURLEP}{\footnote{\href{http://go.yurichev.com/17128}{wikipedia.org/wiki/Extended\_precision}}}
-
 Le \ac{FPU} est un dispositif à l'intérieur du \ac{CPU}, spécialement conçu pour
 traiter les nombres à virgules flottantes.
 
@@ -20,8 +13,8 @@ appelé \emph{fraction}) et un \emph{exposant}.
 
 \subsection{x86}
 
-Ça vaut la peine de jeter un \oe{}il sur les machines à base de piles\FNURLSTACK ou
-d'apprendre les bases du langage Forth\FNURLFORTH, avant d'étudier le \ac{FPU} en
+Ça vaut la peine de jeter un \oe{}il sur les machines à base de piles ou
+d'apprendre les bases du langage Forth, avant d'étudier le \ac{FPU} en
 x86.
 
 \myindex{Intel!80486}
@@ -30,7 +23,6 @@ Il est intéressant de savoir que dans le passé (avant le CPU 80486) le coproce
 était une puce séparée et n'était pas toujours préinstallé sur la carte mère. Il
 était possible de l'acheter séparément et de l'installer\footnote{Par exemple, John
 Carmack a utilisé des valeurs arithmétiques à virgule fixe
-(\href{http://go.yurichev.com/17356}{wikipedia.org/wiki/Fixed-point\_arithmetic})
 dans son jeu vidéo Doom, stockées dans des registres 32-bit \ac{GPR} (16 bit pour
 la partie entière et 16 bit pour la partie fractionnaire), donc Doom pouvait fonctionner
 sur des ordinateurs 32-bit sans FPU, i.e., 80386 et 80486 SX.}.
@@ -49,7 +41,7 @@ passés à un coprocesseur séparé.
 \label{FPU_is_stack}
 
 Le FPU a une pile capable de contenir 8 registres de 80-bit, et chaque registre peut
-contenir un nombre au format IEEE 754\FNURLIEEE.
+contenir un nombre au format IEEE 754.
 
 Ce sont \ST{0}..\ST{7}. Par concision, \IDA et \olly montrent \ST{0} comme \GTT{ST},
 qui est représenté dans certains livres et manuels comme \q{Stack Top}.
@@ -67,9 +59,9 @@ La même idéologie est utilisée dans l'extension SIMD des CPUs x86/x64.
 \myindex{double}
 
 Le standard des langages \CCpp offre au moins deux types de nombres à virgule flottante,
-\Tfloat (\emph{simple-précision}\FNURLSP, 32 bits) \footnote{le format des nombres
+\Tfloat (\emph{simple-précision}, 32 bits) \footnote{le format des nombres
 à virgule flottante simple précision est aussi abordé dans la section \emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct})}
-et \Tdouble  (\emph{double-précision}\FNURLDP, 64 bits).
+et \Tdouble (\emph{double-précision}, 64 bits).
 
 Dans \InSqBrackets{\TAOCPvolII 246} nous pouvons trouver que \emph{simple-précision}
 signifie que la valeur flottante peut être stockée dans un simple mot machine [32-bit],
@@ -77,7 +69,7 @@ signifie que la valeur flottante peut être stockée dans un simple mot machine 
 
 \myindex{long double}
 
-GCC supporte également le type \emph{long double} (\emph{précision étendue}\FNURLEP,
+GCC supporte également le type \emph{long double} (\emph{précision étendue},
 80 bit), que MSVC ne supporte pas.
 
 Le type \Tfloat nécessite le même nombre de bits que le type \Tint dans les environnements
@@ -113,8 +105,7 @@ Néanmoins, la même chose peut-être effectuée plus facilement avec l'instruct
 \myindex{Notation polonaise inverse}
 
 Maintenant nous comprenons pourquoi certains anciens calculateurs utilisent la notation
-Polonaise inverse
-\footnote{\href{http://go.yurichev.com/17354}{wikipedia.org/wiki/Reverse\_Polish\_notation}}.
+Polonaise inverse.
 
 Par exemple, pour additionner 12 et 34, on doit entrer 12, puis 34, et presser le
 signe \q{plus}.

@@ -40,10 +40,6 @@ gebräuchlich, da es schneller ist als ein Funktionsaufruf von \TT{memcpy()}---z
 Man kann sich leicht überlegen, dass, wenn ein struct in vielen Quellcode und Objektdateien verwendet wird, alle diese
 mit der gleichen Konvention bezüglich des Packens in structs kompiliert werden müssen.
 
-\newcommand{\FNURLMSDNZP}{\footnote{\href{http://go.yurichev.com/17067}
-{MSDN: Working with Packing Structures}}}
-\newcommand{\FNURLGCCPC}{\footnote{\href{http://go.yurichev.com/17068}
-{Structure-Packing Pragmas}}}
 Neben der Option \TT{Zp} in MSVC, die die Anordnung der Felder von structs festlegt, gibt es auch die
 Compileroption \TT{\#pragma pack}, die direkt im Quellcode definiert werden kann.
 Sie ist sowohl in MSVC\FNURLMSDNZP als auch in GCC\FNURLGCCPC{} verfügbar.

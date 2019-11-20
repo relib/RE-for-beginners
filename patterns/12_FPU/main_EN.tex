@@ -1,13 +1,6 @@
 \mysection{\FPUChapterName}
 \label{sec:FPU}
 
-\newcommand{\FNURLSTACK}{\footnote{\href{http://go.yurichev.com/17123}{wikipedia.org/wiki/Stack\_machine}}}
-\newcommand{\FNURLFORTH}{\footnote{\href{http://go.yurichev.com/17124}{wikipedia.org/wiki/Forth\_(programming\_language)}}}
-\newcommand{\FNURLIEEE}{\footnote{\href{http://go.yurichev.com/17125}{wikipedia.org/wiki/IEEE\_floating\_point}}}
-\newcommand{\FNURLSP}{\footnote{\href{http://go.yurichev.com/17126}{wikipedia.org/wiki/Single-precision\_floating-point\_format}}}
-\newcommand{\FNURLDP}{\footnote{\href{http://go.yurichev.com/17127}{wikipedia.org/wiki/Double-precision\_floating-point\_format}}}
-\newcommand{\FNURLEP}{\footnote{\href{http://go.yurichev.com/17128}{wikipedia.org/wiki/Extended\_precision}}}
-
 The \ac{FPU} is a device within the main \ac{CPU}, specially designed to deal with floating point numbers.
 
 It was called \q{coprocessor} in the past and it stays somewhat aside of the main \ac{CPU}.
@@ -18,7 +11,7 @@ A number in the IEEE 754 format consists of a \emph{sign}, a \emph{significand} 
 
 \subsection{x86}
 
-It is worth looking into stack machines\FNURLSTACK or learning the basics of the Forth language\FNURLFORTH,
+It is worth looking into stack machines or learning the basics of the Forth language,
 before studying the \ac{FPU} in x86.
 
 \myindex{Intel!80486}
@@ -26,7 +19,7 @@ before studying the \ac{FPU} in x86.
 It is interesting to know that in the past (before the 80486 CPU) the coprocessor was a separate chip 
 and it was not always pre-installed on the motherboard. It was possible to buy it separately and install it
 \footnote{For example, John Carmack used fixed-point arithmetic 
-(\href{http://go.yurichev.com/17356}{wikipedia.org/wiki/Fixed-point\_arithmetic}) values in his Doom video game, stored in 
+values in his Doom video game, stored in 
 32-bit \ac{GPR} registers (16 bit for integral part and another 16 bit for fractional part), so Doom
 could work on 32-bit computers without FPU, i.e., 80386 and 80486 SX.}.
 
@@ -43,7 +36,7 @@ opcodes passed to a separate coprocessor.
 \label{FPU_is_stack}
 
 The FPU has a stack capable to holding 8 80-bit registers, and each register can hold a number 
-in the IEEE 754\FNURLIEEE format.
+in the IEEE 754 format.
 
 They are \ST{0}..\ST{7}. For brevity, \IDA and \olly show \ST{0} as \GTT{ST}, 
 which is represented in some textbooks and manuals as \q{Stack Top}.
@@ -59,17 +52,17 @@ The same ideology is used in the SIMD extensions of x86/x64 CPUs.
 \myindex{float}
 \myindex{double}
 
-The standard \CCpp languages offer at least two floating number types, \Tfloat (\emph{single-precision}\FNURLSP, 32 bits)
+The standard \CCpp languages offer at least two floating number types, \Tfloat (\emph{single-precision}, 32 bits)
 \footnote{the single precision floating point number format is also addressed in 
 the \emph{\WorkingWithFloatAsWithStructSubSubSectionName}~(\myref{sec:floatasstruct}) section}
-and \Tdouble (\emph{double-precision}\FNURLDP, 64 bits).
+and \Tdouble (\emph{double-precision}, 64 bits).
 
 In \InSqBrackets{\TAOCPvolII 246} we can find the \emph{single-precision} means that the floating point value can be placed into a single
 [32-bit] machine word, \emph{double-precision} means it can be stored in two words (64 bits).
 
 \myindex{long double}
 
-GCC also supports the \emph{long double} type (\emph{extended precision}\FNURLEP, 80 bit), which MSVC doesn't.
+GCC also supports the \emph{long double} type (\emph{extended precision}, 80 bit), which MSVC doesn't.
 
 The \Tfloat type requires the same number of bits as the \Tint type in 32-bit environments, 
 but the number representation is completely different.
@@ -98,8 +91,7 @@ Nevertheless, same can be achieved easier by usual \INS{MOV} instruction, which,
 
 \myindex{Reverse Polish notation}
 
-Now we understand why some old programmable calculators use reverse Polish notation
-\footnote{\href{http://go.yurichev.com/17354}{wikipedia.org/wiki/Reverse\_Polish\_notation}}.
+Now we understand why some old programmable calculators use reverse Polish notation.
 
 For example, for addition of 12 and 34 one has to enter 12, then 34, then press \q{plus} sign.
 

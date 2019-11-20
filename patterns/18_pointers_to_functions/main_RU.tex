@@ -7,26 +7,23 @@
 в сегменте кода.
 
 \myindex{Callbacks}
-Это часто применяется для вызовов т.н. callback-функций \footnote{\href{http://go.yurichev.com/17071}{wikipedia}}.
+Это часто применяется для вызовов т.н. callback-функций.
 
 Известные примеры:
 
 \begin{itemize}
-\item \qsort\footnote{\href{http://go.yurichev.com/17072}{wikipedia}},
-{\TT{atexit()}}\footnote{\url{http://go.yurichev.com/17073}} из стандартной библиотеки Си; 
+\item \qsort, \TT{atexit()} из стандартной библиотеки Си; 
 
-\item сигналы в *NIX ОС\footnote{\href{http://go.yurichev.com/17074}{wikipedia}};
+\item сигналы в *NIX ОС;
 
 \item запуск тредов: \TT{CreateThread()} (win32), \TT{pthread\_create()} (POSIX);
 
-\item множество функций win32, например \TT{EnumChildWindows()}\footnote{\href{http://go.yurichev.com/17075}{MSDN}}.
+\item множество функций win32, например \TT{EnumChildWindows()}.
 
 \item множество мест в ядре Linux, например, функции драйверов файловой системы вызываются
-через callback-и: 
-\url{http://go.yurichev.com/17076}
+через callback-и.
 
-\item функции плагинов GCC также вызываются через callback-и: 
-\url{http://go.yurichev.com/17077}
+\item функции плагинов GCC также вызываются через callback-и.
 
 \end{itemize}
 

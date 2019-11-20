@@ -19,9 +19,8 @@ Certains algorithmes, particulièrement ceux de chiffrement, utilisent des const
 distinctes, qui sont faciles à trouver dans le code en utilisant \IDA.
 
 \myindex{MD5}
-\newcommand{\URLMD}{http://go.yurichev.com/17111}
 
-Par exemple, l'algorithme MD5\footnote{\href{\URLMD}{Wikipédia}} initialise ses propres
+Par exemple, l'algorithme MD5 initialise ses propres
 variables internes comme ceci:
 
 \begin{verbatim}
@@ -54,9 +53,7 @@ exemple 0xEDB88320 pour CRC32.
 \subsection{Nombres magiques}
 \label{magic_numbers}
 
-\newcommand{\FNURLMAGIC}{\footnote{\href{http://go.yurichev.com/17112}{Wikipédia}}}
-
-De nombreux formats de fichier définissent un entête standard où un \emph{nombre(s) magique}\FNURLMAGIC{}
+De nombreux formats de fichier définissent un entête standard où un \emph{nombre(s) magique}
 est utilisé, unique ou même plusieurs.
 
 \myindex{MS-DOS}

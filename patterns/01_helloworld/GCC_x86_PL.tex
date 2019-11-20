@@ -12,7 +12,7 @@ Prawie to samo.
 Adres linii \TT{hello, world}, leżącej w segmencie danych, najpierw jest zapisywany do \EAX, a później odkładany na stos.
 Jeszcze w prologu f-cji widzimy \TT{AND ESP, 0FFFFFFF0h}~--- 
 ta instrukcja wyrównuje \ESP do granicy 16-bajtowej, wyrównując wszystkie pozycje 
-na stosie według tego schematu (co zapewnia szybszy dostęp przez mikroprocesor)\footnote{\URLWPDA}.
+na stosie według tego schematu (co zapewnia szybszy dostęp przez mikroprocesor).
 
 \myindex{x86!\Instructions!SUB}
 \INS{SUB ESP, 10h} przydziela na stosie 16 bajtów. Choć tutaj wystarczą 4 bajty, co będzie widoczne dalej.
