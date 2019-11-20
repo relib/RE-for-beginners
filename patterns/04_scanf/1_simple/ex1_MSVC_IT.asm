@@ -27,7 +27,7 @@ _main    PROC
     call   _printf
     add    esp, 8
 
-    ; return 0
+    ; ritorna 0
     xor    eax, eax
     mov    esp, ebp
     pop    ebp

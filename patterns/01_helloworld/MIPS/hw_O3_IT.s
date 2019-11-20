@@ -23,5 +23,5 @@ main:
 ; ritorna saltando al RA:
 	j	$31
 ; epilogo della funzione:
-	addiu	$sp,$sp,32 ; branch delay slot + free local stack
+	addiu	$sp,$sp,32 ; branch delay slot + liberazione dello stack locale
 

@@ -36,6 +36,6 @@
 .text:00000054                 lw      $ra, 0x20+var_4($sp)
 .text:00000058                 lw      $fp, 0x20+var_8($sp)
 .text:0000005C                 addiu   $sp, 0x20
-; return
+; ritorna
 .text:00000060                 jr      $ra
 .text:00000064                 or      $at, $zero ; NOP

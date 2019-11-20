@@ -14,7 +14,7 @@ main:
 	adrp	x0, .LC7
 	add	x0, x0, :lo12:.LC7
 	bl	printf
-; return 0
+; ritorna 0
 	mov	w0, 0
 ; ripristina FP and LR
 	ldp	x29, x30, [sp], 16

@@ -54,7 +54,7 @@ Allocare spazio nello \q{shadow space} è responsabilità del chiamante (\gls{ca
 In System V *NIX (\SysVABI) non è richiesto lo \q{shadow space}, ma la funizone chiamata (\gls{callee}) potrebbe aver bisogno di salvare
 i suoi argomenti da qualche parte in caso di scarsità di registri a disposizione.
 
-\subsubsection{GCC: uint64\_t instead of int}
+\subsubsection{GCC: uint64\_t al posto di int}
 
 Il nostro esempio utilizza \Tint a 32-bit, motivo per cui viene usata la parte a 32-bit del registro (con prefisso \TT{E-}).
 

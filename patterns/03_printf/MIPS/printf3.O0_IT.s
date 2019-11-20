@@ -35,6 +35,6 @@ main:
 	lw	$31,28($sp)
 	lw	$fp,24($sp)
 	addiu	$sp,$sp,32
-; return
+; ritorna
 	j	$31
 	nop

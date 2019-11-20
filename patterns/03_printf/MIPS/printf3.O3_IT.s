@@ -24,6 +24,6 @@ main:
 	lw	$31,28($sp)
 ; imposta il valore di ritorno a 0:
 	move	$2,$0
-; return
+; ritorna
 	j	$31
 	addiu	$sp,$sp,32 ; branch delay slot

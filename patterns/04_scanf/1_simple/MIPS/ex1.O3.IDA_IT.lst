@@ -36,6 +36,6 @@
 .text:00000054          lw      $ra, 0x28+var_4($sp)
 ; imposta il valore di ritorno a 0:
 .text:00000058          move    $v0, $zero
-; return:
+; ritorna:
 .text:0000005C          jr      $ra
 .text:00000060          addiu   $sp, 0x28 ; branch delay slot

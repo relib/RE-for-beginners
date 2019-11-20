@@ -27,7 +27,7 @@ main            proc near
                 lea     rcx, $SG2931    ; "\%d\textbackslash{}n"
                 call    printf
 
-                ; return 0
+                ; ritorna 0
                 xor     eax, eax
                 add     rsp, 28h
                 retn

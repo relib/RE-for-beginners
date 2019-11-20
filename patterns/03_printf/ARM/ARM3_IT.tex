@@ -17,7 +17,7 @@ fastcall~(\myref{fastcall}) o win64~(\myref{sec:callingconventions_win64}).
 .text:0000000C 01 10 A0 E3   MOV     R1, #1
 .text:00000010 08 00 8F E2   ADR     R0, aADBDCD     ; "a=\%d; b=\%d; c=\%d"
 .text:00000014 06 00 00 EB   BL      __2printf
-.text:00000018 00 00 A0 E3   MOV     R0, #0          ; return 0
+.text:00000018 00 00 A0 E3   MOV     R0, #0          ; ritorna 0
 .text:0000001C 10 80 BD E8   LDMFD   SP!, {R4,PC}
 \end{lstlisting}
 

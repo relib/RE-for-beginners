@@ -16,7 +16,7 @@ main:
 	mov	DWORD PTR [rsp], 6
 	call	printf
 
-	; return 0
+	; ritorna 0
 
 	xor	eax, eax
 	add	rsp, 40

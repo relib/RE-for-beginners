@@ -1,7 +1,7 @@
 _TEXT	SEGMENT
-_a$ = 8		; size = 4
-_b$ = 12	; size = 4
-_c$ = 16	; size = 4
+_a$ = 8		; dimensione = 4
+_b$ = 12	; dimensione = 4
+_c$ = 16	; dimensione = 4
 _f	PROC
 	push	ebp
 	mov	ebp, esp
@@ -24,7 +24,7 @@ _main	PROC
 	push	OFFSET $SG2463 ; '\%d', 0aH, 00H
 	call	_printf
 	add	esp, 8
-	; return 0
+	; ritorna 0
 	xor	eax, eax
 	pop	ebp
 	ret	0

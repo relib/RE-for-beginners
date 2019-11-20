@@ -42,7 +42,7 @@ f6:
 	add	x0, x0, :lo12:.LC3
 	bl	puts
 .L3:
-; return 0
+; ritorna 0
 	mov	w0, 0
 ; ripristina FP e LR:
 	ldp	x29, x30, [sp], 32
