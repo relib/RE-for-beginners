@@ -8,18 +8,18 @@ Per vedere come altri argomenti sono passati tramite lo stack, cambiamo nuovamen
 
 \myparagraph{MSVC}
 
-Come gia' detto in precedenza, i primi 4 argomenti devono essere passati tramite i registri \RCX, \RDX, \Reg{8}, \Reg{9} in Win64,
+Come già detto in precedenza, i primi 4 argomenti devono essere passati tramite i registri \RCX, \RDX, \Reg{8}, \Reg{9} in Win64,
 mentre tutto il resto ---tramite lo stack.
 E' esattamente quello che vediamo qui.
-Tuttavia, l'istruzione \MOV instruction e' usata al posto di \PUSH per preparare lo stack, in modo tale che i valori siano memorizzati
+Tuttavia, l'istruzione \MOV instruction è usata al posto di \PUSH per preparare lo stack, in modo tale che i valori siano memorizzati
 nello stack in maniera diretta.
 
 % TODO translate to Italian
-\lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/03_printf/x86/2_MSVC_x64_EN.asm}
+\lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/03_printf/x86/2_MSVC_x64_IT.asm}
 
-Il lettore attento potrebbe chiedere perche' per i valori \Tint sono allocati 8 byte quando ne bastano 4?
-Bisogna ricordare che per ogni tipo di dato piu' piccolo di 64 bit, sono allocati 8 byte.
-Questo e' stabilito per convenienza: rende piu' facile calcolare l'indirizzo di argomenti arbitrari. E inoltre fa si che tutti
+Il lettore attento potrebbe chiedere perchè per i valori \Tint sono allocati 8 byte quando ne bastano 4?
+Bisogna ricordare che per ogni tipo di dato più piccolo di 64 bit, sono allocati 8 byte.
+Questo è stabilito per convenienza: rende più facile calcolare l'indirizzo di argomenti arbitrari. E inoltre fa si che tutti
 siano allocati ad indirizzi di memoria allineati.
 Succede lo stesso in ambienti a 32-bit environments: sono riservati 4 byte per ogni tipo di dato.
 
@@ -27,16 +27,16 @@ Succede lo stesso in ambienti a 32-bit environments: sono riservati 4 byte per o
 
 \myparagraph{GCC}
 
-L'immagine e' simile per i sistemi operativi x86-64 e *NIX, con l'eccezzione che i primi 6 argomenti sono passati attraverso
+L'immagine è simile per i sistemi operativi x86-64 e *NIX, con l'eccezzione che i primi 6 argomenti sono passati attraverso
 i registri \RDI, \RSI, \RDX, \RCX, \Reg{8}, \Reg{9} registers.
 Tutto il resto ---tramite lo stack.
 GCC genera il codice memorizzando il puntatore alla stringa in \EDI invece che \RDI{}---lo abbiamo visto in precedenza: 
 \myref{hw_EDI_instead_of_RDI}.
 
-Abbiamo anche notato prima che il registro \EAX e' stato azzerato prima di una chiamata a \printf: \myref{SysVABI_input_EAX}.
+Abbiamo anche notato prima che il registro \EAX è stato azzerato prima di una chiamata a \printf: \myref{SysVABI_input_EAX}.
 
 % TODO translate to Italian
-\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64,style=customasmx86]{patterns/03_printf/x86/2_GCC_x64_EN.s}
+\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64,style=customasmx86]{patterns/03_printf/x86/2_GCC_x64_IT.s}
 
 \myparagraph{GCC + GDB}
 \myindex{GDB}
@@ -105,14 +105,14 @@ Effettuiamo un dump dello stack, questa volta con il comando x/g ---\emph{g} sta
 0x7fffffffdf78:	0x00007fffffffe048	0x0000000100000000
 \end{lstlisting}
 
-Il primo elemento dello stack, proprio come nel caso precedente, e' il {RA}.
+Il primo elemento dello stack, proprio come nel caso precedente, è il {RA}.
 3 valori vengono passatri trvamite lo stack : 6, 7, 8.
-Notiamo anche che 8 e' passato nei 32-bit alti non azzerati: \GTT{0x00007fff00000008}.
-Cio' va bene, perche' i valori hanno tipo \Tint , che e' a 32-bit.
+Notiamo anche che 8 è passato nei 32-bit alti non azzerati: \GTT{0x00007fff00000008}.
+Ciò va bene, perchè i valori hanno tipo \Tint , che è a 32-bit.
 Quindi, i registri alti o gli elementi alti dello stack potrebbero contenere \q{random garbage}.
 
-Se andiamo a vedere dove viene restituito il controllodopo l'esecuzione di \printf, 
-\ac{GDB} mostrera' l'intera funzione \main:
+Se andiamo a vedere dove viene restituito il controllo dopo l'esecuzione di \printf, 
+\ac{GDB} mostrerà l'intera funzione \main:
 
 \begin{lstlisting}[style=customasmx86]
 (gdb) set disassembly-flavor intel

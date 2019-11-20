@@ -31,7 +31,7 @@ Questo concetto non è unicamente di MIPS. Anche PowerPC usa la stessa tecnica.
 
 Consideriamo il seguente esempio che illustra il concetto di \q{global pointer}.
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5 (\assemblyOutput),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O3_EN.s}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (\assemblyOutput),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O3_IT.s}
 
 Come possiamo vedere, il registro \$GP è settato nel prologo della funzione affinchè punti nel mezzo di questa area.
 Il registro \ac{RA} viene anche salvato sullo stack locale.
@@ -83,7 +83,7 @@ Molto probabilmente, la \ac{CPU} ottimizza queste pseudoistruzioni e la \ac{ALU}
 \INS{ADDIU} dopo \INS{J} viene in effetti eseguita prima di J (ricordi i \emph{branch delay slots}?) e fa parte dell'epilogo della funzione.
 Ecco anche il listato generato da \IDA. Ogni registro qui ha il suo pseudonimo:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5 (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O3_IDA_EN.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O3_IDA_IT.lst}
 
 L'istruzione alla riga 15 salva il valore di GP sullo stack locale, e questa istruzione manca misteriosamente dal listato prodotto da GCC, forse per un errore di GCC
 \footnote{Apparentemente, le funzioni che generano i listati non sono fondamentali per gli utenti GCC, quindi può esserci qualche errore
@@ -96,7 +96,7 @@ Il registro contenente l'indirizzo di \puts è chiamato \$T9, perchè i registri
 
 \NonOptimizing GCC è più verboso.
 
-\lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\assemblyOutput),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_EN.s}
+\lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\assemblyOutput),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_IT.s}
 
 Qui vediamo che il registro FP è usato come un puntatore allo stack frame.
 Vediamo anche 3 \ac{NOP}.
@@ -107,7 +107,7 @@ Quindi in questo caso sono rimasti.
 
 Ecco anche il listato \IDA:
 
-\lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_IDA_EN.lst}
+\lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_IDA_IT.lst}
 
 \myindex{MIPS!\Pseudoinstructions!LA}
 

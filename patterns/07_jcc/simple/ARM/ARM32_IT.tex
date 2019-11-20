@@ -14,7 +14,7 @@ Es. sono spesso usate quando si confrontano numeri.
 \myindex{ARM!\Instructions!ADD}
 \myindex{ARM!\Instructions!ADDAL}
 
-Ad esempio, l'istruzione \ADD è infatti chiamata internamente is in fact named \TT{ADDAL}, il suffisso \TT{AL} sta per
+Ad esempio, l'istruzione \ADD è infatti chiamata internamente \TT{ADDAL}, il suffisso \TT{AL} sta per
 \emph{Always}, ad indicare che viene eseguita sempre.
 I predicati sono codificati nei 4 bit alti dell'istruzione ARM a 32-bit (\emph{condition field}).
 \myindex{ARM!\Instructions!B}
@@ -40,7 +40,7 @@ in \Reg{4} (ovvero $b$).
 \myindex{ARM!\Instructions!ADRcc}
 \myindex{ARM!\Instructions!BLcc}
 
-Andando avanti vediamo le istruzioni \TT{ADREQ} e \TT{BLEQ} instructions.
+Andando avanti vediamo le istruzioni \TT{ADREQ} e \TT{BLEQ}.
 Si comporano come \TT{ADR} e \TT{BL}, ma vengono eseguite solo se gli operandi erano uguali al momento dell'ultimo confronto.
 Un altra \CMP si trova subito prima di loro (poiché l'esecuzione di \printf potrebbe aver alterato i flag).
 
@@ -53,10 +53,9 @@ L'istruzione \TT{LDMGEFD SP!, \{R4-R6,PC\}} si comporta come un epilogo di funzi
 
 \myindex{Function epilogue}
 
-Nel caso in cui questa condizione non venga soddisfatta, ovvero se $a<b$, il flusso continuerà alla successiva istruzione \\
-\TT{\q{LDMFD SP!, \{R4-R6,LR\}}} , un altro epilogo di funzione. Questa istruzione non ripristina soltanto lo stato dei registri \TT{R4-R6} , ma anche \ac{LR} invece di \ac{PC}, non ritornando così dalla funzione.
+Nel caso in cui questa condizione non venga soddisfatta, ovvero se $a<b$, il flusso continuerà alla successiva istruzione \TT{\q{LDMFD SP!, \{R4-R6,LR\}}} , un altro epilogo di funzione. Questa istruzione non ripristina soltanto lo stato dei registri \TT{R4-R6} , ma anche \ac{LR} invece di \ac{PC}, non ritornando così dalla funzione.
 Le due ultime istruzioni chiamano \printf con la stringa <<a<b\textbackslash{}n>> come unico argomento.
-Abbiamo già visto un salto diretto non condizionale alla funzione \printf senza altro codice di uscita/ritorno dalla funzione nella sezione <<\PrintfSeveralArgumentsSectionName>> section~(\myref{ARM_B_to_printf}).
+Abbiamo già visto un salto diretto non condizionale alla funzione \printf senza altro codice di uscita/ritorno dalla funzione nella sezione <<\PrintfSeveralArgumentsSectionName> >~(\myref{ARM_B_to_printf}).
 
 \myindex{ARM!\Instructions!ADRcc}
 \myindex{ARM!\Instructions!BLcc}

@@ -9,13 +9,13 @@ Una funzione semplice:
 
 Il codice solitamente generato è questo:
 
-\lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{patterns/07_jcc/abs/abs_MSVC2012_Ox_x64_EN.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{patterns/07_jcc/abs/abs_MSVC2012_Ox_x64_IT.asm}
 
 GCC 4.9 fa più o meno lo stesso.
 
 \subsubsection{\OptimizingKeilVI: \ThumbMode}
 
-\lstinputlisting[caption=\OptimizingKeilVI: \ThumbMode,style=customasmARM]{patterns/07_jcc/abs/abs_Keil_thumb_O3_EN.s}
+\lstinputlisting[caption=\OptimizingKeilVI: \ThumbMode,style=customasmARM]{patterns/07_jcc/abs/abs_Keil_thumb_O3_IT.s}
 
 \myindex{ARM!\Instructions!RSB}
 
@@ -23,9 +23,9 @@ In ARM manca l'istruzione di negazione, quindi il compilatore Keil usa l'istruzi
 
 \subsubsection{\OptimizingKeilVI: \ARMMode}
 
-In modalità ARM è possibile agguingere condition codes ad alcune istruzioni, e questo è ciò che fa il compilatore keil:
+In modalità ARM è possibile aggiungere codice condizionale ad alcune istruzioni, e questo è ciò che fa il compilatore keil:
 
-\lstinputlisting[caption=\OptimizingKeilVI: \ARMMode,style=customasmARM]{patterns/07_jcc/abs/abs_Keil_ARM_O3_EN.s}
+\lstinputlisting[caption=\OptimizingKeilVI: \ARMMode,style=customasmARM]{patterns/07_jcc/abs/abs_Keil_ARM_O3_IT.s}
 
 Adesso non ci sono più jump condizionali, e ciò è bene: \myref{branch_predictors}.
 
@@ -35,11 +35,11 @@ Adesso non ci sono più jump condizionali, e ciò è bene: \myref{branch_predict
 
 ARM64 ha un'istruzione \INS{NEG} per la negazione:
 
-\lstinputlisting[caption=\Optimizing GCC 4.9 (ARM64),style=customasmARM]{patterns/07_jcc/abs/abs_GCC49_ARM64_O0_EN.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9 (ARM64),style=customasmARM]{patterns/07_jcc/abs/abs_GCC49_ARM64_O0_IT.s}
 
 \subsubsection{MIPS}
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/07_jcc/abs/MIPS_O3_IDA_EN.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/07_jcc/abs/MIPS_O3_IDA_IT.lst}
 
 \myindex{MIPS!\Instructions!BLTZ}
 Qui vediamo una nuova istruzione: \INS{BLTZ} (\q{Branch if Less Than Zero}).
@@ -51,4 +51,4 @@ Il suffisso \q{U} suffix in entrambe \INS{SUBU} e \INS{NEGU} implica che non ver
 
 \subsubsection{Branchless version?}
 
-You could have also a branchless version of this code. This we will review later: \myref{chap:branchless_abs}.
+C'è anche una versione senza diramazioni (branchless) di questo codice. Ne riparleremo più avanti: \myref{chap:branchless_abs}.

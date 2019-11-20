@@ -19,10 +19,8 @@ Il flusso non cambia se i due operandi sono uguali.
 
 \myindex{x86!\Instructions!JGE}
 Il terzo controllo è \JGE: \emph{Jump if Greater or Equal}---salta se il primo operando è maggiore del secondo, o se sono uguali.
-
 Quindi, se tutti i tre salti condizionali vengono innescati, nessuna delle chiamate a \printf sarà eseguita.
 Ciò è chiaramente impossibile, almeno senza un intervento speciale.
-
 Diamo ora un'occhiata alla funzione \TT{f\_unsigned()}.
 La funzione \TT{f\_unsigned()} è uguale a \TT{f\_signed()}, con l'eccezione che le istruzioni \JBE e \JAE
 sono utilizzate al posto di \JLE e \JGE:
@@ -43,10 +41,8 @@ Queste istruzioni (\INS{JA}/\JAE/\JB/\JBE) differiscono da \JG/\JGE/\JL/\JLE in 
 \myindex{Signed numbers}
 
 Vedi anche la sezione sulle rappresentazioni di numeri con segno (signed) ~(\myref{sec:signednumbers}).
-
-Questo è il motivo per cui se vediamo usare \JG/\JL al posto di \INS{JA}/\JB, o viceversa, 
+Questo è il motivo per cui se vediamo usare \JG/\JL al posto di \INS{JA}/\JB, o viceversa,
 possiamo essere quasi certi che le variabili sono rispettivamente di tipo signed o unsigned.
-
 Di seguito è riportata anche la funzione \main, dove non c'è niente di nuovo:
 
 \lstinputlisting[caption=\main,style=customasmx86]{patterns/07_jcc/simple/main_MSVC.asm}
@@ -57,14 +53,13 @@ Di seguito è riportata anche la funzione \main, dove non c'è niente di nuovo:
 \myparagraph{x86 + MSVC + Hiew}
 \myindex{Hiew}
 
-Possiamo provare a patchare l'eseguibile (applicare una patch) in maniera tale che la funzione \TT{f\_unsigned()} stampi sempre \q{a==b}, 
+Possiamo provare ad applicare una patch all' eseguibile in maniera tale che la funzione \TT{f\_unsigned()} stampi sempre \q{a==b}, 
 a prescindere dai valori in input.
-In Hiew appare così:
 
 \begin{figure}[H]
 \centering
 \myincludegraphics{patterns/07_jcc/simple/hiew_unsigned1.png}
-\caption{Hiew: \TT{f\_unsigned()} function}
+\caption{Hiew: funzione \TT{f\_unsigned()}}
 \label{fig:jcc_hiew_1}
 \end{figure}
 
@@ -109,7 +104,7 @@ Se ci dimentichiamo di cambiare uno di questi jump, potrebbero essere eseguite d
 
 \myindex{puts() instead of printf()}
 \NonOptimizing GCC 4.4.1 
-procude pressoché lo stesso codice, ma usa \puts~(\myref{puts}) invece di \printf.
+produce pressoché lo stesso codice, ma usa \puts~(\myref{puts}) invece di \printf.
 
 \myparagraph{\Optimizing GCC}
 
@@ -131,7 +126,7 @@ Se vedete codice con una disposizione simile, è molto probabile che sia stato s
 
 La funzione \TT{f\_unsigned()} non è esteticamente corta allo stesso modo:
 
-\lstinputlisting[caption=GCC 4.8.1 f\_unsigned(),style=customasmx86]{patterns/07_jcc/simple/GCC_O3_unsigned_EN.asm}
+\lstinputlisting[caption=GCC 4.8.1 f\_unsigned(),style=customasmx86]{patterns/07_jcc/simple/GCC_O3_unsigned_IT.asm}
 
 Ciò nonostante, ci sono due istruzioni \TT{CMP} invece di tre.
 Gli algoritmi di ottimizzazione di GCC 4.8.1 probabilmente non sono ancora perfetti. 

@@ -5,11 +5,11 @@
 In questo caso la variabile \TT{x} è definita nel segmento \TT{\_DATA} e per essa non viene allocata alcuna memoria nello stack locale. Viene acceduta direttamente, non attraverso lo stack.
 Le variabili globali non inizializzate non occupano spazio nel file eseguibile 
 (che motivo ci sarebbe di allocare spazio per varibaili inizialmente settate a zero?), 
-ma quanto qualcuno accede al loro indirizzo, l' \ac{OS} allocherà un bloco di zeri al loro posto \footnote{Questo è il modo in cui vunziona una \ac{VM} }.
+ma quando qualcuno accede al loro indirizzo, l' \ac{OS} allocherà un bloco di zeri al loro posto \footnote{Questo è il modo in cui vunziona una \ac{VM} }.
 
 Adesso assegnamo esplicitamente un valore alla variabile:
 
-\lstinputlisting[style=customc]{patterns/04_scanf/2_global/default_value_EN.c}
+\lstinputlisting[style=customc]{patterns/04_scanf/2_global/default_value_IT.c}
 
 Otteniamo:
 
@@ -29,7 +29,7 @@ Analizzando l'eseguibile dell'esempio precedente con \IDA, vedremo qualcosa del 
 \lstinputlisting[caption=\IDA,style=customasmx86]{patterns/04_scanf/2_global/IDA.lst}
 
 \label{BSSClearedByCStd}
-\TT{\_x} è contrassegnata con il simbolo \TT{?} insiema lresto delle variabili che non necessitano di essere inizializzate.
+\TT{\_x} è contrassegnata con il simbolo \TT{?} insieme al resto delle variabili che non necessitano di essere inizializzate.
 Ciò implica che dopo il caricamento del .exe in memoria, verrà allocato spazio riempito di zeri per tutte queste variabili \InSqBrackets{\CNineNineStd 6.7.8p10}.
 Ma nel file .exe tutte le variabili non inizializzate non occupano alcuno spazio.
 Questo risulta molto conveniente ad esempio nel caso di array molto grandi.
@@ -57,7 +57,7 @@ sarà collocata nel segmento \TT{\_data}, che ha i seguenti attributi:
 
 \subsubsection{MSVC: x64}
 
-\lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/04_scanf/2_global/ex2_MSVC_x64_EN.asm}
+\lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/04_scanf/2_global/ex2_MSVC_x64_IT.asm}
 
 Il codice è pressoché identico a quello in x86.
 Si noti che l'indirizzo della variabile $x$ è passato a \TT{scanf()} usando un'istruzione \LEA ,
