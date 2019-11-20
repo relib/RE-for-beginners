@@ -3,19 +3,19 @@
 
 \myindex{x86!\Registers!EAX}
 
-In x86, il risultato dell'esecuzione dei una funzione e' generalmente restituito
+In x86, il risultato dell'esecuzione dei una funzione è generalmente restituito
 \footnote{\Seealso: MSDN: Return Values (C++): \href{http://go.yurichev.com/17258}{MSDN}}
-nel registor \EAX. 
-Se e' il tipo del risultato e' un byte o un \Tchar, viene utilizzata la parte bassa del registro \EAX (\AL). 
+nel registro \EAX. 
+Se il tipo del risultato è un byte o un \Tchar, viene utilizzata la parte bassa del registro \EAX (\AL). 
 Se una funzione restituisce un numero di tipo \Tfloat, viene invece utilizzato il registro FPU \ST{0}.
 \myindex{ARM!\Registers!R0}
-In ARM, il risultato e' solitamente restituito nel registro \Reg{0}.
+In ARM, il risultato è solitamente restituito nel registro \Reg{0}.
 
 \subsection{Tentativo di utilizzare il risultato di una funzione che resituisce \Tvoid}
 \label{UseResultOfVoidFunc}
 
 Che succederebbe se la funzione main dichiarasse il valore di ritorno di tipo \Tvoid invece di \Tint?
-Il cosiddetto startup-code chiama \main piu' o meno cosi':
+Il cosiddetto startup-code chiama \main più o meno così:
 
 \begin{lstlisting}[style=customasmx86]
 push envp
@@ -33,9 +33,9 @@ exit(main(argc,argv,envp));
 \end{lstlisting}
 
 Se dichiariamo \main come \Tvoid, non viene esplicitamente restituito nulla  (usando lo statement \emph{return}),
-e quindi qualche valore random, che si trova memorizzato nel registro \EAX alla fine di \main, diventa argomento della funzione exit().
-Molto probabilmente si trattera' di un valore randomico, resido dell'esecuzione della nostra funzione, quindi l'exit code del programma 
-e' pseudorandom.
+e quindi qualche valore casuale, che si trova memorizzato nel registro \EAX alla fine di \main, diventa argomento della funzione exit().
+Molto probabilmente si tratterà di un valore casuale, residuo dell'esecuzione della nostra funzione, quindi l'exit code del programma 
+è pseudo-casuale.
 \par
 Illustriamo meglio questo fatto. 
 La funzione \main ha ora un valore di ritorno di tipo \Tvoid:
@@ -53,10 +53,10 @@ Compiliamo il programma su Linux.
 
 \myindex{puts() instead of printf()}
 GCC 4.8.1 ha sostituito \printf con \puts 
-(abbiamo gia' visto questo caso: \myref{puts}), e va del tutto bene, poiche' \puts restituisce il numero di caratteri stampati proprio come \printf.
+(abbiamo già visto questo caso: \myref{puts}), e va del tutto bene, poichè \puts restituisce il numero di caratteri stampati proprio come \printf.
 Notiamo che \EAX non viene azzerato prima della fine di \main.
 
-Cio' implica che il valore di \EAX alla fine di \main conterra' il valore lasciato li' da \puts.
+Ciò implica che il valore di \EAX alla fine di \main conterrà il valore lasciato lì da \puts.
 
 \begin{lstlisting}[caption=GCC 4.8.1,style=customasmx86]
 .LC0:
@@ -82,7 +82,7 @@ Scriviamo uno script bash che mostra l'exit status:
 echo $?
 \end{lstlisting}
 
-And run it:
+Eseguiamolo:
 
 \begin{lstlisting}
 $ tst.sh 
@@ -90,44 +90,69 @@ Hello, world!
 14
 \end{lstlisting}
 
-14 e' il numero di caratteri stampati.
-\ac{TBT}
+14 è il numero di caratteri stampati. Il numero dei caratteri stampati \textit{scivola} da \printf{} attraverso \TT{EAX}/\TT{RAX} nell' \q{exit code}.
 
-\subsection{Che ssucede se il risultato della funzione non viene usato?}
+Un altro esempio nel libro: \myref{ForgottenReturn}.
+
+\myindex{Hex-Rays}
+Comunque, quando decompiliamo C++ in Hex-Rays, spesso possiamo trovare una funzione che termina con il distruttore di qualche classe:
+
+\begin{lstlisting}[style=customasmx86]
+...
+
+call    ??1CString@@QAE@XZ ; CString::~CString(void)
+mov     ecx, [esp+30h+var_C]
+pop     edi
+pop     ebx
+mov     large fs:0, ecx
+add     esp, 28h
+retn
+\end{lstlisting}
+
+Dallo standard C++, i distruttori non ritornano nulla, ma quando Hex-Rays non lo capisce e pensa che sia il distruttore che la funzione ritornino \Tint, possiamo avere un output simile a questo:
+
+\begin{lstlisting}[style=customc] 
+...
+
+        return CString::~CString(&Str);
+}
+\end{lstlisting}
+
+\subsection{Che succede se il risultato della funzione non viene usato?}
 
 \printf restituisce il numero di caratteri mandati in output con successo, ma il risultato di questa funzione
-e' usato molto raramente in pratica.
+è usato molto raramente.
 
 E' possibile anche chiamare una funzione la cui essenza risiede nel restituire un valore e non usarlo del tutto:
 
 \begin{lstlisting}[style=customc]
 int f()
 {
-    // skip first 3 random values:
+    // salta i primi 3 valori casuali:
     rand();
     rand();
     rand();
-    // and use 4th:
+    // e usa il 4°:
     return rand();
 };
 \end{lstlisting}
 
-Il risultato della funzione rand() e' lasciato in \EAX in tutti e quattro i casi.
-Nei primi 3 pero' il valore in \EAX non viene usato.
+Il risultato della funzione rand() è lasciato in \EAX in tutti e quattro i casi.
+Nei primi 3 però il valore in \EAX non viene usato.
 
 \subsection{Restituire una struttura}
 
 \myindex{\CLanguageElements!return}
 
-Torniamo al fatto che il valore di ritorno e' lasciato nel registro \EAX.
-Questo e' il motivo per cui i vecchi compilatori C non possono creare funzioni in grado di restituire qualcosa che non entri perfettamente in un 
-registro (solitamente un \Tint). Se lo si vuole fare, e' necessario restituire l'informazione attraverso puntatori passati come argomenti alla funzione.
+Torniamo al fatto che il valore di ritorno è lasciato nel registro \EAX.
+Questo è il motivo per cui i vecchi compilatori C non possono creare funzioni in grado di restituire qualcosa che non entri perfettamente in un 
+registro (solitamente un \Tint). Se lo si vuole fare, è necessario restituire l'informazione attraverso puntatori passati come argomenti alla funzione.
 
-Quindi, generalmente, se una funzione deve restituire piu' valori, ne restituisce (realmente) soltanto uno, ed il resto---tramite puntatori.
+Quindi, generalmente, se una funzione deve restituire più valori, ne restituisce (realmente) soltanto uno, ed il resto---tramite puntatori.
 
-Oggi e' possibile restituire anche un'intera struttura, ma non e' ancora una pratica molto diffusa.
+Oggi è possibile restituire anche un'intera struttura, ma non è ancora una pratica molto diffusa.
 Se una funzione deve restituire una struttura grande, il chiamante (\gls{caller}) deve allocarla e passare come primo argomento della funzione un puntatore alla struttura, il tutto in modo trasparente per il programmatore.
-E' pressoche' la stessa cosa di passare un puntatore manualmente come primo argomento, ma il compilatore "nasconde" questo passaggio.
+E' pressochè la stessa cosa di passare un puntatore manualmente come primo argomento, ma il compilatore "nasconde" questo passaggio.
 
 Un piccolo esempio:
 
@@ -137,10 +162,10 @@ Un piccolo esempio:
 
 \lstinputlisting[style=customasmx86]{patterns/06_return_results/6_1.asm}
 
-Il nome della macro per il passaggio interno del puntatore alla struttura e' in questo caso \GTT{\$T3853}.
+Il nome della macro per il passaggio interno del puntatore alla struttura è in questo caso \GTT{\$T3853}.
 
 \myindex{\CLanguageElements!C99}
-Questo stesso esempio puo' essere riscritto utilizzando l'estensione del linguaggio C99:
+Questo stesso esempio può essere riscritto utilizzando l'estensione del linguaggio C99:
 
 \lstinputlisting[style=customc]{patterns/06_return_results/6_1_C99.c}
 

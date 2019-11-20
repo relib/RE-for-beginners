@@ -70,7 +70,7 @@ Perchè 4? Essendo questo un programma a 32-bit, abbiamo esattamente bisogno di 
 \myindex{x86!\Instructions!POP}
 
 Per lo stesso scopo, alcuni compilatori (come l'Intel C++ Compiler) potrebbero emettere l'istruzione \TT{POP ECX}
-invece di \ADD (ad esempio, queto tipo di pattern può essere osservato nel codice di \oracle{} che è compilato con il compilatore Intel C++).
+invece di \ADD (ad esempio, questo tipo di pattern può essere osservato nel codice di \oracle{} che è compilato con il compilatore Intel C++).
 Questa istruzione ha pressoché lo stesso effetto ma il contenuto del registro \ECX sarà sovrascritto.
 Il compilatore Intel C++ usa probabilmente \TT{POP ECX} poichè l'opcode di questa istruzione è più corto di \TT{ADD ESP, x} (1 byte per \TT{POP} contro 3 per \TT{ADD}).
 

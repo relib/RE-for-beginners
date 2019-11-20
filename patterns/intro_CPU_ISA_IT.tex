@@ -1,4 +1,4 @@
-\mysection{Una breve introduzione alla CPU}
+\subsection{Una breve introduzione alla CPU}
 
 La \ac{CPU} è il dispositivo che esegue il codice macchina di cui è fatto un programma.
 
@@ -24,7 +24,7 @@ Anche solo con quelle potresti fare molte cose!
 
 % A note on the experiments in this area (like the LISP machines http://en.wikipedia.org/wiki/Lisp_machine
 % might be useful
-Qualcuno potrebbe chiedersi perchè ci debba essere una differenza tra il codice macchina ed un ac{PL}. La risposta risiede nel fatto che gli umani e i processori (\ac{CPU}) non sono uguali---%
+Qualcuno potrebbe chiedersi perchè ci debba essere una differenza tra il codice macchina ed un \ac{PL}. La risposta risiede nel fatto che gli umani e i processori (\ac{CPU}) non sono uguali---%
 per un umano è molto più facille utilizzare un linguaggio di programmazione ad alto livello come \CCpp, Java, Python, etc., mentre per una \ac{CPU} è più semplice utilizzare un livello di astrazione più basso.
 Potrebbe essere forse possibile inventare una \ac{CPU} in grado di eseguire codice di un \ac{PL} ad alto livello, ma sarebbe molto più complessa dei processori che conosciamo oggi.
 Allo stesso modo sarebbe del tutto sconveniente per gli umani scrivere in linguaggio assembly, a causa della sua natura di basso livello e la difficoltà nello scrivere senza commettere un enorme numero di fastidiosi errori.
@@ -52,7 +52,6 @@ Tuttavia non \emph{tutte} le istruzioni ARM possono essere codificate in solo 2 
 Vale la pena notare che il codice compilato in ARM mode e Thumb mode può tranquillamente coesistere all'interno dello stesso programma.
 I creatori di ARM pensarono di estendere Thumb, dando vita a Thumb-2, apparso per la prima volta in ARMv7.
 Thumb-2 utilizza ancora istruzioni da 2 byte, ma ha alcune nuove istruzioni da 4 byte.
-
 Esiste la convinzione errata che Thumb-2 sia un mix di ARM e Thumb. Questo non è vero.
 Piuttosto Thumb-2 è stato esteso per supportare tutte le caratteristiche del processore così da competere con l'ARM mode--- un obiettivo che è stato chiaramente raggiunto, visto che la maggior parte delle applicazioni per \idevices sono compilate per il set di istruzioni Thumb-2 (in effetti, molto probabilmente dovuto anche al fatto che Xcode lo fa di default).
 Successivamente fu la volta di ARM a 64-bit. Questa \ac{ISA} ha opcode di 4-byte, e non necessita di alcun Thumb mode aggiuntivo.

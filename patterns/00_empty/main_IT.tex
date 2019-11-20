@@ -20,8 +20,8 @@ C'è solo un'istruzione: \RET, la quale ritorna l'esecuzione al \gls{caller}.
 
 \lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) \assemblyOutput,style=customasmARM]{patterns/00_empty/1_Keil_ARM_O3.s}
 
-L-indirizzo di ritorno non viene salvato nello stack locale nella \ac{ISA} ARM, ma invece nel registro link,
-quindi l-istruzione \INS{BX LR} causa l-esecuzione di un salto (jump) a quell'indirizzo---effettivamente ritornando l'esecuzione
+L'indirizzo di ritorno non viene salvato nello stack locale nella \ac{ISA} ARM, ma invece nel registro link,
+quindi l'istruzione \INS{BX LR} causa l'esecuzione di un salto (jump) a quell'indirizzo---effettivamente ritornando l'esecuzione
 al \gls{caller}.
 
 \subsection{MIPS}
@@ -29,7 +29,7 @@ al \gls{caller}.
 Esistono due convenzioni utilizzate nel mondo MIPS quando vengono chiamati i registri:
 per numero (da \$0 a \$31) o per pseudonimo (\$V0, \$A0, etc.).
 
-L'outputo in assembly di GCC qua sotto elenca i registri per numero:
+L'output in assembly di GCC qua sotto elenca i registri per numero:
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (\assemblyOutput),style=customasmMIPS]{patterns/00_empty/MIPS.s}
 
@@ -58,7 +58,7 @@ Anche se le funzioni vuote sembrano inutili, sono abbastanza utilizzate nel codi
 
 Prima di tutto, sono abbastanza popolari nelle funzioni per debug, come questa:
 
-\lstinputlisting[caption=\CCpp Code,style=customc]{patterns/00_empty/dbg_print_EN.c}
+\lstinputlisting[caption=\CCpp Code,style=customc]{patterns/00_empty/dbg_print_IT.c}
 
 In una build non di debug (come in una ``release''), \TT{\_DEBUG} non è definito,
 quindi la funzione \TT{dbg\_print()}, nonostante venga ancora chiamata durante l'esecuzione,
@@ -67,7 +67,7 @@ sarà vuota.
 Similmente, un metodo popolare per la protezione del software è di creare una build per gli acquirenti regolari, ed una build di demo.
 In una build di demo possono mancare alcune funzionalità importanti, come in questo esempio:
 
-\lstinputlisting[caption=\CCpp Code,style=customc]{patterns/00_empty/demo_EN.c}
+\lstinputlisting[caption=\CCpp Code,style=customc]{patterns/00_empty/demo_IT.c}
 
 La funzione \TT{save\_file()} può essere chiamata quando l'utente fa click sul menu \TT{File->Salva}.
 La versione demo può essere distribuita con questa voce di menu disattivata, ma anche se un cracker la riattiva,
