@@ -13,7 +13,7 @@
 
 \subsubsection{x86}
 
-La forma grezza di un jump condizionale e' la seguente:
+La forma grezza di un jump condizionale è la seguente:
 
 \begin{lstlisting}[caption=x86,style=customasmx86]
 CMP register, register/value
@@ -88,25 +88,25 @@ In ARM è possibile usare suffissi condizionali per alcune istruzioni:
 \begin{lstlisting}[caption=ARM (\ARMMode),style=customasmARM]
 CMP register, register/value
 instr1_cc ; istruzione che sarà eseguita se il condition code è true
-instr2_cc ; altra istruzione che sara' eseguita se il condition code e' true
+instr2_cc ; altra istruzione che sarà eseguita se il condition code è true
 ... etc...
 \end{lstlisting}
 
-Ovviamente non c'e' limite al numero di istruzioni con il suffisso condizionale, a patto che le flag CPU non siano modificate da nessuna istruzione. 
+Ovviamente non c'è limite al numero di istruzioni con il suffisso condizionale, a patto che le flag CPU non siano modificate da nessuna istruzione. 
 % FIXME: list of such instructions or \myref{} to it
 
 \myindex{ARM!\Instructions!IT}
 
-La modalita' Thumb ha l'istruzione \INS{IT}, che permette di aggiungere suffissi condizionali alle prossime quattro istruzioni.
+La modalità Thumb ha l'istruzione \INS{IT}, che permette di aggiungere suffissi condizionali alle prossime quattro istruzioni.
 Maggiori informazioni qui: \myref{ARM_Thumb_IT}.
 
 \begin{lstlisting}[caption=ARM (\ThumbMode),style=customasmARM]
 CMP register, register/value
-ITEEE EQ ; set these suffixes: if-then-else-else-else
-instr1   ; istruzione da eseguire se la condizione e' true
-instr2   ; istruzione da eseguire se la condizione e' false
-instr3   ; istruzione da eseguire se la condizione e' false
-instr4   ; istruzione da eseguire se la condizione e' false
+ITEEE EQ ; imposta questi suffissi: if-then-else-else-else
+instr1   ; istruzione da eseguire se la condizione è true
+instr2   ; istruzione da eseguire se la condizione è false
+instr3   ; istruzione da eseguire se la condizione è false
+instr4   ; istruzione da eseguire se la condizione è false
 \end{lstlisting}
 
 % Do not translate, this is macro:
