@@ -8,9 +8,9 @@
 \myindex{\oracle}
 \myindex{x86!\Instructions!JZ}
 
-Le compilateur Intel C++ 10.1, qui fut utilisé pour la compilation de \oracle 11.2 pour Linux86, 
-émettait parfois deux instructions \JZ successives, sans que la seconde instruction soit jamais 
-référencée. Elle était donc inutile.
+Le compilateur Intel C++ 10.1, qui a été utilisé pour la compilation de \oracle
+11.2 pour Linux86, émettait parfois deux instructions \JZ successives, sans que
+la seconde instruction soit jamais référencée. Elle était donc inutile.
 
 \lstinputlisting[caption=kdli.o from libserver11.a,style=customasmx86]{other/kdli.lst}
 
@@ -30,20 +30,20 @@ référencée. Elle était donc inutile.
 .text:0811A2C0 E8 5F FE FF FF        call    len2nbytes
 \end{lstlisting}
 
-Il s'agit probablement d'un bug du générateur de code du compilateur qui ne fut pas découvert durant 
-les tests de celui-ci car le code produit fonctionnait conformément aux résultats attendus.
+Il s'agit probablement d'un bug du générateur de code du compilateur qui ne fut pas
+découvert durant les tests de celui-ci car le code produit fonctionnait conformément
+aux résultats attendus.
 
-% TBT
-% Another example from \oracle 11.1.0.6.0 for win32.
+Un autre exemple tiré d'\oracle 11.1.0.6.0 pour win32.
 
-%\begin{lstlisting}
-%.text:0051FBF8 85 C0                             test    eax, eax
-%.text:0051FBFA 0F 84 8F 00 00 00                 jz      loc_51FC8F
-%.text:0051FC00 74 1D                             jz      short loc_51FC1F
-%\end{lstlisting}
+\begin{lstlisting}
+.text:0051FBF8 85 C0                             test    eax, eax
+.text:0051FBFA 0F 84 8F 00 00 00                 jz      loc_51FC8F
+.text:0051FC00 74 1D                             jz      short loc_51FC1F
+\end{lstlisting}
 
 \input{other/anomaly2_FR}
-%\input{other/anomaly3_FR}
+\input{other/anomaly3_FR}
 
 \subsection{Résumé}
 
@@ -53,7 +53,7 @@ Des anomalies constatées dans d'autres compilateurs figurent également dans ce
 \myref{MSVC_double_JMP_anomaly},
 \myref{MSVC2012_anomaly}.
 
-Ces cas sont exposés dans ce livre afin de démontrer que ces compilateurs comportent leurs propres 
-erreurs et qu'il convient de ne pas toujours se triturer le cerveau en tentant de comprendre 
-pourquoi le compilateur a généré un code aussi étrange.
+Ces cas sont exposés dans ce livre afin de démontrer que ces compilateurs comportent
+leurs propres erreurs et qu'il convient de ne pas toujours se torturer le cerveau
+en tentant de comprendre pourquoi le compilateur a généré un code aussi étrange.
 
