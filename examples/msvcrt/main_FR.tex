@@ -1,25 +1,25 @@
-\mysection{A nasty bug in MSVCRT.DLL}
+\mysection{Un méchant bogue dans MSVCRT.DLL}
 \myindex{MinGW}
 \myindex{MSVCRT.DLL}
 
-This is the bug that costed me several hours of debugging.
+Ceci est un bogue qui m'a coûté plusieurs heures de débogage.
 
-In 2013 I was using MinGW, my C project seems to be very unstable and I saw the
-``Invalid parameter passed to C runtime function.'' error message in debugger.
+En 2013, j'utilisais MinGW, mon projet C semblait très instable et je voyais le
+message d'erreur ``Invalid parameter passed to C runtime function.'' dans le débogueur.
 
-The error message was also visible using Sysinternals DebugView.
-And my project has no such error messages or strings.
-So I started to search it in the whole Windows and found in MSVCRT.DLL file.
-(Needless to say I was using Windows 7.)
+Le message d'erreur était aussi visible en utilisant DebugView de Sysinternals.
+Et mon projet n'avait pas un tel message d'erreur, ni de chaîne.
+Donc, j'ai commencé à chercher dans l'ensemble de Windows et l'ai trouvé dans le
+fichier MSVCRT.DLL (inutile de dire que j'utilisais Windows 7).
 
-So here it is, the error message in MSVCRT.DLL file supplied with Windows 7:
+Donc le voici, le message d'erreur dans le fichier MSVCRT.DLL fourni avec Windows 7:
 
 \begin{lstlisting}[style=customasmx86]
 .text:6FFB69D0 OutputString    db 'Invalid parameter passed to C runtime function.',0Ah,0
 .text:6FFB69D0                                         ; DATA XREF: \verb|sub_6FFB6930+83|
 \end{lstlisting}
 
-Where it is referenced?
+Où est-il référencé?
 
 \begin{lstlisting}[style=customasmx86,label=msvcrt_output]
 .text:6FFB6930 sub_6FFB6930    proc near               ; \verb|CODE XREF: _wfindfirst64+203FC|
@@ -82,11 +82,13 @@ Where it is referenced?
 .text:6FFB69CF sub_6FFB6930    endp
 \end{lstlisting}
 
-The string it reported into debugger or DebugView utility using the standard \verb|OutputDebugStringA()| function.
-How the \verb|sub_6FFB6930| can be called?
-IDA shows at least 280 references.
-
-Using my \tracer, I set a breakpoint at \verb|sub_6FFB6930| to see, when it's called in my case:
+La chaîne est affichée dans le débogueur ou l'utilitaire DebugView en utilisant
+la fonction standard\\
+\verb|OutputDebugStringA()|.
+Comment la fonction \verb|sub_6FFB6930| peut-elle être appelée?
+\IDA montre au moins 290 références.
+En utilisant mon \tracer, j'ai mis un point d'arrêt en \verb|sub_6FFB6930| pour
+voir quand elle est appelée dans mon cas.
 
 \begin{lstlisting}
 tracer.exe -l:1.exe bpf=msvcrt.dll!0x6FFB6930 -s
@@ -105,8 +107,8 @@ return address=0x7752365b (ntdll.dll!RtlInitializeExceptionChain+0xc2), argument
 PID=3560|Process 1.exe exited. ExitCode=2147483647 (0x7fffffff)
 \end{lstlisting}
 
-I found that my code was calling stricmp() function with NULL as one argument.
-In fact, I made up this example when writing this:
+J'ai trouvé que mon code appelait la fonction stricmp() avec un argument à NULL.
+En fait, j'ai créé cet exemple en écrivant ceci:
 
 \begin{lstlisting}[style=customc]
 #include <stdio.h>
@@ -118,11 +120,12 @@ int main()
 };
 \end{lstlisting}
 
-If this piece of code is compiled using old MinGW or old MSVC 6.0, it is linked against MSVCRT.DLL file.
-Which, as of Windows 7, silently sends the ``Invalid parameter passed to C runtime function.''
-error message to the debugger and then does nothing!
+Si ce morceau de code est compilé en utilisant un vieux MinGW ou un vieux MSVC 6.0,
+il est lié avec le fichier MSVCRT.DLL.
+Qui, à partir de Windows 7, envoie silencieusement le message d'erreur ``Invalid
+parameter passed to C runtime function.'' au débogueur et puis ne fait rien!
 
-Let's see how stricmp() is implemented in MSVCRT.DLL:
+Voyons comment stricmp() est implémentée dans MSVCRT.DLL:
 
 \begin{lstlisting}[style=customasmx86]
 .text:6FF5DB38 ; Exported entry 855. \_strcmpi
@@ -159,7 +162,7 @@ Let's see how stricmp() is implemented in MSVCRT.DLL:
 .text:6FF5DB5F _strcmpi        endp ; sp-analysis failed
 \end{lstlisting}
 
-Actual strings comparison here:
+La comparaison effective des chaînes est ici:
 
 \begin{lstlisting}[style=customasmx86]
 .text:6FF5DB60 sub_6FF5DB60    proc near               ; CODE XREF: \verb|_stricmp_l+16C7F|
@@ -235,7 +238,7 @@ Actual strings comparison here:
 .text:6FF9D22A                 jmp     loc_6FF68D0C
 \end{lstlisting}
 
-Now the \verb|invalid_parameter()| function:
+Maintenant la fonction \verb|invalid_parameter()|:
 
 \begin{lstlisting}[style=customasmx86]
 .text:6FFB6A06                 public _invalid_parameter
@@ -249,10 +252,10 @@ Now the \verb|invalid_parameter()| function:
 .text:6FFB6A0C _invalid_parameter endp
 \end{lstlisting}
 
-The \verb|invalid_parameter()| function eventually calls the function with \verb|OutputDebugStringA()|:
+La fonction \verb|invalid_parameter()| appelle finalement la fonction avec \verb|OutputDebugStringA()|:
 \myref{msvcrt_output}.
 
-You see, the stricmp() code is like:
+Voyez-vous, le code de stricmp() est comme:
 
 \begin{lstlisting}[style=customc]
 int stricmp(const char *s1, const char *s2, size_t len)
@@ -266,9 +269,10 @@ int stricmp(const char *s1, const char *s2, size_t len)
 };
 \end{lstlisting}
 
-How come this error is rare? Because newer MSVC versions links against MSVCR120.DLL file, etc (where 120 is version number).
+Comment se fait-il que cette erreur soit rare? Car les nouvelles versions de MSVC
+lient avec le fichier MSVCR120.DLL, etc. (où 120 est le numéro de version).
 
-Let's peek inside the newer MSVCR120.DLL from Windows 7:
+Jetons un coup d'\oe{}il à l'intérieur du nouveau MSVCR120.DLL de Windows 7:
 
 \begin{lstlisting}[style=customasmx86]
 .text:1002A0D4                 public _stricmp_l
@@ -387,20 +391,23 @@ Let's peek inside the newer MSVCR120.DLL from Windows 7:
 .text:100A46C5 _invoke_watson  endp
 \end{lstlisting}
 
-Now the \verb|invalid_parameter()| function is rewritten in newer MSVCR*.DLL version,
-it shows the message box, if you want to kill the process
-or call debugger.
-Of course, this is much better than silently return.
-Perhaps, Microsoft forgot to fix MSVCRT.DLL since then.
+Maintenant la fonction \verb|invalid_parameter()| est récrite dans les nouvelles
+versions de MSVCR*.DLL, elle montre la boîte de dialogue, proposant de tuer le processus
+ou d'appeler le débogueur.
+Bien sûr, c'est beaucoup mieux que de retourner silencieusement.
+Peut-être que Microsoft a oublié de fixer MSVCRT.DLL depuis lors.
 
-But how it was working in the era of Windows XP? It wasn't: MSVCRT.DLL from Windows XP doesn't check arguments against NULL.
-So under Windows XP my \verb|stricmp ("asd", NULL)| code will crash, and this is good.
+Mais comment est-ce que ça fonctionnait du temps de Windows XP? Ça ne fonctionnait pas:
+MSVCRT.DLL de Windows XP ne vérifiait pas si les arguments étaient NULL.\\
+Donc, sous Windows XP mon code \verb|stricmp ("asd", NULL)| plantera, et c'est bien.
 
-My hypothesis: Microsoft upgraded MSVCR*.DLL files (including MSVCRT.DLL) for Windows 7 by adding sanitizing checks everywhere.
-However, since MSVCRT.DLL wasn't used much since MSVS .NET (year 2002), it wasn't properly tested and the bug left here.
-But compilers like MinGW can still use this DLL.
+Mon hypothèse: Microsoft a mis à jour les fichiers MSVCR*.DLL (MSVCRT.DLL inclus)
+pour Windows 7 en ajoutant des tests de vérification partout.
+Toutefois, puisque MSVCRT.DLL n'était plus beaucoup utilisé depuis MSVS .NET
+(année 2002), il n'a pas été testé proprement et le bogue est resté.
+Mais des compilateurs comme MinGW peuvent toujours utiliser cette DLL.
 
-What would I do without my reverse engineering skills?
+Qu'aurais-je fait sans mes compétences en rétro-ingénierie?
 
-The MSVCRT.DLL from Windows 8.1 has the same bug.
+Le fichier MSVCRT.DLL de Windows 8.1 a le même bogue.
 

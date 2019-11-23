@@ -60,7 +60,9 @@ Exemple du noyau de Windows 2003
 En effet, si nous regardons dans le code source de \ac{WRK} v1.2, ce code peut être
 trouvé facilement dans le fichier \\
 \emph{WRK-v1.2\textbackslash{}base\textbackslash{}ntos\textbackslash{}ke\textbackslash{}i386\textbackslash{}cpu.asm}.
-% TBT
-%\par 
-%As of \INS{RCL}, I could find it in ntoskrnl.exe file from Windows 2003 x86 (MS Visual C compiler).
-%It is occurred only once, in \TT{RtlExtendedLargeIntegerDivide()} function, and this might be inline assembler code case.
+
+\par 
+D'après l'instruction \INS{RCL} que j'ai pu trouver dans le fichier ntoskrnl.exe de Windows
+2003 x86 (compilé avec MS Visual C compiler).
+Elle apparaît seulement une fois ici, dans la fonction \TT{RtlExtendedLargeIntegerDivide()}
+et ça pourrait être un cas de code assembleur en ligne.
