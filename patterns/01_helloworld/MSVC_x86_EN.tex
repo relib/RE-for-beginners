@@ -83,6 +83,14 @@ Here is an example of using \POP instead of \ADD from \oracle{}:
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
+However, MSVC can do the same.
+
+\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
+.text:0102106F                 push    0
+.text:01021071                 call    ds:time
+.text:01021077                 pop     ecx
+\end{lstlisting}
+
 %Read more about the stack in section
 % ~(\myref{sec:stack}).
 \myindex{\CLanguageElements!return}

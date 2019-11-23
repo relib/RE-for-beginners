@@ -80,6 +80,15 @@ Aqui está um exemplo do uso de \POP ao invés de \ADD do \oracle{}:
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
+% TBT
+% However, MSVC can do the same.
+
+%\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
+%.text:0102106F                 push    0
+%.text:01021071                 call    ds:time
+%.text:01021077                 pop     ecx
+%\end{lstlisting}
+
 \myindex{\CLanguageElements!return}
 Depois de chamar \printf{}, o código original em \CCpp contém a declaração \TT{return 0} --- return 0 como o resultado da função \main{}.
 

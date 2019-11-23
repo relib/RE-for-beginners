@@ -82,6 +82,14 @@ MSVC выдает листинги в синтаксисе Intel.
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
+Впрочем, MSVC был замечен в подобном же.
+
+\begin{lstlisting}[caption=MineSweeper из Windows 7 32-bit]
+.text:0102106F                 push    0
+.text:01021071                 call    ds:time
+.text:01021077                 pop     ecx
+\end{lstlisting}
+
 %О стеке можно прочитать в соответствующем разделе
 % ~(\myref{sec:stack}).
 \myindex{\CLanguageElements!return}

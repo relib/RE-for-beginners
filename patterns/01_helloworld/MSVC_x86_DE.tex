@@ -85,6 +85,15 @@ Nachfolgend ein Beispiel unter der Verwendung von \POP anstatt \ADD aus \oracle{
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
+% TBT
+% However, MSVC can do the same.
+
+%\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
+%.text:0102106F                 push    0
+%.text:01021071                 call    ds:time
+%.text:01021077                 pop     ecx
+%\end{lstlisting}
+
 %Mehr über den Stack gibt es im Abschnitt
 % ~(\myref{sec:stack}).
 \myindex{\CLanguageElements!return}

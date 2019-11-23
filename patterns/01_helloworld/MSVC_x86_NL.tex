@@ -82,6 +82,15 @@ Hier is een voorbeeld van het gebruik van \POP in plaats van \ADD van \oracle{}:
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
+% TBT
+% However, MSVC can do the same.
+
+%\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
+%.text:0102106F                 push    0
+%.text:01021071                 call    ds:time
+%.text:01021077                 pop     ecx
+%\end{lstlisting}
+
 %Lees meer over de stack in de sectie ~(\myref{sec:stack}).
 \myindex{\CLanguageElements!return}
 Na \printf aan te roepen, bevat de originele \CCpp code het statement \TT{return 0}~---return 0 als resultaat van de \main functie.
