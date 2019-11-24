@@ -47,6 +47,7 @@ printf("%d %d %d", 1234);
 \printf wird die Zahlen 1234 und zwei zufällige Werte ausgeben, welche direkt neben 1234 auf
 dem Stack lagen\footnote{Nicht zufällig im eigentlichen Sinne sondern eher unvorhersehbar: \myref{noise_in_stack}}.
 
+\label{main_arguments}
 \par
 Das ist auch der Grund warum es nicht wichtig ist wie die \main Funktion definiert ist: Als \main, \\
 \TT{main(int argc, char *argv[])} oder \TT{main(int argc, char *argv[], char *envp[])}.
@@ -65,6 +66,8 @@ Wenn man \main als \main Funktion ohne Argumente definiert, dann liegen sie trot
 nicht benutzt werden. Wenn man \main als \TT{main(int argc, char *argv[])}, definiert kann man auf die ersten beiden
 Argumente der Funktion zugreifen, das dritte bleibt aber weiterhin ``Unsichtbar'' für andere Funktionen.
 Es ist aber auch u.a möglich die Main Funktion als \TT{main(int argc)} schreiben und sie wird noch immer funktionieren.
+
+% TBT Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{Alternative Wege Argumente zu übergeben}
 

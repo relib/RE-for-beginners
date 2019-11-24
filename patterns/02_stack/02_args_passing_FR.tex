@@ -50,6 +50,7 @@ printf("%d %d %d", 1234);
 dans le sens strict du terme, mais plutôt imprévisibles: \myref{noise_in_stack}},
 qui sont situés à côté dans la pile.
 
+\label{main_arguments}
 \par
 C'est pourquoi la façon dont la fonction \main est déclarée n'est pas très importante:
 comme \main, \\\TT{main(int argc, char *argv[])} ou \TT{main(int argc, char *argv[], char *envp[])}.
@@ -70,6 +71,8 @@ Si vous déclarez \main as comme \TT{main(int argc, char *argv[])},
 vous pourrez utiliser les deux premiers arguments, et le troisième restera \q{invisible}
 pour votre fonction.
 Il est même possible de déclarer \main comme \TT{main(int argc)}, cela fonctionnera.
+
+% TBT Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{Autres façons de passer les arguments}
 

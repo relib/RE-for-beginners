@@ -52,6 +52,7 @@ printf("%d %d %d", 1234);
 
 \printf vai mostrar 1234, e então dois números aleatórios, que estariam próximos a stack\footnote{\ac{TBT}}.
 
+\label{main_arguments}
 \par
 É por isso que não é muito importante como declaramos a função \main{}: como \main{}, \TT{main(int argc, char *argv[])} ou \TT{main(int argc, char *argv[], char *envp[])}.
 
@@ -69,3 +70,4 @@ Se você declarar \main como \main sem argumentos, mesmo assim eles ainda estar�
 Se você declarar \main como \TT{main(int argc, char *argv[])}, você será capaz de utilizar os primeiros dois argumentos e o terceiro vai continuar \q{invisível} para a sua função.
 Da mesma maneira, é possível declarar a \main como \TT{main(int argc)} e ainda assim vai funcionar.
 
+% TBT Another related example: \ref{cdecl_DLL}.

@@ -44,6 +44,7 @@ printf("%d %d %d", 1234);
 
 \printf will print 1234, and then two random numbers\footnote{Not random in strict sense, but rather unpredictable: \myref{noise_in_stack}}, which were lying next to it in the stack.
 
+\label{main_arguments}
 \par
 That's why it is not very important how we declare the \main function: as \main, \\
 \TT{main(int argc, char *argv[])} or \TT{main(int argc, char *argv[], char *envp[])}.
@@ -62,6 +63,8 @@ If you declare \main as \main without arguments, they are, nevertheless, still p
 If you declare \main as  \TT{main(int argc, char *argv[])},
 you will be able to use first two arguments, and the third will remain \q{invisible} for your function.
 Even more, it is possible to declare \TT{main(int argc)}, and it will work.
+
+Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{Alternative ways of passing arguments}
 

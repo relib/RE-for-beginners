@@ -43,13 +43,14 @@ printf("%d %d %d", 1234);
 
 \printf выведет 1234, затем ещё два случайных числа\footnote{В строгом смысле, они не случайны, скорее, непредсказуемы: \myref{noise_in_stack}}, которые волею случая оказались в стеке рядом.
 
+\label{main_arguments}
 \par
 Вот почему не так уж и важно, как объявлять функцию \main{}:\\
 как \main{}, \TT{main(int argc, char *argv[])}\\
 либо \TT{main(int argc, char *argv[], char *envp[])}.
 
 В реальности, \ac{CRT}-код вызывает \main примерно так:
-	
+
 \begin{lstlisting}[style=customasmx86]
 push envp
 push argv
@@ -62,6 +63,8 @@ call main
 Если вы объявите \main как \TT{main(int argc, char *argv[])}, 
 вы можете использовать два первых аргумента, а третий останется для вашей функции \q{невидимым}.
 Более того, можно даже объявить \TT{main(int argc)}, и это будет работать.
+
+% Еще один пример с этим связанный: \ref{cdecl_DLL}.
 
 \myparagraph{Альтернативные способы передачи аргументов}
 

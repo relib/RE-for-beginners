@@ -44,6 +44,7 @@ printf("%d %d %d", 1234);
 
 \printf scriverà 1234, e successivamente due numeri casuali\footnote{Non casuali in senso stretto, ma piuttosto non predicibili: \myref{noise_in_stack}}, che si trovavano lì vicino nello stack.
 
+\label{main_arguments}
 \par
 Per questo motivo non è molto importante come dichiariamo la funzione \main: come \main, \\
 \TT{main(int argc, char *argv[])} oppure \TT{main(int argc, char *argv[], char *envp[])}.
@@ -62,6 +63,8 @@ Se dichiari \main come \main senza argomenti, questi sono, in ogni caso, ancora 
 Se dichiari \main come \TT{main(int argc, char *argv[])},
 sarai in grado di utilizzare i primi due argomenti, ed il terzo rimarrà \q{invisibile} per la tua funzione.
 In più, è possibile dichiarare \TT{main(int argc)}, e continuerà a funzionare.
+
+% TBT Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{Metodi alternativi per passare argomenti}
 

@@ -44,6 +44,7 @@ printf("%d %d %d", 1234);
 
 \printf は1234を出力し、次にそのスタックの隣にある2つの乱数\footnote{厳密な意味でランダムではなく、むしろ予測不可能: \myref{noise_in_stack}}を出力します。
 
+\label{main_arguments}
 \par
 だから、\main 関数を宣言する方法はあまり重要ではありません： \main
 \TT{main(int argc, char *argv[])} または \TT{main(int argc, char *argv[], char *envp[])}のいずれかです。
@@ -62,6 +63,8 @@ call main
 \main を\TT{main(int argc, char *argv[])}として宣言すると、
 最初の2つの引数を使用することができ、3つ目の引数は関数の \q{不可視}のままになります。 
 さらに、\TT{main(int argc)}を宣言することも可能です。これは動作します。
+
+% TBT Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{引数を渡す別の方法}
 

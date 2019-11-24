@@ -43,6 +43,7 @@ printf("%d %d %d", 1234);
 
 \printf wyprowadzi 1234, następnie jeszcze dwie liczby losowe\footnote{Tak na prawdę nie są one losowe, patrz: \myref{noise_in_stack}}, który przypadkowo okazały się na stosie obok.
 
+\label{main_arguments}
 \par
 Właśnie dlatego nie jest to ważne jak zapiszemy f-cję \main{}:\\
 jak \main{}, \TT{main(int argc, char *argv[])}\\
@@ -62,6 +63,8 @@ Jeśli zadeklarujecie \main bez argumentów, one, jednak, są obecne na stosie, 
 Jeśli zadeklarujecie \main jako \TT{main(int argc, char *argv[])}, 
 to można korzystać z pierwszych dwóch argumentów, a trzeci zostanie dla funkcji \q{niewidocznym}.
 Co więcej, można nawet zadeklarować \TT{main(int argc)}, i to zadziała.
+
+% TBT Another related example: \ref{cdecl_DLL}.
 
 \myparagraph{Alternatywne sposoby na przekazywanie argumentów}
 
