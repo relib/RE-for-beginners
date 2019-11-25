@@ -15,7 +15,7 @@ void function1 ()
 
 I wanted to see, which functions are called during run, and when.
 However, I was in hurry and had no time to deduce arguments count for each function, let alone data types.
-So each function in my replacement DLL had no argumnts whatsoever.
+So each function in my replacement DLL had no argument whatsoever.
 But everything worked, because all functions had \emph{cdecl} calling convention.
 (It wouldn't work if functions had \emph{stdcall} calling convention.)
 It also worked for x64 version.
