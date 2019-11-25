@@ -6,6 +6,7 @@ Compiled versions can be found here:
 [English](http://beginners.re/RE4B-EN.pdf),
 [Russian](http://beginners.re/RE4B-RU.pdf),
 [German](https://beginners.re/RE4B-DE.pdf),
+[Italian](https://beginners.re/RE4B-IT.pdf),
 [French](https://beginners.re/RE4B-FR.pdf),
 [Japanese](https://beginners.re/RE4B-JA.pdf).
 
