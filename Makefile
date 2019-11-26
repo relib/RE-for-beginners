@@ -36,6 +36,8 @@ clean:
 	rm -f *.ni
 	rm -f *.odt
 	rm -f *.rtf
+	rm -f *.bcf
+	rm -f *.xml
 
 # there are two xelatex invocations at the end, because \myref{} doesn't show pages correctly otherwise
 define compile
