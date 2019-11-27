@@ -55,7 +55,7 @@ The bigger the number, the more complex your function and things go from bad to 
 As you can see, additional exit (return instructions) make things even worse,
 as well as additional links between nodes (including additional goto's).
 
-I wrote the simple IDAPython script (\url{\GitHubBlobMasterURL/other/cyclomatic/cyclomatic.py}) to measure it.
+I wrote the simple IDAPython script (\url{\RepoURL/other/cyclomatic/cyclomatic.py}) to measure it.
 Here is result for Linux kernel 4.11 (most complex functions in it):
 
 \begin{lstlisting}
@@ -69,7 +69,7 @@ Here is result for Linux kernel 4.11 (most complex functions in it):
 72c3c0 mmc_init_card edges=593 nodes=365 rets=1 E-N+2=230 E-N+rets=229
 ...
 \end{lstlisting}
-( Full list: \url{\GitHubBlobMasterURL/other/cyclomatic/linux_4.11_sorted.txt} )
+( Full list: \url{\RepoURL/other/cyclomatic/linux_4.11_sorted.txt} )
 
 This is source code of some of them:
 \href{https://github.com/torvalds/linux/blob/56868a460b83c0f93d339256a81064d89aadae8e/kernel/bpf/verifier.c\#L2811}{do\_check()},
@@ -90,7 +90,7 @@ Most complex functions in Windows 7 ntoskrnl.exe file:
 ....
 \end{lstlisting}
 
-( Full list: \url{\GitHubBlobMasterURL/other/cyclomatic/win7_ntoskrnl_sorted.txt} )
+( Full list: \url{\RepoURL/other/cyclomatic/win7_ntoskrnl_sorted.txt} )
 
 From a bug hunter's standpoint, complex functions are prone to have bugs, so an attention should be paid to them.
 

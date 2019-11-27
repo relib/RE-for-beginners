@@ -1,6 +1,6 @@
 \section{Utiliser PIN DBI pour intercepter les XOR}
 
-\newcommand{\GitHubPinXORURL}{\GitHubTreeMasterURL/DBI/XOR/files}
+\newcommand{\RepoPinXORURL}{\RepoURL/DBI/XOR/files/}
 
 PIN d'Intel est un outil \ac{DBI}.
 Cela signifie qu'il prend un binaire compilé et y insère vos instructions, où vous
@@ -11,7 +11,7 @@ Elles sont utilisées intensément en cryptographie, et nous pouvons essayer de 
 WinRAR en mode chiffrement avec l'espoir que des instructions sont effectivement utilisées durant
 le chiffrement.
 
-Voici le code source de mon outil PIN: \url{\GitHubPinXORURL/XOR_ins.cpp}.
+Voici le code source de mon outil PIN: \url{\RepoPinXORURL/XOR_ins.cpp}.
 
 Le code est presque auto-documenté: il scanne le fichier exécutable en entrée à la recherche
 des instructions XOR/PXOR et insère un appel à notre fonction avant chaque.
@@ -36,13 +36,13 @@ c:\pin-3.2-81205-msvc-windows\pin.exe -t XOR_ins.dll -- rar a -pLongPassword tmp
 \end{lstlisting}
 
 Maintenant voici les statistiques pour test1.bin: \\
-\url{\GitHubPinXORURL/XOR_ins.out.test1}.
+\url{\RepoPinXORURL/XOR_ins.out.test1}.
 ... et pour test2.bin: \\
-\url{\GitHubPinXORURL/XOR_ins.out.test2}.
+\url{\RepoPinXORURL/XOR_ins.out.test2}.
 Jusqu'ici, vous pouvez ignorer toutes les adresses autres que ip=0x1400xxxxx, qui
 sont dans d'autres DLLs.
 
-Maintenant, regardons la différence: \url{\GitHubPinXORURL/XOR_ins.diff}.
+Maintenant, regardons la différence: \url{\RepoPinXORURL/XOR_ins.diff}.
 
 Certaines instructions XOR sont exécutées plus souvent pour test2.bin (qui est plus
 gros) que pour test1.bin (qui est plus petit).
@@ -247,5 +247,5 @@ RAR (qui est propriétaire, bien sûr). Je n'ai même pas jeté un coup d'\oe{}i
 le code source de UnRAR (qui est disponible).
 
 Les fichiers, incluant les fichiers de test et l'exécutable RAR que j'ai utilisé (win64, 5.40): \\
-\url{\GitHubPinXORURL}.
+\url{\RepoPinXORURL}.
 

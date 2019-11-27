@@ -60,7 +60,7 @@ Comme vous pouvez le voir, une sortie supplémentaire (instruction return) rend
 les choses encore pire, tout comme des liens additionnels entre les n\oe{}ds (un
 goto additionnel inclus).
 
-J'ai écris un simple script IDAPython (\url{\GitHubBlobMasterURL/other/cyclomatic/cyclomatic.py})
+J'ai écris un simple script IDAPython (\url{\RepoURL/other/cyclomatic/cyclomatic.py})
 pour la mesurer.
 Voici le résultat pour le noyau Linux 4.11 (ses fonctions les plus complexes):
 
@@ -75,7 +75,7 @@ Voici le résultat pour le noyau Linux 4.11 (ses fonctions les plus complexes):
 72c3c0 mmc_init_card edges=593 nodes=365 rets=1 E-N+2=230 E-N+rets=229
 ...
 \end{lstlisting}
-( Liste complète: \url{\GitHubBlobMasterURL/other/cyclomatic/linux_4.11_sorted.txt} )
+( Liste complète: \url{\RepoURL/other/cyclomatic/linux_4.11_sorted.txt} )
 
 Voici le code source de certaines d'entre elles:
 \href{https://github.com/torvalds/linux/blob/56868a460b83c0f93d339256a81064d89aadae8e/kernel/bpf/verifier.c\#L2811}{do\_check()},
@@ -96,7 +96,7 @@ Fonctions les plus complexes du fichier ntoskrnl.exe de Windows 7:
 ....
 \end{lstlisting}
 
-( Liste complète: \url{\GitHubBlobMasterURL/other/cyclomatic/win7_ntoskrnl_sorted.txt} )
+( Liste complète: \url{\RepoURL/other/cyclomatic/win7_ntoskrnl_sorted.txt} )
 
 Du point de vue du chasseur de bogues, les fonctions complexes sont plus susceptibles
 d'avoir des bogues, donc il faut leurs donner une attention particulière.

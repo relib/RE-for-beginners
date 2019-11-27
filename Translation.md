@@ -1,14 +1,14 @@
 # Want to translate this book to another language?
 
-Take a look on [GitHub repository](https://github.com/DennisYurichev/RE-for-beginners).
+Get a source code: https://beginners.re/src/
+Or: git clone http://hackspace.odessa.ua/git/RE4B/
+
+Take a look on git repository: https://beginners.re/current-tree/
 For example, `main_EN.tex` for English, `main_RU.tex` for Russian, etc.
 So just find `filename_EN.tex` file you want to translate, copy to filename_XX.tex (where XX is your language)
 and replace English text by yours.
 No special TeX/LaTeX knowledge is needed.
-Then just send it to me.
-Or if you familiar with git and github, add your file to source tree and create pull request.
-How to find directories with `*_EN.tex` files?
-[Look here](https://github.com/DennisYurichev/RE-for-beginners/search?utf8=%E2%9C%93&q=input+EN&type=Code).
+Then just send it to me: dennis(a)yurichev.com
 
 Please submit your work as early as possible: other translators will be aware of the piece of work already done.
 
@@ -62,11 +62,10 @@ in the directory you're currently working with contents like
 	I'm going to translate this part soon.
 	-- my@email.com, username@github.com, DD/MM/YYYY.
 
-[For example](https://github.com/DennisYurichev/RE-for-beginners/blob/2bc65d9533d48b023cf5ac467c42f4ef1aee90e0/OS/Note_to_German_translators.txt).
 You can jokingly call it "mutex".
 Feel free to add any other notes for rest of translators.
 
-If you are not familiar with git/github, just send me fragment you translated, so I could add it as early as possible.
+If you are not familiar with git, just send me fragment you translated, so I could add it as early as possible.
 
 ## Keeping translation in sync
 
@@ -80,8 +79,8 @@ There was a time (before Jan-2019) when I wrote this:
 
 	listings TeX package sometimes goes crazy if it encounters UTF-8 character(s) and digit(s) in one line: [stack overflow discussion](http://tex.stackexchange.com/questions/24528/having-problems-with-listings-and-utf-8-can-it-be-fixed).
 	So it must be escaped, and in this project, "paragraph" symbol is used: `§`.
-	(Almost) all Cyrillic comments in listings are escaped, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/9bcd72d176b1f86aa31dda21007740f83ae90484/patterns/02_stack/04_alloca/2_1_gcc_intel_O3_RU.asm#L9).
-	How to escape French diacritic symbols, [for example](https://github.com/DennisYurichev/RE-for-beginners/blob/c4ee7d6abc3022fd60167d22f47cf100bc4be425/patterns/03_printf/ARM/ARM8_O0_FR.lst#L12).
+	(Almost) all Cyrillic comments in listings are escaped.
+	How to escape French diacritic symbols...
 	Do not worry about misplacing them or not placing at all, I'll fix it by myself.
 
 	For those, who interested, § symbol is in fact switches you into TeX mode, and you can write anything here as in .tex files, like `\IT{italic}`, etc.
@@ -97,8 +96,8 @@ In this case, I enclose smaller parts of comment in listing...
 
 "§" symbol is still to be used in code, but not in comments.
 This is a case of translated variable names, like:
-https://github.com/DennisYurichev/RE-for-beginners/blob/master/patterns/09_loops/simple/loops_1_RU.c
-https://github.com/DennisYurichev/RE-for-beginners/blob/master/patterns/09_loops/simple/loops_3_RU.c
+https://beginners.re/current-tree/patterns/09_loops/simple/loops_1_RU.c
+https://beginners.re/current-tree/patterns/09_loops/simple/loops_3_RU.c
 
 ## Contact me
 
