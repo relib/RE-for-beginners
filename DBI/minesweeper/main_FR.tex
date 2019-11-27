@@ -1,6 +1,6 @@
 \section{Cracker Minesweeper avec PIN}
 
-\newcommand{\GitHubMinesweeperURL}{\GitHubTreeMasterURL/DBI/minesweeper}
+\newcommand{\RepoMinesweeperURL}{\RepoURL/DBI/minesweeper}
 
 Dans ce livre, j'ai expliqué comment cracker Minesweeper pour Windows XP: \myref{minesweeper_winxp}.
 
@@ -14,7 +14,7 @@ Ceci est un cas où nous pouvons essayer l'outil PIN DBI.
 
 Tout d'abord, puisque Minesweeper dispose les mines aléatoirement, il doit appeler
 rand() ou une fonction similaire.
-Essayons d'intercepter tous les appels à rand(): \url{\GitHubMinesweeperURL/minesweeper1.cpp}.
+Essayons d'intercepter tous les appels à rand(): \url{\RepoMinesweeperURL/minesweeper1.cpp}.
 
 Nous pouvons maintenant le lancer:
 
@@ -27,7 +27,7 @@ hook juste après chaque appel.
 Le hook est la fonction RandAfter() que nous avons défini: elle logue la valeur et l'adresse
 de retour.
 Voici un log que j'ai obtenu en lançant la configuration 9*9 standard (10 mines):
- \url{\GitHubMinesweeperURL/minesweeper1.out.10mines}.
+ \url{\RepoMinesweeperURL/minesweeper1.out.10mines}.
 La fonction rand() a été appelée de nombreuses fois depuis différents endroits, mais
 a été appelée depuis 0x10002770d exactement 10 fois.
 J'ai changé la configuration de Minesweeper à 16*16 (40 mines) et rand() a été appelée
@@ -40,7 +40,7 @@ en 0x10002770d est appelée Board::placeMines().
 \subsection{Remplacer les appels à rand() par notre function}
 
 Essayons maintenant de remplacer la fonction rand() avec notre version, qui renvoie
-toujours zéro: \url{\GitHubMinesweeperURL/minesweeper2.cpp}.
+toujours zéro: \url{\RepoMinesweeperURL/minesweeper2.cpp}.
 Durant le démarrage, PIN remplace tous les appels à la fonction rand() par des appels
 à notre fonction, qui écrit dans le log et renvoie zéro.
 Ok, je l'ai lancé et ai cliqué sur la case la plus en haut à gauche.
@@ -114,7 +114,7 @@ Suivre toutes les écritures en mémoire est lent, mais après le 2nd appel à r
 nous n'avons plus besoin de les suivre (puisque nous avons déjà obtenu une liste
 de blocs intéressants à ce point), donc nous arrêtons.
 
-Maintenant le code: \url{\GitHubMinesweeperURL/minesweeper3.cpp}.
+Maintenant le code: \url{\RepoMinesweeperURL/minesweeper3.cpp}.
 
 Il s'avère que seulement 4 blocs de heap sont modifiés entre les deux premiers appels
 à rand(), voici à quoi ils ressemblent:
@@ -223,7 +223,7 @@ avons observé, et est appelée depuis de nombreux endroits, Board::placeMines()
 Mais c'est cool: je ne suis jamais allé dans les détails, tout a été résolu simplement
 en utilisant PIN.
 
-Les fichiers: \url{\GitHubMinesweeperURL}.
+Les fichiers: \url{\RepoMinesweeperURL}.
 
 \subsection{Exercice}
 

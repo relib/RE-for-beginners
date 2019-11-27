@@ -34,7 +34,7 @@ Peut-être est-ce relatif à des commandes et/ou des information clients.
 ...
 \end{lstlisting}
 
-Le fichier est disponible \href{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/encrypted.xml}{ici}.
+Le fichier est disponible \href{\RepoURL/examples/encrypted_DB1/encrypted.xml}{ici}.
 
 \myindex{base64}
 Ce sont clairement des données encodées en base64, car toutes les chaînes consistent
@@ -441,10 +441,10 @@ J'en ai finalement conclu que le premier entier 32-bit est simplement OrderID du
 \ac{XML}, et le second entier 32-bit est aussi OrderID, mais multiplié par -1. Tous
 les 8 autres octets sont les mêmes pour chaque opération.
 Maintenant, j'ai déchiffré la base de données entière:
-\url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.txt}.
+\url{\RepoURL/examples/encrypted_DB1/decrypted.full.txt}.
 
 Le script Python utilisé pour ceci est:
-\url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypt_blocks.py}.
+\url{\RepoURL/examples/encrypted_DB1/decrypt_blocks.py}.
 
 Peut-être que l'auteur voulait chiffrer chaque bloc différemment, donc il a utilisé
 OrderID comme une partie de la clef.
@@ -505,7 +505,7 @@ vérifier visuellement.
 Il y a 12 autres octets après chaque chaîne.
 
 En utilisant ce script
-(\url{\GitHubBlobMasterURL/examples/encrypted_DB1/dump_buffer_rest.py})
+(\url{\RepoURL/examples/encrypted_DB1/dump_buffer_rest.py})
 j'ai obtenu une sélection aléatoire de \emph{fins} (de bloc):
 
 \lstinputlisting{examples/encrypted_DB1/tails.lst}
@@ -585,8 +585,8 @@ plain:
 OrderID= 5 name= LENA MARCUS sum= 179.0 date= 2004 / 6 / 3
 \end{lstlisting}
 
-En voir plus: \url{https://raw.githubusercontent.com/DennisYurichev/RE-for-beginners/master/examples/encrypted_DB1/decrypted.full.with_data.txt}.
-Ou filtré: \url{\GitHubBlobMasterURL/examples/encrypted_DB1/decrypted.short.txt}.
+En voir plus: \url{\RepoURL/examples/encrypted_DB1/decrypted.full.with_data.txt}.
+Ou filtré: \url{\RepoURL/examples/encrypted_DB1/decrypted.short.txt}.
 Ça semble correct.
 
 Ceci est une sorte de sérialisation \ac{OOP}, i.e., stockant différents types de
@@ -671,7 +671,7 @@ J'ai obtenu les nom et noms de famille les plus répandus au USA ici: \url{http:
 et les ai combiné aléatoirement.
 Les dates et montants ont aussi été générés aléatoirement.
 
-Tous les fichiers utilisés dans cette partie sont ici: \url{\GitHubTreeMasterURL/examples/encrypted_DB1}.
+Tous les fichiers utilisés dans cette partie sont ici: \url{\RepoURL/examples/encrypted_DB1}.
 
 Néanmoins, j'ai observé de telles caractéristiques dans des logiciels réels.
 Cet exemple est basé dessus.

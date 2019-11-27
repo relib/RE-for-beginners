@@ -2,7 +2,7 @@
 \mysection{Breaking simple executable cryptor}
 
 I've got an executable file which is encrypted by relatively simple encryption.
-\href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/cipher.bin}{Here is it} (only executable section is left here).
+\href{\RepoURL/examples/simple_exec_crypto/files/cipher.bin}{Here is it} (only executable section is left here).
 
 First, all encryption function does is just adds number of position in buffer to the byte.
 Here is how this can be encoded in Python:
@@ -162,7 +162,7 @@ for N in range(KEY_LEN):
     print sorted_stat[0]
 \end{lstlisting}
 
-(Source code can be downloaded \href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypt.py}{here}.)
+(Source code can be downloaded \href{\RepoURL/examples/simple_exec_crypto/files/decrypt.py}{here}.)
 
 I run it and here is a key for which 00/FF/8B bytes presence in decrypted buffer is maximal:
 
@@ -243,14 +243,14 @@ for c in tmp:
 fout.close()
 \end{lstlisting}
 
-(Source code can be downloaded \href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypt2.py}{here}.)
+(Source code can be downloaded \href{\RepoURL/examples/simple_exec_crypto/files/decrypt2.py}{here}.)
 
 Let's check resulting file:
 
 \lstinputlisting{examples/simple_exec_crypto/objdump_result.txt}
 
 Yes, this is seems correctly disassembled piece of x86 code.
-The whole decryped file can be downloaded \href{\GitHubBlobMasterURL/examples/simple_exec_crypto/files/decrypted.bin}{here}.
+The whole decryped file can be downloaded \href{\RepoURL/examples/simple_exec_crypto/files/decrypted.bin}{here}.
 
 In fact, this is text section from regedit.exe from Windows 7.
 But this example is based on a real case I encountered, so just executable is different (and key), algorithm is the same.

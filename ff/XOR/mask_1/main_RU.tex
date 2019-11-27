@@ -13,7 +13,7 @@ Shareware from Software Customization.
 Software Customization [ASP] Version 3.5 Feb. 2000
 \end{lstlisting}
 
-Можно скачать здесь: \url{\GitHubBlobMasterURL/ff/XOR/mask_1/files/newcastle.tgz}.
+Можно скачать здесь: \url{\RepoURL/ff/XOR/mask_1/files/newcastle.tgz}.
 
 Там внутри есть файл (с названием \emph{castle.dbf}), который явно зашифрован, но не настоящим криптоалгоритмом,
 и оне сжат, это что-то куда проще.
@@ -27,7 +27,7 @@ Software Customization [ASP] Version 3.5 Feb. 2000
 \end{figure}
 
 Зашифрованный файл можно скачать здесь:
-\url{\GitHubBlobMasterURL/ff/XOR/mask_1/files/castle.dbf.bz2}.
+\url{\RepoURL/ff/XOR/mask_1/files/castle.dbf.bz2}.
 
 Можно ли расшифровать его без доступа к программе, используя просто этот файл?
 
@@ -325,7 +325,7 @@ In[]:= DecryptBlock[blk_] := BitXor[key3, blk]
 \end{figure}
 
 (Расшифрованный файл доступен здесь:
-\url{\GitHubBlobMasterURL/ff/XOR/mask_1/files/decrypted.dat.bz2}.)
+\url{\RepoURL/ff/XOR/mask_1/files/decrypted.dat.bz2}.)
 
 Несомненно, это корректный исходный файл.
 Да, и мы видим числа в начале каждого блока. Должно быть это и есть источник некорректного XOR-ключа.
@@ -339,7 +339,7 @@ In[]:= DecryptBlock[blk_] := BitXor[key3, blk]
 Вот и всё! Теперь мы можем написать утилиту для зашифрования файла назад, и, может быть, модифицировать его перед этим
 
 Файл для Mathematica можно скачать здесь:\\
-\url{\GitHubBlobMasterURL/ff/XOR/mask_1/files/XOR_mask_1.nb}.
+\url{\RepoURL/ff/XOR/mask_1/files/XOR_mask_1.nb}.
 
 Итог: XOR-шифрование не надежно вообще. Вероятно, разработчик игры хотел просто скрыть внутренности игры от игрока,
 ничего более серьезного.
