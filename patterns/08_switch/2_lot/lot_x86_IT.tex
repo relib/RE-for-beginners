@@ -4,7 +4,7 @@
 
 Con MSVC 2010 otteniamo:
 
-\lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/08_switch/2_lot/lot_msvc_EN.asm}
+\lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/08_switch/2_lot/lot_msvc_IT.asm}
 
 \myindex{jumptable}
 
@@ -15,7 +15,7 @@ All'inizio della funzione, se $a$ è maggiore di 4, il controllo del flusso è p
 \TT{\$LN1@f}, dove viene chiamata \printf con argomento \TT{'something unknown'}.
 
 Se invece il valore di $a$ è minore o uguale a 4, viene moltiplicato per 4 e sommato all'indirizzo della tabella \TT{\$LN11@f}. 
-In questo modo vengono costruiti gli indirizzi della tabell, facendo puntare esattamente all'elemento giusto per ogni caso,
+In questo modo vengono costruiti gli indirizzi della tabella, facendo puntare esattamente all'elemento giusto per ogni caso,
 
 Poniamo ad esempio che $a$ sia uguale a 2. $2*4 = 8$ (tutti gli elementi della tabella sono indirizzi in un processo a 32-bit, perciò tutti gli elementi sono larghi 4 byte).
 L'indirizzo della tabella \TT{\$LN11@f} + 8 corrisponde all'elemento della tabella in cui è memorizzata la label \TT{\$LN4@f}.
@@ -34,7 +34,7 @@ Letteralmente, l'istruzione \TT{jmp DWORD PTR \$LN11@f[ecx*4]} corrisponde a
 ad un indirizzo allineato a 4 byte (or a 16 byte).
 
 Ciò è molto utile in termini di performance poiché così il processore è in grado di recuperare valori a 32-bit dalla memoria attraverso il memory bus, 
-la cache, etc., in maniera più efficiente.y if it is aligned.
+la cache, etc., in maniera più efficiente se è allineata.
 
 \input{patterns/08_switch/2_lot/olly_IT}
 

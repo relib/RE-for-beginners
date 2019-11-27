@@ -6,7 +6,7 @@ Risultato (MSVC 2010):
 
 \lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/08_switch/1_few/few_msvc.asm}
 
-La nostra funzione con pochi casi nello switch() è praticamente analaco a questa costruzione:
+La nostra funzione con pochi casi nello switch() è praticamente analogo a questa costruzione:
 
 \lstinputlisting[label=switch_few_ifelse,style=customc]{patterns/08_switch/1_few/few_analogue.c}
 
@@ -36,7 +36,7 @@ Se compiliamo questo codice con 4.4.1 otteniamo pressoché lo stesso risultato, 
 % messages (string constants) in something else, like \strconst
 % to separate them all. Now they all use \TT, which is not best
 % \INS{} for all instructions including operands? --DY
-Now let's turn on optimization in MSVC (\Ox): \TT{cl 1.c /Fa1.asm /Ox}
+Ora attiviamo l'ottimizzaione in MSVC (\Ox): \TT{cl 1.c /Fa1.asm /Ox}
 
 \label{JMP_instead_of_RET}
 \lstinputlisting[caption=MSVC,style=customasmx86]{patterns/08_switch/1_few/few_msvc_Ox.asm}
@@ -92,5 +92,5 @@ E, ovviamente, tutto ciò viene fatto a favore della velocità di esecuzione.
 
 Un simile caso con il compilatore ARM è descritto nella sezione \q{\PrintfSeveralArgumentsSectionName}, qui~(\myref{ARM_B_to_printf}).
 
-\input{patterns/08_switch/1_few/olly_EN.tex}
+\input{patterns/08_switch/1_few/olly_IT.tex}
 
