@@ -19,6 +19,7 @@ and
 \verb|_0d51acf984cb679a|.
 
 I'm using English Windows, but with Russian language support, so there are might be resource files for two languages.
+\myindex{Resource Hacker}
 By opening Mahjong.exe.mui in Resource Hacker, there we can see a menu definition:
 
 \begin{lstlisting}[caption=Menu resources from Mahjong.exe.mui]
@@ -91,6 +92,7 @@ Anyway, I can't get function names...)
 
 This piece of code enables or disables the \emph{Hint} menu item.
 
+\myindex{Windows!EnableMenuItem}
 And according to MSDN\footnote{\url{https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-enablemenuitem}}:
 
 \verb$MF_DISABLED | MF_GRAYED = 3$ and \verb|MF_ENABLED = 0|.
