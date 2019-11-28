@@ -1,0 +1,109 @@
+﻿\section{Mahjong solitaire (Windows 7)}
+
+Mahjong solitaire is a great game, but can we make it harder, by disabling the \emph{Hint} menu item?
+
+In my Windows 7, I can find Mahjong.dll and Mahjong.exe in:\\
+\verb|C:\Windows\winsxs\| \\
+\verb|x86_microsoft-windows-s..inboxgames-shanghai_31bf3856ad364e35_6.1.7600.16385_none\| \\
+\verb|c07a51d9507d9398|.
+
+Also, the \verb|Mahjong.exe.mui| file in:\\
+\verb|C:\Windows\winsxs\| \\
+\verb|x86_microsoft-windows-s..-shanghai.resources_31bf3856ad364e35_6.1.7600.16385_en-us| \\
+\verb|_c430954533c66bf3|
+
+and
+
+\verb|C:\Windows\winsxs\| \\
+\verb|x86_microsoft-windows-s..-shanghai.resources_31bf3856ad364e35_6.1.7600.16385_ru-ru| \\
+\verb|_0d51acf984cb679a|.
+
+I'm using English Windows, but with Russian language support, so there are might be resource files for two languages.
+By opening Mahjong.exe.mui in Resource Hacker, there we can see a menu definition:
+
+\begin{lstlisting}[caption=Menu resources from Mahjong.exe.mui]
+103 MENU
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+{
+  POPUP "&Game"
+  {
+    MENUITEM "&New Game\tF2",  40000
+    MENUITEM SEPARATOR
+    MENUITEM "&Undo\tCtrl+Z",  40001
+    MENUITEM "&Hint\tH",  40002
+    MENUITEM SEPARATOR
+    MENUITEM "&Statistics\tF4",  40003
+    MENUITEM "&Options\tF5",  40004
+    MENUITEM "Change &Appearance\tF7",  40005
+    MENUITEM SEPARATOR
+    MENUITEM "E&xit",  40006
+  }
+  POPUP "&Help"
+  {
+    MENUITEM "&View Help\tF1",  40015
+    MENUITEM "&About Mahjong Titans",  40016
+    MENUITEM SEPARATOR
+    MENUITEM "Get &More Games Online",  40020
+  }
+}
+\end{lstlisting}
+
+The \emph{Hint} submenu has the 40002 code.
+Now I'm opening Mahjong.exe in IDA and find the 40002 value.
+
+(I'm writing this in November 2019. Somehow, IDA can't get PDBs from Microsoft servers. Maybe Windows 7 is unsupported anymore?
+Anyway, I can't get function names...)
+
+\begin{lstlisting}[style=customasmx86,caption=Mahjong.exe]
+.text:010205C8 6A 03                             push    3
+.text:010205CA 85 FF                             test    edi, edi
+.text:010205CC 5B                                pop     ebx
+
+...
+
+.text:01020625 57                                push    edi             ; uIDEnableItem
+.text:01020626 FF 35 C8 97 08 01                 push    hmenu           ; hMenu
+.text:0102062C FF D6                             call    esi ; EnableMenuItem
+.text:0102062E 83 7D 08 01                       cmp     [ebp+arg_0], 1
+.text:01020632 BF 42 9C 00 00                    mov     edi, 40002
+.text:01020637 75 18                             jnz     short loc_1020651 ; must be always
+.text:01020639 6A 00                             push    0               ; uEnable
+.text:0102063B 57                                push    edi             ; uIDEnableItem
+.text:0102063C FF 35 B4 8B 08 01                 push    hMenu           ; hMenu
+.text:01020642 FF D6                             call    esi ; EnableMenuItem
+.text:01020644 6A 00                             push    0               ; uEnable
+.text:01020646 57                                push    edi             ; uIDEnableItem
+.text:01020647 FF 35 C8 97 08 01                 push    hmenu           ; hMenu
+.text:0102064D FF D6                             call    esi ; EnableMenuItem
+.text:0102064F EB 1A                             jmp     short loc_102066B
+.text:01020651                   ; ---------------------------------------------------------------------------
+.text:01020651
+.text:01020651                   loc_1020651:                            ; CODE XREF: sub\_1020581+B6
+.text:01020651 53                                push    ebx             ; 3
+.text:01020652 57                                push    edi             ; uIDEnableItem
+.text:01020653 FF 35 B4 8B 08 01                 push    hMenu           ; hMenu
+.text:01020659 FF D6                             call    esi ; EnableMenuItem
+.text:0102065B 53                                push    ebx             ; 3
+.text:0102065C 57                                push    edi             ; uIDEnableItem
+.text:0102065D FF 35 C8 97 08 01                 push    hmenu           ; hMenu
+.text:01020663 FF D6                             call    esi ; EnableMenuItem
+\end{lstlisting}
+
+This piece of code enables or disables the \emph{Hint} menu item.
+
+And according to MSDN\footnote{\url{https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-enablemenuitem}}:
+
+\verb$MF_DISABLED | MF_GRAYED = 3$ and \verb|MF_ENABLED = 0|.
+
+I think, this function enables or disables several menu items (\emph{Hint}, \emph{Undo}, etc), according to the value in \verb|arg_0|.
+Because at start, when a user choose solitaire type, \verb|Hint| and \verb|Undo| are disabled.
+They are enabled when the game has begun.
+
+So I'm patching the Mahjong.exe file at 0x01020637 by replacing 0x75 with 0xEB byte, making this \INS{JNZ} jump working always.
+Effectively, this will make calling \verb|EnableMenuItem(..., ..., 3)| always.
+Now the \emph{Hint} submenu is always disabled.
+
+Also, somehow, \verb|EnableMenuItem()| called twice, for \verb|hMenu| and for \verb|hmenu|.
+Perhaps, the program has two menus, and maybe switching them?
+
+As a homework, try to disable \emph{Undo} menu item, to make the game even harder.
