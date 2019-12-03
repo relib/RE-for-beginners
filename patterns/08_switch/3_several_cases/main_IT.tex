@@ -3,12 +3,12 @@
 Ecco un costrutto molto diffuso: molti casi in un singolo blocco:
 \lstinputlisting[style=customc]{patterns/08_switch/3_several_cases/several_cases.c}
 
-Generare un blocco per ciascun caso possibile risulta poco efficiente, perciò solitamente quello che viene fatto è generare un
+Generare un blocco per ciascun caso possibile risulta poco efficiente, perciò solitamente quello che viene fatto è generare
 ogni blocco più una sorta di smistatore (dispatcher).
 
 \subsubsection{MSVC}
 
-\lstinputlisting[caption=\Optimizing MSVC 2010,numbers=left,style=customasmx86]{patterns/08_switch/3_several_cases/several_cases_MSVC_2010_Ox_EN.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2010,numbers=left,style=customasmx86]{patterns/08_switch/3_several_cases/several_cases_MSVC_2010_Ox_IT.asm}
 
 Notiamo due tabelle: la prima, (\TT{\$LN10@f}), è una tabella di indici. La seconda, (\TT{\$LN11@f}), è un array di puntatori ai blocchi.
 
@@ -28,7 +28,7 @@ Vale anche la pena notare che non c'è alcun caso per il valore 0 in input.
 Per questo motivo vediamo l'istruzione \DEC a riga 10, e la tabella inizia da $a=1$, 
 non c'è bisogno di allocare un elemento nella tabella per $a=0$.
 
-Questo è un pattern molto diffuso
+Questo è un pattern molto diffuso.
 
 Perchè è economico? Perchè non è possibile avere lo stesso risultato con le tecniche viste prima 
 (\myref{switch_lot_GCC}), solo con una tabella di puntatori ai blocchi?
@@ -51,7 +51,7 @@ Ricordiamoci che tutte le istruzioni ARM64 sono lunghe 4 byte.
 GCC sfrutta il fatto che tutti gli offset nel nostro piccolo esempio si trovano molto vicini tra di loro.
 In questo modo la jump table consiste di singoli byte.
 
-\lstinputlisting[caption=\Optimizing GCC 4.9.1 ARM64,style=customasmARM]{patterns/08_switch/3_several_cases/ARM64_GCC491_O3_EN.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9.1 ARM64,style=customasmARM]{patterns/08_switch/3_several_cases/ARM64_GCC491_O3_IT.s}
 
 Compiliamo questo esempio in un file oggetto e apriamolo con \IDA. Questa è la jump table:
 
