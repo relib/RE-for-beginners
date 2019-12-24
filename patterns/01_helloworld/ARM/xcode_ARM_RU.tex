@@ -47,7 +47,7 @@ __cstring:00003F62 48 65 6C 6C+aHelloWorld_0  DCB "Hello world!",0
 \label{puts}
 \myindex{\CStandardLibrary!puts()}
 \myindex{puts() вместо printf()}
-Компилятор заменил вызов \printf на \puts. 
+LLVM заменил вызов \printf на \puts. 
 Действительно, \printf с одним аргументом это почти аналог \puts.
  
 \emph{Почти}, если принять условие, что в строке не будет управляющих символов \printf, 
