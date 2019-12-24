@@ -51,7 +51,7 @@ The \INS{BL} instruction calls the \puts function instead of \printf.
 \myindex{\CStandardLibrary!puts()}
 \myindex{puts() instead of printf()}
 
-GCC replaced the first \printf call with \puts.
+LLVM has replaced the first \printf call with \puts.
 Indeed: \printf with a sole argument is almost analogous to \puts. 
 
 \emph{Almost}, because the two functions are producing the same result only in case the 
