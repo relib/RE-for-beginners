@@ -26,7 +26,7 @@ main:
 	mov	w0, 2
 ; salvalo nello spazio allocato per lui nello stack locale:
 	str	w0, [x29,28]
-; sorvola il corpo del ciclo e salta all' istruzione di controllo della condione di ciclo:
+; sorvola il corpo del ciclo e salta all' istruzione di controllo della condizione di ciclo:
 	b	.L3
 .L4:
 ; carica il valore del contatore in W0.

@@ -13,7 +13,7 @@ questo perchè viene prima controllata la condizione su $i$, solamente dopo il c
 E questo è corretto. 
 
 Perchè, se la condizione del ciclo non è rispettata all' inizio,
- il corpo del ciclo non deve esser eseguito.
+ il corpo del ciclo non deve essere eseguito.
 Ciò è possibile nel caso seguente:
 
 \lstinputlisting[style=customc]{patterns/09_loops/simple/loops_3_EN.c}
@@ -23,5 +23,5 @@ Se \emph{total\_entries\_to\_process} vale 0, il corpo del ciclo non deve propri
 Questo è il motivo del controllo della condizione prima dell' esecuzione.
 
 In ogni caso, un compilatore ottimizzato potrebbe scambiare il controllo della condizione e il corpo del ciclo,
-se è sicuro che la precedente situazione non è possibile
+se è sicuro che la precedente situazione non sia possibile
 (come nel caso del nostro semplice esempio e usando compilatori come Keil, Xcode (LLVM), MSVC in modalità ottimizzato).

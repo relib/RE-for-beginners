@@ -59,7 +59,7 @@ Proviamo GCC 4.4.1 con la massima ottimizzazione impostata (opzione \Othree):
 
 Huh, GCC ha appena "srotolato" il nostro ciclo.
 
-\Gls{loop unwinding} è vantaggioso nel caso in cui non ci siano molte iterazioni, perchè possiamo ridurre il tempo di esecuzione rimuovenfo tutte le istruzioni di supporto ai cicli. 
+\Gls{loop unwinding} è vantaggioso nel caso in cui non ci siano molte iterazioni, perchè possiamo ridurre il tempo di esecuzione rimuovendo tutte le istruzioni di supporto ai cicli. 
 Dall' altro lato, il codice risultante è ovviamente maggiore.
 
 Srotolare grossi cicli non è raccomandato al giorno d'oggi, perchè grosse funzioni possono richiedere un ingombro della cache maggiore%
@@ -96,7 +96,7 @@ Sembrerebbe che \olly sia in grado di rilevare dei semplici cicli e ce li mostra
 \end{figure}
 
 Tracciando (F8~--- \stepover) vediamo \ESI 
-\glslink{increment}{incrementing}.
+\glslink{increment}{incrementare}.
 Qui, per esempio, $ESI=i=6$:
 
 \begin{figure}[H]

@@ -3,7 +3,7 @@ my_memcpy:
 ; RSI = indirizzo sorgente
 ; RDX = dimensione del blocco
 
-; inizializza il contatore (i) at 0
+; inizializza il contatore (i) a 0
 	xor	eax, eax
 .L2:
 ; sono stati copiati tutti i byte? allora esci:
