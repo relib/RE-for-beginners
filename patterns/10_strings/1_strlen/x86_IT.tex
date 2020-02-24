@@ -13,7 +13,7 @@ Qui, abbiamo due nuove istruzioni: \MOVSX e \TEST.
 
 \label{MOVSX}
 
-La prima---\MOVSX---prende un byte da un indirizzo in memoria e salva il valore in un registro a 32-bit 
+La prima---\MOVSX---prende un byte da un indirizzo in memoria e salva il valore in un registro a 32-bit. 
 \MOVSX sta per \emph{MOV with Sign-Extend}. 
 \MOVSX imposta i restanti bit, dal 8 al 31, 
 a 1 se il byte sorgente è \emph{negativo} o a 0 se \emph{positivo}.
@@ -28,7 +28,7 @@ Quindi se vogliamo trasferire \TT{0xFE} da una variabile di tipo \Tchar a \Tint,
 dobbiamo identficare il suo segno estenderlo. Questo è ciò che fa \MOVSX.
 
 Maggiori dettagli nella sezione \q{\emph{\SignedNumbersSectionName}} ~(\myref{sec:signednumbers}).
-E difficile dire se il compilatore necessiti di salvare una varibile \Tchar in \EDX, portrebbe prendere solo la parte a 8-bit di un registro 
+E difficile dire se il compilatore necessiti di salvare una varibile \Tchar in \EDX, potrebbe prendere solo la parte a 8-bit di un registro 
 (per esempio \DL). Apparentemente, il \gls{register allocator} del compilatore funziona così.
 
 \myindex{ARM!\Instructions!TEST}
@@ -55,15 +55,15 @@ Infatti, questa istruzione è conveniente solo perchè ci permette di rimpiazzar
 D' altronde, è ovvio che il compilatore possa produrre questo codice:\\
 \TT{mov al, byte ptr [eax] / test al, al}---è quasi lo stesso, tuttavia, 
 i bit più alti del registro \EAX conterranno rumore casuale. 
-Ma pensiamo sia un ostacolo del compilatore---non poter produrre codice più leggibile. 
+Ma supponiamo sia un ostacolo del compilatore---non potrebbe più produrre codice leggibile. 
 Parlando francamente, il compilatore non è obbligato ad emettere codice del tutto comprensibile (agli umani).
 
 \myindex{x86!\Instructions!SETcc}
 
 La prossima nuova istruzione è \SETNZ. 
 In questo caso, se \AL non contiene zero, \TT{test al, al} 
-imposta la flag \ZF a 0, ma \SETNZ, se \TT{ZF==0} (\emph{NZ} sta per\emph{not zero}) imposta \AL a 1.
-Parliando con un liguaggio naturale, \emph{se \AL non è, salta a loc\_80483F0}. 
+imposta la flag \ZF a 0, ma \SETNZ, se \TT{ZF==0} (\emph{NZ} sta per \emph{not zero}) imposta \AL a 1.
+Parlando con un liguaggio naturale, \emph{se \AL non è zero, salta a loc\_80483F0}. 
 Il compilatore emette molto codice rindondante, ma non dimentichiamo che le ottimizzazioni sono spente.
 
 \myparagraph{\Optimizing MSVC}
@@ -71,7 +71,7 @@ Il compilatore emette molto codice rindondante, ma non dimentichiamo che le otti
 
 Ora compiliamo il tutto in MSVC 2012, con le ottimizzazioni attivate (\Ox):
 
-\lstinputlisting[caption=\Optimizing MSVC 2012 /Ob0,style=customasmx86]{patterns/10_strings/1_strlen/10_2_EN.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2012 /Ob0,style=customasmx86]{patterns/10_strings/1_strlen/10_2_IT.asm}
 
 Ora è tutto più semplice.
 Inutile dire che il compilatore può usare i registri con tale efficienza 
@@ -96,7 +96,7 @@ Tuttavia, in questo caso \MOVZX può essere rimpiazzato con\\
 Forse è più semplice per il generatore di codice di GCC \emph{ricordare} 
 che l' intero registro \EDX a 32-bit 
 è stato allocato per una variabile \Tchar e quindi è sicuro che i bit più alti 
-in nessun momento hanno rumore.
+non contengono rumore in nessun momento.
 
 \label{strlen_NOT_ADD}
 \myindex{x86!\Instructions!NOT}

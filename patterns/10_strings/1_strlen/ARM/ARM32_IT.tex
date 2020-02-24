@@ -20,7 +20,7 @@ Dopodichè il valore viene \glslink{increment}{incrementato} e risalvato in \emp
 L' istruzione successiva,  \TT{LDRSB R0, [R0]} (\q{Load Register Signed Byte}), carica un byte dalla memoria all' indirizzo salvato in \Reg{0} e lo extende con segno in 32-bit
 \footnote{Il compilatore Keil tratta il tipo \Tchar come con segno, proprio come MSVC e GCC.}.
 \myindex{x86!\Instructions!MOVSX}
-Ciò è simile all' istruizione \MOVSX in x86.
+Ciò è simile all' istruzione \MOVSX in x86.
 
 Il compilatore tratta questo byte come con segno da quando il tipo \Tchar è con segno in accordo con lo standard C.
 Riguardo a ciò, se ne è già parlato nella sezione~(\myref{MOVSX}), in relazione a x86.
@@ -29,7 +29,7 @@ Riguardo a ciò, se ne è già parlato nella sezione~(\myref{MOVSX}), in relazio
 \myindex{Intel!8080}
 \myindex{ARM}
 
-E' da notare che in ARM è impossibile utilizzare una parte a 8- o 16-bit  
+E' da notare che in ARM è impossibile utilizzare una parte a 8 o 16 bit  
 di un registro a 32-bit separatamente dall' intero registro,
 come in x86.
 
@@ -41,10 +41,10 @@ Di conseguenza, per elaborare byte separati in ARM, è necessario utilizzare com
 
 Quindi, \TT{LDRSB} carica i byte dalla stringa a \Reg{0}, uno alla volta.
 Le seguenti istruzioni \CMP e \ac{BEQ}, controllano se il byte caricato è 0.
-Se non è 0, il controllo passa a inizio del corpo del ciclo.
-E se è, il ciclo termina.
+Se non è 0, il controllo passa all' inizio del corpo del ciclo.
+E se è 0, il ciclo termina.
 
-Alla fune della funzione, la differenza tra 
+Alla fine della funzione, la differenza tra 
 \emph{eos} e \emph{str} è calcolata, viene sottrato 1 da esso, e il valore risultante iene ritornato
 attraverso \Reg{0}.
 
@@ -73,10 +73,10 @@ e \emph{eos}---in \Reg{1}.
 
 \myindex{ARM!\Instructions!LDRB.W}
 L' istruzione \TT{LDRB.W R2, [R1],\#1}, carica un byte dalla memoria all' indirizzo salvato in \Reg{1}, in \Reg{2}, estendendo con segno ad un valore 32-bit, ma non solo.
-\TT{\#1} alla fine dell' istruzione è implicito \q{Post-indexed addressing}, che significa cje 1 verrà aggiunto a \Reg{1} dopo che il byte è caricato.
+\TT{\#1} alla fine dell' istruzione è implicito \q{Post-indexed addressing}, che significa che 1 verrà aggiunto a \Reg{1} dopo che il byte è caricato.
 Approfondimento: \myref{ARM_postindex_vs_preindex}.
 
-Come potete vedere \CMP e \ac{BNE} sono nel corpo del ciclo, queste istruzioni contineranno a ciclare fino a che 0 non verrà trovato nella stringa.
+Come potete vedere \CMP e \ac{BNE} sono nel corpo del ciclo, queste istruzioni continueranno a ciclare fino a che 0 non verrà trovato nella stringa.
 
 \myindex{ARM!\Instructions!MVNS}
 \myindex{x86!\Instructions!NOT}

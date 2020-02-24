@@ -61,7 +61,7 @@ L' istruzione \SUB è stata appena eseguita:
 \end{figure}
 
 La differenza tra i puntatori, in questo momento, si trova nel registro \EAX---7.
-Indeed, la lunghezza della stringa \q{hello!} è 6, 
+In realtà, la lunghezza della stringa \q{hello!} è 6, 
 ma con lo zero byte incluso---7.
 Ma \TT{strlen()} deve ritornare il numero di caratteri nella stringa, diversi da zero.
 Quindi viene eseguito un decremento, dopodichè la funziona ritorna.
