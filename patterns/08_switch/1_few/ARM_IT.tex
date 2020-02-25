@@ -44,7 +44,7 @@ Thumb, pertanto il codice Thumb qui mostrato è piuttosto simile a quello x86 \a
 
 \subsubsection{ARM64: \NonOptimizing GCC (Linaro) 4.9}
 
-\lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O0_EN.lst}
+\lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O0_IT.lst}
 
 Il tipo di valore in input è \Tint, perciò per memorizzarlo viene usato il registro \RegW{0} anziché l'intero registro \RegX{0}.
 
@@ -53,7 +53,7 @@ nell'esempio \q{\HelloWorldSectionName}:~\myref{pointers_ADRP_and_ADD}.
 
 \subsubsection{ARM64: \Optimizing GCC (Linaro) 4.9}
 
-\lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_EN.lst}
+\lstinputlisting[style=customasmARM]{patterns/08_switch/1_few/ARM64_GCC_O3_IT.lst}
 
 Codice maggiormente ottimizzato.
 L'istruzione \TT{CBZ} (\emph{Compare and Branch on Zero}) salta se \RegW{0} è zero.

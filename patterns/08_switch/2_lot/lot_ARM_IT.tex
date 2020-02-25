@@ -46,7 +46,7 @@ Ogni volta che si aggiunge 1 ad $a$, il risultante \ac{PC} è incrementato di 4.
 4 è la lunghezza delle istruzioni in modalità ARM, comprese le istruzioni \TT{B} di cui ne abbiamo 5.
 
 Ognuna di queste istruzioni \TT{B} passa il controllo più avanti, a quello che era previsto nello \emph{switch()}.
-Li' avviene il caricamento del puntatore alla stringa corrispondente al caso, etc.
+Lì avviene il caricamento del puntatore alla stringa corrispondente al caso, etc.
 
 \subsubsection{ARM: \OptimizingKeilVI (\ThumbMode)}
 
@@ -77,7 +77,7 @@ E' troppo avanzata per essere analizzata adesso, e per il momento la saltiamo.
 
 \myindex{ARM!\Registers!Link Register}
 
-E' interessante notare ch ela funzione usa il registro \ac{LR} come puntatore alla tabella.
+E' interessante notare che la funzione usa il registro \ac{LR} come puntatore alla tabella.
 
 Infatti, dopo la chiamata a questa funzione, \ac{LR} contiene l'indirizzo subito dopo l'istruzione\\
 \TT{BL \_\_ARM\_common\_switch8\_thumb}, dove inizia appunto la tabella.
