@@ -1,4 +1,4 @@
-\mysection{Saut conditionnels}
+\mysection{Sauts conditionnels}
 \label{sec:Jcc}
 \myindex{\CLanguageElements!if}
 
@@ -40,33 +40,33 @@ exit:
 
 \subsubsection{MIPS}
 
-\begin{lstlisting}[caption=Check si zéro (Branch if EQual Zero),style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si égal à zéro (Branch if EQual Zero),style=customasmMIPS]
 BEQZ REG, label
 ...
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Check si plus petit que zéro (Branch if Less Than Zero) en utilisant une pseudo instruction,style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si plus petit que zéro (Branch if Less Than Zero) en utilisant une pseudo instruction,style=customasmMIPS]
 BLTZ REG, label
 ...
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Check si les valeurs sont égales (Branch if EQual),style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si les valeurs sont égales (Branch if EQual),style=customasmMIPS]
 BEQ REG1, REG2, label
 ...
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Check si les valeurs ne sont pas égales (Branch if Not Equal),style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si les valeurs ne sont pas égales (Branch if Not Equal),style=customasmMIPS]
 BNE REG1, REG2, label
 ...
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Check REG2 plus petit que REG3 (signé),style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si REG2 est plus petit que REG3 (signé),style=customasmMIPS]
 SLT REG1, REG2, REG3
 BEQ REG1, label
 ...
 \end{lstlisting}
 
-\begin{lstlisting}[caption=Check REG2 plus petit que REG3 (non signé),style=customasmMIPS]
+\begin{lstlisting}[caption=Teste si REG2 est plus petit que REG3 (non signé),style=customasmMIPS]
 SLTU REG1, REG2, REG3
 BEQ REG1, label
 ...
