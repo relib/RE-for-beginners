@@ -1,7 +1,7 @@
 # Want to translate this book to another language?
 
 Get a source code: https://beginners.re/src/
-Or: git clone http://hackspace.odessa.ua/git/RE4B/
+Or: git clone https://beginners.re/git/
 
 Take a look on git repository: https://beginners.re/current-tree/
 For example, `main_EN.tex` for English, `main_RU.tex` for Russian, etc.
@@ -102,4 +102,5 @@ https://beginners.re/current-tree/patterns/09_loops/simple/loops_3_RU.c
 ## Contact me
 
 Do not hesitate to contact me if you have any questions: dennis(a)yurichev.com
+Please also read this: https://yurichev.com/news/20200617_email/
 
