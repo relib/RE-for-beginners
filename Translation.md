@@ -12,7 +12,7 @@ Then just send it to me: dennis(a)yurichev.com
 
 Please submit your work as early as possible: other translators will be aware of the piece of work already done.
 
-Korean, Chinese and Persian languages are reserved by publishers.
+Korean and Persian languages are reserved by publishers.
 
 ## Content over everything else
 
@@ -102,5 +102,4 @@ https://beginners.re/current-tree/patterns/09_loops/simple/loops_3_RU.c
 ## Contact me
 
 Do not hesitate to contact me if you have any questions: dennis(a)yurichev.com
-Please also read this: https://yurichev.com/news/20200617_email/
 
