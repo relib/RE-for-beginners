@@ -1,13 +1,41 @@
-% TODO to be synced with EN version
-\section*{Słowo wstępne}
+\section*{Przedmowa}
+
+\subsection*{Skąd dwa tytuły?}
+\label{TwoTitles}
+
+W latach 2014-2018 książka nazywała się "Inżynieria wsteczna dla początkujących" ale zawsze podejrzewałem, że zawęża to grono czytelników.
+
+Ludzie zajmujący się bezpieczeństwem informacji (infosec) wiedzą o inżynierii wstecznej, jednak rzadko kiedy słyszałem, by używali słowa asembler.
+
+Podobnie, termin ``inżynieria wsteczna'' jest nieco tajemniczy dla ogólnego grona programistów, jednak wiedzą oni o istnieniu asemblera.
+
+W lipcu 2018 roku, w ramach eksperymentu, zmieniłem tytuł na ``Język maszynowy dla początkujących''
+i umieściłem link na portalu Hacker News\footnote{\url{https://news.ycombinator.com/item?id=17549050}}, i książka została ogólnie dobrze przyjęta.
+
+Niech więc tak będzie, książka ma teraz dwa tytuły.
+
+Zmieniłem jednak drugi tytuł na "Rozumienie kodu maszynowego",
+ponieważ ktoś już napisał książkę o tytule "Język maszynowy dla początkujących".
+Ludzie twierdzą, że "dla początkujących" brzmi odrobinę ironicznie jak na \textasciitilde{}1000 stronicową książkę.
+
+Dwie książki różnią się jedynie tytułem, nazwą pliku (UAL-XX.pdf versus RE4B-XX.pdf),
+URLem i kilkoma pierwszymi stronami.
+
+\subsection*{O inżynierii wstecznej}
 
 Termin \q{\gls{reverse engineering}} ma kilka popularnych definicji:
-1) analiza skompilowanych programów; 2) skanowanie modelu w 3D, żeby następnie go skopiować;
-3) odzyskanie struktury SZBD. Nasza książka będzie powiązana z tą pierwszą definicją.
+
+1) inżynieria wsteczna oprogramowania; analiza skompilowanych programów; 
+
+2) skanowanie modelu w 3D, żeby następnie go skopiować;
+
+3) odzyskanie struktury \ac{DBMS}. 
+
+Nasza książka będzie powiązana z tą pierwszą definicją.
 
 \subsection*{Pożądana wiedza}
 
-Bardzo pożądane, aczkolwiek nie niezbędne są podstawowe umiętności programowania w \ac{PL} C.
+Podstawowa znajomość C \ac{PL} .
 Polecane materiały: \myref{CCppBooks}.
 
 \subsection*{Ćwiczenia i zadania}
@@ -33,13 +61,13 @@ Można się z nim skontaktować mailowo: \textbf{\EMAILS{}}.
 
 % subsections:
 \input{praise_PL}
-% TBT \input{uni_PL}
+\input{uni_PL}
 \input{thanks}
 \input{FAQ_PL}
 
 \subsection*{O tłumaczeniu na język koreański}
 
-W styczniu 2015, wydawnictwo Acorn w Korei Południowej zrobiło kawał dobrej roboty, żeby przetłumaczyć i wydać moją książkę  (stanem na siepień 2014) w języku koreańskim.
+W styczniu 2015, wydawnictwo Acorn (\href{http://www.acornpub.co.kr}{www.acornpub.co.kr}) z Korei Południowej wykonało ciężką pracę, żeby przetłumaczyć i wydać moją książkę  (stanem na sierpień 2014) w języku koreańskim.
 Jest ona teraz dostępna na \href{http://go.yurichev.com/17343}{ich stronie}.
 
 \iffalse
@@ -50,28 +78,30 @@ Jest ona teraz dostępna na \href{http://go.yurichev.com/17343}{ich stronie}.
 \fi
 
 Tłumaczył Byungho Min (\href{http://go.yurichev.com/17344}{twitter/tais9}).
-Okładka została narysowana przez mojego dobrego znajomego Andy Nechaevsky
+Okładka namalował mój dobry przyjaciel, artysta, Andy Nechaevsky
 \href{http://go.yurichev.com/17023}{facebook/andydinka}.
-Oni również mają prawa do wydania książki w języku koreańskim.
+
+Acorn również ma prawa autorskie do tłumaczenia koreańskiego.
 Jakbyście chcieli mieć \emph{prawdziwą} książkę w języku koreańskim i chcielibyście wesprzeć moją pracę, możecie ją kupić.
 
 \subsection*{O tłumaczeniu na język perski (farsi)}
 
-W roku 2016 książka była przetłumaczona przez Mohsen Mostafa Jokar.
+W roku 2016 książka została przetłumaczona przez Mohsen Mostafa Jokar (znanego w irańskiej społeczności z tłumaczenia instrukcji do Radare\footnote{\url{http://rada.re/get/radare2book-persian.pdf}})
 Książka jest dostępna na stronie wydawnictwa \footnote{\url{http://goo.gl/2Tzx0H}} (Pendare Pars).
 
 Pierwsze 40 stron: \url{https://beginners.re/farsi.pdf}.
 
-Pozycja książki w Nacjonalnej bibliotece Iranu: \url{http://opac.nlai.ir/opac-prod/bibliographic/4473995}.
+Pozycja książki w Narodowej Bibliotece Iranu: \url{http://opac.nlai.ir/opac-prod/bibliographic/4473995}.
 
 \subsection*{O tłumaczeniu na język chiński}
 
-W kwietniu 2017, wydawnictwo PTPress skończyło tłumaczenie mojej książki na j. chiński. Oni również mają prawa do wydania książki w języku chińskim.
+W kwietniu 2017, wydawnictwo PTPress skończyło tłumaczenie mojej książki na język chiński. Mają również prawo autorskie do tłumaczenia chińskiego.
 
-Można ją zamówić tutaj: \url{http://www.epubit.com.cn/book/details/4174}. Coś w stylu recenzji: \url{http://www.cptoday.cn/news/detail/3155}.
+Chińskie tłumaczenie można zamówić tutaj: \url{http://www.epubit.com.cn/book/details/4174}. Recenzje i historię tłumaczenia można znaleźć tutaj: \url{http://www.cptoday.cn/news/detail/3155}.
 
-Głównym tłumaczem był Archer, przed którym mam teraz dług widzięczności.
-Był bardzo dociekliwy i znalazł w książce sporo bugów i błędów, co jest krytycznie ważne dla książki open-source.
+Głównym tłumaczem był Archer, u którego mam teraz dług wdzięczności.
+Był bardzo dociekliwy i znalazł w książce sporo bugów i błędów, co jest szczególnie ważne w literaturze, której dotyczy ta książka.
+
 Będę polecał go również innym autorom!
 
 Chłopaki z \href{http://www.antiy.net/}{Antiy Labs} również pomogli z tłumaczeniem. \href{http://www.epubit.com.cn/book/onlinechapter/51413}{Tutaj słowo wstępne} napisane przez nich.
