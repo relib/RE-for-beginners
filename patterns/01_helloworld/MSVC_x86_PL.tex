@@ -6,7 +6,7 @@ Skompilujmy kod w MSVC 2010:
 cl 1.cpp /Fa1.asm
 \end{lstlisting}
 
-(Klucz \TT{/Fa} oznacza wygenerowanie listingu w asemblerze)
+(Opcja \TT{/Fa} oznacza wygenerowanie listingu w asemblerze)
 
 \begin{lstlisting}[caption=MSVC 2010,style=customasmx86]
 CONST	SEGMENT
@@ -29,8 +29,8 @@ _main	ENDP
 _TEXT	ENDS
 \end{lstlisting}
 
-MSVC generuje listingi w syntaksie Intel.
-Różnica między syntaksą Intel a AT\&T będzie omówiona trochę później:
+MSVC generuje listingi w składni Intela.
+Różnica między składnią Intela a AT\&T będzie omówiona w in \myref{ATT_syntax}.
 
 Kompilator wygenerował plik \TT{1.obj}, który następnie będzie połączony konsolidatorem ( ang. linker) w \TT{1.exe}.
 W naszym przypadku ten plik składa się z dwóch segmentów: \TT{CONST} (dla danych-stałych) i \TT{\_TEXT} (dla kodu).
