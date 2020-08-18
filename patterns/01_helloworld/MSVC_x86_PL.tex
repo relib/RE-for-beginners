@@ -63,7 +63,7 @@ Nie jest on dalej potrzebny, więc \glslink{stack pointer}{wskaźnik wierzchołk
 \INS{ADD ESP, 4} oznacza: dodaj wartość 4 do rejestru \ESP.
 
 Dlaczego 4? Z racji tego, że jest to kod 32-bitowy, do przekazania adresu za pomocą stosu potrzebowaliśmy 4 bajtów. W x64 potrzebowalibyśmy 8 bajtów.\\
-\INS{ADD ESP, 4} jest równoważne instrukcji \INS{POP register} - w pierwszym przypadku bezpośrednio manipulujemy na wskaźniku wierzchołka stosu (dodajemy 4), a w drugim przypadku zdejmujemy ze stosu jeden element i odkładamy go do rejestru \emph{register} a adres wierzchołka stosu zmienia się automatycznie.
+\INS{ADD ESP, 4} jest równoważne instrukcji \INS{POP register}, ale nie wykorzystuje dodatkowego rejestru. W pierwszym przypadku jedynie bezpośrednio manipulujemy na rejestrze ESP (wskaźniku wierzchołka stosu), a w drugim przypadku zdejmujemy ze stosu jeden element i odkładamy go do rejestru \emph{register} a rejestr ESP zmienia się automatycznie.
 
 \myindex{Intel C++}
 \myindex{\oracle}
