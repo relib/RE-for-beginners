@@ -32,48 +32,50 @@ _TEXT	ENDS
 MSVC generuje listingi w składni Intela.
 Różnica między składnią Intela a AT\&T będzie omówiona w in \myref{ATT_syntax}.
 
-Kompilator wygenerował plik \TT{1.obj}, który następnie będzie połączony konsolidatorem ( ang. linker) w \TT{1.exe}.
-W naszym przypadku ten plik składa się z dwóch segmentów: \TT{CONST} (dla danych-stałych) i \TT{\_TEXT} (dla kodu).
+Kompilator wygenerował plik \TT{1.obj}, który następnie będzie połączony konsolidatorem (ang. linker) w \TT{1.exe}.
+W naszym przypadku, ten plik składa się z dwóch segmentów: \TT{CONST} (dane-stałe) i \TT{\_TEXT} (kod).
 
 \myindex{\CLanguageElements!const}
 \label{string_is_const_char}
-Linia \TT{hello, world} w \CCpp ma typ \TT{const char[]}\InSqBrackets{\TCPPPL p176, 7.3.2}, jednak nie posiada nazwy.
-Ale kompilator potrzebuje jakiejś nazwy, żeby z tą linią pracować, dlatego nadaje jej własną nazwę \TT{\$SG3830}.
+Łańcuch znaków \TT{hello, world} w \CCpp ma typ \TT{const char[]}\InSqBrackets{\TCPPPL p176, 7.3.2}, jednak nie posiada nazwy.
+Kompilator potrzebuje nazwy, żeby z tym łańcuchem znaków pracować, dlatego nadaje mu własną nazwę -  \TT{\$SG3830}.
 
-Dlatego ten przykład można by było zapisać w ten sposób:
+Dlatego ten przykład można by zapisać w ten sposób:
 
 \lstinputlisting[style=customc]{patterns/01_helloworld/hw_2.c}
 
-Wróćmy do przykładu w asemblerze. Jak widać, linia się kończy bajtem zerowym~--- są to wymagania standardu \CCpp do linii.
-Więcej o liniach w \CCpp: \myref{C_strings}.
+Wróćmy do kodu w asemblerze. Jak widać, łańcuch znaków kończy się bajtem zerowym~--- jest to element standardu \CCpp o łańcuchach znaków.
+Więcej o łańcuchach znaków w \CCpp: \myref{C_strings}.
 
-W segmencie kodu \TT{\_TEXT} znajduje się na razie tylko jedna f-cja: \main{}.
-Funkcja \main, jak i prawie wszystkie funkcje, zaczyna się od prologu i kończy się epilogiem
+W segmencie kodu \TT{\_TEXT} znajduje się na razie tylko jedna funkcja: \main{} i, jak prawie każda funkcja, zaczyna się od prologu a kończy się epilogiem
+\footnote{Więcej o prologu i epilogu przeczytasz w sekcji ~(\myref{sec:prologepilog}).}.
 
 \myindex{x86!\Instructions!CALL}
-Dalej następuje wywołanie funkcji \printf{}: \INS{CALL \_printf}.
+Po prologu następuje wywołanie funkcji \printf{}:\\
+\INS{CALL \_printf}.
 \myindex{x86!\Instructions!PUSH}
-Przed tym wywołaniem adres linii (lub wskaźnik na nią) z naszym powiadomieniem (``Hello, world!'') za pomocą instrukcji \PUSH odkłada się na stos.
+Przed tym wywołaniem adres łańcucha znaków (lub wskaźnik na niego) z naszym pozdrowieniem (``Hello, world!'') odkładany jest na stos, za pomocą instrukcji \PUSH.
 
-Po tym jak funkcja \printf zwaraca zarządzanie do funkcji \main, adres linii (lub wskaźnik na nią) dalej jest na stosie.
-Z racji tego, że nie jest on już więcej potrzebny \glslink{stack pointer}{wskaźnik stosu} (rejestr \ESP) zostaje skorygowany.
+Po tym jak funkcja \printf zwraca sterowanie do funkcji \main, adres łańcucha znaków (lub wskaźnik na niego) wciąż jest na stosie.
+Nie jest on dalej potrzebny, więc \glslink{stack pointer}{wskaźnik wierzchołka stosu} (rejestr \ESP) musi zostać poprawiony.
 
 \myindex{x86!\Instructions!ADD}
-\INS{ADD ESP, 4} oznacza dodawanie wartości 4 do zawartości rejestru \ESP.
+\INS{ADD ESP, 4} oznacza: dodaj wartość 4 do rejestru \ESP.
 
-Dlaczego 4? Z racji tego, że jest to kod 32-bitowy, do przekazania adresu potrzebujemy 4 bajtów. W x64 są to 8 bajtów.\\
-\INS{ADD ESP, 4} ekwiwalentnie \TT{POP rejestr}, ale bez wykorzystania jakiegokolwiek rejestru.
+Dlaczego 4? Z racji tego, że jest to kod 32-bitowy, do przekazania adresu za pomocą stosu potrzebowaliśmy 4 bajtów. W x64 potrzebowalibyśmy 8 bajtów.\\
+\INS{ADD ESP, 4} jest równoważne instrukcji \INS{POP register} - w pierwszym przypadku bezpośrednio manipulujemy na wskaźniku wierzchołka stosu (dodajemy 4), a w drugim przypadku zdejmujemy ze stosu jeden element i odkładamy go do rejestru \emph{register} a adres wierzchołka stosu zmienia się automatycznie.
 
 \myindex{Intel C++}
 \myindex{\oracle}
 \myindex{x86!\Instructions!POP}
 
-Niektóre kompilatory, naprzykład, Intel C++ Compiler, w tej samej sytuacji mogą zamiast 
-\ADD wygenerować \TT{POP ECX} (podobne rzeczy można również spotkać, np, w kodzie \oracle{}, skompilowanym w nim samym),
-co jest w zasadzie tym samym, o tyle że wartość w rejestrze \ECX się psuje.
-Możliwe, że kompilator stosuje tu \TT{POP ECX}, dlatego że ta instrukcja jest krótsza (1 bajt w \TT{POP} kontra 3 w \TT{ADD}).
+Niektóre kompilatory, jak Intel C++ Compiler, w tej samej sytuacji mogą wygenerować \TT{POP ECX} zamiast \ADD (można to zaobserwować w kodzie \oracle{}, gdyż jest on kompilowany właśnie tym kompilatorem).
+\TT{POP ECX} oznacza zdjęcie elementu ze stosu i umieszczenie go w rejestrze \ECX.
+Osiągnęliśmy taki sam efekt jak w przypadku instrukcji \ADD (zmiana wskaźnika stosu), ale skutkiem ubocznym jest nadpisanie \ECX.
 
-Oto przykład wykorzystania \POP zamiast \ADD z \oracle{}:
+Możliwe, że kompilator stosuje tu \TT{POP ECX} dlatego, że ta instrukcja jest krótsza (1 bajt w przypadku \TT{POP} kontra 3 bajty w przypadku \TT{ADD}).
+
+Poniżej przykład wykorzystania \POP zamiast \ADD z \oracle{}:
 
 \begin{lstlisting}[caption=\oracle 10.2 Linux (plik app.o),style=customasmx86]
 .text:0800029A                 push    ebx
@@ -81,33 +83,30 @@ Oto przykład wykorzystania \POP zamiast \ADD z \oracle{}:
 .text:080002A0                 pop     ecx
 \end{lstlisting}
 
-% TBT
-% However, MSVC can do the same.
+MSVC czasami zachowuje się tak samo.
 
-%\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
-%.text:0102106F                 push    0
-%.text:01021071                 call    ds:time
-%.text:01021077                 pop     ecx
-%\end{lstlisting}
+\begin{lstlisting}[caption=MineSweeper from Windows 7 32-bit]
+.text:0102106F                 push    0
+.text:01021071                 call    ds:time
+.text:01021077                 pop     ecx
+\end{lstlisting}
 
 %Więcej informacji o stosie można znaleźć w odpowiednim rozdziale
 % ~(\myref{sec:stack}).
 \myindex{\CLanguageElements!return}
-Po wywołaniu \printf w kodzie w \CCpp wskazane \TT{return 0}~--- zwrócić 0 jako wynik f-cji \main.
+Po wywołaniu \printf kod w \CCpp zawiera instrukcję \TT{return 0}~--- zwróć 0 jako wynik funcji \main.
 
 \myindex{x86!\Instructions!XOR}
-W kodzie wygenerowanym robi to instrukcja \\
-\INS{XOR EAX, EAX}.
+W kodzie wygenerowanym robi to instrukcja \INS{XOR EAX, EAX}.
 
 \myindex{x86!\Instructions!MOV}
 
-\XOR, jak można się domyśleć~--- \q{alternatywa wykluczająca}\footnote{\href{http://go.yurichev.com/17118}{wikipedia}}, ale kompilatory często korzystają z niego zamiast prostego
-\INS{MOV EAX, 0} --- znowu dlatego, że opcode jest krótszy (2 bajty w \XOR kontra 5 w \MOV).
+\XOR, jak można się domyśleć, to ~--- \q{alternatywa wykluczająca}\footnote{\href{http://go.yurichev.com/17118}{Wikipedia}}, ale kompilatory często korzystają z niej zamiast z
+\INS{MOV EAX, 0} --- znów dlatego, że kod operacji (opcode) jest krótszy (2 bajty w \XOR kontra 5 w \MOV).
 
 \myindex{x86!\Instructions!SUB}
-Niektóre kompilatory genrują \INS{SUB EAX, EAX}, co oznacza \emph{odjąć wartość w} \EAX \emph{od wartości w }\EAX, co w każdym przypadku da w wyniku końcowym 0.
+Niektóre kompilatory generują \INS{SUB EAX, EAX}, co oznacza \emph{odejmij wartość w} \EAX \emph{od wartości w }\EAX, co w każdym przypadku da 0.
 
 \myindex{x86!\Instructions!RET}
-Ostatnia instrukcja \RET zwraca zarządzanie do funkcji wywołującej. Zwykle jest to kod \CCpp \ac{CRT}, który zwróci zarządzanie do \ac{OS}.
-
+Ostatnia instrukcja \RET zwraca sterowanie do funkcji wywołującej. Zwykle jest to kod \CCpp \ac{CRT}, który z kolei zwróci sterowanie do systemu operacyjnego.
 
