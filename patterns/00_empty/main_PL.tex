@@ -20,7 +20,7 @@ Mamy tu tylko jedną instrukcję: \RET, która jest instrukcją powrotu do \glsl
 
 \lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) ASM Output,style=customasmARM]{patterns/00_empty/1_Keil_ARM_O3.s}
 
-Adres powrotu (\ac{RA}) w ARM zapisywany jest nie na stosie lokalnym, a w rejestrze \ac{LR}.
+Adres powrotu (\ac{RA}) w ARM zapisywany jest nie na stosie, a w rejestrze \ac{LR}.
 Instrukcja \INS{BX LR} wykonując skok pod ten adres, zwraca sterowanie do funkcji wywołującej.
 
 \subsection{MIPS}
