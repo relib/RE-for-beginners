@@ -1,33 +1,32 @@
 \subsubsection{GCC: x86-64}
 
 \myindex{x86-64}
-Spróbujmy GCC na 64-bitowym Linux:
+Przyjrzyjmy się wynikom kompilacji GCC na 64-bitowym systemie Linux:
 
-\lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{patterns/01_helloworld/GCC_x64_RU.s}
+\lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{patterns/01_helloworld/GCC_x64_PL.s}
 
-W Linux, *BSD i \MacOSX dla x86-64 także przekazuje się argumenty funkcji poprzez rejestry \SysVABI.
+Na Linuksie, *BSD i \MacOSX w architekturze x86-64 argumenty funkcji także przekazuje się przez rejestry \SysVABI.
 
-6 pierwszych argumentów jest przekazywane przez rejestry \RDI, \RSI, \RDX, \RCX, \Reg{8}, \Reg{9}, a reszta --- przez stos.
+6 pierwszych argumentów jest przekazywanych przez rejestry \RDI, \RSI, \RDX, \RCX, \Reg{8} i \Reg{9}, a reszta --- przez stos.
+Zgodnie z przytoczonym standardem ABI, argumenty zmiennoprzecinkowe można przekazać również przez rejestry wektorowe \XMM{0}-\XMM{7}.
 
-Także wskaźnik na linię jest przekazywany przez \EDI (32-bitową część rejestru).
-Ale dlaczego nie przez 64-bitową część, \RDI?
+Wskaźnik na łańcuch znaków jest przekazywany przez \EDI (32-bitową część rejestru). Dlaczego nie użyto 64 bitowego \RDI?
 
-Warto zapamiętać, że w 64-bitowym trybie wszystkie instrukcje \MOV, zapisujące cokolwiek do młodszej 32-bitowej części rejestru, zerują starsze 32-bity (Jest to opisane w dokumentacji Intel: \myref{x86_manuals}).
+Warto pamiętać, że w 64 bitowym trybie wszystkie instrukcje \MOV, zapisujące cokolwiek do młodszej 32 bitowej części rejestru, zerują starsze 32 bity (jest to opisane w dokumentacji Intel: \myref{x86_manuals}).
 Z tego powodu instrukcja \INS{MOV EAX, 011223344h} poprawnie zapisze tę wartość do \RAX, a starsze bity się wyzerują.
 
-Jeśli podejrzeć w \IDA skompilowany plik (.o), to można zobaczyć również opcode wszystkich instrukcji
-\footnote{To trzeba wskazać w \textbf{Options $\rightarrow$ Disassembly $\rightarrow$ Number of opcode bytes}}:
+Jeśli byśmy podejrzeli w deasemblerze \IDA skompilowany plik (.o), to zobaczylibyśmy opcody wszystkich instrukcji
+\footnote{Trzeba włączyć tę opcję w \textbf{Options $\rightarrow$ Disassembly $\rightarrow$ Number of opcode bytes}}:
 
 \lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{patterns/01_helloworld/GCC_x64.lst}
 
 \label{hw_EDI_instead_of_RDI}
-Jak widać, instrukcja, która zapisuje do \EDI wg adresu \TT{0x4004D4}, zajmuje 5 bajtów.
-Ta sama instrukcja, zapisująca 64-bitową wartość do \RDI, zajmuje 7 bajtów.
-Możliwe, że GCC stwierdził, że trochę zaoszczędzi.
-Do tego, on jest pewien, że segment danych, gdzie są przechowywane linie, nigdy nie będzie usytuowany powyżej 4\gls{GiB}.
+Jak widać, instrukcja \MOV pod adresem \TT{0x4004D4}, która zapisuje do \EDI, zajmuje 5 bajtów.
+Ta sama instrukcja, zapisująca 64 bitową wartość do \RDI, zajmuje 7 bajtów.
+Najwyraźniej GCC stara się zaoszczędzić trochę miejsca.
+GCC jest również pewne, że segment danych, w którym przechowywany jest łańcuch znaków, nigdy nie będzie zaalokowany pod adresem powyżej 4\gls{GiB}.
 
 \label{SysVABI_input_EAX}
-Tutaj również widzimy wyzerowanie rejestru \EAX przed wywołaniem \printf.
-Z powodu standardu opisanego wyżej, w *NIX dla x86-64 w \EAX jest przekazywana ilość wykorzystywanych rejestrów wektorowych.
-
-
+Widać również, że rejestr \EAX został wyzerowany przed wywołaniem funkcji \printf.
+Zgodnie ze standardem ABI opisanym wyżej, w *NIX dla x86-64 w \EAX jest ustawiana liczba użytych rejestrów wektorowych do przekazania argumentów zmiennoprzecinkowych, jeśli funkcja może przyjmować zmienną liczbę argumentów.
+Nie został wykorzystany żaden taki rejestr, a \printf jest funkcją o zmiennej liczbie argumentów, więc należy ustawić \EAX na 0.
