@@ -24,7 +24,7 @@ Funkcja wywołująca pobierze wynik z rejestru \EAX.
 
 W kodzie maszynowym na ARM widać kilka różnic:
 
-\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) ASM Output,style=customasmARM]{patterns/011_ret/1_Keil_ARM_O3.s}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) (\assemblyOutput),style=customasmARM]{patterns/011_ret/1_Keil_ARM_O3.s}
 
 ARM używa rejestru \Reg{0} do zwracania wartości z funkcji, więc 123 kopiowane jest do \Reg{0}.
 
