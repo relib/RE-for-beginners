@@ -65,7 +65,7 @@ Możliwe, że deweloperzy MIPS stwierdzili, że 0 jest stałą w programowaniu z
 także niech rejestr \$0, będzie wykorzystywany za każdym razem, kiedy będzie potrzebne 0.
 Inna ciekawostka: w MIPS nie ma instrukcji, kopiującej wartość z rejestru do rejestru.
 Naprawdę, \TT{MOVE DST, SRC} to \TT{ADD DST, SRC, \$ZERO} ($DST=SRC+0$), która robi to samo.
-Najwidoczniej, twórcy MIPS chcieli stworzyć jak najbardziej zwięzłą tablicę opcode'ów.
+Najwidoczniej, twórcy MIPS chcieli stworzyć jak najbardziej zwięzłą tablicę kodów operacji (opcode).
 To wcale nie znaczy, że dodawanie jest wykonywane podczas każdej instrukcji \INS{MOVE}.
 Prawdopodobnie, te pseudo-instrukcje są optymalizowane w \ac{CPU} i \ac{ALU} nigdy nie jest wykorzystywane.
 

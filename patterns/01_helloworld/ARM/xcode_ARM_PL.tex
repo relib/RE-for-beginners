@@ -1,6 +1,6 @@
 \subsubsection{\OptimizingXcodeIV (\ARMMode)}
 
-Xcode 4.6.3 bez włączonego trybu optymalizacji generuje za dużo zbędnego kodu, dlatego włączymy optymalizacje kodu (flaga \Othree).
+Xcode 4.6.3 bez włączonego trybu optymalizacji generuje za dużo zbędnego kodu, dlatego włączymy optymalizację (flaga \Othree), dzięki czemu liczba instrukcji będzie tak mała, jak to możliwe.
 
 \begin{lstlisting}[caption=\OptimizingXcodeIV (\ARMMode),style=customasmARM]
 __text:000028C4             _hello_world
@@ -16,20 +16,20 @@ __text:000028E0 80 80 BD E8   LDMFD           SP!, {R7,PC}
 __cstring:00003F62 48 65 6C 6C+aHelloWorld_0  DCB "Hello world!",0
 \end{lstlisting}
 
-Instrukcje \TT{STMFD} i \TT{LDMFD} już są nam znane.
+Instrukcje \TT{STMFD} i \TT{LDMFD} są już nam znane.
 
 \myindex{ARM!\Instructions!MOV}
-Instrukcja \MOV po prostu zapisuje liczbę \TT{0x1686} do rejestru \Reg{0}~--- jest to przesunięcie, wskazujące na linię \q{Hello world!}.
+Instrukcja \MOV zapisuje liczbę \TT{0x1686} do rejestru \Reg{0}~--- jest to przesunięcie, wskazujące na łańcuch znaków \q{Hello world!}.
 
-Rejestr \Reg{7} (wg standardu \IOSABI) jest frame pointer, będzie to omawiane później.
+Rejestr \Reg{7} (wg standardu \IOSABI) przechowuje wskaźnik ramki stosu (frame pointer). Będzie to omówione później.
 
 \myindex{ARM!\Instructions!MOVT}
 Instrukcja \TT{MOVT R0, \#0} (MOVe Top) zapisuje 0 do starszych 16 bitów rejestru.
-Rzecz polega na tym, że zwykła instrukcja \MOV w trybie ARM może zapisywać jakąkolwiek wartość tylko do młodszych 16 bitów rejestru, dlatego że nie można w niej zakodować więcej.
-Warto pamiętać, że w trybie ARM opcode wszystkich instrukcji mogą wynosić maksymalnie 32 bity. Oczywiście, nie jest to prawda dla przemieszczenia danych między rejestrami.
+Zwykła instrukcja \MOV w trybie ARM może zapisywać tylko do młodszych 16 bitów rejestru, z uwagi na długość instrukcji.
 
-Dlatego do zapisywania do starszych bitów (bity 16-31) istnieje dodatkowa instrukcja \INS{MOVT}.
-Tutaj, natomiast, jej wykorzystanie jest zbędne, jako że \INS{MOV R0, \#0x1686} i bez tego wyzerowało starszą część rejestru.
+Warto pamiętać, że w trybie ARM kody operacji (opcode) instrukcji są ograniczone do 32 bitów. Nie ma to oczywiście wpływu na przenoszenie wartości między rejestrami.
+Z tego powodu do zapisywania do starszych bitów (od 16 do 31, włącznie) istnieje dodatkowa instrukcja \INS{MOVT}.
+Tutaj jej użycie jest zbędne, gdyż \INS{MOV R0, \#0x1686} i tak by wyzerowała starszą część rejestru.
 Możliwe, że jest to niedociągnięcie kompilatora.
 % TODO:
 % I think, more specifically, the string is not put in the text section,
@@ -40,24 +40,23 @@ Możliwe, że jest to niedociągnięcie kompilatora.
 % and the high bits may still be needed.
 
 \myindex{ARM!\Instructions!ADD}
-Instrukcja \TT{ADD R0, PC, R0} dodaje \ac{PC} do \Reg{0} żeby wyliczyć adres rzeczywisty linii \q{Hello world!}. Jak już wiemy, jest to \q{\PICcode}, dlatego taka korekta jest niezbędna.
+Instrukcja \TT{ADD R0, PC, R0} dodaje \ac{PC} do \Reg{0} żeby wyliczyć adres bezwzględny łańcucha znaków \q{Hello world!}. Jak już wiemy, jest to \q{\PICcode}, dlatego taka korekta jest niezbędna.
 
 Instrukcja \TT{BL} wywołuje \puts zamiast \printf.
 
 \label{puts}
 \myindex{\CStandardLibrary!puts()}
 \myindex{puts() zamiast printf()}
-LLVM zamienia wywołanie \printf na \puts. 
-Rzeczywiście, \printf z jednym argumentem jest prawie analogiczne do \puts.
+LLVM zamienił wywołanie \printf na \puts.
+Działanie \printf z jednym argumentem jest prawie równoznaczna \puts.
  
-\emph{Prawie}, jeśli założyć, że w linii nie będzie znaków sterujących \printf, 
-zaczynających się od znaku procentu. Wtedy wyniki pracy tych dwóch f-cji będą różne
-\footnote{Należy również zauważyć, że \puts nie potrzebuje znaku nowej linii `\textbackslash{}n',
-dlatego jego tu nie ma.}.
+\emph{Prawie}, gdyż obie funkcje zadziałają identycznie, jeśli łańcuch znaków nie będzie zawierał sekwencji opisujących format, zaczynających się od znaku \emph{\%}. Jeśli będzie, wtedy wyniki ich pracy będą różne.
+\footnote{Należy również zauważyć, że \puts nie potrzebuje znaku nowej linii `\textbackslash{}n' na końcu łańcucha,
+dlatego został on pominięty.}.
 
-Po co kompilator zamienił wywołanie jednej f-cji na inną? Prawdopodobnie, dlatego że \puts jest szybsze
+Dlaczego kompilator zamienił wywoływaną funkcję? Prawdopodobnie dlatego, że funkcja \puts jest szybsza
 \footnote{\href{http://go.yurichev.com/17063}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}. 
-Najwidoczniej, dlatego że \puts wyprowadza symbole na \gls{stdout} nie porównując każdego ze znakiem procentu.
+Najwidoczniej dlatego, że \puts przekazuje znaki na \gls{stdout}, nie porównując ich ze znakiem \emph{\%}.
 
 Dalej jest już znana instrukcja \TT{MOV R0, \#0}, ustawiająca 0 jako wartość zwracaną.
 

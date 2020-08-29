@@ -27,7 +27,7 @@ Więcej na ten temat dowiesz się później.
 
 Następnie jest wywoływana funkcja \printf.
 
-W odróżnieniu od MSVC, GCC przy kompilacji z wyłączoną optymalizacją generuje \TT{MOV EAX, 0} zamiast krótszego opcodu.
+W odróżnieniu od MSVC, GCC przy kompilacji z wyłączoną optymalizacją generuje \TT{MOV EAX, 0} zamiast krótszego kod operacji (opcode).
 
 \myindex{x86!\Instructions!LEAVE}
 Ostatnia instrukcja \LEAVE~--- jest analogiczna do pary instrukcji  \TT{MOV ESP, EBP} i \TT{POP EBP}~--- jest to powrót \glslink{stack pointer}{wskaźnika stosu} i rejestru \EBP do stanu początkowego.

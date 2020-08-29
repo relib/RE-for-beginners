@@ -53,7 +53,7 @@ Dlaczego użyto tutaj rejestru \ac{PC}? Jest to tzw. \q{\PICcode}
 
 Taki kod można uruchomić z dowolnego miejsca w pamięci.
 Inaczej mówiąc jest to adresowanie względne, względem rejestru \ac{PC}.
-W opcodzie instrukcji \TT{ADR} jest zapisane przesunięcie (offset) między adresem tej instrukcji a adresem łańcucha znaków.
+W kodzie operacji (opcode) instrukcji \TT{ADR} jest zapisane przesunięcie (offset) między adresem tej instrukcji a adresem łańcucha znaków.
 Przesunięcie zawsze jest stałe, niezależnie od tego, w które miejsce \ac{OS} załadował nasz kod.
 Dlatego, wszystko czego potrzebujemy~--- to dodanie adresu bieżącej instrukcji (z \ac{PC}), żeby otrzymać adres bezwględny łańcucha znaków.
 

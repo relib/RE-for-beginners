@@ -7,7 +7,7 @@ Skompilujmy ten sam przykład za pomocą Keil w trybie
 armcc.exe --thumb --c90 -O0 1.c 
 \end{lstlisting}
 
-Otrzymamy (w \IDA):
+Otrzymamy (listing z programu \IDA):
 
 \begin{lstlisting}[caption=\NonOptimizingKeilVI (\ThumbMode) + \IDA,style=customasmARM]
 .text:00000000             main
@@ -20,13 +20,12 @@ Otrzymamy (w \IDA):
 .text:00000304 68 65 6C 6C+aHelloWorld  DCB "hello, world",0    ; DATA XREF: main+2
 \end{lstlisting}
 
-Od razu można zauważyć (16-bitowe) opcode --- jest to, jak już było powiedziane, Thumb.
+Od razu można zauważyć 2 bajtowe (16-bitowe) kody operacji (opcode) --- jest to już wcześniej wspomniany tryb Thumb.
 
 \myindex{ARM!\Instructions!BL}
-Oprócz instrukcji \TT{BL}.
-Ale tak naprawdę to ona się składa z dwóch 16-bitowych instrukcji.
-Tak się dzieje dlatego że w jednym 16-bitowym opcode jest za mało miejsca dla przesunięcia, po którym znajduje się funkcja \printf.
-Dlatego pierwsza 16-bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a druga~--- młodsze 11 bitów przesunięcia.
+Wyjątkiem jest instrukcja \TT{BL}, która składa się z dwóch 16 bitowych instrukcji.
+W jednym 16-bitowym kodzie operacji (opcode) jest za mało miejsca na przesunięcie, po którym znajduje się funkcja \printf.
+Dlatego pierwsza 16 bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a druga~--- młodsze 11 bitów przesunięcia.
 
 % TODO:
 % BL has space for 11 bits, so if we don't encode the lowest bit,
@@ -48,16 +47,15 @@ Dlatego pierwsza 16-bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a
 % In this case, though, the new program counter can only be 1M away,
 % because of the highest bit is used for the sign.
 
-jak już było powiedziane, wszystkie instrukcje w trybie Thumb są 2 bajtowe (lub 16 bitowe).
-Dlatego sytuacja, w której Thumb-instrukcja zaczyna się pod adresem nieparzystym, jest niemożliwa.
+Skoro wszystkie instrukcje w trybie Thumb są 2 bajtowe (16 bitowe), to sytuacja, w której instrukcja zaczyna się pod adresem nieparzystym, jest niemożliwa.
 
 Wniosek z tego jest taki, że ostatniego bitu adresu można nie kodować.
-W ten sposób, w Thumb-instrukcji \TT{BL} można zakodować adres $current\_PC \pm{}\approx{}2M$.
+Dzięki temu instrukcja \TT{BL} w trybie Thumb może zakodować adres z przedziału $current\_PC \pm{}\approx{}2M$.
 
 \myindex{ARM!\Instructions!PUSH}
 \myindex{ARM!\Instructions!POP}
-Reszta instrukcji w funkcji (\PUSH i \POP) działa prawie tak samo, jak i opisane wyżej \TT{STMFD}/\TT{LDMFD}, tyle że rejestr \ac{SP} nie jest tu wskazany w sposób jawny.
-\INS{ADR} działa dokładnie tak samo, jak i w poprzednim przykładzie.
-\INS{MOVS} zapisuje wartość 0 do rejestru \Reg{0}, żeby f-cja zwróciła zero.
+Co do pozostałych instrukcji: \PUSH i \POP działają jak opisane wyżej \TT{STMFD}/\TT{LDMFD}, tyle że rejestr \ac{SP} nie jest tu jawnie wskazany.
+\INS{ADR} działa dokładnie tak samo jak w poprzednim przykładzie.
+\INS{MOVS} zapisuje wartość 0 do rejestru \Reg{0}, by funkcja zwróciła zero.
 
 
