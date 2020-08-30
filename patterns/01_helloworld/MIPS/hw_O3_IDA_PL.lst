@@ -4,27 +4,27 @@
 .text:00000000 var_4           = -4
 .text:00000000
 ; prolog funkcji
-; ustawić GP:
+; ustaw GP:
 .text:00000000                 lui     $gp, (__gnu_local_gp >> 16)
 .text:00000004                 addiu   $sp, -0x20
 .text:00000008                 la      $gp, (__gnu_local_gp & 0xFFFF)
-; odłożyć RA na stos lokalny:
+; odłóż RA na stos lokalny:
 .text:0000000C                 sw      $ra, 0x20+var_4($sp)
-; odłożyć GP na stos lokalny:
-; z jakiegoś powodu, tej instrukcji nie było w listingu GCC:
+; odłóż GP na stos lokalny:
+; z jakiegoś powodu tej instrukcji nie było na listingu z GCC:
 .text:00000010                 sw      $gp, 0x20+var_10($sp)
-; załadować adres f-cji puts() z GP do \$t9:
+; załaduj adres funkcji puts() z GP do \$t9:
 .text:00000014                 lw      $t9, (puts & 0xFFFF)($gp)
-; sformować adres linii tekstowej w \$a0:
+; wylicz adres łańcucha znaków i zapisz w \$a0:
 .text:00000018                 lui     $a0, ($LC0 >> 16)  # "Hello, world!"
-; przejść na puts(), zapisując adres powrotu do link-rejestru:
+; skocz do puts(), zapisując adres powrotu do rejestru powrotu
 .text:0000001C                 jalr    $t9
 .text:00000020                 la      $a0, ($LC0 & 0xFFFF)  # "Hello, world!"
-; przywrócić RA:
+; przywróć RA:
 .text:00000024                 lw      $ra, 0x20+var_4($sp)
-; skopiować 0 z \$zero do \$v0:
+; skopiuj 0 z \$zero do \$v0:
 .text:00000028                 move    $v0, $zero
-; zwrócić zarządzanie robiąc przejście pod adres zawarty w RA:
+; zwróć sterowanie, skacząc pod adres z RA:
 .text:0000002C                 jr      $ra
 ; epilog funkcji:
 .text:00000030                 addiu   $sp, 0x20

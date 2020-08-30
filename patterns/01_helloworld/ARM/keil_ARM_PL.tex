@@ -85,7 +85,7 @@ To dlatego, że nasza funkcja zwraca 0, a wartości zwracane z funkcji zapisywan
 \myindex{ARM!\Registers!Link Register}
 \myindex{ARM!\Instructions!LDMFD}
 \myindex{ARM!\Instructions!POP}
-Ostatnia instrukcja to \INS{LDMFD SP!, {R4,PC}}\footnote{\ac{LDMFD}~--- jest instrukcją odwrotną do \ac{STMFD}}.
+Ostatnia instrukcja to \INS{LDMFD SP!, {R4,PC}}\footnote{\ac{LDMFD} jest instrukcją odwrotną do \ac{STMFD}}.
 Pobiera ona wartość ze stosu (lub z pamięci), zapisuje do \Reg{4} i \ac{PC} oraz zwiększa \glslink{stack pointer}{wskaźnik stosu} \ac{SP}. Działa podobnie jak instrukcja \POP.\\
 Notabene pierwsza instrukcja \TT{STMFD} odłożyła na stos wartości z rejestrów \Reg{4} i \ac{LR}, ale teraz zostały one przywrócone do \Reg{4} i \ac{PC}, dzięki instrukcji \TT{LDMFD}.
 

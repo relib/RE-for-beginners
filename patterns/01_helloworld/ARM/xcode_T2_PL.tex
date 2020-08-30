@@ -57,7 +57,7 @@ Inną instrukcją jest \TT{MOVT.W R0, \#0}~---  działa tak jak \TT{MOVT} z popr
 \myindex{ARM!przełączanie trybów}
 \myindex{ARM!\Instructions!BLX}
 W tym przykładzie wykorzystana została instrukcja \TT{BLX} zamiast \TT{BL}.
-Różnica polega na tym, że oprócz zapisania adresu powrotu do rejestru \ac{LR} i przekazania sterowania
+Różnica polega na tym, że oprócz zapisania adresu powrotu (\ac{RA}) do rejestru \ac{LR} i przekazania sterowania
 do funkcji \puts, odbywa się zmiana trybu procesora z Thumb/Thumb-2 na tryb ARM (lub odwrotnie).
 
 Jest to niezbędne dlatego, że instrukcja, do której zostanie przekazane sterowanie jest zakodowana w trybie ARM i wygląda następująco:

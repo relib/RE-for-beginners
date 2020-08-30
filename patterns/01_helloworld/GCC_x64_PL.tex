@@ -28,5 +28,5 @@ GCC jest również pewne, że segment danych, w którym przechowywany jest łań
 
 \label{SysVABI_input_EAX}
 Widać również, że rejestr \EAX został wyzerowany przed wywołaniem funkcji \printf.
-Zgodnie ze standardem ABI opisanym wyżej, w *NIX dla x86-64 w \EAX jest ustawiana liczba użytych rejestrów wektorowych do przekazania argumentów zmiennoprzecinkowych, jeśli funkcja może przyjmować zmienną liczbę argumentów.
+Zgodnie ze standardem \ac{ABI} opisanym wyżej, w *NIX dla x86-64 w \EAX jest ustawiana liczba użytych rejestrów wektorowych do przekazania argumentów zmiennoprzecinkowych, jeśli funkcja może przyjmować zmienną liczbę argumentów.
 Nie został wykorzystany żaden taki rejestr, a \printf jest funkcją o zmiennej liczbie argumentów, więc należy ustawić \EAX na 0.
