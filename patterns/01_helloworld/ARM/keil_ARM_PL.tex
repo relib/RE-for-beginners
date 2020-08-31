@@ -72,7 +72,7 @@ Kiedy funkcja \printf zakończy działanie, musi wiedzieć gdzie zwrócić stero
 Na tym polega główna różnica między \q{czystymi} procesorami \ac{RISC}, jak ARM, i procesorami \ac{CISC} w rodzaju x86,
 gdzie adres powrotu zwykle jest odkładany na stos. Przeczytasz o tym więcej w kolejnym rozdziale ~(\myref{sec:stack}).
 
-Dodatkowo nie jest możliwe zakodowanie 32 bitowego adresu bezwzględnego (lub przesunięcia) w 32-bitowej instrukcji \INS{BL}, ponieważ ma ona miejsce tylko dla 24 bitów.
+Dodatkowo nie jest możliwe zakodowanie 32-bitowego adresu bezwzględnego (lub przesunięcia) w 32-bitowej instrukcji \INS{BL}, ponieważ ma ona miejsce tylko dla 24 bitów.
 Jak zapewne pamiętasz, wszystkie instrukcje w trybie ARM mają długość 4 bajtów (32 bitów) i mogą się znajdować tylko pod adresem wyrównanym do krotności 4 bajtów.
 Oznacza to, że ostatnich 2 bitów (które są zawsze zerowe) można nie kodować.
 Ostatecznie zostaje nam 26 bitów na zakodowanie przesunięcia. Odpowiada to zakresowi $current\_PC \pm{} \approx{}32M$.

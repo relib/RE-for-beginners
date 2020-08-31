@@ -5,11 +5,11 @@
 
 \myindex{MIPS!\GlobalPointer}
 \q{Wskaźnik globalny} (\q{global pointer}) jest bardzo ważną koncepcją MIPS.
-Jak już wiemy, każda instrukcja w MIPS ma długość 32 bitów, dlatego niemożliwe jest  zakodowanie 32 bitowego adresu w jednej instrukcji. Zamiast tego trzeba wykorzystać parę instrukcji
+Jak już wiemy, każda instrukcja w MIPS ma długość 32 bitów, dlatego niemożliwe jest  zakodowanie 32-bitowego adresu w jednej instrukcji. Zamiast tego trzeba wykorzystać parę instrukcji
 (jak to robiło GCC dla załadowania adresu łańcucha znaków).
 
-Można załadować dane z dowolnego adresu w przedziale $register-32768...register+32767$, za pomocą jednej instrukcji, dlatego że można w niej zakodować 16 bitowe
-przesunięcie (przesunięcie może być ujemne, stąd mówimy o zakresie liczby 16 bitowej ze znakiem).
+Można załadować dane z dowolnego adresu w przedziale $register-32768...register+32767$, za pomocą jednej instrukcji, dlatego że można w niej zakodować 16-bitowe
+przesunięcie (przesunięcie może być ujemne, stąd mówimy o zakresie liczby 16-bitowej ze znakiem).
 Możemy więc przydzielić do tego celu jakiś rejestr i zaalokować bufor 64KiB na najczęściej wykorzystywane dane.
 
 Rejestr ten nazywamy \q{wskaźnikiem globalnym} (\q{global pointer}) i wskazuje on na środek bufora 64KiB.
@@ -91,45 +91,45 @@ Rejestr zawierający adres \puts nazwany został \$T9, dlatego że rejestry z pr
 
 \lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\assemblyOutput),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_PL.s}
 
-Widzimy, że FP jest wykorzystywany jako frame pointer.
-Również widzimy 3 instrukcje \ac{NOP}.
+FP jest wykorzystywany jako wskaźnik ramki stosu (stack frame pointer).
+Widać również 3 instrukcje \ac{NOP}.
 Drugi i trzeci \ac{NOP} występują po instrukcjach skoku.
-Najwidoczniej, kompilator GCC zawsze dodaje \ac{NOP}-y (przez \emph{branch delay slots})
-po instrukcjach skoku i następnie, jeśli optymalizacja jest włączona, może się od nich pozbywać.
-Także one tutaj zostały.
+Prawdopodobnie kompilator GCC zawsze dodaje \ac{NOP}-y (przez \emph{branch delay slot})
+po instrukcjach skoku a następnie, jeśli optymalizacja jest włączona, może je wyeliminować.
+W tym przypadku instrukcje pozostały na swoim miejscu.
 
-Jeszcze jeden listing w \IDA:
+Poniżej ten sam plik wykonywalny w programie \IDA:
 
 \lstinputlisting[caption=\NonOptimizing GCC 4.4.5 (\IDA),numbers=left,style=customasmMIPS]{patterns/01_helloworld/MIPS/hw_O0_IDA_PL.lst}
 
 \myindex{MIPS!\Pseudoinstructions!LA}
-Ciekawe, że \IDA zebrała parę instrukcji \INS{LUI}/\INS{ADDIU} w jedną pseudoinstrukcję 
+Co ciekawe, \IDA rozpoznała parę \INS{LUI}/\INS{ADDIU} i zebrała ją w jedną pseudoinstrukcję
 \INS{LA} (\q{Load Address}) w linii 15.
-Również widzimy, że długość tej pseudoinstrukcji to 8 bajt!
-Jest to pseudoinstrukcja (lub \emph{makro}), dlatego że nie jest to typowa instrukcja MIPS, a raczej wygodna nazwa zbiorowa dla tych dwóch instrukcji.
+Można zauważyć, że jej długość to 8 bajtów!
+Nazywamy to pseudoinstrukcją (lub \emph{makrem}), ponieważ nie jest to prawdziwa instrukcja MIPS, tylko wygodna nazwa dla pary dwóch powiązanych instrukcji.
 
 \myindex{MIPS!\Pseudoinstructions!NOP}
 \myindex{MIPS!\Instructions!OR}
-Jeszcze coś: \IDA nie rozpoznała \ac{NOP}-instrukcje w liniach 22, 26 i 41.
+Widać również, że \IDA nie rozpoznała instrukcji \ac{NOP} w liniach 22, 26 i 41.
 
-Jest to \TT{OR \$AT, \$ZERO}.
-Generalnie, jest to instrukcja \emph{LUB} stosowana do zawartości rejestru \$AT z zerem,
-co, oczywiście, jest pustą instrukcją.
-MIPS, jak i inne \ac{ISA}, nie posiada oddzielnej \ac{NOP}-instrukcji.
+W rzeczywistości \ac{NOP} jest realizowany przez \TT{OR \$AT, \$ZERO}.
+Jest to instrukcja  przeprowadzająca operację \emph{LUB} na rejestrze \$AT i \$ZERO (rejestr zawsze przechowujący stałą 0),
+co jest pustą instrukcją.
+MIPS, jak i inne \ac{ISA}, nie posiada oddzielnej instrukcji \ac{NOP}.
 
-\subsubsection{Rola stack frame w tym przykładzie}
+\subsubsection{Rola ramki stosu (stack frame) w tym przykładzie}
 
-Adres linii tekstowej jest przekazywany przez rejestr.
+Adres łańcucha znaków jest przekazywany przez rejestr.
 Po co w takim razie ustawiać stos lokalny?
-Dzieje się tak dlatego, że wartości rejestrów \ac{RA} i GP muszą być gdzieś zapisane
-(dlatego że jest wywoływane \printf) i po to się korzysta ze stosu lokalnego.
+Wartości rejestrów \ac{RA} i GP muszą być gdzieś zapisane
+(ponieważ wywołujemy funkcję - \printf) i w tym celu korzysta się ze stosu lokalnego.
 
-Gdyby to była \gls{leaf function}, to wtedy można by było pozbyć prologu i epilogu funkcji. Na przykład:
+Gdyby to była \gls{leaf function} (ang. leaf function), to można by pozbyć się prologu i epilogu funkcji, zobacz przykład:
  \myref{MIPS_leaf_function_ex1}.
 
-\subsubsection{\Optimizing GCC: załadujemy do GDB}
+\subsubsection{\Optimizing GCC: sesja w debuggerze GDB}
 
 \myindex{GDB}
-\lstinputlisting[caption=przykład sesji w GDB]{patterns/01_helloworld/MIPS/O3_GDB.txt}
+\lstinputlisting[caption=Przykład sesji w GDB]{patterns/01_helloworld/MIPS/O3_GDB.txt}
 
 

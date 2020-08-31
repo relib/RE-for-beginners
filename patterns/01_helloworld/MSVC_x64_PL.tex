@@ -1,7 +1,7 @@
 \subsubsection{MSVC: x86-64}
 
 \myindex{x86-64}
-Przyjrzyjmy się wynikom kompilacji 64 bitowego MSVC:
+Przyjrzyjmy się wynikom kompilacji 64-bitowego MSVC:
 
 \lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/01_helloworld/MSVC_x64.asm}
 
@@ -12,14 +12,14 @@ W x86-64 wszystkie rejestry zostały rozszerzone do 64 bitów i ich nazwy zyska�
 Tzn. część argumentów funkcji jest przekazywana przez rejestry a część --- przez stos.
 W Win64 pierwsze 4 argumenty funkcji są przekazywane przez rejestry \RCX, \RDX, \Reg{8} i \Reg{9}.
 Widać to w powyższym przykładzie: wskaźnik na argument funkcji \printf (łańcuch znaków) teraz jest przekazywany nie przez stos, a przez rejestr \RCX.
-Wskaźniki są teraz 64 bitowe, więc są przekazywane przez przez 64-bitowe rejestry (mające prefiks \TT{R-}).
+Wskaźniki są teraz 64-bitowe, więc są przekazywane przez przez 64-bitowe rejestry (mające prefiks \TT{R-}).
 Ale dla wstecznej kompatybilności można adresować również młodsze 32 bity rejestrów poprzez prefiks \TT{E-}.
 W ten o to sposób wygląda rejestr \RAX/\EAX/\AX/\AL w x86-64:
 
 \RegTableOne{RAX}{EAX}{AX}{AH}{AL}
 
 Funkcja \main zwraca wartość typu \Tint, który w \CCpp, dla większej kompatybilności,
-pozostał 32 bitowy. Właśnie dlatego na końcu funkcji \main zeruje się nie \RAX, a \EAX, czyli 32 bitową część rejestru.
+pozostał 32-bitowy. Właśnie dlatego na końcu funkcji \main zeruje się nie \RAX, a \EAX, czyli 32-bitową część rejestru.
 Dodatkowo, na stosie lokalnym jest zarezerwowanych 40 bajtów.
 Jest to tzw. \q{shadow space}, który będzie omawiany później: \myref{shadow_space}.
 

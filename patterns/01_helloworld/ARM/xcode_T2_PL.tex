@@ -26,10 +26,10 @@ __cstring:00003E70 48 65 6C 6C 6F 20+aHelloWorld  DCB "Hello world!",0xA,0
 \myindex{\ThumbTwoMode}
 \myindex{ARM!\Instructions!BL}
 \myindex{ARM!\Instructions!BLX}
-Instrukcje \TT{BL} i \TT{BLX} w trybie Thumb są kodowane jako para 16 bitowych instrukcji.
-W Thumb-2 te zastępcze kody operacji (opcode) rozszerzono tak, by instrukcje mogły być zakodowane jako 32 bitowe.
+Instrukcje \TT{BL} i \TT{BLX} w trybie Thumb są kodowane jako para 16-bitowych instrukcji.
+W Thumb-2 te zastępcze kody operacji (opcode) rozszerzono tak, by instrukcje mogły być zakodowane jako 32-bitowe.
 
-Można to łatwo zauważyc, gdyż w w trybie Thumb-2 wszystkie 32 bitowe instrukcje zaczynają się od \TT{0xFx} lub \TT{0xEx}.
+Można to łatwo zauważyc, gdyż w w trybie Thumb-2 wszystkie 32-bitowe instrukcje zaczynają się od \TT{0xFx} lub \TT{0xEx}.
 
 Jednak na listingu w programie \IDA bajty kodu operacji (opcode) są zamienione miejscami.
 W procesorze ARM instrukcje są kodowane w następujący sposób:
@@ -41,7 +41,7 @@ Bajty są wypisywane w listingach IDA w następującej kolejności:
 \begin{itemize}
 \item dla trybów ARM i ARM64: 4-3-2-1;
 \item dla trybu Thumb: 2-1;
-\item dla pary 16 bitowych instrukcji w trybie Thumb-2: 2-1-4-3.
+\item dla pary 16-bitowych instrukcji w trybie Thumb-2: 2-1-4-3.
 \end{itemize}
 
 \myindex{ARM!\Instructions!MOVW}
@@ -50,7 +50,7 @@ Bajty są wypisywane w listingach IDA w następującej kolejności:
 Widzimy, że instrukcje \TT{MOVW}, \TT{MOVT.W} i \TT{BLX} rzeczywiście zaczynają się od \TT{0xFx}.
 
 Jedną z tych instrukcji jest
-\TT{MOVW R0, \#0x13D8}~--- zapisuje ona 16 bitową liczbę do młodszych bitów rejestru \Reg{0}, zerując starsze.
+\TT{MOVW R0, \#0x13D8}~--- zapisuje ona 16-bitową liczbę do młodszych bitów rejestru \Reg{0}, zerując starsze.
 
 Inną instrukcją jest \TT{MOVT.W R0, \#0}~---  działa tak jak \TT{MOVT} z poprzedniego przykładu, ale przeznaczona jest dla trybu Thumb-2
 
@@ -82,14 +82,14 @@ W wykonywalnym pliku binarnym (Windows PE .exe, ELF lub Mach-O) istnieje sekcja 
 Jest to lista symboli (funkcji lub zmiennych globalnych) importowanych z modułów zewnętrznych wraz z nazwami tych modułów.
 Program ładujący \ac{OS} iterując po symbolach zaimportowanych w module głównym, ładuje niezbędne moduły i ustawia rzeczywiste adresy każdego z symboli.
 
-W naszym przypadku, \emph{\_\_imp\_\_puts} jest 32 bitową zmienną, w której program ładujący \ac{OS} umieści rzeczywisty adres funkcji z biblioteki zewnętrznej.
+W naszym przypadku, \emph{\_\_imp\_\_puts} jest 32-bitową zmienną, w której program ładujący \ac{OS} umieści rzeczywisty adres funkcji z biblioteki zewnętrznej.
 
-Następnie \TT{LDR} odczytuje 32 bitową wartość z tej zmiennej, i zapisując ją do rejestru \ac{PC}, przekazuje tam sterowanie.
+Następnie \TT{LDR} odczytuje 32-bitową wartość z tej zmiennej, i zapisując ją do rejestru \ac{PC}, przekazuje tam sterowanie.
 
 Żeby skrócic czas tej procedury programu ładującego, trzeba sprawić aby adres każdego symbolu zapisywał się tylko raz, do specjalnie przydzielonego miejsca.
 
 \myindex{thunk-functions}
-Do tego, jak się już upewniliśmy, zapisywanie 32 bitowej liczby do rejestru jest niemożliwe bez odwoływania się do pamięci.
+Do tego, jak się już upewniliśmy, zapisywanie 32-bitowej liczby do rejestru jest niemożliwe bez odwoływania się do pamięci.
 
 Optymalnym rozwiązaniem jest wydzielenie osobnej funkcji, pracującej w trybie ARM,
 której jedynym celem jest przekazywanie sterowania dalej, do bilioteki dynamicznie łączonej. Nastepnie można wywoływać tę jednoinstrukcyjną funkcję z kodu w trybie Thumb.
@@ -115,11 +115,11 @@ wartość wyrażenia i pozostawia adres tego wyniku w pewnej standardowej lokali
 
 \dots
 
-Microsoft i IBM zdefiniowali w ich systemach, opartych na Intelu, “środowisko 16 bitowe“
-(z odrażającymi rejestrami segmentowymi i 64k limitem adresów) i “środowisko 32 bitowe“
+Microsoft i IBM zdefiniowali w ich systemach, opartych na Intelu, “środowisko 16-bitowe“
+(z odrażającymi rejestrami segmentowymi i 64k limitem adresów) i “środowisko 32-bitowe“
 (z płaskim adresowaniem i półrzeczywistym trybem zarządzania pamięcią). Te dwa środowiska mogą
 działać równocześnie na tym samym komputerze i systemie operacyjnym (dzięki temu, co w świecie Microsoftu znane jest jako WOW, co jest skrótowcem od Windows On Windows). MS i IBM zdecydowali, że proces przechodzenia
-z trybu 16 bitowego do 32 bitowego (i odwrotnie), nazwany zostanie “thunk”; istnieje nawet
+z trybu 16-bitowego do 32-bitowego (i odwrotnie), nazwany zostanie “thunk”; istnieje nawet
 narzędzie na system Windows 95, "THUNK.EXE", nazwane "thunk kompilatorem".
 \end{quotation}
 \end{framed}

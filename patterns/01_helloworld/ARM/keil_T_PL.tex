@@ -23,9 +23,9 @@ Otrzymamy (listing z programu \IDA):
 Od razu można zauważyć 2 bajtowe (16-bitowe) kody operacji (opcode) --- jest to już wcześniej wspomniany tryb Thumb.
 
 \myindex{ARM!\Instructions!BL}
-Wyjątkiem jest instrukcja \TT{BL}, która składa się z dwóch 16 bitowych instrukcji.
+Wyjątkiem jest instrukcja \TT{BL}, która składa się z dwóch 16-bitowych instrukcji.
 W jednym 16-bitowym kodzie operacji (opcode) jest za mało miejsca na przesunięcie, po którym znajduje się funkcja \printf.
-Dlatego pierwsza 16 bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a druga~--- młodsze 11 bitów przesunięcia.
+Dlatego pierwsza 16-bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a druga~--- młodsze 11 bitów przesunięcia.
 
 % TODO:
 % BL has space for 11 bits, so if we don't encode the lowest bit,
@@ -47,7 +47,7 @@ Dlatego pierwsza 16 bitowa instrukcja ładuje starsze 10 bitów przesunięcia, a
 % In this case, though, the new program counter can only be 1M away,
 % because of the highest bit is used for the sign.
 
-Skoro wszystkie instrukcje w trybie Thumb są 2 bajtowe (16 bitowe), to sytuacja, w której instrukcja zaczyna się pod adresem nieparzystym, jest niemożliwa.
+Skoro wszystkie instrukcje w trybie Thumb są 2-bajtowe (16-bitowe), to sytuacja, w której instrukcja zaczyna się pod adresem nieparzystym, jest niemożliwa.
 
 Wniosek z tego jest taki, że ostatniego bitu adresu można nie kodować.
 Dzięki temu instrukcja \TT{BL} w trybie Thumb może zakodować adres z przedziału $current\_PC \pm{}\approx{}2M$.
