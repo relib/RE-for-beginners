@@ -6,7 +6,7 @@ f:
 	push	ebx
 	sub	esp, 660
 	lea	ebx, [esp+39]
-	and	ebx, -16                  ; wyrównać wskaźnik według 16-bitowej granicy
+	and	ebx, -16                  ; wyrównaj wskaźnik do granicy 16 bajtów
 	mov	DWORD PTR [esp], ebx      ; s
 	mov	DWORD PTR [esp+20], 3
 	mov	DWORD PTR [esp+16], 2

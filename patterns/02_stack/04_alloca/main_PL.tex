@@ -4,22 +4,20 @@
 
 \newcommand{\AllocaSrcPath}{C:\textbackslash{}Program Files (x86)\textbackslash{}Microsoft Visual Studio 10.0\textbackslash{}VC\textbackslash{}crt\textbackslash{}src\textbackslash{}intel}
 
-Przypadek z funkcją \TT{alloca()} jest całkiem ciekawy
-\footnote{W MSVC, implementację funkcji można podejrzeć w plikach \TT{alloca16.asm} i \TT{chkstk.asm} w \\
+Ciekawym przypadkiem jest funkcja \TT{alloca()}
+\footnote{W MSVC implementację funkcji można podejrzeć w plikach \TT{alloca16.asm} i \TT{chkstk.asm} w \\
 \TT{\AllocaSrcPath{}}}. 
-Ta funkcja działa jak \TT{malloc()}, ale przydziela pamięć od razu na stosie.
-Nie potrzebne jest zwalnianie pamięci \TT{free()}, dlatego że epilog funkcji~(\myref{sec:prologepilog})
-przywróci \ESP do stanu początkowego i przeznaczona pamięć \emph{zostaje wyrzucona}.
-Ciekawa jest również realizacja tej funkcji.
-Ona, w skrócie, po prostu przesuwa \ESP wgłąb stosu i zwraca \ESP jako wskaźnik na przydzielony obszar.
+Działa ona jak \TT{malloc()}, ale przydziela pamięć bezpośrednio na stosie.
+Nie ma potrzeby zwalniania tak zaalokowanego obszaru pamięci za pomocą \TT{free()}, gdyż epilog funkcji~(\myref{sec:prologepilog}) przywróci \ESP do stanu początkowego i zaalokowana pamięć zostanie \emph{porzucona}.
+Ciekawa jest również implementacja tej funkcji.
+Krótko mówiąc, po prostu przesuwa \ESP w dół stosu o wymaganą liczbę bajtów i zwraca \ESP jako wskaźnik na przydzielony obszar.
 
-Spróbujmy:
+Sprawdźmy:
 
 \lstinputlisting[style=customc]{patterns/02_stack/04_alloca/2_1.c}
 
-Funkcja \TT{\_snprintf()} działa tak samo, jak i \printf, tylko zamiast wyprowadzenia wyniku na wyjście standardowe \gls{stdout} (czyli do terminalu),
-ona go zapisuje do buforu \TT{buf}. Funkcja \puts, z kolei, wyrzuca zawartość buforu \TT{buf} na \gls{stdout}. Oczywiście można by było tutaj zamienić
-tę parę instrukcji na \printf, ale tutaj chcielibyśmy zobaczyć wykorzystanie niewielkiego buforu.
+Funkcja \TT{\_snprintf()} działa tak samo jak \printf, tylko zamiast wypisywać tekst na standardowe wyjście (\gls{stdout}),
+zapisuje do bufora \TT{buf}. Z kolei funkcja \puts kopiuje zawartość bufora \TT{buf} na standardowe wyjście. Oczywiście zamiast korzystać z tych dwóch funkcji, można by użyć \printf, ale chcemy zobaczyć wykorzystanie niewielkiego bufora.
 
 \myparagraph{MSVC}
 
@@ -28,29 +26,27 @@ Skompilujmy (MSVC 2010):
 \lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/02_stack/04_alloca/2_2_msvc.asm}
 
 \myindex{Compiler intrinsic}
-Jedyny parametr \TT{alloca()} jest przekazywany przez \EAX, a nie jak zwykle, przez stos
-\footnote{To dlatego, że alloca()~--- to nie tyle co funkcja, a raczej \emph{compiler intrinsic} (\myref{sec:compiler_intrinsic})
-Jedną z przyczyn, flaczego tu potrzeba funkcji, a nie kilku instrukcji w samym kodzie, polega na tym, że w realizacji
-funkcji alloca() w \ac{MSVC}
-zawarty również kod, czytający z dopiero co przydzielonej pamięci po to, żeby \ac{OS} zaalokowała pamięć fizyczną dla tego obszaru \ac{VM}.
-Po wywołaniu \TT{alloca()} \ESP wskazuje na blok o długości 600 bajtów, z którego możemy korzystać na potrzeby naszego \TT{buf}.}.
+Jedyny parametr \TT{alloca()} jest przekazywany przez \EAX (zamiast przez stos)
+\footnote{Dlatego, że alloca() to nie tyle funkcja, co raczej \emph{compiler intrinsic} (\myref{sec:compiler_intrinsic}).
+Jedną z przyczyn, dla której potrzebujemy osobnej funkcji a nie kilku instrukcji w samym kodzie, jest to, że implementacja alloca() z \ac{MSVC} zawiera kod, który czyta z właśnie zaalokowanej pamięci. W konsekwencji \ac{OS} mapuje pamięć fizyczną na ten region pamięci wirtualnej.
+Po wywołaniu funkcji \TT{alloca()} \ESP pokazuje na blok o długości 600 bajtów, który można użyć na tablicę \TT{buf}.}
 
 \myparagraph{GCC + \IntelSyntax}
 
-GCC 4.4.1 nie wywołuje innych funkcji:
+GCC 4.4.1 generuje podobne wyjście, ale bez wywoływania zewnętrznych funkcji:
 
-\lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/02_stack/04_alloca/2_1_gcc_intel_O3_RU.asm}
+\lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/02_stack/04_alloca/2_1_gcc_intel_O3_PL.asm}
 
 \myparagraph{GCC + \ATTSyntax}
 
-Spójrzmy na ten sam kod w syntaksie AT\&T:
+Spójrzmy na ten sam kod, ale w składni AT\&T:
 
 \lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/02_stack/04_alloca/2_1_gcc_ATT_O3.s}
 
 \myindex{\ATTSyntax}
-Wygląda to tak samo jak i poprzedni listing.
+Kod jest taki sam jak na poprzednim listingu.
 
-À propos, \INS{movl \$3, 20(\%esp)}~--- jest analogiem do \INS{mov DWORD PTR [esp+20], 3} w syntaksie Intel.
-Adresowanie pamięci typu \emph{rejestr+przesunięcie} jest zapisywane w syntaksie AT\&T jako \TT{przesunięcie(\%{rejestr})}.
+À propos, \INS{movl \$3, 20(\%esp)} odpowiada \INS{mov DWORD PTR [esp+20], 3} w składni Intela.
+W składni AT\&T, sposób adresowania pamięci \emph{rejestr+przesunięcie} zapisywany jest jako \TT{przesunięcie(\%{rejestr})}.
 
 
