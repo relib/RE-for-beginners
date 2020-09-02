@@ -6,7 +6,7 @@ f:
 	push	ebx
 	sub	esp, 660
 	lea	ebx, [esp+39]
-	and	ebx, -16                  ; align pointer by 16-bit border
+	and	ebx, -16                  ; align pointer by 16-byte border
 	mov	DWORD PTR [esp], ebx      ; s
 	mov	DWORD PTR [esp+20], 3
 	mov	DWORD PTR [esp+16], 2

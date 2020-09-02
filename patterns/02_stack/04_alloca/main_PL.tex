@@ -11,6 +11,10 @@ Działa ona jak \TT{malloc()}, ale przydziela pamięć bezpośrednio na stosie.
 Nie ma potrzeby zwalniania tak zaalokowanego obszaru pamięci za pomocą \TT{free()}, gdyż epilog funkcji~(\myref{sec:prologepilog}) przywróci \ESP do stanu początkowego i zaalokowana pamięć zostanie \emph{porzucona}.
 Ciekawa jest również implementacja tej funkcji.
 Krótko mówiąc, po prostu przesuwa \ESP w dół stosu o wymaganą liczbę bajtów i zwraca \ESP jako wskaźnik na przydzielony obszar.
+% to be synced
+% rephrased version:
+%In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need,
+%making \ESP pointing to the \emph{allocated} block.
 
 Sprawdźmy:
 

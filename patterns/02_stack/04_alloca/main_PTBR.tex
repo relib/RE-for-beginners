@@ -12,6 +12,10 @@ O bloco de memória alocado não precisa ser limpo através da chamada da funç�
 desde que o rodapé da função (\myref{sec:prologepilog}) retorna \ESP de volta para seu estado inicial e a memória alocada é simplesmente desassociada.
 Sobre como a função \TT{alloca()} é implementada, em termos simples, essa função só desloca \ESP para baixo 
 (em direção ao fundo da pilha) pelo número de bytes que você precisa e define o ESP como um ponteiro para o bloco alocado.
+% to be synced
+% rephrased version:
+%In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need,
+%making \ESP pointing to the \emph{allocated} block.
 
 \RU{Попробуем:}\EN{Let's try:}\PTBR{Vamos tentar:}
 

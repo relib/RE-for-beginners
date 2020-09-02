@@ -6,7 +6,7 @@ f:
 	push	ebx
 	sub	esp, 660
 	lea	ebx, [esp+39]
-	and	ebx, -16                  ; allinea puntatore con un bordo di 16-bit 
+	and	ebx, -16                  ; allinea puntatore con un bordo di 16-byte
 	mov	DWORD PTR [esp], ebx      ; s
 	mov	DWORD PTR [esp+20], 3
 	mov	DWORD PTR [esp+16], 2

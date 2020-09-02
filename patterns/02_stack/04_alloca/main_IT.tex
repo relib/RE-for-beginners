@@ -14,6 +14,10 @@ poichè l'epilogo della funzione (\myref{sec:prologepilog}) ripristina \ESP al s
 Vale anche la pena notare come è implementata la funzione \TT{alloca()}.
 In termini semplici, questa funzione sposta \ESP verso il basso, verso la base dello stack, per il numero di byte necessari e setta \ESP
 per puntare al blocco \emph{allocato}.
+% to be synced
+% rephrased version:
+%In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need,
+%making \ESP pointing to the \emph{allocated} block.
 
 Proviamo:
 
