@@ -50,7 +50,7 @@ After the control flow has been passed to \TT{\main}, the value in the \EBP regi
 Then, 84 bytes were allocated for the array and the $i$ variable.
 That's \TT{(20+1)*sizeof(int)}.
 \ESP now points to the \TT{\_i} variable in the local stack and after the execution of 
-the next \TT{PUSH something}, \emph{something} is appearing next to \TT{\_i}.
+the next \TT{PUSH something}, that \emph{something} is appearing next to \TT{\_i}.
 
 That's the stack layout while the control is in \main:
 
