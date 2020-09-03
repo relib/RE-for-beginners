@@ -73,7 +73,7 @@ l'exécution ultérieure de fonctions.
 L'instruction \INS{LDR PC, [SP+4+var\_4],\#4} charge la valeur sauvée de \ac{LR}
 depuis la pile dans le registre \ac{PC}, provoquant ainsi la sortie de la fonction.
 Il n'y a pas de point d'exclamation---effectivement, \ac{PC} est d'abord chargé
-depuis l'adresse stockées dans \ac{SP} ($4+var\_4=4+(-4)=0$, donc cette instruction
+depuis l'adresse stockées dans \ac{SP} ($4+var\_4=4+(-4)=0$), donc cette instruction
 est analogue à INS{LDR PC, [SP],\#4}), et ensuite \ac{SP} est incrémenté de 4.
 Il s'agit de \emph{post-index}\footnote{Lire à ce propos: \myref{ARM_postindex_vs_preindex}.}.
 Pourquoi est-ce qu'\IDA affiche l'instruction comme ça?

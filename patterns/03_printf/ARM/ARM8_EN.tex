@@ -60,7 +60,7 @@ Of course, what has been stored on the stack will stay there, but it will all be
 
 \myindex{ARM!\Instructions!LDR}
 The \INS{LDR PC, [SP+4+var\_4],\#4} instruction loads the saved \ac{LR} value from the stack into the \ac{PC} register, thus causing the function to exit.
-There is no exclamation mark---indeed, \ac{PC} is loaded first from the address stored in \ac{SP} ($4+var\_4=4+(-4)=0$, so this instruction is analogous to \INS{LDR PC, [SP],\#4}), and then \ac{SP} is increased by 4.
+There is no exclamation mark---indeed, \ac{PC} is loaded first from the address stored in \ac{SP} ($4+var\_4=4+(-4)=0$), so this instruction is analogous to \INS{LDR PC, [SP],\#4}), and then \ac{SP} is increased by 4.
 This is referred as \emph{post-index}\footnote{Read more about it: \myref{ARM_postindex_vs_preindex}.}.
 Why does \IDA display the instruction like that?
 Because it wants to illustrate the stack layout and the fact that \GTT{var\_4} is allocated for saving the \ac{LR} value in the local stack.

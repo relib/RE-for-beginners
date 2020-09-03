@@ -61,7 +61,7 @@ Ovviamente quello che era stato memorizzato nello stack rimarra lì, e sarà pro
 \myindex{ARM!\Instructions!LDR}
 L'istruzione \INS{LDR PC, [SP+4+var\_4],\#4} carica il valore di \ac{LR} salvato dallo stack nel nel registro \ac{PC}, causando quindi
 l'uscita dalla funzione.
-Non c'è il punto esclamativo ---infatti \ac{PC} è caricato prima dall'indirizzo memorizzato in \ac{SP} ($4+var\_4=4+(-4)=0$, questa istruzione è quindi analoga a \INS{LDR PC, [SP],\#4}), e successivamente \ac{SP} è incrementato di 4.
+Non c'è il punto esclamativo ---infatti \ac{PC} è caricato prima dall'indirizzo memorizzato in \ac{SP} ($4+var\_4=4+(-4)=0$), questa istruzione è quindi analoga a \INS{LDR PC, [SP],\#4}), e successivamente \ac{SP} è incrementato di 4.
 Questo è detto \emph{post-index}\footnote{Maggiori dettagli: \myref{ARM_postindex_vs_preindex}.}.
 Perchè \IDA mostra l'istruzione in quel modo?
 Perchè vuole illustrare il layout dello stack ed il fatto che \GTT{var\_4} è allocata per salvare il valore di \ac{LR} nello stack locale.
