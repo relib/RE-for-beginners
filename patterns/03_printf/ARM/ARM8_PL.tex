@@ -117,9 +117,9 @@ Można również zwrócić uwagę, że instrukcje zostały rozrzucone jakby loso
 
 Musimy pamiętać, że ten porządek jest pozornie losowy, kompilator ma swoje powodu do takiego szeregowania instrukcji, ponieważ kieruje się efektywnością kodu w trakcie wykonania.
 
-Procesor z reguły próbuje równolegle wykonywać instrukcje położone obok siebie. Na przykład, instrukcje jak \INS{MOVT R0, \#0} i
-\INS{ADD R0, PC, R0} nie mogę być wykonywane równocześnie, gdyż obie modyfikują ten sam rejestr \Reg{0}.
-Z drugiej strony, \INS{MOVT R0, \#0} i \INS{MOV R2, \#4}
+Procesor z reguły próbuje równolegle wykonywać instrukcje położone obok siebie. Na przykład, instrukcje jak \TT{MOVT R0, \#0} oraz
+\TT{ADD R0, PC, R0} nie mogę być wykonywane równocześnie, gdyż obie modyfikują ten sam rejestr \Reg{0}.
+Z drugiej strony, \TT{MOVT R0, \#0} oraz \TT{MOV R2, \#4}
 mogą być wykonywane równolegle, gdyż nie ma konfliktu między wynikami ich pracy.
 Prawdopodobnie kompilator starał się tak uszeregować instrukcje, by mogły być wykonywane równolegle tam, gdzie to możliwe.
  
