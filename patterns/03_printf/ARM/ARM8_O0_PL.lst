@@ -1,16 +1,16 @@
 ﻿.LC2:
 	.string	"a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d\n"
 f3:
-; przydzielić więcej miejsca na stosie:
+; przydziel miejsce na stosie:
 	sub	sp, sp, #32
-; zapisać FP i LR do stack frame:
+; zapisz FP i LR w ramce stosu:
 	stp	x29, x30, [sp,16]
-; ustawić stack frame (FP=SP):
+; ustaw wskaźnik ramki stosu (FP=SP+16):
 	add	x29, sp, 16
 	adrp	x0, .LC2 ; "a=\%d; b=\%d; c=\%d; d=\%d; e=\%d; f=\%d; g=\%d; h=\%d\textbackslash{}n"
 	add	x0, x0, :lo12:.LC2
-	mov	w1, 8		; 9-y argument
-	str	w1, [sp]	; zapisać 9-й argument do stosu
+	mov	w1, 8		; 9. argument
+	str	w1, [sp]	; zapisz 9. argument na stos
 	mov	w1, 1
 	mov	w2, 2
 	mov	w3, 3
@@ -20,7 +20,7 @@ f3:
 	mov	w7, 7
 	bl	printf
 	sub	sp, x29, #16
-; przywrócić FP i LR
+; przywróć FP i LR
 	ldp	x29, x30, [sp,16]
 	add	sp, sp, 32
 	ret

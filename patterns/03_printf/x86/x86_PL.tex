@@ -127,7 +127,7 @@ Sprawdźmy jak zmieniły się rejestry i stos:
 \label{fig:printf3_olly_3}
 \end{figure}
 
-Rejestr\EAX zawiera teraz \GTT{0xD} (13).
+Rejestr \EAX zawiera teraz \GTT{0xD} (13).
 Jest to spodziewana wartość, ponieważ \printf zwraca liczbę wypisanych znaków.
 Zmieniła się wartość \EIP: zawiera teraz adres kolejnej instrukcji, występującej bezpośrednio za \INS{CALL printf}.
 \ECX i \EDX również się zmieniły.
@@ -135,7 +135,7 @@ Najwyraźniej implementacja \printf wykorzystała je do własnych celów.
 
 Ważnym faktem jest to, że ani wartość \ESP, ani stan stosu się nie zmieniły!
 
-Łatwo zauważyć, że łańcuch znaków z formatem oraz 3 powiązane z nim argumentu wciąż tam są. Jest to konwencja wywołań \emph{cdecl}: \glslink{callee}{funkcja wywoływana} nie przywraca \ESP do pierwotnego stanu.
+Łatwo zauważyć, że łańcuch znaków z formatem oraz 3 powiązane z nim argumentu wciąż tam są. Jest to konwencja wywoływania \emph{cdecl}: \glslink{callee}{funkcja wywoływana} nie przywraca \ESP do pierwotnego stanu.
 Ta odpowiedzialność spoczywa na \glslink{caller}{wywołującym}.
 
 \clearpage
@@ -166,7 +166,7 @@ W tym przykładzie GCC explicite podaje adres w obrębie stosu i nie używa inst
 \myparagraph{GCC i GDB}
 \myindex{GDB}
 
-Spróbujmy wczytać kod wynikowy do debuggera \ac{GDB} na systemie Linux.
+Wczytajmy plik wykonywalny do debuggera \ac{GDB}.
 
 Opcja \GTT{-g} sprawia, że kompilator zapisuje do pliku wykonywalnego informacje użyteczne do debuggowania.
 

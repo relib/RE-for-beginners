@@ -1,9 +1,9 @@
 ﻿.LC1:
 	.string	"a=%d; b=%d; c=%d"
 f2:
-; zapisać FP i LR do stack frame:
+; zapisz FP i LR w ramce stosu:
 	stp	x29, x30, [sp, -16]!
-; ustawić stack frame (FP=SP):
+; ustaw wskaźnik ramki stosu (FP=SP):
 	add	x29, sp, 0
 	adrp	x0, .LC1
 	add	x0, x0, :lo12:.LC1
@@ -12,6 +12,6 @@ f2:
 	mov	w3, 3
 	bl	printf
 	mov	w0, 0
-; przywrócić FP i LR
+; przywróć FP i LR
 	ldp	x29, x30, [sp], 16
 	ret
