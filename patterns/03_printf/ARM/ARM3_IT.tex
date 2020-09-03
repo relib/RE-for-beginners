@@ -108,5 +108,11 @@ Successivamente vediamo la familiare coppia di istruzioni \INS{ADRP}/\ADD , che 
 \myindex{ARM64!lo12}
 \emph{lo12} indica 12 bit bassi (low 12 bits), ovvero, il linker scriverà i 12 bit bassi dell'indirizzo di LC1 nell'opcode dell'istruzione \ADD .
 \GTT{\%d} nella format string di \printf è un \Tint a 32-bit, quindi u valori 1, 2 e 3 sono caricati nelle parti a 32-bit dei registri.
+% to be synced:
+%1, 2 and 3 are 32-bit \Tint{} values, so they are loaded into 32-bit register parts
+%\footnote{Changing 1 to 1L will make it a 64-bit value that would be loaded into 64-bit register.
+%See more about integer constants/literals:
+%\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
+%\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
 
 \Optimizing GCC (Linaro) 4.9 genera lo stesso codice.

@@ -106,7 +106,11 @@ It is just writing the value of \ac{SP} into X29.
 Next, we see the familiar \INS{ADRP}/\ADD instruction pair, which forms a pointer to the string.
 \myindex{ARM64!lo12}
 \emph{lo12} meaning low 12 bits, i.e., linker will write low 12 bits of LC1 address into the opcode of \ADD instruction.
-\GTT{\%d} in \printf string format is a 32-bit \Tint, so the 1, 2 and 3 are loaded into 32-bit register parts.
+1, 2 and 3 are 32-bit \Tint{} values, so they are loaded into 32-bit register parts
+\footnote{Changing 1 to 1L will make it a 64-bit value that would be loaded into 64-bit register.
+See more about integer constants/literals:
+\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
+\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
 
 \Optimizing GCC (Linaro) 4.9 generates the same code.
 
