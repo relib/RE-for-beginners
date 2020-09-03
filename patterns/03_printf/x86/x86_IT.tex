@@ -1,4 +1,5 @@
 \subsubsection{x86: 3 argomenti}
+% to be sync: \subsubsection{x86: 3 integer arguments}
 
 \myparagraph{MSVC}
 
@@ -107,6 +108,7 @@ Diamo un'occhiata alla finestra del debugger in basso a destra:
 
 Notiamo 3 colonne: indirizzo nello stack, valore nello stack ed alcuni commenti aggiuntivi di \olly.
 \olly riconosce le stringhe \printf{}-like, e riporta quindi la stringa insieme ai 3 valori \emph{associati}.
+% to be sync: \olly can detect pointers to ASCII strings in stack, so it reports the \printf{}-string here.
 
 Facendo click destro sulla stringa di formato, quindi click su \q{Follow in dump},
 è possibile vedere la format string nella finestra del debugger in basso a sinistra, che mostra una zona di memoria.

@@ -1,4 +1,5 @@
 \subsubsection{x86: 3つの引数}
+% to be sync: \subsubsection{x86: 3 integer arguments}
 
 \myparagraph{MSVC}
 
@@ -105,6 +106,7 @@ F8（\stepover）を6回押します、つまり6つの命令をスキップし�
 
 スタック内のアドレス、スタック内の値、および追加の \olly コメントが3つあります。 
 \olly は \printf のような文字列を理解しているので、ここに文字列とそれに\emph{付随する}3つの値を報告します。
+% to be sync: \olly can detect pointers to ASCII strings in stack, so it reports the \printf{}-string here.
 
 フォーマット文字列を右クリックし、\q{Follow in dump}をクリックすると、
 フォーマット文字列がデバッガの左下のウィンドウに表示され、メモリの一部が常に表示されます。 
