@@ -5,7 +5,7 @@ f3:
 	sub	sp, sp, #32
 ; save FP and LR in stack frame:
 	stp	x29, x30, [sp,16]
-; set stack frame (FP=SP):
+; set frame pointer (FP=SP+16):
 	add	x29, sp, 16
 	adrp	x0, .LC2 ; "a=\%d; b=\%d; c=\%d; d=\%d; e=\%d; f=\%d; g=\%d; h=\%d\textbackslash{}n"
 	add	x0, x0, :lo12:.LC2
