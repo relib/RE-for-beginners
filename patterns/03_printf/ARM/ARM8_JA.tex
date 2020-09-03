@@ -151,7 +151,8 @@ __text:00002BD6 05 B0          ADD      SP, SP, #0x14
 __text:00002BD8 80 BD          POP      {R7,PC}
 \end{lstlisting}
 
-Thumb命令が代わりに使用される点を除いて、出力は前の例とほぼ同じです。
+Thumb/Thumb-2命令が代わりに使用される点を除いて、出力は前の例とほぼ同じです。
+% I hope I changed that line (^^^) correctly
 % FIXME: also STMIA is used instead of STMIB,
 % which is why it uses LR, which is 4 bytes ahead of SP
 
