@@ -106,7 +106,7 @@ Take a look at the right bottom debugger window:
 \end{figure}
 
 We can see 3 columns there: address in the stack, value in the stack and some additional \olly comments.
-\olly understands \printf{}-like strings, so it reports the string here and the 3 values \emph{attached} to it.
+\olly can detect pointers to ASCII strings in stack, so it reports the \printf{}-string here.
 
 It is possible to right-click on the format string, click on \q{Follow in dump},
 and the format string will appear in the debugger left-bottom window, which always displays some part of the memory.
