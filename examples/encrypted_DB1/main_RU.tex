@@ -235,7 +235,7 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 
 \lstinputlisting{examples/encrypted_DB1/2.lst}
 
-Тут мы можем увидить входы в ф-цию \emph{ProcessAndXorBlock()}, и выходы из нее.
+Тут мы можем увидеть входы в ф-цию \emph{ProcessAndXorBlock()}, и выходы из нее.
 
 Это вывод из ф-ции во время первого вызова:
 
@@ -243,7 +243,8 @@ enum {BT_InBlockIsCounter=1, BT_DontIncrementInOutPointers=2, BT_XorInput=4, BT_
 00000000: C7 39 4E 7B 33 1B D6 1F-B8 31 10 39 39 13 A5 5D ".9N{3....1.99..]"
 \end{lstlisting}
 
-Затем ф-ция \emph{ProcessAndXorBlock()} вызывается с блоком нулевого размера, но с флагом 8 (\emph{BT\_ReverseDirection}).
+Затем ф-ция \emph{ProcessAndXorBlock()} вызывается с блоком нулевого размера, \\
+но с флагом 8 (\emph{BT\_ReverseDirection}).
 
 Второй вызов:
 

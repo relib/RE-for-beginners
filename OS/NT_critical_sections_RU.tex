@@ -7,10 +7,8 @@
 для обеспечения гарантии что только один тред будет иметь доступ к данным в один момент времени,
 блокируя остальные треды и прерывания.
 
-
 \par
-Вот как объявлена структура \TT{CRITICAL\_SECTION} 
-объявлена в линейке OS \gls{Windows NT}:
+Вот как структура \TT{CRITICAL\_SECTION} объявлена в линейке OS \gls{Windows NT}:
 
 \begin{lstlisting}[caption=(Windows Research Kernel v1.2) public/sdk/inc/nturtl.h,style=customc]
 typedef struct _RTL_CRITICAL_SECTION {
