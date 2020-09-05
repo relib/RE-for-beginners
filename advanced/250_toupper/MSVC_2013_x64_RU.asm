@@ -10,10 +10,10 @@ toupper	PROC
 	movsx	eax, BYTE PTR c$[rsp]
 	sub	eax, 32
 	jmp	SHORT $LN3@toupper
-	jmp	SHORT $LN1@toupper	; артифакт компилятора
+	jmp	SHORT $LN1@toupper	; артефакт компилятора
 $LN2@toupper:
 	movzx	eax, BYTE PTR c$[rsp]	; необязательное приведение типов
 $LN1@toupper:
-$LN3@toupper:				; артифакт компилятора
+$LN3@toupper:				; артефакт компилятора
 	ret	0
 toupper	ENDP
