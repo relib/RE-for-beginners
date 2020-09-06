@@ -245,6 +245,8 @@ $security\_cookie \oplus (CookieXOROffset + address\_of\_saved\_EBP) == stack[ad
 
 Wenn der \TT{Cookie Offset} gleich $-2$ ist, impliziert dies, dass er nicht vorhanden ist.
 
+\iffalse
+% FIXME: get this back when tracer src will be hosted again somewhere
 \myindex{tracer}
 \emph{Cookie}-Überprüfung ist auch in dem \tracer{} implementiert.
 Siehe \href{http://go.yurichev.com/17061}{GitHub} für Details.
@@ -252,3 +254,5 @@ Siehe \href{http://go.yurichev.com/17061}{GitHub} für Details.
 Es ist immer noch möglich, SEH3 im Compiler zu nutzen wenn eine neuere Version als MSVC 2005
 genutzt wird, durch setzen der \TT{/GS-}-Option.
 Der \ac{CRT}-Code nutzt SEH4 auf jeden Fall.
+\fi
+
