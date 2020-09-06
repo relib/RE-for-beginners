@@ -95,7 +95,7 @@ Optymalnym rozwiązaniem jest wydzielenie osobnej funkcji, pracującej w trybie 
 której jedynym celem jest przekazywanie sterowania dalej, do bilioteki dynamicznie łączonej. Nastepnie można wywoływać tę jednoinstrukcyjną funkcję z kodu w trybie Thumb.
 
 \myindex{ARM!\Instructions!BL}
-À propos, w poprzednim przykładzie (skompilowanym dla trybu ARM), instrukcja \TT{BL} przekazuje sterowanie do takiej samej \glslink{thunk function}{thunk-funkcji}, lecz procesor nie przestawia się w inny tryb (stąd brak \q{X} w mnemoniku instrukcji).
+Nawiasem mówiąc, w poprzednim przykładzie (skompilowanym dla trybu ARM), instrukcja \TT{BL} przekazuje sterowanie do takiej samej \glslink{thunk function}{thunk-funkcji}, lecz procesor nie przestawia się w inny tryb (stąd brak \q{X} w mnemoniku instrukcji).
 
 \myparagraph{Jeszcze o thunk-funkcjach}
 \myindex{thunk-functions}
