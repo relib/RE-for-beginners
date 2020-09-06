@@ -906,7 +906,7 @@ Ces trois fonctions sont une pour chaque axe du cube et l'argument \TT{v} défin
 le plan dans l'intervalle 0..7.
 
 Peut-être que l'auteur de l'algorithme pensait à un Rubik's cube 8*8*8
-\footnote{\href{http://go.yurichev.com/17115}{Wikipédia}}?!
+\footnote{\href{http://en.wikipedia.org/wiki/Rubik's_Cube}{Wikipédia}}?!
 
 Oui, en effet.
 
@@ -933,7 +933,7 @@ void decrypt (BYTE *buf, int sz, char *pw)
 \end{lstlisting}
 
 C'est presque la même que pour \TT{crypt()}, \emph{mais} la chaîne du mot de passe
-est inversée par la fonction C standard strrev() \footnote{\href{http://go.yurichev.com/17249}{MSDN}}
+est inversée par la fonction C standard strrev() \footnote{\href{http://msdn.microsoft.com/en-us/library/9hby7w40(VS.80).aspx}{MSDN}}
 et \TT{rotate\_all()} est appelé avec l'argument 3.
 
 Ceci implique que dans le cas du déchiffrement, chaque appel correspondant à rotate1/2/3

@@ -894,7 +894,7 @@ void rotate3 (int v)
 
 Может быть, автор алгоритма думал о кубике Рубика 8*8*8
 
-\footnote{\href{http://go.yurichev.com/17115}{wikipedia}}?!
+\footnote{\href{http://en.wikipedia.org/wiki/Rubik's_Cube}{wikipedia}}?!
 
 Да, действительно.
 
@@ -921,7 +921,7 @@ void decrypt (BYTE *buf, int sz, char *pw)
 \end{lstlisting}
 
 Почти то же самое что и crypt(), \emph{но} строка пароля разворачивается стандартной функцией Си
-strrev() \footnote{\href{http://go.yurichev.com/17249}{MSDN}}
+strrev() \footnote{\href{http://msdn.microsoft.com/en-us/library/9hby7w40(VS.80).aspx}{MSDN}}
 и \TT{rotate\_all()} вызывается с аргументом 3.
 
 Это значит, что, в случае дешифровки, rotate1/2/3 будут вызываться трижды.
