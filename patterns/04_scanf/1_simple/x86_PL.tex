@@ -2,33 +2,32 @@
 
 \myparagraph{MSVC}
 
-Tutaj znajduje się wynik kompilacji programu w MSVC 2010:
+Poniższy kod otrzymamy po kompilacji za pomocą MSVC 2010:
 
-\lstinputlisting[style=customasmx86]{patterns/04_scanf/1_simple/ex1_MSVC_EN.asm}
+\lstinputlisting[style=customasmx86]{patterns/04_scanf/1_simple/ex1_MSVC_PL.asm}
 
 \TT{x} jest zmienną lokalną.
 
-Według standardu \CCpp zmienna lokalna może być widoczna tylko w konkretnej funkcji. Tradycyjnie zmienne lokalne są przechowywane na stosie. Prawdopodnie są inne moliwości przechowywania tych zmiennych, ale tak akurat jest w x86.
+Według standardu \CCpp zmienna lokalna może być widoczna tylko w konkretnej funkcji. Tradycyjnie zmienne lokalne są przechowywane na stosie. Prawdopodobnie są inne moliwości przechowywania tych zmiennych, ale tak akurat jest w x86.
 
 \myindex{x86!\Instructions!PUSH}
-Zadaniem instrukcji rozpoczynającej funkcję, \TT{PUSH ECX}, nie jest zapisanie stanu \ECX (można zauważyć brak odpowiadającej instrukcji POP ECX na końcu funkcji).
+Zadaniem instrukcji rozpoczynającej funkcję, \TT{PUSH ECX}, nie jest zapisanie stanu \ECX (można zauważyć brak odpowiadającej instrukcji \TT{POP ECX} na końcu funkcji).
 
 Tak naprawdę instrukcja ta alokuje 4 bajty na stosie do przechowania zmiennej x.
 
 \label{stack_frame}
 \myindex{\Stack!Stack frame}
 \myindex{x86!\Registers!EBP}
-Dostęp do \TT{x} odbywa się z asystującym makrem \TT{\_x\$} (równym -4) i rejestrem \EBP rwskazującym bieżącą ramkę.
+Dostęp do \TT{x} odbywa się za pomocą makra \TT{\_x\$} (-4) i rejestru \EBP, który wskazuje na bieżącą ramkę.
 
-We fragmencie wykonującym funkcje, \EBP wskazuje bieżącą \gls{stack frame}
-umożliwiając dostęp do zmiennych lokalnych i argumentów funkcji poprzez \TT{EBP+offset}.
+W trakcie wykonywania funkcji \EBP wskazuje na bieżącą \glslink{stack frame}{ramkę stosu}, umożliwiając dostęp do zmiennych lokalnych i argumentów funkcji poprzez \TT{EBP+offset}.
 
 \myindex{x86!\Registers!ESP}
-Możliwe jest także użycie \ESP w takim samym celu, le nie jest to zbyt wygodne, ponieważ wartość tego rejestru często się zmienia.
-Wartość \EBP może być postrzegana jako \emph{frozen state} wartości w \ESP z początku wykonania funkcji.
+Można by użyć w tym celu rejestru \ESP, ale nie byłoby to zbyt wygodne, ponieważ wartość tego rejestru często się zmienia.
+Wartość \EBP może być postrzegana jako \emph{zachowana} wartość \ESP z początku wykonania funkcji.
 
 % FIXME1 это уже было в 02_stack?
-Tutaj znajduje się typowa ramka stosu w układzie środowiska 32-bitowego:
+Poniżej pokazano typowy układ ramka stosu w środowisku 32-bitowym:
 
 \begin{center}
 \begin{tabular}{ | l | l | }
@@ -56,7 +55,7 @@ EBP+0x10 & \argument \#3, \MarkedInIDAAs{} \TT{arg\_8} \\
 
 Funkcja \scanf w naszym przykładzie ma dwa argumenty.
 
-Pierwszy jest wskaźnikiem na string \TT{\%d} a drugi jest adresem zmiennej \TT{x}.
+Pierwszy jest wskaźnikiem na łańcuch znaków \TT{\%d} a drugi jest adresem zmiennej \TT{x}.
 
 \myindex{x86!\Instructions!LEA}
 Na początku adres zmiennej \TT{x} jest ładowany do rejestru \EAX przy pomocy instrukcji \\
@@ -64,14 +63,12 @@ Na początku adres zmiennej \TT{x} jest ładowany do rejestru \EAX przy pomocy i
 
 \LEA oznacza \emph{load effective address} i jest często używana do formowania adresów ~(\myref{sec:LEA}).
 
-Można powiedzieć, że w tym przypadku \LEA po prostu umieszcza sumę rejestru \EBP i makra \TT{\_x\$} w rejestrze \EAX.
+Można powiedzieć, że w tym przypadku \LEA po prostu umieszcza sumę rejestru \EBP i makra \TT{\_x\$} w rejestrze \EAX.
 
-To jest to samo co \INS{lea eax, [ebp-4]}.
+W tym przypadku (\TT{\_x\$} = -4) jest to samo co \INS{lea eax, [ebp-4]}. Więc od rejestru \EBP jest odejmowane 4 i wynik zostaje umieszczony w rejestrze \EAX.
+Następnie wartość rejestru \EAX jest odkładana na stos i funkcja \scanf zostaje wywołana.
 
-Więc od rejestru \EBP jest odejmowane 4 i wynik zostaje umieszczony w rejestrze \EAX.
-Następnie wartość rejestru \EAX jest odkładana na stosie i funkcja \scanf zostaje wywołana.
-
-\printf wywołuje się z pierwszym argumentem- wskaźnikiem na string:
+Kolejno następuje przygotowanie do wywołania funkcji \printf. Pierwszym argumentem jest wskaźnik na łańcuch znaków:
 \TT{You entered \%d...\textbackslash{}n}.
 
 Drugi argument jest przygotowywany za pomocą: \TT{mov ecx, [ebp-4]}.
@@ -98,10 +95,9 @@ GCC zamienia wywołanie funkcji \printf na wywołanie funkcji \puts. Powód tego
 % For example if you compile with -std=c89 the outputted assmebly file will contain scanf and not __isoc99__scanf. I guess current GCC version adhares to c99 by default.
 % According to my understanding the two implementations differ in the set of suported modifyers (See printf man page)
 
-Jak w przykładzie MSVC---argumenty funkcji są umieszczane na stosie przy użyciu instrukcji \MOV.
+Jak w przykładzie z MSVC---argumenty funkcji są umieszczane na stosie przy użyciu instrukcji \MOV.
 
-\myparagraph{By the way}
+\myparagraph{Nawiasem mówiąc\dots}
 
-Ten prosty przykład pokazuje jak faktycznie kompilatory tłumaczą
-listy wyrażeń w \CCpp-block na sekwencyjne listy instrukcji.
-Nie ma nic pomiędzy wyrażeniami w \CCpp a wynikowym kodem maszynowym.
+Ten prosty przykład pokazuje, że kompilatory rzeczywiście tłumaczą listę instrukcji języka C na serię instrukcji kodu maszynowego.
+W kodzie C wykonanie odbywa się instrukcja po instrukcji i podobnie jest w kodzie maszynowym - między instrukcjami nie ma nic więcej.

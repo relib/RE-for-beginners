@@ -102,13 +102,11 @@ Kolejna, \INS{ADD X29, SP, 0}, tworzy ramkę stosu ~--- to po prostu zapisanie w
 \myindex{ARM!\Instructions!ADRP/ADD pair}
 Następnie widać już znaną parę instrukcji \INS{ADRP}/\ADD, która konstruuje wskaźnik na łańcuch znaków.
 \myindex{ARM64!lo12}
-\emph{lo12} oznacza młodsze 12 bitów ~--- linker umieści młodsze 12 bitów adresu LC1 w kodzie operacji (opcode) instrukcji \ADD. Trzy ostatnie argumenty funkcji \printf to literały typu \Tint, więc są ładowane do 32-bitowych części rejestru.
-% to be synced:
-%1, 2 and 3 are 32-bit \Tint{} values, so they are loaded into 32-bit register parts
-%\footnote{Changing 1 to 1L will make it a 64-bit value that would be loaded into 64-bit register.
-%See more about integer constants/literals:
-%\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
-%\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
+\emph{lo12} oznacza młodsze 12 bitów~--- linker umieści młodsze 12 bitów adresu LC1 w kodzie operacji (opcode) instrukcji \ADD. Trzy ostatnie argumenty funkcji \printf ~--- 1, 2 i 3 ~--- to literały typu \Tint, więc są ładowane do 32-bitowych części rejestru.
+\footnote{Zmiana 1 na 1L (literał \GTT{long long}) spowoduje, że będzie to wartość 64-bitowa i trafi ona do rejestru 64-bitowego.
+Więcej o definiowaniu liczb całkowitych i literałach w \CCpp:
+\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
+\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
 
 \Optimizing GCC (Linaro) 4.9 generuje taki sam kod.
 
