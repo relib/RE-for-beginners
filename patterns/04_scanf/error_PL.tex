@@ -4,19 +4,19 @@ Bardzo popularnym błędem jest podanie jako argumentu zmiennej \emph{x} zamiast
 
 \lstinputlisting[style=customc]{patterns/04_scanf/error.c}
 
-Więc co tutaj się stanie?
+Co się wtedy stanie?
 % TBT: was incorrect "not uninitialized"
 % correct:
 % \emph{x} is not initialized and contains some random noise from local stack.
-\emph{x} jest niezainicjalizowany i zawiera losowe śmieci z lokalnego stosu.
-Kiedy funkcja \scanf jest wywoływana, pobiera ciąg znaków od użytkownika, parsuje go do liczby i próbuje go zapisać w \emph{x}, traktując wartość \emph{x} jako adres w pamięci.
+Zmienna \emph{x} jest niezainicjalizowana i zawiera losowe śmieci z lokalnego stosu.
+Kiedy funkcja \scanf jest wywoływana, pobiera ciąg znaków od użytkownika, parsuje jako liczbę i próbuje ją zapisać w \emph{x}, traktując wartość \emph{x} jak adres w pamięci.
 Jednak skoro tam są losowe śmieci ze stosu, \scanf będzie próbować uzyskać dostęp do losowego adresu.
-Najczęściej wtedy proces zawiesza działanie.
+Najprawdopodobniej proces natychmiast zakończy się błędem.
 
 \myindex{0xCCCCCCCC}
 \myindex{0x0BADF00D}
-Co ciekawe, niektóre biblioteki \ac{CRT}w wersji do debugowania, umieszczają w pamięci, która jest alokowana, widoczne wzory takie jak  0xCCCCCCCC albo 0x0BADF00D itp.
-W tym przypadku, \emph{x} może zawierać 0xCCCCCCCC, więc \scanf będzie próbować dokonać zapisu pod adresem 0xCCCCCCCC.
-Jeśli program wyświetli komunikat, że gdzieś w procesie wystąpi próba zapisu pod adresem 0xCCCCCCCC, to znaczy, że
+Co ciekawe, niektóre biblioteki \ac{CRT} w wersji do debugowania, umieszczają w pamięci, która jest alokowana, widoczne wzorce takie jak 0xCCCCCCCC albo 0x0BADF00D itp.
+W tym przypadku \emph{x} może zawierać 0xCCCCCCCC, więc \scanf będzie próbowała zapisać pod adres 0xCCCCCCCC.
+Jeśli zauważysz, że coś w procesie próbuje zapisać pod 0xCCCCCCCC, to znaczy, że
 została użyta niezainicjalizowana zmienna (lub wskaźnik).
-Jest to lepsze rozwiązanie niż gdyby nowo alokowana pamięć była po prostu wyczyszczona.
+Jest to lepsze rozwiązanie niż gdyby nowo alokowana pamięć była po prostu wyzerowana.
