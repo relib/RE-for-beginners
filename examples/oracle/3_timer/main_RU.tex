@@ -10,7 +10,7 @@ which is operating system specific, and wraps around to 0 again whenever the val
 (roughly 497 days).
 \end{quotation}
 \end{framed}(Из документации \oracle
-\footnote{\url{http://go.yurichev.com/17088}})
+\footnote{\url{http://docs.oracle.com/cd/B28359_01/server.111/b28320/dynviews_3104.htm}})
 
 Интересно что периоды разные в Oracle для Win32 и для Linux. Сможем ли мы найти функцию, отвечающую 
 за генерирование этого значения?
@@ -225,7 +225,7 @@ _slgcs  endp
 \end{lstlisting}
 
 Это просто результат \TT{GetTickCount()}
-\footnote{\href{http://go.yurichev.com/17248}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms724408(v=vs.85).aspx}{MSDN}}
 поделенный на 10 (\myref{sec:divisionbymult}).
 
 Вуаля! Вот почему в win32-версии и версии Linux x86 разные результаты, потому что они получаются разными 

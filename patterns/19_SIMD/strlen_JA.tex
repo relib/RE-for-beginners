@@ -1,12 +1,12 @@
 ﻿\subsection{SIMD \strlen 実装}
 \label{SIMD_strlen}
 
-\newcommand{\URLMSDNSSE}{\href{http://go.yurichev.com/17262}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
+\newcommand{\URLMSDNSSE}{\href{http://msdn.microsoft.com/en-us/library/y0dh78ez(VS.80).aspx}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
 
 SIMD命令は、特別なマクロ\footnote{\URLMSDNSSE}を介して \CCpp コードに挿入できることに注意しなければなりません。 
 MSVCの場合、それらのいくつかは\TT{intrin.h}ファイルにあります。
 
-\newcommand{\URLSTRLEN}{http://go.yurichev.com/17330}
+\newcommand{\URLSTRLEN}{http://www.strchr.com/sse2_optimised_strlen}
 
 \myindex{\CStandardLibrary!strlen()}
 
@@ -40,7 +40,7 @@ SIMD命令を使用して \strlen 関数\footnote{strlen()~---文字列長を計
 しかし、ここで我々は別の警告を受けるかもしれません。
 
 \myindex{Page (memory)}
-\newcommand{\URLPAGE}{\href{http://go.yurichev.com/17136}{wikipedia}}
+\newcommand{\URLPAGE}{\href{http://en.wikipedia.org/wiki/Page_(computer_memory)}{wikipedia}}
 
 \gls{Windows NT}系列の\ac{OS}において（しかしそれに限定されない）、メモリは4KiB（4096バイト）のページによって割り当てられます。
 各win32プロセスには4GiBの空き容量がありますが、実際には、アドレス空間の
@@ -179,4 +179,4 @@ Almost all.
 ちなみに、MSVCコンパイラは最適化のために2つのループ本体を一緒に発行していました。
 
 ちなみに、SSE 4.2（Intel Core i7に登場）は、これらの文字列操作がさらに簡単になる可能性がある場合に、
-より多くの命令を提供します：\url{http://go.yurichev.com/17331}
+より多くの命令を提供します：\url{http://www.strchr.com/strcmp_and_strlen_using_sse_4.2}

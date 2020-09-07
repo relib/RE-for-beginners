@@ -25,7 +25,7 @@ Finally, \TT{ADDU} (\q{Add Unsigned}) adds the value of the third argument to th
 \myindex{Integer overflow}
 
 There are two different addition instructions in MIPS: \TT{ADD} and \TT{ADDU}.
-The difference between them is not related to signedness, but to exceptions. \TT{ADD} can raise an exception on overflow, which is sometimes useful\footnote{\url{http://go.yurichev.com/17326}} and supported in Ada \ac{PL}, for instance.
+The difference between them is not related to signedness, but to exceptions. \TT{ADD} can raise an exception on overflow, which is sometimes useful\footnote{\url{http://blog.regehr.org/archives/1154}} and supported in Ada \ac{PL}, for instance.
 \TT{ADDU} does not raise exceptions on overflow.
 
 Since \CCpp does not support this, in our example we see \TT{ADDU} instead of \TT{ADD}.

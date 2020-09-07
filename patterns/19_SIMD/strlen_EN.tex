@@ -1,12 +1,12 @@
 ﻿\subsection{SIMD \strlen implementation}
 \label{SIMD_strlen}
 
-\newcommand{\URLMSDNSSE}{\href{http://go.yurichev.com/17262}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
+\newcommand{\URLMSDNSSE}{\href{http://msdn.microsoft.com/en-us/library/y0dh78ez(VS.80).aspx}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
 
 It has to be noted that the \ac{SIMD} instructions can be inserted in \CCpp code via special macros\footnote{\URLMSDNSSE}.
 For MSVC, some of them are located in the \TT{intrin.h} file.
 
-\newcommand{\URLSTRLEN}{http://go.yurichev.com/17330}
+\newcommand{\URLSTRLEN}{http://www.strchr.com/sse2_optimised_strlen}
 
 \myindex{\CStandardLibrary!strlen()}
 
@@ -40,7 +40,7 @@ if not~---use the slower \MOVDQU.
 But here we are may hit another caveat:
 
 \myindex{Page (memory)}
-\newcommand{\URLPAGE}{\href{http://go.yurichev.com/17136}{wikipedia}}
+\newcommand{\URLPAGE}{\href{http://en.wikipedia.org/wiki/Page_(computer_memory)}{wikipedia}}
 
 In the \gls{Windows NT} line of \ac{OS} (but not limited to it), memory is allocated by pages of 4 KiB (4096 bytes).
 Each win32-process has 4 GiB available, but in fact, only some parts
@@ -178,4 +178,4 @@ Almost all.
 By the way, it is also has to be noted that the MSVC compiler emitted two loop bodies side by side, for optimization.
 
 By the way, SSE 4.2 (that appeared in Intel Core i7) offers more instructions where these string manipulations might be
-even easier: \url{http://go.yurichev.com/17331}
+even easier: \url{http://www.strchr.com/strcmp_and_strlen_using_sse_4.2}

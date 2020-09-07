@@ -77,7 +77,7 @@ corrigée.
 
 \par Avec \ac{MSVC} l'éditeur de lien génère souvent les fichiers .exe avec une adresse
 de base en \TT{0x400000}\footnote{L'origine de ce choix d'adresse est décrit ici:
-\href{http://go.yurichev.com/17041}{MSDN}}, et avec une section de code débutant
+\href{http://blogs.msdn.com/b/oldnewthing/archive/2014/10/03/10562176.aspx}{MSDN}}, et avec une section de code débutant
 en \TT{0x401000}.
 Cela signifie que la \ac{RVA} du début de la section de code est \TT{0x1000}.
 
@@ -88,7 +88,7 @@ de liens}.
 \myindex{ASLR}
 
 Il y a une autre raison de charger les modules a des adresses de base variées, aléatoires
-dans ce cas. C'est l'\ac{ASLR}\footnote{\href{http://go.yurichev.com/17140}{Wikipédia}}.
+dans ce cas. C'est l'\ac{ASLR}\footnote{\href{https://en.wikipedia.org/wiki/Address_space_layout_randomization}{Wikipédia}}.
 
 \myindex{Shellcode}
 
@@ -126,7 +126,7 @@ Un fichier PE indique aussi la version de Windows minimale requise pour pouvoir 
 chargé.
 
 La table des numéros de version stockés dans un fichier PE et les codes de Windows
-correspondants est ici\footnote{\href{http://go.yurichev.com/17044}{Wikipédia}}.
+correspondants est ici\footnote{\href{https://en.wikipedia.org/wiki/Windows_NT#Releases}{Wikipédia}}.
 
 \myindex{Windows!Windows NT4}
 \myindex{Windows!Windows 2000}
@@ -138,7 +138,7 @@ version de 5.00, il faut au moins Windows 2000 pour les utiliser).
 
 \ac{MSVC} 2012 génère des fichiers .exe avec la version 6.00 par défaut, visant au
 moins Windows Vista.
-Toutefois, en changeant l'option du compilateur\footnote{\href{http://go.yurichev.com/17045}{MSDN}},
+Toutefois, en changeant l'option du compilateur\footnote{\href{http://blogs.msdn.com/b/vcblog/archive/2012/10/08/10357555.aspx}{MSDN}},
 il est possible de le forcer à compiler pour Windows XP.
 
 \subsubsection{Sections}
@@ -193,7 +193,7 @@ Les packeurs/chiffreurs rendent souvent les noms de sections inintelligibles ou 
 remplacent avec des noms qui leurs sont propres.
 
 \ac{MSVC} permet de déclarer des données dans une section de n'importe quel nom
-\footnote{\href{http://go.yurichev.com/17047}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/cc307397.aspx}{MSDN}}.
 
 Certains compilateurs et éditeurs de liens peuvent ajouter une section avec des symboles
 et d'autres informations de débogage (MinGW par exemple).
@@ -220,7 +220,7 @@ typedef struct _IMAGE_SECTION_HEADER {
   DWORD Characteristics;
 } IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;
 \end{lstlisting}
-\footnote{\href{http://go.yurichev.com/17048}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680341(v=vs.85).aspx}{MSDN}}
 
 \myindex{Hiew}
 Un mot à propos de le terminologie: \emph{PointerToRawData} est appelé \q{Offset} dans
@@ -406,7 +406,7 @@ a pas trop d'appels à la fonction, mais ce n'est pas fait par défaut \\
 \\
 Á propos, le tableau d'adresses de fonction sur lequel pointe FirstThunk ne doit
 pas nécessairement se trouver dans la section \ac{IAT}. Par exemple, j'ai écrit une
-fois l'utilitaire PE\_add\_import\footnote{\href{http://go.yurichev.com/17049}{yurichev.com}}
+fois l'utilitaire PE\_add\_import\footnote{\href{http://yurichev.com/PE_add_imports.html}{yurichev.com}}
 pour ajouter des imports à un fichier .exe existant.
 
 Quelques temps plus tôt, dans une version précédente de cet utilitaire, à la place
@@ -441,7 +441,7 @@ et l'heure du fichier DLL.
 Si les valeurs sont égales, alors le loader ne fait rien, et le processus de chargement
 peut être plus rapide.
 Ceci est appelé \q{old-style binding}
-\footnote{\href{http://go.yurichev.com/17050}{MSDN}. Il y a aussi le \q{new-style binding}.}.
+\footnote{\href{http://blogs.msdn.com/b/oldnewthing/archive/2010/03/18/9980802.aspx}{MSDN}. Il y a aussi le \q{new-style binding}.}.
 \myindex{BIND.EXE}
 
 L'utilitaire BIND.EXE dans le SDK est fait pour ça.
@@ -508,7 +508,7 @@ Le loader de .NET se trouve dans mscoree.dll, qui traite le fichier PE.
 Il en était ainsi dans tous les \ac{OS}es pre-Windows XP. Á partir de XP, le loader
 de l'\ac{OS} est capable de détecter les fichiers .NET et le lance sans exécuter
 cette instruction \JMP
-\footnote{\href{http://go.yurichev.com/17051}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/xh0859k0(v=vs.110).aspx}{MSDN}}.
 
 \myindex{TLS}
 \subsubsection{TLS}
@@ -539,17 +539,17 @@ Ceci est largement utilisé dans les packeurs/chiffreurs de fichiers PE.
 
 \item Hiew(\myref{Hiew}) comme éditeur.
 
-\item pefile---bibliothèque-Python pour le traitement des fichiers PE \footnote{\url{http://go.yurichev.com/17052}}.
+\item pefile---bibliothèque-Python pour le traitement des fichiers PE \footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item ResHack \acs{AKA} Resource Hacker---éditeur de ressources\footnote{\url{http://go.yurichev.com/17052}}.
+\item ResHack \acs{AKA} Resource Hacker---éditeur de ressources\footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item PE\_add\_import\footnote{\url{http://go.yurichev.com/17049}}---outil simple
+\item PE\_add\_import\footnote{\url{http://yurichev.com/PE_add_imports.html}}---outil simple
 pour ajouter des symboles à la table d'imports d'un exécutable au format PE.
 
-\item PE\_patcher\footnote{\href{http://go.yurichev.com/17054}{yurichev.com}}---outil
+\item PE\_patcher\footnote{\href{http://yurichev.com/PE_patcher.html}{yurichev.com}}---outil
 simple pour patcher les exécutables PE.
 
-\item PE\_search\_str\_refs\footnote{\href{http://go.yurichev.com/17055}{yurichev.com}}---outil
+\item PE\_search\_str\_refs\footnote{\href{http://yurichev.com/PE_search_str_refs.html}{yurichev.com}}---outil
 simple pour chercher une fonction dans un exécutable PE qui utilise une certaine chaîne de texte.
 \end{itemize}
 
@@ -557,6 +557,6 @@ simple pour chercher une fonction dans un exécutable PE qui utilise une certain
 
 % FIXME: bibliography per chapter or section
 \begin{itemize}
-\item Daniel Pistelli---The .NET File Format \footnote{\url{http://go.yurichev.com/17056}}
+\item Daniel Pistelli---The .NET File Format \footnote{\url{http://www.codeproject.com/Articles/12585/The-NET-File-Format}}
 \end{itemize}
 

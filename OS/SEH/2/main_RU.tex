@@ -3,7 +3,7 @@
 \myindex{\Cpp!исключения}
 Должно быть, программистам Microsoft были нужны исключения в Си, но не в \Cpp (для использования в ядре Windows NT, которое написано на Си),
 так что они добавили нестандартное расширение Си в MSVC
-\footnote{\href{http://go.yurichev.com/17057}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/swezty51.aspx}{MSDN}}.
 Оно не связано с исключениями в Си++.
 
 % FIXME russian listing:
@@ -71,10 +71,10 @@ SEH4 расширяет \emph{scope table} добавляя еще 4 значе�
 Исходный код функции \TT{\_except\_handler3} закрыт.
 Хотя, Sanos OS, имеющая слой совместимости с win32, имеет некоторые функции написанные заново, которые
 в каком-то смысле эквивалентны тем что в Windows
-\footnote{\url{http://go.yurichev.com/17058}}.
+\footnote{\url{https://code.google.com/p/sanos/source/browse/src/win32/msvcrt/except.c}}.
 Другие попытки реализации имеются в 
-Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
-и ReactOS\footnote{\url{http://go.yurichev.com/17060}}.\\
+Wine\footnote{\href{https://github.com/mirrors/wine/blob/master/dlls/msvcrt/except_i386.c}{GitHub}}
+и ReactOS\footnote{\url{http://doxygen.reactos.org/d4/df2/lib_2sdk_2crt_2except_2except_8c_source.html}}.\\
 \\
 Если указатель \emph{filter} ноль, \emph{handler} указывает на код \emph{finally} .\\
 \\
@@ -224,7 +224,7 @@ $security\_cookie \oplus (CookieXOROffset + address\_of\_saved\_EBP) == stack[ad
 % FIXME: get this back when tracer src will be hosted again somewhere
 \myindex{tracer}
 Проверка \emph{cookies} также реализована в моем \tracer{},
-смотрите \href{http://go.yurichev.com/17061}{GitHub} для деталей.\\
+смотрите \href{https://github.com/DennisYurichev/tracer/blob/master/SEH.c}{GitHub} для деталей.\\
 \\
 Возможность переключиться назад на SEH3 все еще присутствует в компиляторах после (и включая) MSVC 2005, нужно включить
 опцию \TT{/GS-}, впрочем, \ac{CRT}-код будет продолжать использовать SEH4.

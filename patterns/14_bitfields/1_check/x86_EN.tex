@@ -34,7 +34,7 @@ Let's take a look in WinNT.h:
 
 Everything is clear,
 GENERIC\_READ | GENERIC\_WRITE = 0x80000000 | 0x40000000 = 0xC0000000,
-and that value is used as the second argument for the \TT{CreateFile()}\footnote{\href{http://go.yurichev.com/17065}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}function.
+and that value is used as the second argument for the \TT{CreateFile()}\footnote{\href{http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}function.
 
 How would \TT{CreateFile()} check these flags?
 \myindex{Windows!KERNEL32.DLL}
@@ -105,7 +105,7 @@ but we are interested in understanding the matter without it.
 So, as of Linux 2.6, when the \TT{sys\_open} syscall is called, control eventually passes to \TT{do\_sys\_open},
 and from there---to the \TT{do\_filp\_open()} function (it's located in the kernel source tree in \TT{fs/namei.c}).
 
-\newcommand{\URLREGPARM}{\href{http://go.yurichev.com/17040}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
+\newcommand{\URLREGPARM}{\href{http://www.ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
 
 \myindex{fastcall}
 \label{regparm}
@@ -116,7 +116,7 @@ This works faster since CPU does not need to access the stack in memory to read 
 GCC has the option \emph{regparm}\footnote{\URLREGPARM},
 through which it's possible to set the number of arguments that can be passed via registers.
 
-\newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
+\newcommand{\URLKERNELNEWB}{\href{http://kernelnewbies.org/Linux_2_6_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
 \newcommand{\CALLINGHFILE}{arch/x86/include/asm/calling.h}
 
 The Linux 2.6 kernel is compiled with \TT{-mregparm=3} option~\footnote{\URLKERNELNEWB}

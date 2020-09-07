@@ -27,7 +27,7 @@
 
 \myindex{Shadow space}
 \label{shadow_space}
-Это называется \q{shadow space} \footnote{\href{http://go.yurichev.com/17256}{MSDN}}: 
+Это называется \q{shadow space} \footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}: 
 каждая функция в Win64 может (хотя и не обязана) сохранять значения 4-х регистров там.
 
 Это делается по крайней мере из-за двух причин: 
@@ -35,7 +35,7 @@
 слишком расточительно, так что к нему будет обращение через стек;
 
 2) отладчик всегда знает, где найти аргументы функции в момент останова
-\footnote{\href{http://go.yurichev.com/17257}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
 Так что, какие-то большие функции могут сохранять входные аргументы в \q{shadows space} 
 для использования в будущем, а небольшие функции, как наша, могут этого и не делать.

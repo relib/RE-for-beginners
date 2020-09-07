@@ -50,7 +50,7 @@ des informations techniques qui seront envoyées aux développeurs de Microsoft.
 \end{figure}
 
 Historiquement, cette chaîne de gestionnaires était connue sous l'appellation Dr. Watson
-\footnote{\href{http://go.yurichev.com/17046}{Wikipédia}}.
+\footnote{\href{https://en.wikipedia.org/wiki/Dr._Watson_(debugger)}{Wikipédia}}.
 
 Certains développeurs ont eu l'idée d'écrire leur propre gestionnaire d'exceptions pour recevoir
 les informations relatives au crash.
@@ -64,7 +64,7 @@ informations possibles concernant la \ac{CPU} et l'état de la mémoire.
 
 Écrivons notre propre gestionnaire d'exception. Cet exemple s'appuie sur celui de \PietrekSEH.
 Pour le compiler, il faut utiliser l'option SAFESEH : \TT{cl seh1.cpp /link /safeseh:no}.
-Vous trouverez plus d'informations concernant SAFESEH à: \href{http://go.yurichev.com/17252}{MSDN}.
+Vous trouverez plus d'informations concernant SAFESEH à: \href{http://msdn.microsoft.com/en-us/library/9a89h429.aspx}{MSDN}.
 
 \lstinputlisting[style=customc]{OS/SEH/1/1.cpp}
 
@@ -90,7 +90,7 @@ Le dernier enregistrement contient la valeur \TT{0xFFFFFFFF} (-1) dans son champ
 \input{OS/SEH/1/tikz}
 
 Une fois notre gestionnaire installé, nous invoquons la fonction \TT{RaiseException()}
-\footnote{\href{http://go.yurichev.com/17253}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680552(v=vs.85).aspx}{MSDN}}.
 Il s'agit d'une exception utilisateur.
 Le gestionnaire vérifie le code.
 Si le code est égal à \TT{0xE1223344}, il retourne la valeur \TT{ExceptionContinueExecution} qui

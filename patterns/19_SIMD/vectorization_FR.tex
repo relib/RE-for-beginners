@@ -1,6 +1,6 @@
 ﻿\subsection{Vectorisation}
 
-\newcommand{\URLVEC}{\href{http://go.yurichev.com/17080}{Wikipédia: vectorisation}}
+\newcommand{\URLVEC}{\href{http://en.wikipedia.org/wiki/Vectorization_(computer_science)}{Wikipédia: vectorisation}}
 
 La vectorisation\footnote{\URLVEC}, c'est lorsque, par exemple, vous avez une boucle
 qui prend une paire de tableaux en entrée et produit un tableau.
@@ -14,7 +14,7 @@ La vectorisation est le fait de traiter plusieurs éléments simultanément.
 La vectorisation n'est pas une nouvelle technologie: l'auteur de ce livre l'a vu
 au moins sur la série du super-calculateur Cray Y-MP de 1988 lorsqu'il jouait avec
 sa version \q{lite} le Cray Y-MP EL\footnote{À distance. Il est installé dans le
-musée des super-calculateurs: \url{http://go.yurichev.com/17081}}.
+musée des super-calculateurs: \url{http://www.cray-cyber.org}}.
 
 % FIXME! add assembly listing!
 Par exemple:
@@ -42,7 +42,7 @@ XMM, et en exécutant \PMULLD{} et \PMULHW{}, il est possible d'obtenir 4 \glsli
 Ainsi, le nombre d'exécution du corps de la boucle est $1024/4$ au lieu de 1024,
 ce qui est 4 fois moins et, bien sûr, est plus rapide.
 
-\newcommand{\URLINTELVEC}{\href{http://go.yurichev.com/17082}{Extrait: Vectorisation automatique efficace}}
+\newcommand{\URLINTELVEC}{\href{http://www.intel.com/intelpress/sum_vmmx.htm}{Extrait: Vectorisation automatique efficace}}
 
 \subsubsection{Exemple d'addition}
 
@@ -125,7 +125,7 @@ Dans tous les autres cas, le code non-SSE2 sera exécuté.
 
 \myparagraph{GCC}
 
-\newcommand{\URLGCCVEC}{\url{http://go.yurichev.com/17083}}
+\newcommand{\URLGCCVEC}{\url{http://gcc.gnu.org/projects/tree-ssa/vectorization.html}}
 
 GCC peut aussi vectoriser dans des cas simples\footnote{Plus sur le support de la
 vectorisation dans GCC: \URLGCCVEC}, si l'option \Othree est utilisée et le support

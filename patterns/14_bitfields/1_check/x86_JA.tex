@@ -34,7 +34,7 @@ WinNT.hを見てみましょう。
 
 すべてがクリアです。
 GENERIC\_READ | GENERIC\_WRITE = 0x80000000 | 0x40000000 = 0xC0000000で、この値が
-\TT{CreateFile()}\footnote{\href{http://go.yurichev.com/17065}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}関数への2番目の引数として使用されています。
+\TT{CreateFile()}\footnote{\href{http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}関数への2番目の引数として使用されています。
 
 \TT{CreateFile()} はこれらのフラグをどのようにチェックしているでしょうか？
 \myindex{Windows!KERNEL32.DLL}
@@ -105,7 +105,7 @@ void main()
 したがって、Linux 2.6では、\TT{sys\_open}システムコールが呼び出されると、制御は最終的に\TT{do\_sys\_open}に渡され、
 そこから\TT{do\_filp\_open()}関数（\TT{fs/namei.c}のカーネルソースツリーにあります）に渡されます。
 
-\newcommand{\URLREGPARM}{\href{http://go.yurichev.com/17040}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
+\newcommand{\URLREGPARM}{\href{http://www.ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
 
 \myindex{fastcall}
 \label{regparm}
@@ -116,7 +116,7 @@ void main()
 GCCには\emph{regparm}\footnote{\URLREGPARM}というオプションがあります。
 これにより、レジスタ経由で渡すことができる引数の数を設定することができます。
 
-\newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
+\newcommand{\URLKERNELNEWB}{\href{http://kernelnewbies.org/Linux_2_6_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
 \newcommand{\CALLINGHFILE}{arch/x86/include/asm/calling.h}
 
 Linux 2.6カーネルは\TT{-mregparm=3}オプション~\footnote{\URLKERNELNEWB}でコンパイルされます。

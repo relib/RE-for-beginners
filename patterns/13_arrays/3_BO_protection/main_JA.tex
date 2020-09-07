@@ -3,7 +3,7 @@
 
 このソースコードに対する保護手法はいくつかあり、 \CCpp プログラマの怠慢にもかかわらず、
 MSVCにはオプションがあります。\footnote{コンパイラサイドのバッファオーバーフロー保護手法:
-\href{http://go.yurichev.com/17133}{wikipedia.org/wiki/Buffer\_overflow\_protection}}
+\href{http://en.wikipedia.org/wiki/Buffer_overflow_protection}{wikipedia.org/wiki/Buffer\_overflow\_protection}}
 
 \begin{lstlisting}
  /RTCs スタックフレームの実行時チェック
@@ -19,7 +19,7 @@ MSVCにはオプションがあります。\footnote{コンパイラサイドの
 値が同じでなければ、最後の命令 \RET を実行せず、停止（ハング）します。
 プロセスは停止しますが、遠隔の攻撃者があなたのホストを攻撃するよりはよいことです。
 
-\newcommand{\CANARYURL}{\href{http://go.yurichev.com/17134}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
+\newcommand{\CANARYURL}{\href{http://en.wikipedia.org/wiki/Domestic_Canary\#Miner.27s_canary}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
 
 \myindex{Canary}
 
@@ -89,7 +89,7 @@ gsはいわゆるセグメントレジスタです。このレジスタは広く
 簡単に言うと、Linuxでの\TT{gs}レジスタは常に\ac{TLS}~(\myref{TLS})を指し示します。
 スレッド固有の情報がそこに保存されます。
 ところで、win32では\TT{fs}レジスタは同じ役割を担い、\ac{TIB}を指し示します。
-\footnote{\href{http://go.yurichev.com/17104}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}
+\footnote{\href{https://en.wikipedia.org/wiki/Win32_Thread_Information_Block}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}
 
 より詳細はLinuxカーネルソースコード\emph{arch/x86/include/asm/stackprotector.h}の中に
 コメントとして記述してあるのを見つけられます（少なくとも3.11バージョンには）。

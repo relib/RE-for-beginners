@@ -72,7 +72,7 @@
 одна из них будет загружена по этому базовому адресу, 
 а вторая --- по другому свободному месту в памяти процесса, и все виртуальные адреса во второй DLL будут скорректированы.
 
-\par Очень часто линкер в \ac{MSVC} генерирует .exe-файлы с базовым адресом  \TT{0x400000}\footnote{Причина выбора такого адреса описана здесь: \href{http://go.yurichev.com/17041}{MSDN}},
+\par Очень часто линкер в \ac{MSVC} генерирует .exe-файлы с базовым адресом  \TT{0x400000}\footnote{Причина выбора такого адреса описана здесь: \href{http://blogs.msdn.com/b/oldnewthing/archive/2014/10/03/10562176.aspx}{MSDN}},
 и с секцией кода начинающейся с \TT{0x401000}.
 Это значит, что \ac{RVA} начала секции кода --- \TT{0x1000}.
 А \ac{DLL} часто генерируются MSVC-линкером с базовым адресом \TT{0x10000000}\footnote{Это можно изменять опцией /BASE в линкере}.
@@ -115,7 +115,7 @@
 В PE-файле также задается минимальный номер версии Windows, необходимый для загрузки модуля.
 
 Соответствие номеров версий в файле и кодовых наименований Windows, можно посмотреть
-здесь\footnote{\href{http://go.yurichev.com/17044}{Wikipédia}}.
+здесь\footnote{\href{https://en.wikipedia.org/wiki/Windows_NT#Releases}{Wikipédia}}.
 
 \myindex{Windows!Windows NT4}
 \myindex{Windows!Windows 2000}
@@ -124,7 +124,7 @@
 
 \myindex{Windows!Windows XP}
 \ac{MSVC} 2012 по умолчанию генерирует .exe-файлы версии 6.00, для запуска нужна как минимум Windows Vista. 
-Хотя, изменив настройки компиляции\footnote{\href{http://go.yurichev.com/17045}{MSDN}},
+Хотя, изменив настройки компиляции\footnote{\href{http://blogs.msdn.com/b/vcblog/archive/2012/10/08/10357555.aspx}{MSDN}},
 можно заставить генерировать и под Windows XP.
 
 \subsubsection{Секции}
@@ -166,7 +166,7 @@
 
 Запаковщики/зашифровщики PE-файлов часто затирают имена секций, или меняют на свои.
 
-В \ac{MSVC} можно объявлять данные в произвольно названной секции\footnote{\href{http://go.yurichev.com/17047}{MSDN}}.
+В \ac{MSVC} можно объявлять данные в произвольно названной секции\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/cc307397.aspx}{MSDN}}.
 
 Некоторые компиляторы и линкеры могут добавлять также секцию с отладочными символами 
 и вообще отладочной информацией (например, MinGW).
@@ -193,7 +193,7 @@ typedef struct _IMAGE_SECTION_HEADER {
   DWORD Characteristics;
 } IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;
 \end{lstlisting}
-\footnote{\href{http://go.yurichev.com/17048}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680341(v=vs.85).aspx}{MSDN}}
 
 \myindex{Hiew}
 Еще немного терминологии: \emph{PointerToRawData} называется \q{Offset} в Hiew и \emph{VirtualAddress} называется \q{RVA} там же.
@@ -383,7 +383,7 @@ A1 00 00 41 00         mov         eax,[000410000]
 Кстати, массив адресов функций, на который указывает FirstThunk,
 не обязательно может быть в секции \ac{IAT}.
 К примеру, автор сих строк написал утилиту
-PE\_add\_import\footnote{\href{http://go.yurichev.com/17049}{yurichev.com}} 
+PE\_add\_import\footnote{\href{http://yurichev.com/PE_add_imports.html}{yurichev.com}} 
 для добавления импорта в уже существующий .exe-файл.
 Раньше, в прошлых версиях утилиты, на месте функции, вместо которой вы хотите подставить вызов в другую DLL,
 моя утилита вписывала такой код:
@@ -410,7 +410,7 @@ JMP EAX
 И если они равны, то загрузчик больше ничего не делает, и загрузка может происходить быстрее.
 
 Это называется \q{old-style binding}
-\footnote{\href{http://go.yurichev.com/17050}{MSDN}.
+\footnote{\href{http://blogs.msdn.com/b/oldnewthing/archive/2010/03/18/9980802.aspx}{MSDN}.
 Существует также \q{new-style binding}.}.
 \myindex{BIND.EXE}
 В Windows SDK для этого имеется утилита BIND.EXE.
@@ -461,7 +461,7 @@ jmp         mscoree.dll!_CorExeMain
 \myindex{Windows!Windows XP}
 Так было в \ac{OS} до Windows XP. Начиная с XP, загрузчик \ac{OS} уже сам определяет, что это
 .NET-файл и запускает его не исполняя этой инструкции \JMP
-\footnote{\href{http://go.yurichev.com/17051}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/xh0859k0(v=vs.110).aspx}{MSDN}}.
 
 \myindex{TLS}
 \subsubsection{TLS}
@@ -487,24 +487,24 @@ objdump (имеется в cygwin) для вывода всех структур
 Hiew(\myref{Hiew}) как редактор.
 
 \item pefile --- Python-библиотека для работы с PE-файлами
-\footnote{\url{http://go.yurichev.com/17052}}.
+\footnote{\url{https://code.google.com/p/pefile/}}.
 
 \item
 \label{ResHack}
 ResHack \acs{AKA} Resource Hacker --- редактор ресурсов
-\footnote{\url{http://go.yurichev.com/17052}}.
+\footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item PE\_add\_import\footnote{\url{http://go.yurichev.com/17049}} --- простая утилита для добавления символа/-ов в таблицу импортов PE-файла.
+\item PE\_add\_import\footnote{\url{http://yurichev.com/PE_add_imports.html}} --- простая утилита для добавления символа/-ов в таблицу импортов PE-файла.
 
-\item PE\_patcher\footnote{\href{http://go.yurichev.com/17054}{yurichev.com}} --- простая утилита для модификации PE-файлов.
+\item PE\_patcher\footnote{\href{http://yurichev.com/PE_patcher.html}{yurichev.com}} --- простая утилита для модификации PE-файлов.
 
-\item PE\_search\_str\_refs\footnote{\href{http://go.yurichev.com/17055}{yurichev.com}} --- простая утилита для поиска функции в PE-файле, где используется некая текстовая строка.
+\item PE\_search\_str\_refs\footnote{\href{http://yurichev.com/PE_search_str_refs.html}{yurichev.com}} --- простая утилита для поиска функции в PE-файле, где используется некая текстовая строка.
 \end{itemize}
 
 \subsubsection{Further reading}
 
 % FIXME: bibliography per chapter or section
 \begin{itemize}
-\item Daniel Pistelli --- The .NET File Format \footnote{\url{http://go.yurichev.com/17056}}
+\item Daniel Pistelli --- The .NET File Format \footnote{\url{http://www.codeproject.com/Articles/12585/The-NET-File-Format}}
 \end{itemize}
 

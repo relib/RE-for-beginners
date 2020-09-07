@@ -112,7 +112,7 @@ Dans le code généré cela est implémenté par l'instruction \INS{XOR EAX, EAX
 
 \myindex{x86!\Instructions!MOV}
 
-\XOR est en fait un simple \q{OU exclusif (eXclusive OR}\footnote{\href{http://go.yurichev.com/17118}{Wikipédia}} mais
+\XOR est en fait un simple \q{OU exclusif (eXclusive OR}\footnote{\href{http://en.wikipedia.org/wiki/Exclusive_or}{Wikipédia}} mais
 les compilateurs l'utilisent souvent à la place de \INS{MOV EAX, 0}---à nouveau parce que l'opcode est légèrement plus
 court (2 octets pour \XOR contre 5 pour \MOV).
 

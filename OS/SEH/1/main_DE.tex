@@ -67,7 +67,7 @@ und den Zustand des Speichers sammelt.
 Nachfolgend wird ein eigener, einfacher Ausnahme-Handler erstellt.
 Dieses Beispiel basiert auf dem Beispiel von \PietrekSEH und muss mit der SAFESEH-Option
 kompiliert werden: \TT{cl seh1.cpp /link /safeseh:no}.
-Mehr über SAFESEH befindet sich hier: \href{http://go.yurichev.com/17252}{MSDN}.
+Mehr über SAFESEH befindet sich hier: \href{http://msdn.microsoft.com/en-us/library/9a89h429.aspx}{MSDN}.
 
 \lstinputlisting[style=customc]{OS/SEH/1/1.cpp}
 
@@ -92,7 +92,7 @@ Der letzte Eintrag hat \TT{0xFFFFFFFF} (-1) im \q{prev}-Feld.
 \input{OS/SEH/1/tikz}
 
 Nachdem unser Handler installiert wurde, wird \TT{RaiseException()}
-\footnote{\href{http://go.yurichev.com/17253}{MSDN}} aufgerufen.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680552(v=vs.85).aspx}{MSDN}} aufgerufen.
 Dies ist eine Benutzer-Ausnahme.
 Der Handler überprüft diesen Code.
 Ist der Code \TT{0xE1223344}, wird \TT{ExceptionContinueExecution} zurückgegeben,

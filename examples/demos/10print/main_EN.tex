@@ -5,7 +5,7 @@ All examples here are MS-DOS .COM files.
 
 \myindex{MS-DOS}
 In [Nick Montfort et al, \emph{10 PRINT CHR\$(205.5+RND(1)); : GOTO 10}, (The MIT Press:2012)]
-\footnote{\AlsoAvailableAs \url{http://go.yurichev.com/17286}}
+\footnote{\AlsoAvailableAs \url{http://trope-tank.mit.edu/10_PRINT_121114.pdf}}
 
 we can read about one of the most simple possible random maze generators.
 
@@ -20,7 +20,7 @@ There are a few known implementations for 16-bit x86.
 
 \subsubsection{Trixter's 42 byte version}
 
-\newcommand{\FNURLTRIXTER}{\footnote{\url{http://go.yurichev.com/17305}}}
+\newcommand{\FNURLTRIXTER}{\footnote{\url{http://trixter.oldskool.org/2012/12/17/maze-generation-in-thirteen-bytes/}}}
 
 The listing was taken from his website\FNURLTRIXTER, 
 but the comments are mine.
@@ -76,7 +76,7 @@ instruction can be used instead, because it sets a flag according to the byte it
 Another idea to minimize the code is to use the \TT{INT 29h} DOS syscall, which just prints the character stored in the \TT{AL} register.
 
 That is what Peter Ferrie did
-\footnote{\url{http://go.yurichev.com/17087}}:
+\footnote{\url{http://pferrie.host22.com/misc/10print.htm}}:
 
 \lstinputlisting[caption=Peter Ferrie: 10 bytes,style=customasmx86]{examples/demos/10print/ferrie_10_EN.lst}
 

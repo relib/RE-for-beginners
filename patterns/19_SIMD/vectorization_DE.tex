@@ -1,6 +1,6 @@
 \subsection{Vektorisierung}
 
-\newcommand{\URLVEC}{\href{http://go.yurichev.com/17080}{Wikipedia: vectorization}}
+\newcommand{\URLVEC}{\href{http://en.wikipedia.org/wiki/Vectorization_(computer_science)}{Wikipedia: vectorization}}
 Vektorisierung\footnote{\URLVEC} tritt auf, wenn man beispielsweise eine Schleife hat, die mehrere Arrays als Input und
 ein Array als Output hat. Der Rumpf der Schleife nimmt Werte aus den Eingabearrays, vearbeitet sie und legt das Ergebnis
 im Outputarray ab.
@@ -12,7 +12,7 @@ Vektorisierung ist keine besonders neue Idee: der Autor hat sie bereits auf dem 
 
 Vectorization is not very fresh technology: the author of this textbook saw it at least on the Cray Y-MP 
 supercomputer line from 1988 when he played with its \q{lite} version Cray Y-MP EL
-\footnote{Er befindet sich im Museum für Supercomputer: \url{http://go.yurichev.com/17081}}.
+\footnote{Er befindet sich im Museum für Supercomputer: \url{http://www.cray-cyber.org}}.
 
 % FIXME! add assembly listing!
 Ein Beispiel:
@@ -37,7 +37,7 @@ zu erzeugen.
 Dadurch wir der Rumpf der Schleife nur $\frac{1024}{4}=256$ Mal ausgeführt. Das ist nur ein Viertel der normalen Anzahl
 an Durchläufen und geht natürlich schneller.
 
-\newcommand{\URLINTELVEC}{\href{http://go.yurichev.com/17082}{Auszug: Effektive automatische Vektorisierung}}
+\newcommand{\URLINTELVEC}{\href{http://www.intel.com/intelpress/sum_vmmx.htm}{Auszug: Effektive automatische Vektorisierung}}
 
 \subsubsection{Beispiel zur Addition}
 
@@ -109,7 +109,7 @@ In allen anderen Fällen wird nicht-SSE2-Code ausgeführt.
 
 \myparagraph{GCC}
 
-\newcommand{\URLGCCVEC}{\url{http://go.yurichev.com/17083}}
+\newcommand{\URLGCCVEC}{\url{http://gcc.gnu.org/projects/tree-ssa/vectorization.html}}
 
 GCC kann in einfachen Fällen ebenfalls Vektorisierung durchführen\footnote{Mehr zur Unterstützung von Vektorisierung in
 GCC:

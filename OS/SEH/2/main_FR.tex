@@ -3,7 +3,7 @@
 \myindex{\Cpp!exceptions}
 
 Microsoft a ajouté un mécanisme non standard de gestion d'exceptions à
-MSVC\footnote{\href{http://go.yurichev.com/17057}{MSDN}} essentiellement à l'usage des programmeurs C.
+MSVC\footnote{\href{http://msdn.microsoft.com/en-us/library/swezty51.aspx}{MSDN}} essentiellement à l'usage des programmeurs C.
 Ce mécanisme est totalement distinct de celui définit par le standard ISO du langage C++.
 
 % FIXME russian listing:
@@ -80,9 +80,9 @@ Le code source de la fonction \TT{\_except\_handler3} n'est pas public.
 
 Cependant, le système d'exploitation Sanos, possède un mode de compatibilité win32.
 Celui-ci ré-implémente les mêmes fonctions d'une manière quasi équivalente à celle de Windows
-\footnote{\url{http://go.yurichev.com/17058}}.
-On trouve une autre ré-implémentation dans Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
-ainsi que dans ReactOS\footnote{\url{http://go.yurichev.com/17060}}.\\
+\footnote{\url{https://code.google.com/p/sanos/source/browse/src/win32/msvcrt/except.c}}.
+On trouve une autre ré-implémentation dans Wine\footnote{\href{https://github.com/mirrors/wine/blob/master/dlls/msvcrt/except_i386.c}{GitHub}}
+ainsi que dans ReactOS\footnote{\url{http://doxygen.reactos.org/d4/df2/lib_2sdk_2crt_2except_2except_8c_source.html}}.\\
 \\
 Lorsque le champ \emph{filter} est un pointeur NULL, le champ \emph{handler} est un pointeur vers un
 bloc de code \emph{finally}.\\
@@ -249,7 +249,7 @@ Lorsque \TT{Cookie Offset} vaut $-2$, ceci indique qu'il n'est pas présent.
 % FIXME: get this back when tracer src will be hosted again somewhere
 \myindex{tracer}
 La vérification des \emph{Cookies} est aussi implémentée dans mon \tracer{},
-voir \href{http://go.yurichev.com/17061}{GitHub} pour les détails.\\
+voir \href{https://github.com/DennisYurichev/tracer/blob/master/SEH.c}{GitHub} pour les détails.\\
 \\
 Pour les versions à partir de MSVC 2005, il est toujours possible de revenir à la version SEH3
 en utilisant l'option \TT{/GS-}. Toutefois, le \ac{CRT} continue à utiliser SEH4.

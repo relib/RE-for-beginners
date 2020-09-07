@@ -4,7 +4,7 @@
 
 Supposedly, Microsoft programmers needed exceptions in C, but not in \Cpp (for use in Windows NT kernel, which is written in C),
 so they added a non-standard C extension
-to MSVC\footnote{\href{http://go.yurichev.com/17057}{MSDN}}.
+to MSVC\footnote{\href{http://msdn.microsoft.com/en-us/library/swezty51.aspx}{MSDN}}.
 It is not related to C++ \ac{PL} exceptions.
 
 % FIXME russian listing:
@@ -78,10 +78,10 @@ The source code of the \TT{\_except\_handler3} function is closed.
 
 However, Sanos OS, which has a win32 compatibility layer, has the same
 functions reimplemented, which are somewhat equivalent to those in Windows
-\footnote{\url{http://go.yurichev.com/17058}}.
+\footnote{\url{https://code.google.com/p/sanos/source/browse/src/win32/msvcrt/except.c}}.
 Another reimplementation is present in 
-Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
-and ReactOS\footnote{\url{http://go.yurichev.com/17060}}.\\
+Wine\footnote{\href{https://github.com/mirrors/wine/blob/master/dlls/msvcrt/except_i386.c}{GitHub}}
+and ReactOS\footnote{\url{http://doxygen.reactos.org/d4/df2/lib_2sdk_2crt_2except_2except_8c_source.html}}.\\
 \\
 If the \emph{filter} pointer is NULL, the \emph{handler} 
 pointer is the pointer to the \emph{finally} code block.\\
@@ -242,7 +242,7 @@ If \TT{Cookie Offset} is $-2$, this implies that it is not present.
 % FIXME: get this back when tracer src will be hosted again somewhere
 \myindex{tracer}
 \emph{Cookies} checking is also implemented in my \tracer{},
-see \href{http://go.yurichev.com/17061}{GitHub} for details.\\
+see \href{https://github.com/DennisYurichev/tracer/blob/master/SEH.c}{GitHub} for details.\\
 \\
 It is still possible to fall back to SEH3 in the compilers after 
 (and including) MSVC 2005 by setting the \TT{/GS-} option,

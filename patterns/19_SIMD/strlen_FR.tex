@@ -1,13 +1,13 @@
 ﻿\subsection{Implémentation SIMD de \strlen}
 \label{SIMD_strlen}
 
-\newcommand{\URLMSDNSSE}{\href{http://go.yurichev.com/17262}{MSDN: particularités MMX, SSE, et SSE2}}
+\newcommand{\URLMSDNSSE}{\href{http://msdn.microsoft.com/en-us/library/y0dh78ez(VS.80).aspx}{MSDN: particularités MMX, SSE, et SSE2}}
 
 Il faut noter que les instructions \ac{SIMD} peuvent être insérées en code \CCpp via
 des macros\footnote{\URLMSDNSSE} spécifiques.
 Pour MSVC, certaines d'entre elles se trouvent dans le fichier \TT{intrin.h}.
 
-\newcommand{\URLSTRLEN}{http://go.yurichev.com/17330}
+\newcommand{\URLSTRLEN}{http://www.strchr.com/sse2_optimised_strlen}
 
 \myindex{\CStandardLibrary!strlen()}
 
@@ -47,7 +47,7 @@ en utilisant \MOVDQA, si non~---utiliser \MOVDQU moins rapide.
 Mais ici nous pourrions rencontrer une autre restriction:
 
 \myindex{Page (mémoire)}
-\newcommand{\URLPAGE}{\href{http://go.yurichev.com/17136}{Wikipédia}}
+\newcommand{\URLPAGE}{\href{http://en.wikipedia.org/wiki/Page_(computer_memory)}{Wikipédia}}
 
 Dans la série d'\ac{OS} \gls{Windows NT} (mais pas seulement), la mémoire est allouée
 par pages de 4 KiB (4096 octets).
@@ -201,4 +201,4 @@ Presque tout.
 côte-à-côte, afin d'optimiser.
 
 Et aussi, SSE 4.2 (apparu dans les Intel Core i7) offre encore plus d'instructions
-avec lesquelles ces manipulations de chaîne sont encore plus facile: \url{http://go.yurichev.com/17331}
+avec lesquelles ces manipulations de chaîne sont encore plus facile: \url{http://www.strchr.com/strcmp_and_strlen_using_sse_4.2}

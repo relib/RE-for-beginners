@@ -2,7 +2,7 @@
 \label{subsec:BO_protection}
 Es gibt verschiedene Möglichkeiten um sich vor solchen Problemen zu schützen, unabhängig von der Unachtsamkeit des \CCpp
 Programmierers. MSVC kennt Optionen wie\footnote{Compilerseitiger Schutz vor Buffer Overflows:
-\href{http://go.yurichev.com/17133}{wikipedia.org/wiki/Buffer\_overflow\_protection}}:
+\href{http://en.wikipedia.org/wiki/Buffer_overflow_protection}{wikipedia.org/wiki/Buffer\_overflow\_protection}}:
 
 \begin{lstlisting}
  /RTCs Stack Frame runtime checking
@@ -17,7 +17,7 @@ diesen im Funktionsepilog vor dem Beenden der Funktion zu überprüfen.
 Wenn der Wert nicht identisch ist, sollte der letzte \RET Befehl nicht ausgeführt werden, sondern das Programm
 angehalten werden. Der Prozess wird anhalten, aber das ist deutlich besser als eine Fernattacke auf Ihren Rechner.
     
-\newcommand{\CANARYURL}{\href{http://go.yurichev.com/17134}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
+\newcommand{\CANARYURL}{\href{http://en.wikipedia.org/wiki/Domestic_Canary\#Miner.27s_canary}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
 
 \myindex{Canary}
 Die Zufallszahl wird auch \q{canary} (dt. Kanarienvogel) genannt. Der Begriff stammt von den Kanarienvögeln der
@@ -85,7 +85,7 @@ verwendet. Heute ist sein Zweck ein anderer:
 \myindex{Windows!TIB}
 Kurz gesagt, zeigt das \TT{gs} Register in Linux stets auf den \ac{TLS}~(\myref{TLS})--hier werden threadspezifische
 Informationen gespeichert. In win32 spielt das \TT{fs} Register übrigens die gleiche Rolle und zeigt stets auf
-\ac{TIB}\footnote{\href{http://go.yurichev.com/17104}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}.
+\ac{TIB}\footnote{\href{https://en.wikipedia.org/wiki/Win32_Thread_Information_Block}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}.
 
 Mehr Informationen finden sich im Quellcode des Linux Kernels (zumindest in der Version 3.11), in\\
 \emph{arch/x86/include/asm/stackprotector.h} wird diese Variable in den Kommentaren beschrieben.

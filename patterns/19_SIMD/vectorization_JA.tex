@@ -1,6 +1,6 @@
 ﻿\subsection{ベクトル化}
 
-\newcommand{\URLVEC}{\href{http://go.yurichev.com/17080}{Wikipedia: vectorization}}
+\newcommand{\URLVEC}{\href{http://en.wikipedia.org/wiki/Vectorization_(computer_science)}{Wikipedia: vectorization}}
 
 ベクトル化\footnote{\URLVEC}は、たとえば、入力用に2つの配列を取り、1つの配列を生成するループがある場合です。
 ループ本体は入力配列から値を受け取り、何かを実行して結果を出力配列に入れます。
@@ -10,7 +10,7 @@
 \myindex{Cray}
 ベクトル化はそれほど新鮮なテクノロジではありません。この教科書の作者は、少なくとも
 1988年のCray Y-MPスーパーコンピュータラインで、その\q{ライト}バージョンのCray Y-MP EL 179を使ったことを見ました。
-\footnote{リモートから。それはスーパーコンピュータの博物館に設置されています: \url{http://go.yurichev.com/17081}}.
+\footnote{リモートから。それはスーパーコンピュータの博物館に設置されています: \url{http://www.cray-cyber.org}}.
 
 % FIXME! add assembly listing!
 例えば：
@@ -34,7 +34,7 @@ for (i = 0; i < 1024; i++)
 
 したがって、ループ本体の実行数は1024ではなく$1024/4$となり、4倍少なくなり、もちろん高速になります。
 
-\newcommand{\URLINTELVEC}{\href{http://go.yurichev.com/17082}{Excerpt: Effective Automatic Vectorization}}
+\newcommand{\URLINTELVEC}{\href{http://www.intel.com/intelpress/sum_vmmx.htm}{Excerpt: Effective Automatic Vectorization}}
 
 \subsubsection{加算の例}
 
@@ -112,7 +112,7 @@ movdqa  xmmword ptr [eax+edi*4], xmm0 ; ar3+i*4
 
 \myparagraph{GCC}
 
-\newcommand{\URLGCCVEC}{\url{http://go.yurichev.com/17083}}
+\newcommand{\URLGCCVEC}{\url{http://gcc.gnu.org/projects/tree-ssa/vectorization.html}}
 
 \Othree オプションが使用され、SSE2サポートがオンになっている場合、
 GCCは単純な場合にもベクトル化することがあります\footnote{GCCベクトル化サポートについての詳細は: \URLGCCVEC}

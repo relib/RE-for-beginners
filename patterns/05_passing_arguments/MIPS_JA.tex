@@ -26,7 +26,7 @@ MIPSには、HIとLOの2つの特殊レジスタがあり、\TT{MULT}命令の�
 \myindex{Integer overflow}
 
 MIPSには、\TT{ADD}と\TT{ADDU}の2種類の加算命令があります。
-それらの違いは、署名性に関連するものではなく、例外に対するものです。 \TT{ADD}では、オーバーフローに関する例外が発生することがあります。これは、たとえばAda \ac{PL}で有用\footnote{\url{http://go.yurichev.com/17326}}であり、サポートされることもあります。 
+それらの違いは、署名性に関連するものではなく、例外に対するものです。 \TT{ADD}では、オーバーフローに関する例外が発生することがあります。これは、たとえばAda \ac{PL}で有用\footnote{\url{http://blog.regehr.org/archives/1154}}であり、サポートされることもあります。 
 \TT{ADDU}は、オーバーフロー時に例外を発生させません。
 
 \CCpp ではこれをサポートしていないため、この例では\TT{ADD}の代わりに\TT{ADDU}が表示されています。

@@ -57,7 +57,7 @@ LLVMは最初の \printf 呼び出しを \puts に置き換えました。
 \footnote{ \puts は文字列の最後に改行記号`\textbackslash{}n'を必要としないので、ここでは見られません}
 
 なぜコンパイラは \printf を \puts に置き換えたのでしょうか？おそらく \puts が高速であるためです。
-\footnote{\href{http://go.yurichev.com/17063}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}. 
+\footnote{\href{http://www.ciselant.de/projects/gcc_printf/gcc_printf.html}{ciselant.de/projects/gcc\_printf/gcc\_printf.html}}. 
 
 これは、文字を\emph{\%}と一緒に比較することなく、文字を\gls{stdout}に渡すだけです。
 

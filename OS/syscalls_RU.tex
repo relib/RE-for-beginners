@@ -57,7 +57,7 @@ nasm -f elf32 1.s
 ld 1.o
 \end{lstlisting}
 
-Полный список syscall-ов в Linux: \url{http://go.yurichev.com/17319}.
+Полный список syscall-ов в Linux: \url{http://syscalls.kernelgrok.com/}.
 
 Для перехвата и трассировки системных вызовов в Linux, можно применять strace(\myref{strace}).
 
@@ -69,9 +69,9 @@ ld 1.o
 Вызов происходит через \TT{int 0x2e} 
 либо используя специальную x86-инструкцию \TT{SYSENTER}.
 
-Полный список syscall-ов в Windows: \url{http://go.yurichev.com/17320}.
+Полный список syscall-ов в Windows: \url{http://j00ru.vexillium.org/ntapi/}.
 
 Смотрите также:
 
-\q{Windows Syscall Shellcode} by Piotr Bania: \url{http://go.yurichev.com/17321}.
+\q{Windows Syscall Shellcode} by Piotr Bania: \url{http://www.symantec.com/connect/articles/windows-syscall-shellcode}.
 

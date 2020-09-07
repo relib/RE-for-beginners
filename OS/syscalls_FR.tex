@@ -63,7 +63,7 @@ nasm -f elf32 1.s
 ld 1.o
 \end{lstlisting}
 
-La liste complète des appels systèmes sous Linux: \url{http://go.yurichev.com/17319}.
+La liste complète des appels systèmes sous Linux: \url{http://syscalls.kernelgrok.com/}.
 
 Pour intercepter les appels système et les suivre sous Linux, strace(\myref{strace})
 peut être utilisé.
@@ -76,9 +76,9 @@ peut être utilisé.
 Ici, ils sont appelés via \TT{int 0x2e} ou en utilisant l'instruction x86 spéciale
 \TT{SYSENTER}.
 
-La liste complète des appels systèmes sous Windows: \url{http://go.yurichev.com/17320}.
+La liste complète des appels systèmes sous Windows: \url{http://j00ru.vexillium.org/ntapi/}.
 
 Pour aller plus loin:
 
-\q{Windows Syscall Shellcode} par Piotr Bania: \url{http://go.yurichev.com/17321}.
+\q{Windows Syscall Shellcode} par Piotr Bania: \url{http://www.symantec.com/connect/articles/windows-syscall-shellcode}.
 

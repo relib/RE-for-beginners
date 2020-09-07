@@ -50,9 +50,9 @@ its debugger may be loaded and connected to the process}.
 проверяют целостность загруженного кода}\EN{a lot of anti-debugging methods check integrity of the loaded code}.
 
 \RU{В }\ac{MSVC} \RU{есть}\EN{has} \gls{compiler intrinsic} \RU{для этой инструкции}\EN{for the instruction}:
-\GTT{\_\_debugbreak()}\footnote{\href{http://go.yurichev.com/17226}{MSDN}}.
+\GTT{\_\_debugbreak()}\footnote{\href{http://msdn.microsoft.com/en-us/library/f408b4et.aspx}{MSDN}}.
 
 \RU{В win32 также имеется функция в}\EN{There is also a win32 function in} kernel32.dll \RU{с названием}\EN{named}
-\GTT{DebugBreak()}\footnote{\href{http://go.yurichev.com/17227}{MSDN}},
+\GTT{DebugBreak()}\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms679297(v=vs.85).aspx}{MSDN}},
 \RU{которая также исполняет}\EN{which also executes} \GTT{INT 3}.
 

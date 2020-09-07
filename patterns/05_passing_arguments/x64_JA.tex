@@ -29,12 +29,12 @@
 \myindex{Shadow space}
 \label{shadow_space}
 これは "シャドウスペース"と呼ばれます。
-\footnote{\href{http://go.yurichev.com/17256}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}
 すべてのWin64は、そこにある4つのレジスタ値をすべて保存することができます（必須ではありません）。
 これは2つの理由で行われます。
 1）入力引数にレジスタ全体（または4つのレジスタ）を割り当てるのはあまりにも贅沢なので、スタック経由でアクセスされます。 
 2）デバッガはブレークで関数の引数をどこに見つけるか常に認識しています。
-\footnote{\href{http://go.yurichev.com/17257}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}
 
 だから、大規模な関数の中には、実行中にそれらを使用したい場合、入力引数を \q{シャドウスペース}に保存することができますが、
 私たちのような小さな関数ではそうでないかもしれません。

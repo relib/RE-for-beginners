@@ -1,11 +1,11 @@
 \subsection{SIMD \strlen Implementierung}
 \label{SIMD_strlen}
 
-\newcommand{\URLMSDNSSE}{\href{http://go.yurichev.com/17262}{MSDN: MMX, SSE, und SSE2 Intrinsics}}
+\newcommand{\URLMSDNSSE}{\href{http://msdn.microsoft.com/en-us/library/y0dh78ez(VS.80).aspx}{MSDN: MMX, SSE, und SSE2 Intrinsics}}
 Man beachte, dass die \ac{SIMD} Befehle über spezielle Makros\footnote{\URLMSDNSSE} in den \CCpp Code eingefügt werden
 können. Einige dieser Makros für MSVC befinden sich in der Datei \TT{intrin.h}.
 
-\newcommand{\URLSTRLEN}{http://go.yurichev.com/17330}
+\newcommand{\URLSTRLEN}{http://www.strchr.com/sse2_optimised_strlen}
 
 \myindex{\CStandardLibrary!strlen()}
 Es ist möglich die Funktion \strlen\footnote{strlen()~---Funktion der Standard-C-Bibliothek, mit der die Länge eines
@@ -37,7 +37,7 @@ langsameren Befehl \MOVDQU.
 Aber an dieser Stelle lauert ein weiterer Fallstrick:
 
 \myindex{Seite (Speicher)}
-\newcommand{\URLPAGE}{\href{http://go.yurichev.com/17136}{wikipedia}}
+\newcommand{\URLPAGE}{\href{http://en.wikipedia.org/wiki/Page_(computer_memory)}{wikipedia}}
 In den Betriebssystemen der Reihe \gls{Windows NT} (aber nicht nur dort) wird Speicher in Seiten von 4KiB (4096 Byte)
 reserviert. Jeder win32-Prozess hat 4GiB zur Verfügung, auch wenn tatsächlich nur einige Teile des Adressraumes wirklich
 mit dem physischen Speicher verbunden sind. Wenn der Prozess auf einen nicht vorhandenen Speicherblock zugreift, wird
@@ -162,4 +162,4 @@ Das ist fast alles.
 Hier ist bemerkenswert, dass der MSVC Compiler zur Optimierung zwei Schleifenrümpfe nebeneinander erzeugt hat.
 
 SSE 4.2 (erschienen im Intel Core i7) verfügt über noch mehr Befehle, sodass diese Stringmanipulationen noch einfacher
-bewerkstelligt werden können: \url{http://go.yurichev.com/17331}
+bewerkstelligt werden können: \url{http://www.strchr.com/strcmp_and_strlen_using_sse_4.2}

@@ -46,7 +46,7 @@ den Block und erzeugt ein 64-Bit-Ergebnis.
 Der DES-Algorithmus kann als sehr großer Schaltkreis aus Drähten und AND/OR/NOT-Gattern aufgefasst werden.
 
 \label{bitslicedes}
-\newcommand{\URLBS}{\url{http://go.yurichev.com/17329}}
+\newcommand{\URLBS}{\url{http://www.darkside.com.au/bitslice/}}
 Hinter Bitslice DES\footnote{\URLBS}~---steckt die Idee, mehrere Gruppen von Blöcken und Schlüsseln simultan zu
 verarbeiten. Eine Variable vom Typ \emph{unsigned int} umfasst in x86 beispielsweise 32 Bit, sodass es möglich ist, in ihr
 die Zwischenergebnisse für 32 Block-Schlüssel-Paare gleichzeitig zu speichern, indem $64+56$ Variablen vom Typ
@@ -57,7 +57,7 @@ Es gibt es Tool um \oracle Passwörter und Hashes (die auf DES basieren) per Bru
 wenig veränderter Bitslice-DES-Algorithmus für SSE2 und AVX verwendet---nun ist es möglich, 128 oder 256
 Block-Schlüssel-Paare simultan zu verschlüsseln.
 
-\url{http://go.yurichev.com/17313}
+\url{http://conus.info/utils/ops_SIMD/}
 
 % sections
 \input{patterns/19_SIMD/vectorization_DE.tex}

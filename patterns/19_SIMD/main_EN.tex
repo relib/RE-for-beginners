@@ -48,7 +48,7 @@ One more example: the DES encryption algorithm takes a 64-bit block and a 56-bit
 The DES algorithm may be considered as a very large electronic circuit, with wires and AND/OR/NOT gates.
 
 \label{bitslicedes}
-\newcommand{\URLBS}{\url{http://go.yurichev.com/17329}}
+\newcommand{\URLBS}{\url{http://www.darkside.com.au/bitslice/}}
 
 Bitslice DES\footnote{\URLBS}~---is the idea of processing groups of blocks and keys simultaneously.
 Let's say, variable of type \emph{unsigned int} on x86 can hold up to 32 bits, so it is possible to store there
@@ -59,7 +59,7 @@ There is an utility to brute-force \oracle passwords/hashes (ones based on DES),
 using slightly modified bitslice DES algorithm for SSE2 and AVX---now it is possible to encrypt 128 
 or 256 block-keys pairs simultaneously.
 
-\url{http://go.yurichev.com/17313}
+\url{http://conus.info/utils/ops_SIMD/}
 
 % sections
 \input{patterns/19_SIMD/vectorization_EN.tex}

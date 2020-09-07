@@ -12,7 +12,7 @@ L'ensemble de Mandelbrot est un ensemble fractal, qui présente de l'auto-simila
 
 Lorsque vous augmentez l'échelle, vous voyez que la forme principale se répète indéfiniment.
 
-Voici une démo\footnote{Téléchargeable \href{http://go.yurichev.com/17306} {ici},}
+Voici une démo\footnote{Téléchargeable \href{http://www.pouet.net/prod.php?which=53287} {ici},}
 écrite par \q{Sir\_Lagsalot} en 2009, qui dessine l'ensemble de Mandelbrot, qui est
 juste un programme x86, dont l'exécutable a une taille de seulement 64 octets.
 Il y a seulement 30 instructions x86 16-bit.
@@ -114,15 +114,15 @@ sont remplacées par des opérations sur des entiers, en suivant les règles qui
 
 \lstinputlisting[caption=Pour les nombres entiers]{examples/demos/mandelbrot/algo_int_FR.lst}
 
-Voici aussi un source en C\# qui se trouve dans l'article\footnote{\href{http://go.yurichev.com/17307}{Wikipédia}}
+Voici aussi un source en C\# qui se trouve dans l'article\footnote{\href{http://ru.wikipedia.org/wiki/Множество_Мандельброта}{Wikipédia}}
 de Wikipédia, mais nous allons le modifier afin qu'il affiche le nombre d'itérations au lieu d'un symbole
 \footnote{Voici aussi le fichier exécutable: 
-\href{http://go.yurichev.com/17163}{beginners.re}}:
+\href{http://beginners.re/examples/mandelbrot/dump_iterations.exe}{beginners.re}}:
 
 \lstinputlisting[style=customc]{examples/demos/mandelbrot/dump_iterations.cs}
 
 Voici le fichier résultant, qui est trop large pour être inclus ici:\\
-\href{http://go.yurichev.com/17164}{beginners.re}.
+\href{http://beginners.re/examples/mandelbrot/result.txt}{beginners.re}.
 
 Le nombre maximal d'itérations est 40, donc lorsque vous voyez 40 dans ce dump, ça
 signifie que ce point s'est baladé pendant 40 itérations, sans sortir des limites.
@@ -131,7 +131,7 @@ Un nombre $n$ inférieur à 40 signifie que le point est resté dans les limites
 $n$ itérations, puis en est sorti.
 
 \clearpage
-Il y a une démo cool disponible ici \url{http://go.yurichev.com/17309}, qui montre
+Il y a une démo cool disponible ici \url{http://demonstrations.wolfram.com/MandelbrotSetDoodle/}, qui montre
 visuellement comment le point se déplace dans le plan à chaque itération pour un
 point spécifique.
 Voici deux copies d'écran.
@@ -163,7 +163,7 @@ chaotique, qui sort rapidement des limites:
 Ceci signifie que le point n'appartient pas à l'ensemble de Mandelbrot.
 
 Une autre démo est disponible ici:
-\url{http://go.yurichev.com/17310}.
+\url{http://demonstrations.wolfram.com/IteratesForTheMandelbrotSet/}.
 
 \clearpage
 \subsubsection{Revenons à la démo}
@@ -298,7 +298,7 @@ La valeur courante de AX n'est plus nécessaire ici.
 
 \item DI (position dans le buffer vidéo) n'est pas initialisée, et contient 0xFFFE au début
 \footnote{Plus d'information sur la valeur initiale des registres:
-\url{http://go.yurichev.com/17004}}.
+\url{https://code.google.com/p/corkami/wiki/InitialValues#DOS}}.
 
 C'est OK, car le programme travaille pour tout DI dans l'intervalle 0..0xFFFF éternellement,
 et l'utilisateur ne peut pas remarquer qu'il a commencé en dehors de l'écran (le

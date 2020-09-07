@@ -17,7 +17,7 @@ Il y en a, toutefois, une autre dans \gls{NTAPI}, \TT{NtQuerySystemInformation()
 qui est utilisée dans \TT{taskmgr.exe} à plusieurs endroits.
 
 Pour obtenir le nombre de c\oe{}urs,  il faut appeler cette fonction avec la constante
-\TT{SystemBasicInformation} comme premier argument (qui vaut zéro\footnote{\href{http://go.yurichev.com/17251}{MSDN}}).
+\TT{SystemBasicInformation} comme premier argument (qui vaut zéro\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms724509(v=vs.85).aspx}{MSDN}}).
 
 Le second argument doit pointer vers le buffer qui va recevoir toute l'information.
 

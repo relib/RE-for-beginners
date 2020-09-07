@@ -5,7 +5,7 @@ Se proprio dobbiamo, è necessario almeno controllare se \scanf termina corretta
 
 \lstinputlisting[style=customc]{patterns/04_scanf/3_checking_retval/ex3.c}
 
-Per standard, la funzione \scanf\footnote{scanf, wscanf: \href{http://go.yurichev.com/17255}{MSDN}} restituisce il numero di campi che è riuscita a leggere con successo.
+Per standard, la funzione \scanf\footnote{scanf, wscanf: \href{http://msdn.microsoft.com/en-us/library/9y6s16x1(VS.71).aspx}{MSDN}} restituisce il numero di campi che è riuscita a leggere con successo.
 Nel nostro caso, se tutto va bene e l'utente inserisce un numero, \scanf restituisce 1, oppure 0 (o \ac{EOF}) in caso di errore. 
 
 Aggiungiamo un po' di codice C per controllare che \scanf restituisca un valore e stampi un messaggio in caso di errore.
