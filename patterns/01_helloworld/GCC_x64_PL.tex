@@ -8,14 +8,13 @@ Przyjrzyjmy się wynikom kompilacji GCC na 64-bitowym systemie Linux:
 Na Linuksie, *BSD i \MacOSX w architekturze x86-64 argumenty funkcji także przekazuje się przez rejestry \SysVABI.
 
 6 pierwszych argumentów jest przekazywanych przez rejestry \RDI, \RSI, \RDX, \RCX, \Reg{8} i \Reg{9}, a reszta --- przez stos.
-Zgodnie z przytoczonym standardem ABI, argumenty zmiennoprzecinkowe można przekazać również przez rejestry wektorowe \XMM{0}-\XMM{7}.
 
 Wskaźnik na łańcuch znaków jest przekazywany przez \EDI (32-bitową część rejestru). Dlaczego nie użyto 64-bitowego \RDI?
 
-Warto pamiętać, że w 64-bitowym trybie wszystkie instrukcje \MOV, zapisujące cokolwiek do młodszej 32-bitowej części rejestru, zerują starsze 32 bity (jest to opisane w dokumentacji Intel: \myref{x86_manuals}).
+Warto pamiętać, że w 64-bitowym trybie wszystkie instrukcje \MOV, zapisujące cokolwiek do młodszej 32-bitowej części rejestru, zerują starsze 32 bity (jest to opisane w dokumentacji Intela: \myref{x86_manuals}).
 Z tego powodu instrukcja \INS{MOV EAX, 011223344h} poprawnie zapisze tę wartość do \RAX, a starsze bity się wyzerują.
 
-Jeśli byśmy podejrzeli w deasemblerze \IDA skompilowany plik (.o), to zobaczylibyśmy kody operacji (opcode) wszystkich instrukcji
+Jeślibyśmy podejrzeli w deasemblerze \IDA skompilowany plik (.o), to zobaczylibyśmy kody operacji (opcode) wszystkich instrukcji
 \footnote{Trzeba włączyć tę opcję w \textbf{Options $\rightarrow$ Disassembly $\rightarrow$ Number of opcode bytes}}:
 
 \lstinputlisting[caption=GCC 4.4.6 x64,style=customasmx86]{patterns/01_helloworld/GCC_x64.lst}

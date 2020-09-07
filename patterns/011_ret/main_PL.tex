@@ -54,14 +54,14 @@ Rejestr \$2 (nazwa umowna - \$V0) używany jest do przechowywanie wartości zwra
 Drugą instrukcją jest instrukcja skoku (J lub JR), która zwraca sterowanie do \glslink{caller}{funkcji wywołującej}.
 
 \myindex{MIPS!Branch delay slot}
-Możesz się zastanawiać dlaczego instrukcje LI i J/JR są w odwrotnej kolejności.
+Możesz się zastanawiać, dlaczego instrukcje LI i J/JR są w odwrotnej kolejności.
 Jest to efekt optymalizacji przetwarzania potokowego w architekturze \ac{RISC}, zwanej \q{branch delay slot}.
 
 Przyczyną wprowadzanie takiego rozwiązania jest dziwactwo w niektórych architekturach typu RISC
 i nie jest to dla nas istotne - po prostu przyjmijmy, że w asemblerze MIPS instrukcja następująca po instrukcji skoku jump/branch
 jest wykonywana przed samym skokiem.
 
-W rezultacie, instrukcje typu branch są zawsze zamienione z instrukcją, która jest wykonywana przed nimi.
+W rezultacie instrukcje typu branch są zawsze zamienione z instrukcją, która jest wykonywana przed nimi.
 
 W praktyce często występują funkcje, które jedynie zwracają 1 (\emph{true - prawdę}) lub 0 (\emph{false - fałsz}).
 

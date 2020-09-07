@@ -10,7 +10,7 @@ Następnie za pomocą deasemblera \IDA podejrzymy wynik kompilacji funkcji \main
 \myindex{x86!\Instructions!AND}
 Wynik jest prawie taki sam.
 Adres łańcucha znaków \TT{hello, world}, leżącego w segmencie danych, najpierw zapisywany jest do \EAX, a później odkładany na stos.
-Dodatkowo, w prologu funkcji widzimy \TT{AND ESP, 0FFFFFFF0h}~---
+Dodatkowo w prologu funkcji widzimy \TT{AND ESP, 0FFFFFFF0h}~---
 ta instrukcja wyrównuje \ESP do granicy 16 bajtów.
 Dzięki temu wszystkie wartości na stosie będą również wyrównane w taki sam sposób (procesor pracuje efektywniej z adresami wyrównanymi do granicy 4 lub 16 bajtów.).
 
@@ -37,7 +37,7 @@ Jest to niezbędne, ponieważ na początku funkcji modyfikowaliśmy rejestry \ES
 \subsubsection{GCC: \ATTSyntax}
 \label{ATT_syntax}
 
-Sprawdźmy jak będzie wyglądał listing w składni AT\&T, która jest bardziej popularna świecie UNIXa.
+Sprawdźmy jak będzie wyglądał listing w składni AT\&T, która jest bardziej popularna w świecie UNIXa.
 
 \begin{lstlisting}[caption=Kompilujemy za pomocą GCC 4.7.3]
 gcc -S 1_1.c

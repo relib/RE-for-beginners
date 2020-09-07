@@ -70,7 +70,7 @@ __symbolstub1:00003FEC 44 F0 9F E5     LDR  PC, =__imp__puts
 Jest to skok do miejsca, w którym, w sekcji importów, zapisany jest adres funkcji \puts.
 Można zadać pytanie: dlaczego nie można wywołać \puts bezpośrednio, tam gdzie jest to potrzebne?
 
-Nie jest to efektywne, z punktu widzenia oszczędności miejsca.
+Nie jest to efektywne z punktu widzenia oszczędności miejsca.
 
 \myindex{Biblioteki łączone dynamicznie (DLL, z ang. Dynamic-Link Library )}
 Praktycznie każdy program korzysta z zewnętrznych bibliotek łączonych dynamicznie (jak DLL w Windows, .so w *NIX
@@ -80,7 +80,7 @@ W bibliotekach dynamicznych znajdują się często wykorzystywane funkcje biblio
 \myindex{Relocation}
 W wykonywalnym pliku binarnym (Windows PE .exe, ELF lub Mach-O) istnieje sekcja importów.
 Jest to lista symboli (funkcji lub zmiennych globalnych) importowanych z modułów zewnętrznych wraz z nazwami tych modułów.
-Program ładujący \ac{OS} iterując po symbolach zaimportowanych w module głównym, ładuje niezbędne moduły i ustawia rzeczywiste adresy każdego z symboli.
+Program ładujący \ac{OS}, iterując po symbolach zaimportowanych w module głównym, ładuje niezbędne moduły i ustawia rzeczywiste adresy każdego z symboli.
 
 W naszym przypadku, \emph{\_\_imp\_\_puts} jest 32-bitową zmienną, w której program ładujący \ac{OS} umieści rzeczywisty adres funkcji z biblioteki zewnętrznej.
 
@@ -92,7 +92,7 @@ Następnie \TT{LDR} odczytuje 32-bitową wartość z tej zmiennej, i zapisując 
 Do tego, jak się już upewniliśmy, zapisywanie 32-bitowej liczby do rejestru jest niemożliwe bez odwoływania się do pamięci.
 
 Optymalnym rozwiązaniem jest wydzielenie osobnej funkcji, pracującej w trybie ARM,
-której jedynym celem jest przekazywanie sterowania dalej, do bilioteki dynamicznie łączonej. Nastepnie można wywoływać tę jednoinstrukcyjną funkcję z kodu w trybie Thumb.
+której jedynym celem jest przekazywanie sterowania dalej, do biblioteki dynamicznie łączonej. Nastepnie można wywoływać tę jednoinstrukcyjną funkcję z kodu w trybie Thumb.
 
 \myindex{ARM!\Instructions!BL}
 Nawiasem mówiąc, w poprzednim przykładzie (skompilowanym dla trybu ARM), instrukcja \TT{BL} przekazuje sterowanie do takiej samej \glslink{thunk function}{thunk-funkcji}, lecz procesor nie przestawia się w inny tryb (stąd brak \q{X} w mnemoniku instrukcji).

@@ -21,7 +21,7 @@ Mamy tu tylko jedną instrukcję: \RET, która jest instrukcją powrotu do \glsl
 \lstinputlisting[caption=\OptimizingKeilVI (\ARMMode) (\assemblyOutput),style=customasmARM]{patterns/00_empty/1_Keil_ARM_O3.s}
 
 Adres powrotu (\ac{RA}) w ARM zapisywany jest nie na stosie, a w rejestrze \ac{LR}.
-Instrukcja \INS{BX LR} wykonując skok pod ten adres, zwraca sterowanie do funkcji wywołującej.
+Instrukcja \INS{BX LR}, wykonując skok pod ten adres, zwraca sterowanie do funkcji wywołującej.
 
 \subsection{MIPS}
 
@@ -46,9 +46,9 @@ Jest to rejestr odpowiadający \ac{LR} w ARM.
 Druga instrukcja to \ac{NOP}, która nic nie robi.
 Na razie możemy ją zignorować.
 
-\subsubsection{Jeszcze małe co nieco o konwecji nazewnictwa w MIPS}
+\subsubsection{Jeszcze małe co nieco o konwencji nazewnictwa w MIPS}
 Nazwy rejestrów i instrukcji w MIPS tradycyjnie są zapisywane małymi literami,
-lecz my będziemy je zapisywać dużymi literami, dlatego że nazwy instrukcji i rejestrów innych 
+lecz my będziemy je zapisywać dużymi, dlatego że nazwy instrukcji i rejestrów innych
 \ac{ISA} w tej książce są zapisywane dużymi.
 
 \subsection{Puste funkcje w praktyce}
@@ -57,7 +57,7 @@ Mimo, że puste funkcje są bezużyteczne, są one dość często spotykane w ni
 
 Po pierwsze, często spotykamy funkcje zapisujące szczegółowe informacje do logów, na przykład:
 
-\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/dbg_print_EN.c}
+\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/dbg_print_PL.c}
 
 Przy kompilacji wersji programu przeznaczonej do wdrożenia, \TT{\_DEBUG} jest niezdefiniowane,
 więc funkcja \TT{dbg\_print()}, mimo, że jest wywoływana, będzie pusta.
@@ -65,7 +65,7 @@ więc funkcja \TT{dbg\_print()}, mimo, że jest wywoływana, będzie pusta.
 Po drugie, popularnym sposobem na ochronę oprogramowania jest kompilacja kilku wersji: pierwsza dla legalnych konsumentów, druga - demonstracyjna.
 Demonstracyjna wersja może nie zawierać jakiejś ważnej funkcjonalności, na przykład:
 
-\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/demo_EN.c}
+\lstinputlisting[caption=Kod w \CCpp,style=customc]{patterns/00_empty/demo_PL.c}
 
 Funkcja \TT{save\_file()} może być wywołana, kiedy użytkownik klika w menu \TT{File->Save}.
 Wersja demo może zawierać wyłączony przycisk menu, ale nawet jeśli cracker go włączy,
