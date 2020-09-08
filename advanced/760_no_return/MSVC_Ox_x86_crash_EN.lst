@@ -7,8 +7,8 @@ _main	PROC
 	mov	DWORD PTR [eax], 1
 	mov	DWORD PTR [eax+4], 2
 	mov	DWORD PTR [eax+8], 3
-; EAX -> to allocated buffer, and it's filled, OK
-; now we reload ptr to buffer, thinking it's in "a" variable
+; EAX points to allocated buffer, and it's filled, OK
+; now we reload pointer to buffer, hoping it's in "a" variable
 ; but inlined function didn't store pointer to "a" variable!
 	mov	eax, DWORD PTR _a$[esp+8]
 ; EAX = some random garbage at this point
@@ -35,7 +35,7 @@ _create_color PROC
 	mov	DWORD PTR [eax+4], ecx
 	mov	ecx, DWORD PTR _B$[esp-4]
 	mov	DWORD PTR [eax+8], ecx
-; EAX -> to allocated buffer, OK
+; EAX points to allocated buffer, OK
 	ret	0
 _create_color ENDP
 

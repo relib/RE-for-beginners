@@ -7,7 +7,7 @@ Poniższy fragment kodu znalazłem w projekcie Boolector\footnote{\url{https://b
 
 \lstinputlisting[style=customc]{patterns/025_almost_empty/boolectormain.c}
 
-Dlaczego ktoś miałby tak robić? Nie wiem, ale przypuszczam, że \verb|boolector_main()| może być kompilowane do biblioteki dynamicznej (jak np. DLL) i wywoływane w testach. Kod testowy również może przygotować argumenty argc/argv, tak jak to robi \ac{CRT}.
+Dlaczego ktoś miałby tak robić? Nie wiem, ale przypuszczam, że \verb|boolector_main()| może być kompilowane do biblioteki dynamicznej (jak np. DLL) i wywoływane w testach. Kod testowy również może przygotować argumenty \verb|argc/argv|, tak jak to robi \ac{CRT}.
 
 Ciekawy jest wynik kompilacji:
 

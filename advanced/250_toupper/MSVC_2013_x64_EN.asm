@@ -10,10 +10,10 @@ toupper	PROC
 	movsx	eax, BYTE PTR c$[rsp]
 	sub	eax, 32
 	jmp	SHORT $LN3@toupper
-	jmp	SHORT $LN1@toupper	; compiler artefact
+	jmp	SHORT $LN1@toupper	; compiler artifact
 $LN2@toupper:
 	movzx	eax, BYTE PTR c$[rsp]	; unnecessary casting
 $LN1@toupper:
-$LN3@toupper:				; compiler artefact
+$LN3@toupper:				; compiler artifact
 	ret	0
 toupper	ENDP
