@@ -10,8 +10,8 @@ SAPGUI\footnote{SAP GUI client} environment variable and
 the pesky annoying pop-up window and the actual data compression routine.)
  
 It is known that the network traffic between SAPGUI and SAP is not encrypted by default, but compressed
-(see here\footnote{\url{http://go.yurichev.com/17221}} 
-and here\footnote{\href{http://go.yurichev.com/17225}{blog.yurichev.com}}). 
+(see here\footnote{\url{http://blog.yurichev.com/node/44}} 
+and here\footnote{\href{http://blog.yurichev.com/node/47}{blog.yurichev.com}}). 
 
 It is also known that by setting the environment variable \emph{\TDWNC} to 1, it is possible to turn the network packet compression off.
 
@@ -30,7 +30,7 @@ But before this, let's see what we already know.
 First: we know that the environment variable \emph{\TDWNC} is checked somewhere inside the SAPGUI client.
 
 Second: a string like \q{data compression switched off} must be present somewhere in it.
-\newcommand{\FNURLFAR}{\footnote{\url{http://go.yurichev.com/17347}}}
+\newcommand{\FNURLFAR}{\footnote{\url{http://www.farmanager.com/}}}
 
 With the help of the FAR file manager\FNURLFAR we can found that both of these strings are stored in the SAPguilib.dll file.
 
@@ -53,7 +53,7 @@ Also take a look at the \TT{chk\_env()} function (we gave this name to it manual
 \lstinputlisting[style=customasmx86]{examples/SAP/sapgui/01.lst}
 
 \myindex{\CStandardLibrary!getenv()}
-Yes. The \TT{getenv\_s()}\footnote{\href{http://go.yurichev.com/17250}{MSDN}} 
+Yes. The \TT{getenv\_s()}\footnote{\href{http://msdn.microsoft.com/en-us/library/tb2sfw2z(VS.80).aspx}{MSDN}} 
 
 function is a Microsoft security-enhanced version of \TT{getenv()}\footnote{Standard C library returning environment variable}.
 
@@ -195,7 +195,7 @@ And, let's take a look inside \emph{sub\_64417440}. What we see is:
 
 Voilà! We've found the function that actually compresses the data.
 As it was shown in past
-\footnote{\url{http://go.yurichev.com/17312}},
+\footnote{\url{http://conus.info/utils/SAP_pkt_decompr.txt}},
 
 this function is used in SAP and also the open-source MaxDB project. 
 So it is available in source form.

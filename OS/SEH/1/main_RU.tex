@@ -61,7 +61,7 @@
 Попробуем написать свой примитивный обработчик исключений.
 Этот пример основан на примере из \PietrekSEH.
 Он должен компилироваться с опцией SAFESEH: \TT{cl seh1.cpp /link /safeseh:no}.
-Подробнее об опции SAFESEH здесь: \href{http://go.yurichev.com/17252}{MSDN}.
+Подробнее об опции SAFESEH здесь: \href{http://msdn.microsoft.com/en-us/library/9a89h429.aspx}{MSDN}.
 	
 \lstinputlisting[style=customc]{OS/SEH/1/1.cpp}
 
@@ -84,7 +84,7 @@ _EXCEPTION_REGISTRATION ends
 
 \input{OS/SEH/1/tikz}
 
-После инсталляции своего обработчика, вызываем \TT{RaiseException()}\footnote{\href{http://go.yurichev.com/17253}{MSDN}}.
+После инсталляции своего обработчика, вызываем \TT{RaiseException()}\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680552(v=vs.85).aspx}{MSDN}}.
 Это пользовательские исключения. 
 Обработчик проверяет код.\\
 Если код \TT{0xE1223344}, то он возвращает \TT{ExceptionContinueExecution},

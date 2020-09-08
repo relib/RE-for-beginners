@@ -893,7 +893,7 @@ The rotate1/2/3 functions are in fact rotating all bits in a specific plane.
 These three functions are one for each cube side and the \TT{v} argument sets the plane in the range of 0..7.
 
 Maybe the algorithm's author was thinking of a 8*8*8 Rubik's cube
-\footnote{\href{http://go.yurichev.com/17115}{wikipedia}}?!
+\footnote{\href{http://en.wikipedia.org/wiki/Rubik's_Cube}{wikipedia}}?!
 
 Yes, indeed.
 
@@ -920,7 +920,7 @@ void decrypt (BYTE *buf, int sz, char *pw)
 \end{lstlisting}
 
 It is almost the same as for \TT{crypt()}, \emph{but} the password string is reversed by the
-strrev() \footnote{\href{http://go.yurichev.com/17249}{MSDN}}
+strrev() \footnote{\href{http://msdn.microsoft.com/en-us/library/9hby7w40(VS.80).aspx}{MSDN}}
 standard C function and \TT{rotate\_all()} is called with argument 3. 
 
 This implies that in case of decryption, each corresponding rotate1/2/3 call is to be performed thrice.

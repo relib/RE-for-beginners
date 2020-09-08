@@ -32,13 +32,13 @@ sur la pile pour une certaine raison.
 \myindex{Shadow space}
 \label{shadow_space}
 Ceci est appelé \q{shadow space} % TODO dont know translation, mabe better to keep as is
-\footnote{\href{http://go.yurichev.com/17256}{MSDN}}: 
+\footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}: 
 chaque Win64 peut (mais ce n'est pas requis) y sauver les 4 registres. % TODO clarify Win64
 Ceci est fait pour deux raisons:
 1) c'est trop généreux d'allouer un registre complet (et même 4 registres) pour
 un argument en entrée, donc il sera accédé par la pile;
 2) le debugger sait toujours où trouver les arguments de la fonction lors d'un arrêt
-\footnote{\href{http://go.yurichev.com/17257}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
 Donc, de grosses fonctions peuvent sauvegarder leurs arguments en entrée dans le \q{shadows space}
 si elle veulent les utiliser pendant l'exécution, mais quelques petites fonctions

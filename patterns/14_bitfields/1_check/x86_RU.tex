@@ -36,7 +36,7 @@
 GENERIC\_READ | GENERIC\_WRITE = 0x80000000 | 0x40000000 = 0xC0000000,
 и это значение используется как второй аргумент для функции
 \TT{CreateFile()}
-\footnote{\href{http://go.yurichev.com/17065}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}.
 
 Как \TT{CreateFile()} будет проверять флаги?
 \myindex{Windows!KERNEL32.DLL}
@@ -105,7 +105,7 @@ void main()
 При системном вызове \TT{sys\_open} управление в конечном итоге передается в \TT{do\_sys\_open} в ядре Linux 2.6. 
 Оттуда~--- в \TT{do\_filp\_open()} (эта функция находится в исходниках ядра в файле \TT{fs/namei.c}).
 
-\newcommand{\URLREGPARM}{\href{http://go.yurichev.com/17040}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
+\newcommand{\URLREGPARM}{\href{http://www.ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
 
 \myindex{fastcall}
 \label{regparm}
@@ -115,7 +115,7 @@ N.B. Помимо передачи параметров функции чере�
 В GCC есть опция \emph{regparm}\footnote{\URLREGPARM}, 
 и с её помощью можно задать, сколько аргументов можно передать через регистры.
 
-\newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
+\newcommand{\URLKERNELNEWB}{\href{http://kernelnewbies.org/Linux_2_6_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
 \newcommand{\CALLINGHFILE}{arch/x86/include/asm/calling.h}
 
 Ядро Linux 2.6 собирается с опцией \TT{-mregparm=3}\footnote{\URLKERNELNEWB}

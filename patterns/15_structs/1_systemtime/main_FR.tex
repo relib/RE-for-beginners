@@ -1,7 +1,7 @@
 ﻿\subsection{MSVC: exemple SYSTEMTIME}
 \label{sec:SYSTEMTIME}
 
-\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://go.yurichev.com/17260}{MSDN: SYSTEMTIME structure}}}
+\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724950(VS.85).aspx}{MSDN: SYSTEMTIME structure}}}
 
 Considérons la structure win32 SYSTEMTIME\FNSYSTEMTIME{} qui décrit un instant dans le temps. Voici
 comment elle est définie:
@@ -30,7 +30,7 @@ Le résultat de la compilation avec MSVC 2010 donne:
 16 octets sont réservés sur la pile pour cette structure, ce qui correspond exactement à
 \TT{sizeof(WORD)*8}. La structure comprend effectivement 8 variables d'un WORD chacun.
 
-\newcommand{\FNMSDNGST}{\footnote{\href{http://go.yurichev.com/17261}{MSDN: GetSystemTime function}}}
+\newcommand{\FNMSDNGST}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724390(VS.85).aspx}{MSDN: GetSystemTime function}}}
 
 Faites attention au fait que le premier membre de la structure est le champ \TT{wYear}.
 On peut donc considérer que la fonction \TT{GetSystemTime()}\FNSYSTEMTIME reçoit comme argument

@@ -25,7 +25,7 @@ Infine, \TT{ADDU} (\q{Add Unsigned}) sommano il valore del terzo argomento al ri
 \myindex{Integer overflow}
 
 Ci sono due tipi di istruzione addizione in MIPS: \TT{ADD} and \TT{ADDU}.
-La differnza non è legata al segno, ma alle eccezioni. \TT{ADD} può sollevare un' eccezione in caso di overflow, che di solito è utile\footnote{\url{http://go.yurichev.com/17326}} e supportato in Ada \ac{PL}, per esempio.
+La differnza non è legata al segno, ma alle eccezioni. \TT{ADD} può sollevare un' eccezione in caso di overflow, che di solito è utile\footnote{\url{http://blog.regehr.org/archives/1154}} e supportato in Ada \ac{PL}, per esempio.
 \TT{ADDU} non solleva eccezioni in caso di overlflow.
 
 Siccome \CCpp non lo supporta, nei nostri esempi vediamo \TT{ADDU} anzichè \TT{ADD}.

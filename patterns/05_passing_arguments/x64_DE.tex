@@ -35,14 +35,14 @@ gespeichert werden aus irgend einem Grund.
 \label{shadow_space}
 Dies bezeichnet man als \q{shadow space}
 
-\footnote{\href{http://go.yurichev.com/17256}{MSDN}}: 
+\footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}: 
 So wird sich wahrscheinlich jede Win64 EXE verhalten und alle vier Register Werte auf dem Stack speichern.
 
 Das wird aus zwei Gründen so gemacht:
 
 1) Es ist ziemlich übertrieben ein ganzes Register (oder gar vier Register) zu Reservieren für eine
 Argument Übergabe, also werden die Argumente über den Stack zugänglich gemacht.
-2) Der Debugger weiß immer wo die Funktions Argumente zu finden sind bei einem breakpoint\footnote{\href{http://go.yurichev.com/17257}{MSDN}}.
+2) Der Debugger weiß immer wo die Funktions Argumente zu finden sind bei einem breakpoint\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
 
 Also, so können größere Funktionen ihre Eingabe Argumente im \q{shadows space} speichern wenn die Funktion

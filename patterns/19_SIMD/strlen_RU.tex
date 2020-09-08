@@ -1,12 +1,12 @@
 ﻿\subsection{Реализация \strlen при помощи SIMD}
 \label{SIMD_strlen}
 
-\newcommand{\URLMSDNSSE}{\href{http://go.yurichev.com/17262}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
+\newcommand{\URLMSDNSSE}{\href{http://msdn.microsoft.com/en-us/library/y0dh78ez(VS.80).aspx}{MSDN: MMX, SSE, and SSE2 Intrinsics}}
 
 Прежде всего, следует заметить, что SIMD-инструкции можно вставлять в \CCpp код при помощи специальных 
 макросов\footnote{\URLMSDNSSE}. В MSVC, часть находится в файле \TT{intrin.h}.
 
-\newcommand{\URLSTRLEN}{http://go.yurichev.com/17330}
+\newcommand{\URLSTRLEN}{http://www.strchr.com/sse2_optimised_strlen}
 
 \myindex{\CStandardLibrary!strlen()}
 Имеется возможность реализовать функцию \strlen\footnote{strlen() ~--- стандартная функция Си 
@@ -39,7 +39,7 @@
 Однако здесь кроется не сразу заметная проблема, которая проявляется вот в чем:
 
 \myindex{Page (memory)}
-\newcommand{\URLPAGE}{\href{http://go.yurichev.com/17136}{wikipedia}}
+\newcommand{\URLPAGE}{\href{http://en.wikipedia.org/wiki/Page_(computer_memory)}{wikipedia}}
 
 В \ac{OS} линии \gls{Windows NT} (и не только), память выделяется страницами по 4 KiB (4096 байт). 
 Каждый win32-процесс якобы имеет в наличии 4 GiB, но на самом деле, 
@@ -178,4 +178,4 @@ EAX=0b0010000000100000
 Кстати, следует также отметить, что компилятор MSVC сгенерировал два тела цикла сразу, для оптимизации.
 
 Кстати, в SSE 4.2 (который появился в Intel Core i7) все эти манипуляции со строками могут быть еще проще:
- \url{http://go.yurichev.com/17331}
+ \url{http://www.strchr.com/strcmp_and_strlen_using_sse_4.2}

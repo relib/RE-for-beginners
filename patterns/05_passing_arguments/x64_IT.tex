@@ -27,12 +27,12 @@ L'output può lasciarci un po' perplessi in quanto tutti i 3 argomenti nei regis
 \myindex{Shadow space}
 \label{shadow_space}
 Ciò è chiamato \q{shadow space}
-\footnote{\href{http://go.yurichev.com/17256}{MSDN}}: 
+\footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}: 
 ogni Win64 potrebbe (ma non deve necessariamente farlo) salvare tutti i 4 valori dei registri in questo spazio.
 E questo avviene per due ragioni: 
 1) è eccessivo allocare un intero registro (o addirittura 4) per un argomento in input, pertanto sarà acceduto tramite lo stack.
 2) il debugger sa sempre dove trovare gli argomenti della funzione ad un break
-\footnote{\href{http://go.yurichev.com/17257}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
 Quindi, alcune funzioni piuttosto estese potrebbero salvare i loro argomenti nello \q{shadows space} nel caso in cui 
 abbiano necessità di utilizzarli durante l'esecuzione della funzione. Altre funzioni più piccole (come la nostra) potrebbero non farlo.

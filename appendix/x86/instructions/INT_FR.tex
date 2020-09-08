@@ -42,10 +42,10 @@ Afin de protéger contre le \gls{reverse engineering}, de nombreuses méthodes a
 vérifient l'intégrité du code chargé.
 
 \ac{MSVC} possède une \glslink{compiler intrinsic}{fonction intrinsèque} pour l'instruction:
-\GTT{\_\_debugbreak()}\footnote{\href{http://go.yurichev.com/17226}{MSDN}}.
+\GTT{\_\_debugbreak()}\footnote{\href{http://msdn.microsoft.com/en-us/library/f408b4et.aspx}{MSDN}}.
 
 
 Il y a aussi une fonction win32 dans kernel32.dll appelée
-\GTT{DebugBreak()}\footnote{\href{http://go.yurichev.com/17227}{MSDN}},
+\GTT{DebugBreak()}\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms679297(v=vs.85).aspx}{MSDN}},
 qui exécute aussi \GTT{INT 3}.
 

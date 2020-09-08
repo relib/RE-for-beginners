@@ -1,6 +1,6 @@
 ﻿\subsection{Векторизация}
 
-\newcommand{\URLVEC}{\href{http://go.yurichev.com/17080}{Wikipedia: vectorization}}
+\newcommand{\URLVEC}{\href{http://en.wikipedia.org/wiki/Vectorization_(computer_science)}{Wikipedia: vectorization}}
 
 Векторизация\footnote{\URLVEC} это когда у вас есть цикл, который берет на вход несколько массивов и выдает, 
 например, один массив данных. 
@@ -11,7 +11,7 @@
 \myindex{Cray}
 Векторизация ~--- это не самая новая технология: автор сих строк видел её по крайней мере на 
 линейке суперкомпьютеров Cray Y-MP от 1988, когда работал на его версии-\q{лайт} Cray Y-MP EL
-\footnote{Удаленно. Он находится в музее суперкомпьютеров: \url{http://go.yurichev.com/17081}}.
+\footnote{Удаленно. Он находится в музее суперкомпьютеров: \url{http://www.cray-cyber.org}}.
 
 % FIXME! add assembly listing!
 Например:
@@ -37,7 +37,7 @@ for (i = 0; i < 1024; i++)
 
 Таким образом, тело цикла исполняется $1024/4$ раза вместо 1024, что в 4 раза меньше, и, конечно, быстрее.
 
-\newcommand{\URLINTELVEC}{\href{http://go.yurichev.com/17082}{Excerpt: Effective Automatic Vectorization}}
+\newcommand{\URLINTELVEC}{\href{http://www.intel.com/intelpress/sum_vmmx.htm}{Excerpt: Effective Automatic Vectorization}}
 
 \subsubsection{Пример сложения}
 
@@ -114,7 +114,7 @@ movdqa  xmmword ptr [eax+edi*4], xmm0 ; ar3+i*4
 
 \myparagraph{GCC}
 
-\newcommand{\URLGCCVEC}{\url{http://go.yurichev.com/17083}}
+\newcommand{\URLGCCVEC}{\url{http://gcc.gnu.org/projects/tree-ssa/vectorization.html}}
 
 Но и GCC умеет кое-что векторизировать\footnote{Подробнее о векторизации в GCC: \URLGCCVEC}, 
 если компилировать с опциями \Othree и включить поддержку SSE2: \TT{-msse2}.

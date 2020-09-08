@@ -68,7 +68,7 @@ one of them will be loaded at this base address, and the other---at some other f
 and each virtual addresses in the second DLL will be corrected.
 
 \par With \ac{MSVC} the linker often generates the .exe files with a base address of \TT{0x400000}
-\footnote{The origin of this address choice is described here: \href{http://go.yurichev.com/17041}{MSDN}},
+\footnote{The origin of this address choice is described here: \href{http://blogs.msdn.com/b/oldnewthing/archive/2014/10/03/10562176.aspx}{MSDN}},
 and with the code section starting at \TT{0x401000}.
 This means that the \ac{RVA} of the start of the code section is \TT{0x1000}.
 
@@ -115,7 +115,7 @@ There is also a \emph{subsystem} field, usually it is:
 A PE file also specifies the minimal Windows version it needs in order to be loadable.
 
 The table of version numbers stored in the PE file and corresponding Windows codenames is
-here\footnote{\href{http://go.yurichev.com/17044}{Wikipédia}}.
+here\footnote{\href{https://en.wikipedia.org/wiki/Windows_NT#Releases}{Wikipédia}}.
 
 \myindex{Windows!Windows NT4}
 \myindex{Windows!Windows 2000}
@@ -126,7 +126,7 @@ For example, \ac{MSVC} 2005 compiles .exe files for running on Windows NT4 (vers
 
 \ac{MSVC} 2012 generates .exe files of version 6.00 by default,
 targeting at least Windows Vista.
-However, by changing the compiler's options\footnote{\href{http://go.yurichev.com/17045}{MSDN}},
+However, by changing the compiler's options\footnote{\href{http://blogs.msdn.com/b/vcblog/archive/2012/10/08/10357555.aspx}{MSDN}},
 it is possible to force it to compile for Windows XP.
 
 \subsubsection{Sections}
@@ -175,7 +175,7 @@ Other popular section names are:
 PE file packers/encryptors often garble section names or replace the names with their own.
 
 \ac{MSVC} allows you to declare data in arbitrarily named section
-\footnote{\href{http://go.yurichev.com/17047}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/cc307397.aspx}{MSDN}}.
 
 Some compilers and linkers can add a section with debugging symbols and
 other debugging information (MinGW for instance).
@@ -201,7 +201,7 @@ typedef struct _IMAGE_SECTION_HEADER {
   DWORD Characteristics;
 } IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;
 \end{lstlisting}
-\footnote{\href{http://go.yurichev.com/17048}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680341(v=vs.85).aspx}{MSDN}}
 
 \myindex{Hiew}
 A word about terminology: \emph{PointerToRawData} is called \q{Offset} in Hiew
@@ -399,7 +399,7 @@ Possible, the linker creates individual \q{thunk}s if there are too many calls t
 but not done by default. \\
 \\
 By the way, the array of function addresses to which FirstThunk is pointing is not necessary to be located in the \ac{IAT} section.
-For example, the author of these lines once wrote the PE\_add\_import\footnote{\href{http://go.yurichev.com/17049}{yurichev.com}}
+For example, the author of these lines once wrote the PE\_add\_import\footnote{\href{http://yurichev.com/PE_add_imports.html}{yurichev.com}}
 utility for adding imports to an existing .exe-file.
 
 Some time earlier, in the previous versions of the utility,
@@ -430,7 +430,7 @@ If a value is present there, then the loader compares this value with the date-t
 
 If the values are equal, then the loader does not do anything, and the loading of the process can be faster.
 This is called \q{old-style binding}
-\footnote{\href{http://go.yurichev.com/17050}{MSDN}. There is also the \q{new-style binding}.}.
+\footnote{\href{http://blogs.msdn.com/b/oldnewthing/archive/2010/03/18/9980802.aspx}{MSDN}. There is also the \q{new-style binding}.}.
 \myindex{BIND.EXE}
 
 The BIND.EXE utility in Windows SDK is for this.
@@ -486,7 +486,7 @@ The .NET loader is located in mscoree.dll, which processes the PE file.
 
 It was so in all pre-Windows XP \ac{OS}es. Starting from XP, the \ac{OS} loader is able to detect the .NET file
 and run it without executing that \JMP instruction
-\footnote{\href{http://go.yurichev.com/17051}{MSDN}}.
+\footnote{\href{http://msdn.microsoft.com/en-us/library/xh0859k0(v=vs.110).aspx}{MSDN}}.
 
 \myindex{TLS}
 \subsubsection{TLS}
@@ -515,22 +515,22 @@ This is used widely in the PE file packers/encryptors.
 
 \item Hiew(\myref{Hiew}) as editor.
 
-\item pefile---Python-library for PE-file processing \footnote{\url{http://go.yurichev.com/17052}}.
+\item pefile---Python-library for PE-file processing \footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item ResHack \acs{AKA} Resource Hacker---resources editor\footnote{\url{http://go.yurichev.com/17052}}.
+\item ResHack \acs{AKA} Resource Hacker---resources editor\footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item PE\_add\_import\footnote{\url{http://go.yurichev.com/17049}}---
+\item PE\_add\_import\footnote{\url{http://yurichev.com/PE_add_imports.html}}---
 simple tool for adding symbol(s) to PE executable import table.
 
-\item PE\_patcher\footnote{\href{http://go.yurichev.com/17054}{yurichev.com}}---simple tool for patching PE executables.
+\item PE\_patcher\footnote{\href{http://yurichev.com/PE_patcher.html}{yurichev.com}}---simple tool for patching PE executables.
 
-\item PE\_search\_str\_refs\footnote{\href{http://go.yurichev.com/17055}{yurichev.com}}---simple tool for searching for a function in PE executables which use some text string.
+\item PE\_search\_str\_refs\footnote{\href{http://yurichev.com/PE_search_str_refs.html}{yurichev.com}}---simple tool for searching for a function in PE executables which use some text string.
 \end{itemize}
 
 \subsubsection{Further reading}
 
 % FIXME: bibliography per chapter or section
 \begin{itemize}
-\item Daniel Pistelli---The .NET File Format \footnote{\url{http://go.yurichev.com/17056}}
+\item Daniel Pistelli---The .NET File Format \footnote{\url{http://www.codeproject.com/Articles/12585/The-NET-File-Format}}
 \end{itemize}
 

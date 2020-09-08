@@ -66,7 +66,7 @@ Often, we see instructions like \INS{PUSH {R4-R7,LR}} along with this instructio
 
 \myindex{ARM!Leaf function}
 Nevertheless, if a function never calls any other function, in \ac{RISC} terminology it is called a
-\emph{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
+\emph{\gls{leaf function}}\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}. 
 As a consequence, leaf functions do not save the \ac{LR} register (because they don't modify it).
 If such function is small and uses a small number of registers, it may not use the stack at all.
 Thus, it is possible to call leaf functions without using the stack,

@@ -75,7 +75,7 @@ Stack gespeichert, inklusive \ac{LR}.
 
 \myindex{ARM!Leaf Funktion}
 Wenn eine Funktion nie eine andere Funktion aufruft, nennt man das in der \ac{RISC} Terminologie eine
-\emph{\glslink{leaf function}{leaf Funktion}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.  % <-- attention could be a compilier bug
+\emph{\glslink{leaf function}{leaf Funktion}}\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.  % <-- attention could be a compilier bug
 Als Konsequenz ergibt sich, das leaf Funktionen nicht das \ac{LR} Register speichern (da sie es nicht modifizieren).
 Wenn solche Funktionen klein sind und nur eine geringe Anzahl an Registern benutzt, ist es möglich das der Stack
 gar nicht benutzt wird. Es ist also möglich leaf Funktionen zu benutzen ohne den Stack zurück zu greifen, die Ausführung

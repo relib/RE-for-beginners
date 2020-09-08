@@ -103,7 +103,7 @@ Intel C++编译器使用\TT{POP ECX}是因为它的机器码比\TT{ADD ESP, x}�
 
 \myindex{x86!\Instructions!MOV}
 
-\XOR即\q{eXclusive OR}，\footnote{\href{http://go.yurichev.com/17118}{wikipedia}}但是编译器通常使用它来代替
+\XOR即\q{eXclusive OR}，\footnote{\href{http://en.wikipedia.org/wiki/Exclusive_or}{wikipedia}}但是编译器通常使用它来代替
 \INS{MOV EAX, 0}---原因还是它的机器码更少(\XOR占用2字节而\MOV占用5字节)。
 
 \myindex{x86!\Instructions!SUB}

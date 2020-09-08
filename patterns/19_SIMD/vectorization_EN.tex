@@ -1,6 +1,6 @@
 ﻿\subsection{Vectorization}
 
-\newcommand{\URLVEC}{\href{http://go.yurichev.com/17080}{Wikipedia: vectorization}}
+\newcommand{\URLVEC}{\href{http://en.wikipedia.org/wiki/Vectorization_(computer_science)}{Wikipedia: vectorization}}
 
 Vectorization\footnote{\URLVEC} is when, for example, you have a loop taking couple of arrays for input and producing one array.
 The loop body takes values from the input arrays, does something and puts the result into the output array.
@@ -10,7 +10,7 @@ Vectorization is to process several elements simultaneously.
 \myindex{Cray}
 Vectorization is not very fresh technology: the author of this textbook saw it at least on the Cray Y-MP 
 supercomputer line from 1988 when he played with its \q{lite} version Cray Y-MP EL
-\footnote{Remotely. It is installed in the museum of supercomputers: \url{http://go.yurichev.com/17081}}.
+\footnote{Remotely. It is installed in the museum of supercomputers: \url{http://www.cray-cyber.org}}.
 
 % FIXME! add assembly listing!
 For example:
@@ -35,7 +35,7 @@ it is possible to get 4 64-bit \glspl{product} at once.
 
 Thus, loop body execution count is $1024/4$ instead of 1024, that is 4 times less and, of course, faster.
 
-\newcommand{\URLINTELVEC}{\href{http://go.yurichev.com/17082}{Excerpt: Effective Automatic Vectorization}}
+\newcommand{\URLINTELVEC}{\href{http://www.intel.com/intelpress/sum_vmmx.htm}{Excerpt: Effective Automatic Vectorization}}
 
 \subsubsection{Addition example}
 
@@ -113,7 +113,7 @@ In all other cases, non-SSE2 code is to be executed.
 
 \myparagraph{GCC}
 
-\newcommand{\URLGCCVEC}{\url{http://go.yurichev.com/17083}}
+\newcommand{\URLGCCVEC}{\url{http://gcc.gnu.org/projects/tree-ssa/vectorization.html}}
 
 GCC may also vectorize in simple cases\footnote{More about GCC vectorization support: \URLGCCVEC},
 if the \Othree option is used and SSE2 support is turned on: \TT{-msse2}.

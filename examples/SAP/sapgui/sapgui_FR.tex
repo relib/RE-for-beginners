@@ -9,8 +9,8 @@
 et la fenêtre pop-up gênante et ennuyeuse et la routine de compression de données actuelle.)
  
 On sait que le trafic réseau entre le SAPGUI et SAP n'est pas chiffré par défaut,
-mais compressé (voir ici\footnote{\url{http://go.yurichev.com/17221}} et
-ici\footnote{\href{http://go.yurichev.com/17225}{blog.yurichev.com}}).
+mais compressé (voir ici\footnote{\url{http://blog.yurichev.com/node/44}} et
+ici\footnote{\href{http://blog.yurichev.com/node/47}{blog.yurichev.com}}).
 
 Il est aussi connue que mettre la variable d'environnement \emph{\TDWNC} à 1,
 permet d'arrêter la compression des paquets réseau.
@@ -32,7 +32,7 @@ quelque part dans le client SAPGUI.
 
 Deuxièmement: une chaîne comme \q{data compression switched off} doit s'y trouver
 quelque part.
-\newcommand{\FNURLFAR}{\footnote{\url{http://go.yurichev.com/17347}}}
+\newcommand{\FNURLFAR}{\footnote{\url{http://www.farmanager.com/}}}
 
 Avec l'aide du gestionnaire de fichier FAR\FNURLFAR nous pouvons trouver que deux
 de ces chaînes sont stockées dans le fichier SAPguilib.dll.
@@ -57,7 +57,7 @@ Jetons aussi un \oe{}il à la fonction \TT{chk\_env()} (nous avons donné ce nom
 \lstinputlisting[style=customasmx86]{examples/SAP/sapgui/01.lst}
 
 \myindex{\CStandardLibrary!getenv()}
-Oui. La fonction \TT{getenv\_s()}\footnote{\href{http://go.yurichev.com/17250}{MSDN}}
+Oui. La fonction \TT{getenv\_s()}\footnote{\href{http://msdn.microsoft.com/en-us/library/tb2sfw2z(VS.80).aspx}{MSDN}}
 
 est une version de Microsoft à la sécurité avancée de \TT{getenv()}\footnote{Fonction
 de la bibliothèque C standard renvoyant une variable d'environnement}.
@@ -217,7 +217,7 @@ Et, regardons dans \emph{sub\_64417440}. Nous y voyons:
 
 Voilà! Nous avons trouvé la fonction qui effectue la compression des données.
 Comme cela a été décrit dans le passé
-\footnote{\url{http://go.yurichev.com/17312}},
+\footnote{\url{http://conus.info/utils/SAP_pkt_decompr.txt}},
 
 cette fonction est utilisé dans SAP et aussi dans le projet open-source MaxDB.
 Donc, elle est disponible sous forme de code source.

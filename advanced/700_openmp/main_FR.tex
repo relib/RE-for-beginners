@@ -15,7 +15,7 @@ afin de produire un hash avec quelques caractéristiques spécifiques.
 Par exemple, à certaines étapes, le protocole Bitcoin nécessite de trouver de tels
 \emph{nonce} dont le hash résultant contient un nombre spécifique de zéros consécutifs.
 Ceci est aussi appelé \q{preuve de travail}
-\footnote{\href{http://go.yurichev.com/17101}{Wikipédia}}
+\footnote{\href{https://en.wikipedia.org/wiki/Proof-of-work_system}{Wikipédia}}
 (i.e., le système prouve qu'il a fait des calculs intensifs et y a passé du temps).
 
 \myindex{SHA512}
@@ -50,7 +50,7 @@ mais en pratique, l'utilisation de OpenMP peut être plus difficile et plus comp
 
 L'exemple peut être compilé\footnote{Les fichiers sha512.(c|h) et u64.h peuvent être
 pris de la bibliothèque OpenSSL:
-\url{http://go.yurichev.com/17324}}
+\url{http://www.openssl.org/source/}}
 dans MSVC 2012:
 % FIXME1: \footnote{other source code files can be downloaded here: ...}
 
@@ -194,4 +194,4 @@ GCC a également inséré l'instruction \TT{LOCK ADD} directement dans le code, 
 
 Les fonctions préfixées par GOMP sont de la bibliothèque GNU OpenMP.
 Contrairement à vcomp*.dll, son code source est librement disponible:
-\href{http://go.yurichev.com/17102}{GitHub}.
+\href{https://github.com/mirrors/gcc/tree/master/libgomp}{GitHub}.

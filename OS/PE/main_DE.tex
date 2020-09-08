@@ -78,7 +78,7 @@ andere an eine andere freie Stelle im Prozessspeicher. Jede virtuelle Adresse de
 zweiten DLL wird korrigiert.
 
 \par Mit \ac{MSVC} generiert der Linker oft .exe-Dateien mit der Basisadresse
-\TT{0x400000}\footnote{der Ursprung dieser Adress-Auswahl ist hier: \href{http://go.yurichev.com/17041}{MSDN}},
+\TT{0x400000}\footnote{der Ursprung dieser Adress-Auswahl ist hier: \href{http://blogs.msdn.com/b/oldnewthing/archive/2014/10/03/10562176.aspx}{MSDN}},
 und mit der Code-Sektion die bei \TT{0x401000} beginnt.
 Dies bedeutet, dass die \ac{RVA} des Beginns der Code-Sektion \TT{0x1000} ist.
 
@@ -126,7 +126,7 @@ Eine PE-Datei spezifiziert auch die minimale Windows-Version die sie benötigt u
 ladbar zu sein.
 
 Die Tabelle mit Versionsnummern in der PE-Datei und die entsprechenden Windows-Codenamen
-ist hier\footnote{\href{http://go.yurichev.com/17044}{Wikipédia}}.
+ist hier\footnote{\href{https://en.wikipedia.org/wiki/Windows_NT#Releases}{Wikipédia}}.
 
 \myindex{Windows!Windows NT4}
 \myindex{Windows!Windows 2000}
@@ -138,7 +138,7 @@ mindestens Windows 2000 notwendig um sie ausführen zu können).
 
 \ac{MSVC} 2012 erzeugt standardmäßig .exe-Dateien mit der Version 6.00, die mindestens
 Windows Vista benötigen.
-Mit Änderungen an den Compiler-Option\footnote{\href{http://go.yurichev.com/17045}{MSDN}}
+Mit Änderungen an den Compiler-Option\footnote{\href{http://blogs.msdn.com/b/vcblog/archive/2012/10/08/10357555.aspx}{MSDN}}
 ist es jedoch möglich eine Kompilierung für Windows XP zu erzwingen.
 
 \subsubsection{Sektionen}
@@ -195,7 +195,7 @@ Pack- und Verschlüsselungsprogramme für PE-Dateien verändern häufig die Sekt
 oder ersetzen sie durch eigene Namen.
 
 \ac{MSVC} ermöglicht es Daten in beliebigen benannte Sektion zu
-deklarieren\footnote{\href{http://go.yurichev.com/17047}{MSDN}}.
+deklarieren\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/cc307397.aspx}{MSDN}}.
 
 Einige Compiler und Linker können eine Sektion mit Debug-Symbolen und anderen
 Debug-Informationen hinzufügen (MinGW zum Beispiel).
@@ -222,7 +222,7 @@ typedef struct _IMAGE_SECTION_HEADER {
   DWORD Characteristics;
 } IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;
 \end{lstlisting}
-\footnote{\href{http://go.yurichev.com/17048}{MSDN}}
+\footnote{\href{http://msdn.microsoft.com/en-us/library/windows/desktop/ms680341(v=vs.85).aspx}{MSDN}}
 
 \myindex{Hiew}
 Ein Wort zur Terminologie: \emph{PointerToRawData} wird in Hiew \q{Offset}
@@ -437,7 +437,7 @@ Funktion vorliegen. Dies ist jedoch nicht das Standardverhalten.
 
 Übrigens muss das Array der Funktionsadressen auf das FirstThunk zeigt nicht unbedingt
 in der \ac{IAT}-Sektion sein. Beispielsweise hat der Autor dieser Zeilen einmal das
-PE\_add\_import\footnote{\href{http://go.yurichev.com/17049}{yurichev.com}}-Tool
+PE\_add\_import\footnote{\href{http://yurichev.com/PE_add_imports.html}{yurichev.com}}-Tool
 geschrieben um Imports zu einer existierenden .exe-Datei hinzufügen zu können.
 
 In einer früheren Version des Tools hat dieses an die Stelle der Funktion an der
@@ -469,7 +469,7 @@ Wenn der Wert dort verfügbar ist, vergleicht der Lader diesen Wert mit dem
 Zeitstempel der DLL-Datei.
 
 Wenn der Wert gleich ist, macht der Lader nichts und der Vorgang kann schneller
-sein. Dies wird \q{old-style binding}\footnote{\href{http://go.yurichev.com/17050}{MSDN}. Dort auch \q{new-style binding}.}
+sein. Dies wird \q{old-style binding}\footnote{\href{http://blogs.msdn.com/b/oldnewthing/archive/2010/03/18/9980802.aspx}{MSDN}. Dort auch \q{new-style binding}.}
 genannt.
 
 \myindex{BIND.EXE}
@@ -534,7 +534,7 @@ Der .NET-Lader befindet sich in mscoree.dll, welche die PE-Datei verarbeitet.
 
 Dies war in allen Windows-Versionen vor Windows XP der Fall. Seit Windows XP
 ist der \ac{OS}-Lader in der Lage .NET-Dateien zu erkennen und diese ohne eine
-\JMP-Anweisung auszuführen\footnote{\href{http://go.yurichev.com/17051}{MSDN}}.
+\JMP-Anweisung auszuführen\footnote{\href{http://msdn.microsoft.com/en-us/library/xh0859k0(v=vs.110).aspx}{MSDN}}.
 
 \myindex{TLS}
 \subsubsection{TLS}
@@ -564,17 +564,17 @@ Dies ist sehr verbreitet bei Packern und Verschlüsselungsprogrammen für PE-Dat
 
 \item Hiew(\myref{Hiew}) als Editor.
 
-\item pefile: Python-Bibliothek für die Verarbeitung von PE-Dateien\footnote{\url{http://go.yurichev.com/17052}}.
+\item pefile: Python-Bibliothek für die Verarbeitung von PE-Dateien\footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item ResHack \acs{AKA} Resource Hacker: Ressourcen-Editor\footnote{\url{http://go.yurichev.com/17052}}.
+\item ResHack \acs{AKA} Resource Hacker: Ressourcen-Editor\footnote{\url{https://code.google.com/p/pefile/}}.
 
-\item PE\_add\_import\footnote{\url{http://go.yurichev.com/17049}}: einfaches Tool
+\item PE\_add\_import\footnote{\url{http://yurichev.com/PE_add_imports.html}}: einfaches Tool
 um Symbole zur PE Importtabelle hinzuzufügen.
 
-\item PE\_patcher\footnote{\href{http://go.yurichev.com/17054}{yurichev.com}}:
+\item PE\_patcher\footnote{\href{http://yurichev.com/PE_patcher.html}{yurichev.com}}:
 einfaches Tool um ausführbare PE-Dateien zu patchen.
 
-\item PE\_search\_str\_refs\footnote{\href{http://go.yurichev.com/17055}{yurichev.com}}:
+\item PE\_search\_str\_refs\footnote{\href{http://yurichev.com/PE_search_str_refs.html}{yurichev.com}}:
 einfaches Tool zum Suchen von Funktionen in ausführbaren PE-Dateien die bestimmte
 Zeichenketten nutzen.
 \end{itemize}
@@ -583,5 +583,5 @@ Zeichenketten nutzen.
 
 % FIXME: bibliography per chapter or section
 \begin{itemize}
-\item Daniel Pistelli: The .NET File Format \footnote{\url{http://go.yurichev.com/17056}}
+\item Daniel Pistelli: The .NET File Format \footnote{\url{http://www.codeproject.com/Articles/12585/The-NET-File-Format}}
 \end{itemize}

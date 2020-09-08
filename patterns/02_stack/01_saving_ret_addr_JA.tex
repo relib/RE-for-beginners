@@ -62,7 +62,7 @@ GCC 4.4.1はどちらの場合も問題の警告を出さずに同様のコー�
 
 \myindex{ARM!Leaf function}
 それにもかかわらず、ある関数が他の関数を呼び出すことがなければ、\ac{RISC}の用語ではそれを
-\emph{\gls{leaf function}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}と呼びます。
+\emph{\gls{leaf function}}\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}と呼びます。
 その結果、リーフ関数は\ac{LR}レジスタを保存しません（\ac{LR}レジスタを変更しないため）。 
 このような関数が小さく、少数のレジスタを使用する場合は、スタックをまったく使用しないことがあります。 
 したがって、スタックを使用せずにリーフ関数を呼び出すことができます。

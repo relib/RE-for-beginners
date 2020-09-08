@@ -63,7 +63,7 @@ Zwykle odbywa się to w prologu funkcji, często widzimy tam instrukcję jak \IN
 
 \myindex{ARM!Leaf function}
 Jeśli jakaś funkcja nie wywołuje żadnych innych funkcji w trakcie swojej pracy, w terminologii \ac{RISC} nazywana jest
-\emph{\glslink{leaf function}{funkcją-liściem}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
+\emph{\glslink{leaf function}{funkcją-liściem}}\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
 Z tego powodu funkcja-liść nie odkłada rejestru \ac{LR} na stos, ponieważ go nie zmienia.
 Jeśli funkcja jest niewielkich rozmiarów i korzysta z małej liczby rejestrów, to może w ogóle nie korzystać ze stosu.
 Stąd w ARM możliwe jest wywoływanie małych funkcji-liści bez używania stosu.

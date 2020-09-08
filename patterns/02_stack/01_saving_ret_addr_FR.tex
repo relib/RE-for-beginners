@@ -72,7 +72,7 @@ sont utilisés dans la fonction sont sauvegardés sur la pile, \ac{LR} inclus.
 
 \myindex{ARM!Fonction leaf} % FIXME traduire avec feuille ?
 Néanmoins, si une fonction n'appelle jamais d'autre fonction, dans la terminologie
-\ac{RISC} elle est appelée \emph{\glslink{leaf function}{fonction leaf}}\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
+\ac{RISC} elle est appelée \emph{\glslink{leaf function}{fonction leaf}}\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
 Ceci a comme conséquence que les fonctions leaf ne sauvegardent pas le registre
 \ac{LR} (car elles ne le modifient pas).
 Si une telle fonction est petite et utilise un petit nombre de registres, elle

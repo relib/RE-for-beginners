@@ -4,7 +4,7 @@
 Il existe quelques méthodes pour protéger contre ce fléau, indépendamment de la négligence
 des programmeurs \CCpp.
 MSVC possède des options comme\footnote{méthode de protection contre les débordements
-de tampons côté compilateur:\href{http://go.yurichev.com/17133}{wikipedia.org/wiki/Buffer\_overflow\_protection}}:
+de tampons côté compilateur:\href{http://en.wikipedia.org/wiki/Buffer_overflow_protection}{wikipedia.org/wiki/Buffer\_overflow\_protection}}:
 
 \begin{lstlisting}
  /RTCs Stack Frame runtime checking
@@ -22,7 +22,7 @@ Si la valeur n'est pas la même, ne pas exécuter la dernière instruction \RET,
 stopper (ou bloquer).
 Le processus va s'arrêter, mais c'est mieux qu'une attaque distante sur votre ordinateur.
     
-\newcommand{\CANARYURL}{\href{http://go.yurichev.com/17134}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
+\newcommand{\CANARYURL}{\href{http://en.wikipedia.org/wiki/Domestic_Canary\#Miner.27s_canary}{wikipedia.org/wiki/Domestic\_canary\#Miner.27s\_canary}}
 
 \myindex{Canary}
 
@@ -97,7 +97,7 @@ Aujourd'hui, sa fonction est différente.
 Dit brièvement, le registre \TT{gs} dans Linux pointe toujours sur le
 \ac{TLS}~(\myref{TLS})---des informations spécifiques au thread sont stockées là.
 À propos, en win32 le registre \TT{fs} joue le même rôle, pointant sur \ac{TIB}
-\footnote{\href{http://go.yurichev.com/17104}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}.
+\footnote{\href{https://en.wikipedia.org/wiki/Win32_Thread_Information_Block}{wikipedia.org/wiki/Win32\_Thread\_Information\_Block}}.
 
 Il y a plus d'information dans le code source du noyau Linux (au moins dans la version 3.11),
 dans\\

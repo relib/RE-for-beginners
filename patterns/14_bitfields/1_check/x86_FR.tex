@@ -35,7 +35,7 @@ Regardons dans WinNT.h:
 Tout est clair,
 GENERIC\_READ | GENERIC\_WRITE = 0x80000000 | 0x40000000 = 0xC0000000,
 et c'est la valeur utilisée comme second argument pour la fonction
-\TT{CreateFile()}\footnote{\href{http://go.yurichev.com/17065}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}.
+\TT{CreateFile()}\footnote{\href{http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}.
 
 Comment \TT{CreateFile()} va tester ces flags?
 \myindex{Windows!KERNEL32.DLL}
@@ -113,7 +113,7 @@ contrôle passe finalement à \TT{do\_sys\_open}, et à partir de là---à la fo
 \TT{do\_filp\_open()} (elle est située ici \TT{fs/namei.c} dans l'arborescence des
 sources du noyau).
 
-\newcommand{\URLREGPARM}{\href{http://go.yurichev.com/17040}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
+\newcommand{\URLREGPARM}{\href{http://www.ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
 
 \myindex{fastcall}
 \label{regparm}
@@ -124,7 +124,7 @@ pour lire la valeur des arguments.
 GCC a l'option \emph{regparm}\footnote{\URLREGPARM}, avec laquelle il est possible
 de définir le nombre d'arguments qui peuvent être passés par des registres.
 
-\newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
+\newcommand{\URLKERNELNEWB}{\href{http://kernelnewbies.org/Linux_2_6_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
 \newcommand{\CALLINGHFILE}{arch/x86/include/asm/calling.h}
 
 Le noyau Linux 2.6 est compilé avec l'option \TT{-mregparm=3}~\footnote{\URLKERNELNEWB}

@@ -1,7 +1,7 @@
 \subsection{MSVC: SYSTEMTIME example}
 \label{sec:SYSTEMTIME}
 
-\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://go.yurichev.com/17260}{MSDN: SYSTEMTIME structure}}}
+\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724950(VS.85).aspx}{MSDN: SYSTEMTIME structure}}}
 
 Let's take the SYSTEMTIME\FNSYSTEMTIME{} win32 structure that describes time.
 
@@ -31,7 +31,7 @@ We get (MSVC 2010):
 16 bytes are allocated for this structure in the local stack~---that is exactly \TT{sizeof(WORD)*8}
 (there are 8 WORD variables in the structure).
 
-\newcommand{\FNMSDNGST}{\footnote{\href{http://go.yurichev.com/17261}{MSDN: GetSystemTime function}}}
+\newcommand{\FNMSDNGST}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724390(VS.85).aspx}{MSDN: GetSystemTime function}}}
 
 Pay attention to the fact that the structure begins with the \TT{wYear} field.
 It can be said that a pointer to the SYSTEMTIME structure is passed to the \TT{GetSystemTime()}\FNSYSTEMTIME,

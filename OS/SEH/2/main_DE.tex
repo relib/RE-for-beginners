@@ -2,7 +2,7 @@
 
 \myindex{\Cpp!exceptions}
 Offensichtlich benötigten die Microsoft-Entwickler Ausnahmen in C aber nicht in
-\Cpp und führten eine nicht-standardisierte C-Erweiterung ein \footnote{\href{http://go.yurichev.com/17057}{MSDN}}.
+\Cpp und führten eine nicht-standardisierte C-Erweiterung ein \footnote{\href{http://msdn.microsoft.com/en-us/library/swezty51.aspx}{MSDN}}.
 Diese hat aber keinen Zusammenhang zu  C++ \ac{PL}-Ausnahmen.
 
 % FIXME russian listing:
@@ -80,9 +80,9 @@ werden muss.
 Der Quellcode der \TT{\_except\_handler3}-Funktion ist nicht offen.
 
 Sanos OS, welches einen Win32-Kompatibilitäts-Layer hat, hat die gleiche Funktion
-implementiert, welche ähnlich ist zu der unter Windows\footnote{\url{http://go.yurichev.com/17058}}.
-Eine weitere Implementierung existiert in Wine\footnote{\href{http://go.yurichev.com/17059}{GitHub}}
-und ReactOS\footnote{\url{http://go.yurichev.com/17060}}.
+implementiert, welche ähnlich ist zu der unter Windows\footnote{\url{https://code.google.com/p/sanos/source/browse/src/win32/msvcrt/except.c}}.
+Eine weitere Implementierung existiert in Wine\footnote{\href{https://github.com/mirrors/wine/blob/master/dlls/msvcrt/except_i386.c}{GitHub}}
+und ReactOS\footnote{\url{http://doxygen.reactos.org/d4/df2/lib_2sdk_2crt_2except_2except_8c_source.html}}.
 
 Wenn der \emph{Filter}-Zeiger NULL ist, ist der \emph{Handler}-Zeiger ein Zeiger auf
 den \emph{finally}-Code-Block.
@@ -245,10 +245,14 @@ $security\_cookie \oplus (CookieXOROffset + address\_of\_saved\_EBP) == stack[ad
 
 Wenn der \TT{Cookie Offset} gleich $-2$ ist, impliziert dies, dass er nicht vorhanden ist.
 
+\iffalse
+% FIXME: get this back when tracer src will be hosted again somewhere
 \myindex{tracer}
 \emph{Cookie}-Überprüfung ist auch in dem \tracer{} implementiert.
-Siehe \href{http://go.yurichev.com/17061}{GitHub} für Details.
+Siehe \href{https://github.com/DennisYurichev/tracer/blob/master/SEH.c}{GitHub} für Details.
 
 Es ist immer noch möglich, SEH3 im Compiler zu nutzen wenn eine neuere Version als MSVC 2005
 genutzt wird, durch setzen der \TT{/GS-}-Option.
 Der \ac{CRT}-Code nutzt SEH4 auf jeden Fall.
+\fi
+

@@ -66,7 +66,7 @@ Spesso vediamo istruzioni come \INS{PUSH {R4-R7,LR}} insieme ad istruzioni nell'
 
 \myindex{ARM!Leaf function}
 Ciononostante, se una funzione non chiama al suo interno nessun'altra funzione, in terminologia \ac{RISC} è detta
-\emph{\gls{leaf function}}, o funzione foglia.\footnote{\href{http://go.yurichev.com/17064}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
+\emph{\gls{leaf function}}, o funzione foglia.\footnote{\href{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}{infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.faqs/ka13785.html}}.
 Di conseguenza, le leaf functions non salvano il registro \ac{LR} register (perchè difatti non lo modificano).
 Se una simile funzione è molto breve e usa un piccolo numero di registri, potrebbe non usare del tutto lo stack.
 E' quindi possible chiamare le leaf functions senza usare lo stack, cosa che può essere più veloce rispetto alle vecchie macchine x86 perchè la RAM esterna non viene usata per lo stack

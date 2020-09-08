@@ -33,7 +33,7 @@ Schauen wir uns WinNT.h genauer an:
 \end{lstlisting}
 Alles eindeutig beschrieben: GENERIC\_READ | GENERIC\_WRITE = 0x80000000 |
 0x40000000 = 0xC0000000. Dieser Wert wird als zweites Argument für die Funktion
-\TT{CreateFile()}\footnote{\href{http://go.yurichev.com/17065}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}
+\TT{CreateFile()}\footnote{\href{http://msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}{msdn.microsoft.com/en-us/library/aa363858(VS.85).aspx}}
 verwendet.
 
 Wie würde \TT{CreateFile()} diese Flags überprüfen?
@@ -108,7 +108,7 @@ Kontrolle an \TT{do\_sys\_open} übergeben und anschließend von dort aus---an d
 Funktion \TT{do\_filp\_open()} (diese befindet sich im Verzeichnisbaum des
 Kernel-Quellcodes in \TT{fs/namei.c}).
 
-\newcommand{\URLREGPARM}{\href{http://go.yurichev.com/17040}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
+\newcommand{\URLREGPARM}{\href{http://www.ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}{ohse.de/uwe/articles/gcc-attributes.html\#func-regparm}}
 
 \myindex{fastcall}
 \label{regparm}
@@ -121,7 +121,7 @@ GCC kennt dafür die Option \emph{regparm}\footnote{\URLREGPARM}, mithilfe derer
 möglich ist, die Anzahl der Argumente anzugeben, die über Register übergeben
 werden sollen.
 
-\newcommand{\URLKERNELNEWB}{\href{http://go.yurichev.com/17066}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
+\newcommand{\URLKERNELNEWB}{\href{http://kernelnewbies.org/Linux_2_6_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}{kernelnewbies.org/Linux\_2\_6\_20\#head-042c62f290834eb1fe0a1942bbf5bb9a4accbc8f}}
 \newcommand{\CALLINGHFILE}{arch/x86/include/asm/calling.h}
 
 Der Linux 2.6 Kernel wird mit der Option \TT{-mregparm=3}

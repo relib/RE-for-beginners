@@ -1,7 +1,7 @@
 ﻿\subsection{MSVC: SYSTEMTIME example}
 \label{sec:SYSTEMTIME}
 
-\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://go.yurichev.com/17260}{MSDN: SYSTEMTIME structure}}}
+\newcommand{\FNSYSTEMTIME}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724950(VS.85).aspx}{MSDN: SYSTEMTIME structure}}}
 
 時間を表現する SYSTEMTIME\FNSYSTEMTIME{} win32構造体をとりあげましょう。
 
@@ -31,7 +31,7 @@ typedef struct _SYSTEMTIME {
 16バイトがローカルスタック上に構造体のために確保されていて、これはちょうど\TT{sizeof(WORD)*8}です。
 （構造体にあるWORD変数8つ分です）
 
-\newcommand{\FNMSDNGST}{\footnote{\href{http://go.yurichev.com/17261}{MSDN: GetSystemTime function}}}
+\newcommand{\FNMSDNGST}{\footnote{\href{http://msdn.microsoft.com/en-us/library/ms724390(VS.85).aspx}{MSDN: GetSystemTime function}}}
 
 構造体は\TT{wYear}フィールドから始まるという事実に注意してください。
 SYSTEMTIME構造体へのポインタが \TT{GetSystemTime()}\FNSYSTEMTIME に渡されますが、

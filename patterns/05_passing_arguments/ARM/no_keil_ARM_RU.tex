@@ -15,7 +15,7 @@
 \myindex{Fused multiply–add}
 Умножение и сложение одновременно (\emph{Fused multiply–add}) это часто применяемая операция. Кстати, аналогичной
 инструкции в x86 не было до появления FMA-инструкций в SIMD
-\footnote{\href{http://go.yurichev.com/17103}{wikipedia}}.
+\footnote{\href{https://en.wikipedia.org/wiki/FMA_instruction_set}{wikipedia}}.
 
 Самая первая инструкция \TT{MOV R3, R0}, по-видимому, избыточна (можно было бы обойтись только одной инструкцией \TT{MLA}).
 Компилятор не оптимизировал её, ведь, это компиляция без оптимизации.

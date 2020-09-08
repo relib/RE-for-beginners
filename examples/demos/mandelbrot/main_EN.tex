@@ -12,7 +12,7 @@ Mandelbrot set is a fractal, which exhibits self-similarity.
 
 When you increase scale, you see that this characteristic pattern repeating infinitely.
 
-Here is a demo\footnote{Download it \href{http://go.yurichev.com/17306} {here},} 
+Here is a demo\footnote{Download it \href{http://www.pouet.net/prod.php?which=53287} {here},} 
 written by \q{Sir\_Lagsalot} in 2009, that draws 
 the Mandelbrot set, which is just a x86 program with executable file size of only 64 bytes.
 There are only 30 16-bit x86 instructions.
@@ -118,16 +118,16 @@ which were explained above.
 \lstinputlisting[caption=For integer numbers]{examples/demos/mandelbrot/algo_int_EN.lst}
 
 Here is also a C\# source 
-which is present in the Wikipedia article\footnote{\href{http://go.yurichev.com/17307}{wikipedia}}, but we'll modify it
+which is present in the Wikipedia article\footnote{\href{http://ru.wikipedia.org/wiki/Множество_Мандельброта}{wikipedia}}, but we'll modify it
 so it will print the iteration numbers instead of some symbol
 \footnote{Here is also the executable file: 
-\href{http://go.yurichev.com/17163}{beginners.re}}:
+\href{http://beginners.re/examples/mandelbrot/dump_iterations.exe}{beginners.re}}:
 
 \lstinputlisting[style=customc]{examples/demos/mandelbrot/dump_iterations.cs}
 
 Here is the resulting file, 
 which is too wide to be included here: \\
-\href{http://go.yurichev.com/17164}{beginners.re}.
+\href{http://beginners.re/examples/mandelbrot/result.txt}{beginners.re}.
 
 The maximal number of iterations is 40, so when you see 40 in this dump, it means that this point has been wandering
 for 40 iterations but never got off limits. 
@@ -137,7 +137,7 @@ then it went outside them.
 
 \clearpage
 There is a cool demo available at 
-\url{http://go.yurichev.com/17309}, which shows
+\url{http://demonstrations.wolfram.com/MandelbrotSetDoodle/}, which shows
 visually how the point moves on the plane at each iteration for some specific point. 
 Here are two screenshots.
 
@@ -168,7 +168,7 @@ which quickly went off bounds:
 This means the point doesn't belong to Mandelbrot set.
 
 Another good demo is available here: 
-\url{http://go.yurichev.com/17310}.
+\url{http://demonstrations.wolfram.com/IteratesForTheMandelbrotSet/}.
 
 \clearpage
 \subsubsection{Let's get back to the demo}
@@ -297,7 +297,7 @@ The current value of AX is not needed here anyway.
 
 \item DI (position in video buffer) is not initialized, and it is 0xFFFE at the start
 \footnote{More information about initial register values: 
-\url{http://go.yurichev.com/17004}}.
+\url{https://code.google.com/p/corkami/wiki/InitialValues#DOS}}.
 
 That's OK, because the program works for all DI in the range of 0..0xFFFF eternally, 
 and the user can't notice
