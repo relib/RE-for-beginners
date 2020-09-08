@@ -14,12 +14,12 @@ W Win64 pierwsze 4 argumenty funkcji są przekazywane przez rejestry \RCX, \RDX,
 Widać to w powyższym przykładzie: wskaźnik na argument funkcji \printf (łańcuch znaków) teraz jest przekazywany nie przez stos, a przez rejestr \RCX.
 Wskaźniki są teraz 64-bitowe, więc są przekazywane przez przez 64-bitowe rejestry (mające prefiks \TT{R-}).
 Ale dla wstecznej kompatybilności można adresować również młodsze 32 bity rejestrów poprzez prefiks \TT{E-}.
-W ten o to sposób wygląda rejestr \RAX/\EAX/\AX/\AL w x86-64:
+W ten oto sposób wygląda rejestr \RAX/\EAX/\AX/\AL w x86-64:
 
 \RegTableOne{RAX}{EAX}{AX}{AH}{AL}
 
 Funkcja \main zwraca wartość typu \Tint, który w \CCpp, dla większej kompatybilności,
 pozostał 32-bitowy. Właśnie dlatego na końcu funkcji \main zeruje się nie \RAX, a \EAX, czyli 32-bitową część rejestru.
-Dodatkowo, na stosie lokalnym jest zarezerwowanych 40 bajtów.
+Dodatkowo na stosie lokalnym jest zarezerwowanych 40 bajtów.
 Jest to tzw. \q{shadow space}, który będzie omawiany później: \myref{shadow_space}.
 
