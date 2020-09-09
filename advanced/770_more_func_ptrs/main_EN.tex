@@ -4,6 +4,9 @@ This code was copypasted from \emph{dwm}\footnote{\url{https://dwm.suckless.org/
 
 The problem: keystrokes from user must be dispatched to various functions inside of \emph{dwm}.
 This is usually solved using a big \emph{switch()}.
+
+Usually, this is an important problem to be solved by a programmer of any videogame.
+
 Supposedly, \emph{dwm}'s creators wanted to make the code neat and modifiable by users:
 
 \lstinputlisting[style=customc]{\CURPATH/dwm.c}
@@ -15,5 +18,5 @@ So \emph{union} is used here.
 A value of needed type is filled in the table.
 Each function takes what it needs.
 
-As a homework, try to write a code like that, or get into \emph{dwm}'s and see how union is passed into functions and handled.
+As a homework, try to write a code like that, or get into \emph{dwm}'s and see how \emph{union} is passed into functions and handled.
 
