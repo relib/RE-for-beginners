@@ -60,7 +60,7 @@ Just found this in ftol2() standard C/C++ library function (float-to-long conver
 Note two identical \INS{FSTP}-s (float store with pop) at the end. 
 First I thought it was compiler anomaly (I'm collecting such cases just as someone do with butterflies),
 but it seems, it's handwritten assembler piece, in msvcrt.lib there is an object file with this function in it,
-and we can find this string in it:
+and we can find this string in it:\\
 \verb|f:\dd\vctools\crt_bld\SELF_X86\crt\prebuild\tran\i386\ftol2.asm| ---
 that was probably a path to the file on developer's computer where msvcrt.lib was built.
 
