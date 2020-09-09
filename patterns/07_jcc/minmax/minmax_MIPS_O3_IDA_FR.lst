@@ -13,7 +13,8 @@ locret_10:
                 jr      $ra
                 or      $at, $zero ; slot de délai de branchement, NOP
 
-; la fonction min() est la même, mais les opérandes dans l'instruction SLT sont échangés:
+; la fonction min() est la même, mais les opérandes 
+; dans l'instruction SLT sont échangés:
 my_min:
                 slt     $v1, $a0, $a1
                 beqz    $v1, locret_28

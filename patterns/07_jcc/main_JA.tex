@@ -18,10 +18,10 @@
 CMP register, register/value
 Jcc true ; cc=condition code
 false:
-... 比較結果が偽の場合に実行されるコード ...
+;... 比較結果が偽の場合に実行されるコード ...
 JMP exit 
 true:
-... 比較結果が真の場合に実行されるコード ...
+;... 比較結果が真の場合に実行されるコード ...
 exit:
 \end{lstlisting}
 
@@ -31,10 +31,10 @@ exit:
 CMP register, register/value
 Bcc true ; cc=condition code
 false:
-... 比較結果が偽の場合に実行されるコード ...
+;... 比較結果が偽の場合に実行されるコード ...
 JMP exit 
 true:
-... 比較結果が真の場合に実行されるコード ...
+;... 比較結果が真の場合に実行されるコード ...
 exit:
 \end{lstlisting}
 
@@ -88,7 +88,7 @@ x86の場合は\INS{CMOVcc}の条件付き移動命令を使用できます。
 CMP register, register/value
 instr1_cc ; 条件コードが真の場合、何らかの命令が実行されます
 instr2_cc ; 他の条件コードが真の場合、他の命令が実行されます
-... etc...
+;... etc...
 \end{lstlisting}
 
 % FIXME: list of such instructions or \myref{} to it

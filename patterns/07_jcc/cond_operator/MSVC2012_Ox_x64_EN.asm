@@ -9,7 +9,8 @@ f	PROC
 ; compare input value with 10
 	cmp	ecx, 10
 ; if equal, copy value from RDX ("it is ten")
-; if not, do nothing. pointer to the string "it is not ten" is still in RAX as for now.
+; if not, do nothing. pointer to the string 
+; "it is not ten" is still in RAX as for now.
 	cmove	rax, rdx
 	ret	0
 f	ENDP

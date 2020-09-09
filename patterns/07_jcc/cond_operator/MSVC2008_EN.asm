@@ -19,7 +19,8 @@ $LN3@f:
 ; store pointer to the string into temporary variable:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG747 ; 'it is not ten'
 $LN4@f:
-; this is exit. copy pointer to the string from temporary variable to EAX.
+; this is exit. 
+; copy pointer to the string from temporary variable to EAX.
 	mov	eax, DWORD PTR tv65[ebp]
 	mov	esp, ebp
 	pop	ebp

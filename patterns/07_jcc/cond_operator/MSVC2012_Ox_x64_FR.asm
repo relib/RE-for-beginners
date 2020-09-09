@@ -9,7 +9,8 @@ f	PROC
 ; comparer la valeur en entrée avec 10
 	cmp	ecx, 10
 ; si égal, copier la valeur dans RDX ("it is ten")
-; si non, ne rien faire. le pointeur sur la chaîne "it is not ten" est encore dans RAX à ce stade.
+; si non, ne rien faire. le pointeur sur la chaîne 
+; "it is not ten" est encore dans RAX à ce stade.
 	cmove	rax, rdx
 	ret	0
 f	ENDP

@@ -9,7 +9,8 @@ f	PROC
 ; 入力値と10を比較
 	cmp	ecx, 10
 ; 同じなら、値をRDXからコピー("it is ten")
-; 異なるなら、何もしない。文字列へのポインタ"it is not ten"はまだRAXにある。
+; 異なるなら、何もしない。文字列へのポインタ
+; "it is not ten"はまだRAXにある。
 	cmove	rax, rdx
 	ret	0
 f	ENDP

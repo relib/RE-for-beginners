@@ -13,7 +13,8 @@ locret_10:
                 jr      $ra
                 or      $at, $zero ; branch delay slot, NOP
 
-; la funzione min() è uguale, ma gli operandi in input nell' istruzione SLT sono scambiati:
+; la funzione min() è uguale, ma gli operandi in input nell' 
+; istruzione SLT sono scambiati:
 my_min:
                 slt     $v1, $a0, $a1
                 beqz    $v1, locret_28

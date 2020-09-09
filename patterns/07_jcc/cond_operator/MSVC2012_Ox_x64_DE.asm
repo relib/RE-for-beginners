@@ -9,7 +9,8 @@ f	PROC
 ; vergleiche Eingabewert mit 10
 	cmp	ecx, 10
 ; falls gleich, kopiere Wert aus RDX ("it is ten")
-; falls nicht, tue nichts. Der Pointer auf den String "it is not ten" ist immernoch in RAX.
+; falls nicht, tue nichts. Der Pointer auf den String 
+; "it is not ten" ist immernoch in RAX.
 	cmove	rax, rdx
 	ret	0
 f	ENDP

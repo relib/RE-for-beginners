@@ -17,33 +17,7 @@ The first loads a 4KiB-page address and the second one adds the remainder.
 Let's compile the example from \q{\HelloWorldSectionName} 
 (\lstref{hw_c}) in GCC (Linaro) 4.9 under win32:
 
-\begin{lstlisting}[caption=GCC (Linaro) 4.9 and objdump of object file,style=customasmARM]
-...>aarch64-linux-gnu-gcc.exe hw.c -c
-
-...>aarch64-linux-gnu-objdump.exe -d hw.o
-
-...
-
-0000000000000000 <main>:
-   0:   a9bf7bfd        stp     x29, x30, [sp,#-16]!
-   4:   910003fd        mov     x29, sp
-   8:   90000000        adrp    x0, 0 <main>
-   c:   91000000        add     x0, x0, #0x0
-  10:   94000000        bl      0 <printf>
-  14:   52800000        mov     w0, #0x0                        // #0
-  18:   a8c17bfd        ldp     x29, x30, [sp],#16
-  1c:   d65f03c0        ret
-
-...>aarch64-linux-gnu-objdump.exe -r hw.o
-
-...
-
-RELOCATION RECORDS FOR [.text]:
-OFFSET           TYPE              VALUE
-0000000000000008 R_AARCH64_ADR_PREL_PG_HI21  .rodata
-000000000000000c R_AARCH64_ADD_ABS_LO12_NC  .rodata
-0000000000000010 R_AARCH64_CALL26  printf
-\end{lstlisting}
+\lstinputlisting[caption=GCC (Linaro) 4.9 and objdump of object file,style=customasmARM]{patterns/ARM/relocs1.lst}
 
 So there are 3 relocs in this object file.
 
@@ -72,22 +46,7 @@ is located, in which page, and the address of \puts is also known.
 So there are values set already in the \TT{ADRP}, \ADD and \TT{BL} instructions
 (the linker has written them while linking):
 
-\begin{lstlisting}[caption=objdump of executable file,style=customasmARM]
-0000000000400590 <main>:
-  400590:       a9bf7bfd        stp     x29, x30, [sp,#-16]!
-  400594:       910003fd        mov     x29, sp
-  400598:       90000000        adrp    x0, 400000 <_init-0x3b8>
-  40059c:       91192000        add     x0, x0, #0x648
-  4005a0:       97ffffa0        bl      400420 <puts@plt>
-  4005a4:       52800000        mov     w0, #0x0                        // #0
-  4005a8:       a8c17bfd        ldp     x29, x30, [sp],#16
-  4005ac:       d65f03c0        ret
-
-...
-
-Contents of section .rodata:
- 400640 01000200 00000000 48656c6c 6f210000  ........Hello!..
-\end{lstlisting}
+\lstinputlisting[caption=objdump of executable file,style=customasmARM]{patterns/ARM/relocs2.lst}
 
 \myindex{ARM!\Instructions!BL}
 

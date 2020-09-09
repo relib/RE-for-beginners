@@ -3,7 +3,8 @@ f PROC
         CMP      r0,#0xa
 ; if comparison result is EQual, copy pointer to the "it is ten" string into R0
         ADREQ    r0,|L0.16| ; "it is ten"
-; if comparison result is Not Equal, copy pointer to the "it is not ten" string into R0
+; if comparison result is Not Equal, copy pointer to the 
+; "it is not ten" string into R0
         ADRNE    r0,|L0.28| ; "it is not ten"
         BX       lr
         ENDP

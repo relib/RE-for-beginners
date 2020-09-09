@@ -18,10 +18,10 @@ Here's the rough skeleton of a conditional jump:
 CMP register, register/value
 Jcc true ; cc=condition code
 false:
-... some code to be executed if comparison result is false ...
+;... some code to be executed if comparison result is false ...
 JMP exit 
 true:
-... some code to be executed if comparison result is true ...
+;... some code to be executed if comparison result is true ...
 exit:
 \end{lstlisting}
 
@@ -31,10 +31,10 @@ exit:
 CMP register, register/value
 Bcc true ; cc=condition code
 false:
-... some code to be executed if comparison result is false ...
+;... some code to be executed if comparison result is false ...
 JMP exit 
 true:
-... some code to be executed if comparison result is true ...
+;... some code to be executed if comparison result is true ...
 exit:
 \end{lstlisting}
 
@@ -88,7 +88,7 @@ It's possible to use conditional suffixes in ARM mode for some instructions:
 CMP register, register/value
 instr1_cc ; some instruction will be executed if condition code is true
 instr2_cc ; some other instruction will be executed if other condition code is true
-... etc...
+;... etc...
 \end{lstlisting}
 
 Of course, there is no limit for the number of instructions with conditional code suffixes, 

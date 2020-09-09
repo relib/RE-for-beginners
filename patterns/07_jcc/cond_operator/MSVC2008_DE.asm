@@ -19,7 +19,8 @@ $LN3@f:
 ; speichere Pointer auf den String in temporärer Variable:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG747 ; 'it is not ten'
 $LN4@f:
-; beenden. Kopiere Pointer auf den String aus temporärer Variable nach EAX.
+; beenden. 
+; Kopiere Pointer auf den String aus temporärer Variable nach EAX.
 	mov	eax, DWORD PTR tv65[ebp]
 	mov	esp, ebp
 	pop	ebp

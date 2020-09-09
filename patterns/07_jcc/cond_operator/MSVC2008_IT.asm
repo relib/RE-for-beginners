@@ -19,7 +19,8 @@ $LN3@f:
 ; salva il puntatore alla stringa nella variabile temporanea:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG747 ; 'it is not ten'
 $LN4@f:
-; questa è l' exit. copia il puntatore alla stringa dalla variabile temporanea in EAX.
+; questa è l' exit. 
+; copia il puntatore alla stringa dalla variabile temporanea in EAX.
 	mov	eax, DWORD PTR tv65[ebp]
 	mov	esp, ebp
 	pop	ebp

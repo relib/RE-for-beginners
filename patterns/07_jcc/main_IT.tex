@@ -19,10 +19,10 @@ La forma grezza di un jump condizionale è la seguente:
 CMP register, register/value
 Jcc true ; cc=condition code
 false:
-... codice da eseguire se il risultato del confronto è false ...
+;... codice da eseguire se il risultato del confronto è false ...
 JMP exit 
 true:
-... codice da eseguire se il risultato del confronto è true ...
+;... codice da eseguire se il risultato del confronto è true ...
 exit:
 \end{lstlisting}
 
@@ -32,10 +32,10 @@ exit:
 CMP register, register/value
 Bcc true ; cc=condition code
 false:
-... codice da eseguire se il risultato del confronto è false ...
+;... codice da eseguire se il risultato del confronto è false ...
 JMP exit 
 true:
-... codice da eseguire se il risultato del confronto è true ...
+;... codice da eseguire se il risultato del confronto è true ...
 exit:
 \end{lstlisting}
 
@@ -89,7 +89,7 @@ In ARM è possibile usare suffissi condizionali per alcune istruzioni:
 CMP register, register/value
 instr1_cc ; istruzione che sarà eseguita se il condition code è true
 instr2_cc ; altra istruzione che sarà eseguita se il condition code è true
-... etc...
+;... etc...
 \end{lstlisting}
 
 Ovviamente non c'è limite al numero di istruzioni con il suffisso condizionale, a patto che le flag CPU non siano modificate da nessuna istruzione. 

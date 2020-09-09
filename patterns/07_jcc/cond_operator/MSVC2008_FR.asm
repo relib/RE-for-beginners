@@ -19,7 +19,8 @@ $LN3@f:
 ; stocker le pointeur sur la chaîne dans la variable temporaire:
 	mov	DWORD PTR tv65[ebp], OFFSET $SG747 ; 'it is not ten'
 $LN4@f:
-; ceci est la sortie. copier le pointeur sur la chaîne depuis la variable temporaire dans EAX.
+; ceci est la sortie. 
+; copier le pointeur sur la chaîne depuis la variable temporaire dans EAX.
 	mov	eax, DWORD PTR tv65[ebp]
 	mov	esp, ebp
 	pop	ebp

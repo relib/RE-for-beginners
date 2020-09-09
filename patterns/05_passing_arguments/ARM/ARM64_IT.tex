@@ -64,7 +64,8 @@ Il codice salva gli argomenti in input nello stack locale, nel caso in cui qualc
 di usare i registri \TT{W0...W2} 
 Questo previene l'eventualità che gli argomenti originali siano sovrascritti, nel caso in cui servano nuovamente nel corso della funzione.
 
-Ciò è detto \emph{Register Save Area.} (\ARMPCS) ed è vagamente simile allo \q{Shadow Space}: \myref{shadow_space}.
+Ciò è detto \emph{Register Save Area.} \ARMPCS.
+ed è vagamente simile allo \q{Shadow Space}: \myref{shadow_space}. % FIXME translation here
 La funzione chiamata non è comunque obbligata a salvarli.
 
 Perchè GCC 4.9 ottimizzante ha eliminato questa porzione di codice che salva gli argomenti?
