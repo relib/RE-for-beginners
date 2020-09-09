@@ -55,7 +55,7 @@
 
 \item 
 \myindex{Windows!IAT}
-\ac{IAT} --- массив адресов импортированных символов \footnote{\PietrekPE}. \\
+\ac{IAT} --- массив адресов импортированных символов \footnote{\PietrekPE}.\\
 Иногда, директория \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT} указывает на \ac{IAT}. 
 \label{IDA_idata} Важно отметить, что \ac{IDA} (по крайней мере 6.1) может выделить псевдо-секцию с именем \TT{.idata} для \ac{IAT}, даже если \ac{IAT} является частью совсем другой секции!
 
@@ -94,7 +94,7 @@
 Чтобы избежать этого, методика \ac{ASLR}
 загружает и вашу программу, и все модули ей необходимые, по случайным адресам, разным при каждом запуске.
 
-В PE-файлах, поддержка \ac{ASLR} отмечается выставлением флага \\
+В PE-файлах, поддержка \ac{ASLR} отмечается выставлением флага\\
 \TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} \InSqBrackets{см: \Russinovich}.
 
 \subsubsection{Subsystem}
@@ -136,10 +136,12 @@
 \begin{itemize}
 \item На секции кода будет стоять флаг \emph{IMAGE\_SCN\_CNT\_CODE} или \emph{IMAGE\_SCN\_MEM\_EXECUTE} --- это исполняемый код.
 
-\item На секции данных --- флаги \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} и \\
-\emph{IMAGE\_SCN\_MEM\_WRITE}.
+\item На секции данных --- флаги \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
+\emph{IMAGE\_SCN\_MEM\_READ} и \emph{IMAGE\_SCN\_MEM\_WRITE}.
 
-\item На пустой секции с неинициализированными данными --- \emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} и \emph{IMAGE\_SCN\_MEM\_WRITE}.
+\item На пустой секции с неинициализированными данными --- \\
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} и\\
+\emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item А на секции с константными данными, то есть, защищенными от записи, могут быть флаги \\
 \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} и \emph{IMAGE\_SCN\_MEM\_READ} без \emph{IMAGE\_SCN\_MEM\_WRITE}. 
@@ -403,9 +405,8 @@ JMP EAX
 Может возникнуть вопрос: а что если я поставляю программу с набором DLL,
 которые никогда не будут меняться (в т.ч., адреса всех функций в этих DLL), может как-то можно ускорить процесс загрузки?
 
-Да, можно прописать адреса импортируемых функций в массивы FirstThunk заранее.
-Для этого в структуре \\
-\emph{IMAGE\_IMPORT\_DESCRIPTOR} имеется поле \emph{Timestamp}.
+Да, можно прописать адреса импортируемых функций в массивы FirstThunk заранее.\\
+Для этого в структуре \emph{IMAGE\_IMPORT\_DESCRIPTOR} имеется поле \emph{Timestamp}.
 И если там присутствует какое-то значение, то загрузчик сверяет это значение с датой-временем DLL-файла.
 И если они равны, то загрузчик больше ничего не делает, и загрузка может происходить быстрее.
 

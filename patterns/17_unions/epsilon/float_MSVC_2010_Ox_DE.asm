@@ -3,10 +3,12 @@ _v$ = 8
 _start$ = 8	
 _calculate_machine_epsilon PROC
 	fld	DWORD PTR _start$[esp-4]
-	fst	DWORD PTR _v$[esp-4]     ; dieser Befehl ist redundant
+; dieser Befehl ist redundant:
+	fst	DWORD PTR _v$[esp-4]
 	inc	DWORD PTR _v$[esp-4]
 	fsubr	DWORD PTR _v$[esp-4]
-	fstp	DWORD PTR tv130[esp-4]   ; \verb|\ dieses Befehlspaar ist auch redundant|
-	fld	DWORD PTR tv130[esp-4]   ; \verb|/                                      |
+; dieses Befehlspaar ist auch redundant:
+	fstp	DWORD PTR tv130[esp-4]
+	fld	DWORD PTR tv130[esp-4]
 	ret	0
 _calculate_machine_epsilon ENDP

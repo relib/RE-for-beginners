@@ -9,7 +9,8 @@ _strlen PROC
 $LN2@strlen_:
     mov     ecx, DWORD PTR _eos$[ebp]  ; ECX=eos
     
-    ; prendi un byte (8-bit) dall' indirizzo in ECX e piazzalo in EDX come valore a 32-bit con estensione del segno
+    ; prendi un byte (8-bit) dall' indirizzo in ECX e piazzalo 
+    ; in EDX come valore a 32-bit con estensione del segno
 
     movsx   edx, BYTE PTR [ecx]             
     mov     eax, DWORD PTR _eos$[ebp]  ; EAX=eos

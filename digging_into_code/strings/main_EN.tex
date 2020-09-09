@@ -30,7 +30,7 @@ int main()
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{digging_into_code/strings/C-string.png}
+\includegraphics[width=0.8\textwidth]{digging_into_code/strings/C-string.png}
 \caption{Hiew}
 \end{figure}
 
@@ -77,13 +77,12 @@ and the symbols beyond the ASCII table are encoded using several bytes.
 0 is encoded as
 before, so all standard C string functions work with UTF-8 strings just like any other string.
 
-Let's see how the symbols in various languages are encoded in UTF-8 and how it looks like in FAR, using the 437 codepage
-\footnote{The example and translations was taken from here: 
+Let's see how the symbols in various languages are encoded in UTF-8 and how it looks like in FAR, using the 437 codepage\footnote{The example and translations was taken from here: 
 \url{http://www.columbia.edu/~fdc/utf8/}}:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{digging_into_code/strings/multilang_sampler.png}
+\includegraphics[width=0.8\textwidth]{digging_into_code/strings/multilang_sampler.png}
 \end{figure}
 
 % FIXME: cut it
@@ -133,7 +132,7 @@ int wmain()
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{digging_into_code/strings/UTF16-string.png}
+\includegraphics[width=0.8\textwidth]{digging_into_code/strings/UTF16-string.png}
 \caption{Hiew}
 \end{figure}
 
@@ -141,7 +140,7 @@ We can see this often in \gls{Windows NT} system files:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{digging_into_code/strings/ntoskrnl_UTF16.png}
+\includegraphics[width=0.8\textwidth]{digging_into_code/strings/ntoskrnl_UTF16.png}
 \caption{Hiew}
 \end{figure}
 
@@ -158,7 +157,7 @@ Here is how the Russian language string is encoded in UTF-16LE:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{digging_into_code/strings/russian_UTF16.png}
+\includegraphics[width=0.8\textwidth]{digging_into_code/strings/russian_UTF16.png}
 \caption{Hiew: UTF-16LE}
 \end{figure}
 

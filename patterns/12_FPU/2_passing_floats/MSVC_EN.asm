@@ -18,7 +18,8 @@ _main    PROC
 ; in local stack here 8 bytes still reserved for us.
 ; result now in ST(0)
 
-    fstp   QWORD PTR [esp] ; move result from ST(0) to local stack for printf()
+; move result from ST(0) to local stack for printf():
+    fstp   QWORD PTR [esp]
     push   OFFSET $SG2651
     call   _printf
     add    esp, 12

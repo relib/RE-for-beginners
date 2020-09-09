@@ -5,7 +5,8 @@ main:
 	stp	x29, x30, [sp, -112]!
 ; set stack frame (FP=SP)
 	add	x29, sp, 0
-; setting initial counter variable at 0 (WZR is the register always holding zero):
+; setting initial counter variable at 0 
+; (WZR is the register always holding zero):
 	str	wzr, [x29,108]
 ; jump to loop condition checking code:
 	b	.L2
@@ -18,7 +19,8 @@ main:
 	add	x0, x29, 24
 ; load 32-bit integer from local stack and sign extend it to 64-bit one:
 	ldrsw	x1, [x29,108]
-; calculate address of element (X0+X1<<2=array address+i*4) and store W2 (i*2) there:
+; calculate address of element (X0+X1<<2=array address+i*4) 
+; and store W2 (i*2) there:
 	str	w2, [x0,x1,lsl 2]
 ; increment counter (i):
 	ldr	w0, [x29,108]

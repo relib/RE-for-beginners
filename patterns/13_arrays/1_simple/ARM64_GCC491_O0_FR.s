@@ -5,7 +5,8 @@ main:
 	stp	x29, x30, [sp, -112]!
 ; définir l'environnement de pile (FP=SP)
 	add	x29, sp, 0
-; initialiser la variable compteur à 0 (WZR est le registre qui contient toujours zéro):
+; initialiser la variable compteur à 0 
+; (WZR est le registre qui contient toujours zéro):
 	str	wzr, [x29,108]
 ; sauter au code de test de condition de la boucle:
 	b	.L2
@@ -18,7 +19,8 @@ main:
 	add	x0, x29, 24
 ; charger l'entier 32-bit depuis la pile locale et l'étendre en un 64-bit signé:
 	ldrsw	x1, [x29,108]
-; calculer l'adresse de l'élément (X0+X1<<2=adresse du tableau+i*4) et y stocker W2 (i*2):
+; calculer l'adresse de l'élément (X0+X1<<2=adresse du tableau+i*4) 
+; et y stocker W2 (i*2):
 	str	w2, [x0,x1,lsl 2]
 ; incrémenter le compteur (i):
 	ldr	w0, [x29,108]

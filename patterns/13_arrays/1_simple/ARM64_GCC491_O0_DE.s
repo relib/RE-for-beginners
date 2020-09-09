@@ -5,7 +5,8 @@ main:
 	stp	x29, x30, [sp, -112]!
 ; setze Stackframe (FP=SP)
 	add	x29, sp, 0
-; initialisiere Zählervariable mit 0 (WZR ist das Register, das immer 0 enthält):
+; initialisiere Zählervariable mit 0 (WZR ist das Register, 
+; das immer 0 enthält):
 	str	wzr, [x29,108]
 ; springe zum Code, der die Schleifenbedingung prüft:
 	b	.L2
@@ -18,7 +19,8 @@ main:
 	add	x0, x29, 24
 ; lade 32-Bit-Integer vom lokalen Stack und erweitere ihn auf 64 Bit:
 	ldrsw	x1, [x29,108]
-; berechne Adresse des Elements (X0+X1<<2=Arrayadresse+i*4) und speichere W2 (i*2) dort:
+; berechne Adresse des Elements (X0+X1<<2=Arrayadresse+i*4) 
+; und speichere W2 (i*2) dort:
 	str	w2, [x0,x1,lsl 2]
 ; inkrementiere Zähler (i):
 	ldr	w0, [x29,108]

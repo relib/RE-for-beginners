@@ -49,7 +49,7 @@ Many addresses in PE-file tables use \ac{RVA}-addresses.
 %\item
 %Data directory --- ...
 
-\item \ac{IAT}---an array of addresses of imported symbols \footnote{\PietrekPE}.
+\item \ac{IAT}---an array of addresses of imported symbols \footnote{\PietrekPE}.\\
 Sometimes, the \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT} data directory points at the \ac{IAT}.
 \label{IDA_idata}
 It is worth noting that \ac{IDA} (as of 6.1) may allocate a pseudo-section named \TT{.idata} for
@@ -93,8 +93,8 @@ fixed and shellcode could call them directly.
 In order to avoid this, the \ac{ASLR}
 method loads your program and all modules it needs at random base addresses, different every time.
 
-\ac{ASLR} support is denoted in a PE file by setting the flag
-\par \TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} \InSqBrackets{see \Russinovich}.
+\ac{ASLR} support is denoted in a PE file by setting the flag\\
+\TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} \InSqBrackets{see \Russinovich}.
 
 \subsubsection{Subsystem}
 
@@ -142,8 +142,8 @@ It is devised in order to separate code from data, and data---from constant data
 \emph{IMAGE\_SCN\_MEM\_READ} and \emph{IMAGE\_SCN\_MEM\_WRITE} flags.
 
 \item On an empty section with uninitialized data---\\
-\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} \\
-        and \emph{IMAGE\_SCN\_MEM\_WRITE}.
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} and\\
+\emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item On a constant data section (one that's protected from writing), the flags \\
 \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} and \emph{IMAGE\_SCN\_MEM\_READ} can be set, \\
@@ -422,9 +422,8 @@ flag for code section. Otherwise, the program to crash while loading with error 
 One might ask: what if I supply a program with a set of DLL files which is not supposed to change (including addresses of all DLL functions),
 is it possible to speed up the loading process?
 
-Yes, it is possible to write the addresses of the functions to be imported into the FirstThunk arrays in advance.
-The \emph{Timestamp} field is present in the \\
-\emph{IMAGE\_IMPORT\_DESCRIPTOR} structure.
+Yes, it is possible to write the addresses of the functions to be imported into the FirstThunk arrays in advance.\\
+The \emph{Timestamp} field is present in the \emph{IMAGE\_IMPORT\_DESCRIPTOR} structure.
 
 If a value is present there, then the loader compares this value with the date-time of the DLL file.
 

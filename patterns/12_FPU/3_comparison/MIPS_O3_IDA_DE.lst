@@ -6,8 +6,9 @@ d_max:
                 bc1t    locret_14
 ; dieser Befehl wird stets ausgeführt (setze Rückgabewert auf "a"):
                 mov.d   $f0, $f12  ; branch delay slot
-; dieser Befehl wird nur ausgeführt, falls der Zweig nicht betreten wurde (d.h.,
-; falls b>=a) ; setze Rückgabewert auf "b":
+; dieser Befehl wird nur ausgeführt, falls der Zweig nicht betreten wurde 
+; (d.h., falls b>=a)
+; setze Rückgabewert auf "b":
                 mov.d   $f0, $f14
 
 locret_14:

@@ -17,7 +17,7 @@ push arg3
 push arg2
 push arg1
 call function
-add esp, 12 ; returns ESP
+add esp, 12 ; возвращает ESP
 \end{lstlisting}
 
 \subsection{stdcall}
@@ -39,7 +39,7 @@ push arg1
 call function
 
 function:
-... do something ...
+;... сделать что-то ...
 ret 12
 \end{lstlisting}
 
@@ -104,7 +104,7 @@ mov ecx, arg1
 call function
 
 function:
-.. do something ..
+; .. делать что-то ..
 ret 4
 \end{lstlisting}
 
@@ -266,21 +266,21 @@ N.B.: здесь значения записываются в 32-битные ч
 Например, такой код генерирует обычный компилятор \CCpp:
 
 \begin{lstlisting}[style=customasmx86]
-	push	456	; will be b
-	push	123	; will be a
-	call	f	; f() modifies its first argument
+	push	456	; будет b
+	push	123	; будет a
+	call	f	; f() модифицирует свой первый аргумент
 	add	esp, 2*4
 \end{lstlisting}
 
 Мы можем переписать так:
 
 \begin{lstlisting}[style=customasmx86]
-	push	456	; will be b
-	push	123	; will be a
-	call	f	; f() modifies its first argument
+	push	456	; будет b
+	push	123	; будет a
+	call	f	; f() модифицирует свой первый аргумент
 	pop	eax
 	add	esp, 4
-	; EAX=1st argument of f() modified in f()
+	; EAX=1-й аргумент f() модифицированный в f()
 \end{lstlisting}
 
 Трудно представить, кому может это понадобиться, но на практике это возможно.

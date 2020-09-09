@@ -6,7 +6,8 @@ d_max:
                 bc1t    locret_14
 ; this instruction is always executed (set return value to "a"):
                 mov.d   $f0, $f12  ; branch delay slot
-; this instruction is executed only if branch was not taken (i.e., if b>=a)
+; this instruction is executed only if branch was not taken 
+; (i.e., if b>=a)
 ; set return value to "b":
                 mov.d   $f0, $f14
 

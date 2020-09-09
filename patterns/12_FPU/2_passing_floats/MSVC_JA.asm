@@ -18,7 +18,8 @@ _main    PROC
 ; ローカルスタックにまだ8バイト空きがある
 ; 結果がST(0)に
 
-    fstp   QWORD PTR [esp] ; printf()に渡すために結果をST(0)からローカルスタックに移す
+; printf()に渡すために結果をST(0)からローカルスタックに移す:
+    fstp   QWORD PTR [esp]
     push   OFFSET $SG2651
     call   _printf
     add    esp, 12

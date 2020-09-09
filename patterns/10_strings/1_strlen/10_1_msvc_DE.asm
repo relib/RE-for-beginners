@@ -9,8 +9,8 @@ _strlen PROC
 $LN2@strlen_:
     mov     ecx, DWORD PTR _eos$[ebp]  ; ECX=eos
     
-    ; nimm ein Byte von der Adresse in ECX und speichere es als 32-bit Wert mit
-    Vorzeichen in EDX
+    ; nimm ein Byte von der Adresse in ECX und ;
+    ; speichere es als 32-bit Wert mit Vorzeichen in EDX
 
     movsx   edx, BYTE PTR [ecx]             
     mov     eax, DWORD PTR _eos$[ebp]  ; EAX=eos

@@ -11,7 +11,7 @@ Argumente an Funktionen zu übergeben.
 Der \gls{caller} muss den Wert des \gls{stack pointer} (\ESP) auf den ursprünglichen Stand
 bringen, nachdem \gls{callee}-Funktion beendet wurde.
 
-\begin{lstlisting}[caption=cdecl]
+\begin{lstlisting}[caption=cdecl,style=customasmx86]
 push Argument3
 push Argument2
 push Argument1
@@ -31,14 +31,14 @@ durch die \TT{RET x} anstatt \RET, wobei gilt \TT{x = Nummer des Arguments * siz
 
 Der \gls{caller} passt den \gls{stack pointer} nicht an, es sind also keine \TT{add esp, x}-Anweisungen vorhanden.
 
-\begin{lstlisting}[caption=stdcall]
+\begin{lstlisting}[caption=stdcall,style=customasmx86]
 push Argument3
 push Argument2
 push Argument1
 call Funktion
 
 Funktion:
-... tue etwas ...
+;... tue etwas ...
 ret 12
 \end{lstlisting}
 

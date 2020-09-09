@@ -18,7 +18,8 @@ _main    PROC
 ; sur la pile locale, il y a ici encore 8 octets réservés pour nous.
 ; le résultat se trouve maintenant dans ST(0)
 
-    fstp   QWORD PTR [esp] ; déplace le résultat de ST(0) vers la pile locale pour printf()
+; déplace le résultat de ST(0) vers la pile locale pour printf():
+    fstp   QWORD PTR [esp]
     push   OFFSET $SG2651
     call   _printf
     add    esp, 12

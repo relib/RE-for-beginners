@@ -55,7 +55,7 @@ De nombreuses adresses dans les fichiers PE utilisent l'adresse \ac{RVA}.
 %\item
 %Data directory --- ...
 
-\item \ac{IAT}---un tableau d'adresses des symboles importés \footnote{\PietrekPE}. 
+\item \ac{IAT}---un tableau d'adresses des symboles importés \footnote{\PietrekPE}.\\
 Parfois, le répertoire de données \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT} pointe sur l'\ac{IAT}.
 \label{IDA_idata}
 Il est utile de noter qu'\ac{IDA} (à partir de 6.1) peut allouer une pseudo-section
@@ -103,8 +103,8 @@ des fonctions était fixe et le shellcode pouvait les appeler directement.
 Pour éviter ceci, la méthode \ac{ASLR} charge votre programme et tous les modules
 dont il a besoin à des adresses de base aléatoires, différentes à chaque fois.
 
-Le support de l'\ac{ASLR} est indiqué dans un fichier PE en mettant le flag
-\par \TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} \InSqBrackets{voir \Russinovich}.
+Le support de l'\ac{ASLR} est indiqué dans un fichier PE en mettant le flag\\
+\TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} \InSqBrackets{voir \Russinovich}.
 
 \subsubsection{Sous-système}
 
@@ -156,8 +156,8 @@ est mis dans la section de code---c'est de code exécutable.
 \emph{IMAGE\_SCN\_MEM\_READ} et \emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item Dans une section vide avec des données non initialisées---\\
-\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} \\
-et \emph{IMAGE\_SCN\_MEM\_WRITE}.
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} et\\
+\emph{IMAGE\_SCN\_MEM\_WRITE}.
 
 \item Dans une section de données constantes (une qui est protégée contre l'écriture),
 les flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA} et \emph{IMAGE\_SCN\_MEM\_READ} peuvent
@@ -432,8 +432,8 @@ DLL qui n'est pas supposé changer (incluant les adresses des fonctions DLL), es
 possible d'accélérer le processus de chargement?
 
 Oui, il est possible d'écrire les adresses des fonctions qui doivent être importées
-en avance dans le tableau FirstThunk. Le champ \emph{Timestamp} est présent dans la
-structure \emph{IMAGE\_IMPORT\_DESCRIPTOR}.
+en avance dans le tableau FirstThunk. \\
+Le champ \emph{Timestamp} est présent dans la structure \emph{IMAGE\_IMPORT\_DESCRIPTOR}.
 
 Si une valeur est présente ici, alors le loader compare cette valeur avec la date
 et l'heure du fichier DLL.

@@ -57,7 +57,7 @@ Viele Adressen in PE-Dateien-Tabellen nutzen \ac{RVA}-Adressen.
 %\item
 %Data directory --- ...
 
-\item \ac{IAT}: Ein Array von Adressen importierter Module\footnote{\PietrekPE}.
+\item \ac{IAT}: Ein Array von Adressen importierter Module\footnote{\PietrekPE}.\\
 Manchmal zeigt das \TT{IMAGE\_DIRECTORY\_ENTRY\_IAT}-Daten-Verzeichnis auf \ac{IAT}.
 \label{IDA_idata}
 Erwähnenswert ist es dass \ac{IDA} (v6.1) eine Pseudosektion namens \TT{.idata}
@@ -103,7 +103,7 @@ fest und konnten direkt aufgerufen werden.
 Um dies zu verhindern läd \ac{ASLR} das Programm und alle benötigten Module jedes
 Mal an zufällige Basisadressen.
 
-\ac{ASLR}-Unterstützung ist in der PE-Datei mit dem Flag
+\ac{ASLR}-Unterstützung ist in der PE-Datei mit dem Flag\\
 \TT{IMAGE\_DLL\_CHARACTERISTICS\_DYNAMIC\_BASE} markiert \InSqBrackets{siehe \Russinovich}.
 
 \subsubsection{Subsystem}
@@ -151,11 +151,11 @@ Dies wurde entwickelt um Code von Daten und Daten von Konstanten zu trennen.
 \item Entweder das \emph{IMAGE\_SCN\_CNT\_CODE}- oder \emph{IMAGE\_SCN\_MEM\_EXECUTE}-Flag
 ist in der Code-Sektion gesetzt. Dies kennzeichnet ausführbaren Code.
 
-\item In der Daten-Sektion sind die Flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},
+\item In der Daten-Sektion sind die Flags \emph{IMAGE\_SCN\_CNT\_INITIALIZED\_DATA},\\
 \emph{IMAGE\_SCN\_MEM\_READ} und \emph{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
 
-\item In einer leeren Sektion mit uninitialisierten Daten sind die Flags
-\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} und
+\item In einer leeren Sektion mit uninitialisierten Daten sind die Flags\\
+\emph{IMAGE\_SCN\_CNT\_UNINITIALIZED\_DATA}, \emph{IMAGE\_SCN\_MEM\_READ} und\\
 \emph{IMAGE\_SCN\_MEM\_WRITE} gesetzt.
 
 \item In der Sektion mit konstanten Daten (die schreibgeschützt ist), sind die
@@ -462,8 +462,8 @@ sich nicht ändern (inklusive der Adressen aller DLL-Funktionen). Ist es möglic
 den Lade-Vorgang zu beschleunigen?
 
 Dies ist in der Tat möglich, wenn die Adressen der Funktionen bereits im Voraus
-in das FirstThunk-Array geschrieben werden. Das \emph{Timestamp}-Feld ist in der
-\emph{IMAGE\_IMPORT\_DESCRIPTOR}-Struktur vorhanden.
+in das FirstThunk-Array geschrieben werden. \\
+Das \emph{Timestamp}-Feld ist in der \emph{IMAGE\_IMPORT\_DESCRIPTOR}-Struktur vorhanden.
 
 Wenn der Wert dort verfügbar ist, vergleicht der Lader diesen Wert mit dem
 Zeitstempel der DLL-Datei.
