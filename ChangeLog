@@ -1,5 +1,13 @@
 (This file is poorly maintained...)
 
+ 9-Sep-2020: The size of English/Russian/French version has been increased from ~1000 pp. to ~1300-1400 pp.
+             It's because now margins have normal size, as defined by default in TeX.
+             Now it would be easier to read the book (both online and printed), because optimial length of a line is ~66 characters.
+             ( https://en.wikipedia.org/wiki/Line_length )
+             Yes, readers would need to print more, but on a plus side, the printed book would be easier to bind.
+
+             Why I choose to have small margins initially? Primary reason is to fit all the (wide) listings.
+
 28-Nov-2019: The book isn't hosted on GitHub anymore. For the source code, see: https://beginners.re/src/
    Nov-2019: Many blog posts from yurichev.com/blog has been copypasted into the book
    Jan-2019: There was a time when \IT macro was used for italic text and \ITA for Italian text.
