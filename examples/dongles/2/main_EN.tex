@@ -42,7 +42,7 @@ SSQ() can be called from at least 2 functions.
 
 One of these is:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check1.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check1_EN.lst}
 
 \q{\TT{3C}} and \q{\TT{3E}} sound familiar: there was a Sentinel Pro dongle by Rainbow with no memory,
 providing only one crypto-hashing secret function.
@@ -112,7 +112,7 @@ If they don't match, it works with some \TT{timer()}
 function (maybe waiting for a poorly
 connected dongle to be reconnected and check again?) and then decrypts another error message to dump.
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check2.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check2_EN.lst}
 
 Bypassing the dongle is pretty straightforward: just patch all jumps after the relevant \CMP instructions.
 
@@ -128,7 +128,7 @@ The algorithm that is located in the \TT{err\_warn()} function is very simple, i
 As we can see, 
 not just string is supplied to the decryption function, but also the key:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1.asm}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1_EN.asm}
 
 The algorithm is a simple \gls{xoring}: each 
 byte is xored with a key, but the key is increased by 3 after the processing of each byte.

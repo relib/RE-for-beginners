@@ -38,7 +38,7 @@
 
 Одна из них:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check1.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check1_RU.lst}
 
 \q{\TT{3C}} и \q{\TT{3E}} --- это звучит знакомо: когда-то была донгла
  Sentinel Pro от Rainbow без памяти,
@@ -101,7 +101,7 @@
 (может быть для ожидания плохо подключенной донглы и нового запроса?), затем дешифрует
 еще одно сообщение об ошибке и выводит его.
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check2.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check2_RU.lst}
 
 Заставить работать программу без донглы довольно просто: просто пропатчить все места после инструкций
 \CMP где происходят соответствующие сравнения.
@@ -118,7 +118,7 @@
 
 Как видно, не только сама строка поступает на вход, но также и ключ для дешифровки:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1.asm}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1_RU.asm}
 
 Алгоритм это очень простой \gls{xoring}: 
 каждый байт XOR-ится с ключом, но ключ увеличивается на 3 после обработки каждого байта.

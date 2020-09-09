@@ -1,12 +1,14 @@
 \mysection{Casser le simple exécutable cryptor}
+% to be sync: \mysection{Breaking simple executable code encryptor}
 
 J'ai un fichier exécutable qui est chiffré par un chiffrement relativement simple.
+% to be sync: We've got an executable file which is encrypted by relatively simple encryption.
 \href{\RepoURL/examples/simple_exec_crypto/files/cipher.bin}{Il est ici}
 (seule la section exécutable est laissée ici).
 
 Tout d'abord, tout ce que fait la fonction de chiffrement, c'est d'ajouter l'index
 de la position dans le buffer à l'octet.
-Voici comment ça peut être implémenté en Python:
+Voici comment ça peut être implémenté:
 
 \begin{lstlisting}[caption=Python script,style=custompy]
 #!/usr/bin/env python
@@ -30,10 +32,10 @@ fonctionne:
 \caption{Chiffrement avec Propagating Cipher Block Chaining (l'image provient d'un article Wikipédia)}
 \end{figure}
 
-Le problème est qu'il est trop ennuyant de retrouver l'IV (Initialization Vector)
-à chaque fois.
-La force brute n'est pas une option, car l'IV est trop long (16 octets).
-Voyons s'il est possible de recouvrer l'IV pour un fichier binaire exécutable arbitraire?
+Le problème est qu'il est trop ennuyant de retrouver l'\ac{IV} à chaque fois.
+% to be sync: The problem is to recover \ac{IV}.
+La force brute n'est pas une option, car l'\ac{IV} est trop long (16 octets).
+Voyons s'il est possible de recouvrer l'\ac{IV} pour un fichier binaire exécutable arbitraire?
 
 Essayons la simple analyse de fréquence.
 Ceci est du code exécutable 32-bit x86, donc collectons des statistiques sur les
@@ -48,7 +50,7 @@ Le suivant est 0x8B (~5\%).
 plus fréquentes.
 Maintenant, que dire de la popularité de l'octet zéro?
 Si le compilateur doit encoder une valeur plus grande que 127, il doit utiliser un
-déplacement 32-bit au lieu d'un de 8-bit, mais les grandes valeurs sont très rares,
+déplacement 32-bit au lieu d'un de 8-bit, mais les grandes valeurs sont très rares (\myref{MostPopularNumbers}),
 donc il est complété par des zéros.
 \myindex{x86!\Instructions!LEA}
 \myindex{x86!\Instructions!PUSH}
@@ -75,12 +77,12 @@ BF 02 00 00 00                    mov     edi, 2
 BF 01 00 00 00                    mov     edi, 1
 \end{lstlisting}
 
-Maintenant parlons des octets 00 et FF combinés: les sauts (conditionnels inclus)
+Maintenant parlons des octets 00 et 0xFF combinés: les sauts (conditionnels inclus)
 et appels peuvent transférer le flux d'exécution en avant ou en arrière, mais très
 souvent, dans les limites du module exécutable courant.
 Si c'est en avant, le déplacement n'est pas très grand et il y a des zéros ajoutés.
 Si c'est en arrière, le déplacement est représenté par une valeur négative, donc
-complétée par des octets FF.
+complétée par des octets 0xFF.
 Par exemple, transfert du flux d'exécution en avant:
 
 \begin{lstlisting}[style=customasmx86]
@@ -99,7 +101,7 @@ E8 F4 16 FF FF                    call    _function2
 0F 84 06 FD FF FF                 jz      loc_FF1E7D
 \end{lstlisting}
 
-L'octet FF se rencontre aussi très souvent dans des déplacements négatifs, comme
+L'octet 0xFF se rencontre aussi très souvent dans des déplacements négatifs, comme
 ceux-ci:
 
 \begin{lstlisting}[style=customasmx86]
@@ -108,7 +110,7 @@ ceux-ci:
 \end{lstlisting}
 
 Jusqu'ici, tout va bien. Maintenant nous devons essayer diverses clefs 16-octet, déchiffrer
-la section exécutable et mesurer les occurences des octets 00, FF et 8B.
+la section exécutable et mesurer les occurences des octets 0, 0xFF et 0x8B.
 Gardons en vue la façon dont le déchiffrement PCBC fonctionne:
 
 \begin{figure}[H]
@@ -122,7 +124,7 @@ des données, mais seulement slice par slice, ceci est exactement comment j'ai p
 dans mon exemple précédent: \myref{XOR_mask_2}.
 
 Maintenant j'essaye tous les octets possible (0..255) pour chaque octet dans la clef
-et je prends l'octet produisant le plus grande nombre d'octets 00/FF/8B dans le slice
+et je prends l'octet produisant le plus grande nombre d'octets 0x0/0xFF/0x8B dans le slice
 déchiffré:
 
 \begin{lstlisting}[style=custompy]
@@ -182,7 +184,7 @@ for N in range(KEY_LEN):
 (Le code source peut être téléchargé
 \href{\RepoURL/examples/simple_exec_crypto/files/decrypt.py}{ici}.)
 
-Je le lance et voici une clef pour laquelle le nombre d'octets 00/FF/8B dans le buffer
+Je le lance et voici une clef pour laquelle le nombre d'octets 0/0xFF/0x8B dans le buffer
 déchiffré est maximum:
 
 \begin{lstlisting}
@@ -286,8 +288,10 @@ Il y a d'autres idées sur la façon de mesurer l'exactitude de code x86 déchif
 \begin{itemize}
 
 \item Les compilateurs modernes alignent les fonctions sur une limite de 0x10.
+% to be sync: \item Many modern compilers aligns beginnings of functions at 16-byte border.
 Donc l'espace libre avant est rempli avec de NOPs (0x90) ou d'autres instructions
 avec des opcodes connus: \myref{sec:npad}.
+% to be added: Or INT3 instructions (0xCC).
 
 \item Peut-être que le pattern le plus fréquent dans tout langage d'assemblage est
 l'appel de fonction:\\
@@ -295,6 +299,7 @@ l'appel de fonction:\\
 Cette séquence peut facilement être détectée et trouvée.
 J'ai même collecté des statistiques sur le nombre moyen d'arguments des fonctions: \myref{args_stat}.
 (Ainsi, ceci est la longueur moyenne d'une chaîne PUSH.)
+% to be sync: (Hence, this is average length of PUSH instructions chain.)
 
 \end{itemize}
 

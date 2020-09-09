@@ -44,7 +44,7 @@ SSQ() peut être appelé depuis au moins 2 fonctions.
 
 L'une d'entre elles est:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check1.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check1_EN.lst}
 
 \q{\TT{3C}} et \q{\TT{3E}} semblent familiers: il y avait un dongle Sentinel Pro de
 Rainbow sans mémoire, fournissant seulement une fonction de crypto-hachage secrète.
@@ -114,7 +114,7 @@ Si ils ne correspondent pas, ça se comporte comme une sorte de fonction \TT{tim
 (peut-être en attente qu'un dongle mal connecté soit reconnecté et re-testé?) et ensuite
 déchiffre un autre message d'erreur à afficher.
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/check2.lst}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/check2_EN.lst}
 
 Passer outre le dongle est assez facile: il suffit de patcher tous les sauts après
 les instructions \CMP pertinentes.
@@ -132,7 +132,7 @@ L'algorithme qui se trouve dans la fonction \TT{err\_warn()} est très simple, e
 Comme on le voit, non seulement la chaîne est transmise à la fonction de déchiffrement
 mais aussi la clef:
 
-\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1.asm}
+\lstinputlisting[style=customasmx86]{examples/dongles/2/tmp1_EN.asm}
 
 L'algorithme est un simple \glslink{xoring}{xor}: chaque octet est xoré avec la clef, mais
 la clef est incrémentée de 3 après le traitement de chaque octet.
