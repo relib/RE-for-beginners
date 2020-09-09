@@ -13,8 +13,10 @@ my_atoi:
 .L10:
 ; ESI=0 here if there was no minus sign and 1 if it was
 	lea	eax, [rdx-48]
-; any character other than digit will result in unsigned number greater than 9 after subtraction
-; so if it is not digit, jump to L4, where error will be reported:
+; any character other than digit will result 
+; in unsigned number greater than 9 after subtraction
+; so if it is not digit, jump to L4, 
+; where error will be reported:
 	cmp	al, 9
 	ja	.L4
 	xor	eax, eax

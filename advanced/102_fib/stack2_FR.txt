@@ -23,17 +23,17 @@
 0029FC6C  |00000003  variable "next"
 0029FC70  ]0029FC88  registre EBP sauvé
 0029FC74  |00E0103A  RETURN to fib2.00E0103A from fib2.00E01000
-0029FC78  |00000001  1er  argument: a            \
-0029FC7C  |00000002  2nd  argument: b            | préparé dans f1() pour le prochain appel à f1()
-0029FC80  |00000014  3ème argument: limit        /
+0029FC78  |00000001  1er  argument: a     \
+0029FC7C  |00000002  2nd  argument: b     | préparé dans f1() pour le prochain appel à f1()
+0029FC80  |00000014  3ème argument: limit /
 0029FC84  |00000002  variable "next"
 0029FC88  ]0029FC9C  registre EBP sauvé
 0029FC8C  |00E0106C  RETURN to fib2.00E0106C from fib2.00E01000
-0029FC90  |00000001  1er  argument: a            \
-0029FC94  |00000001  2nd  argument: b            | préparé dans main() pour f1()
-0029FC98  |00000014  3ème argument: limit        /
+0029FC90  |00000001  1er  argument: a     \
+0029FC94  |00000001  2nd  argument: b     | préparé dans main() pour f1()
+0029FC98  |00000014  3ème argument: limit /
 0029FC9C  ]0029FCE0  registre EBP sauvé
 0029FCA0  |00E011E0  RETURN to fib2.00E011E0 from fib2.00E01050
-0029FCA4  |00000001  main() 1er  argument: argc  \
-0029FCA8  |000812C8  main() 2nd  argument: argv  | préparé dans CRT pour main()
-0029FCAC  |00082940  main() 3ème argument: envp  /
+0029FCA4  |00000001  main() 1er  argument: argc \
+0029FCA8  |000812C8  main() 2nd  argument: argv | préparé dans CRT pour main()
+0029FCAC  |00082940  main() 3ème argument: envp /

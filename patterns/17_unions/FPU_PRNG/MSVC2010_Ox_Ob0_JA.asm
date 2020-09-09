@@ -18,8 +18,9 @@ _tmp$ = -4
 ; 1.0を引く
 	fsub	QWORD PTR __real@3ff0000000000000
 ; ローカルスタックに格納された値を格納してリロードする
-	fstp	DWORD PTR tv130[esp+4] ; \verb|\  これらの命令は冗長|
-	fld	DWORD PTR tv130[esp+4] ; \verb|/                    |
+; これらの命令は冗長:
+	fstp	DWORD PTR tv130[esp+4]
+	fld	DWORD PTR tv130[esp+4]
 	pop	ecx
 	ret	0
 ?float_rand@@YAMXZ ENDP

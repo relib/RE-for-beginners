@@ -99,7 +99,8 @@ I found the \verb|Twofish::Base::UncheckedSetKey()| function, but not others.
 After peeking into the \verb|twofish.cpp| source code
 \footnote{\url{https://github.com/weidai11/cryptopp/blob/b613522794a7633aa2bd81932a98a0b0a51bc04f/twofish.cpp}}, it became clear that all functions are located in one module (\verb|twofish.cpp|).\\
 So I tried all function that followed \verb|Twofish::Base::UncheckedSetKey()|---as it happened,\\
-one was \verb|Twofish::Enc::ProcessAndXorBlock()|, another---\verb|Twofish::Dec::ProcessAndXorBlock()|.
+one was \verb|Twofish::Enc::ProcessAndXorBlock()|, \\
+another---\verb|Twofish::Dec::ProcessAndXorBlock()|.
 
 \subsection{Tiny functions}
 

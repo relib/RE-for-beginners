@@ -18,8 +18,9 @@ _tmp$ = -4
 ; soustraire 1.0:
 	fsub	QWORD PTR __real@3ff0000000000000
 ; stocker la valeur obtenue dans la pile locale et la recharger:
-	fstp	DWORD PTR tv130[esp+4] ; \verb|\  ces instructions sont redondantes|
-	fld	DWORD PTR tv130[esp+4] ; \verb|/                                   |
+; ces instructions sont redondantes:
+	fstp	DWORD PTR tv130[esp+4]
+	fld	DWORD PTR tv130[esp+4]
 	pop	ecx
 	ret	0
 ?float_rand@@YAMXZ ENDP

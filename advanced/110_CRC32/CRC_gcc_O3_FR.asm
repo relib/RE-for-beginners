@@ -14,18 +14,18 @@ hash            = dword ptr  0Ch
                 test    ebx, ebx
                 mov     eax, ebx
                 jz      short loc_80484D3
-                nop                     ; remplissage
-                lea     esi, [esi+0]    ; remplissage; fonctionne comme NOP
-                                        ; (ESI ne change pas ici)
+                nop                  ; remplissage
+                lea     esi, [esi+0] ; remplissage; fonctionne comme NOP
+                                     ; (ESI ne change pas ici)
 
 loc_80484B8:
-                mov     ecx, eax        ; sauve l'état pérécédent du hash dans ECX
-                xor     al, [esi+edx]   ; AL=*(key+i)
-                add     edx, 1          ; i++
-                shr     ecx, 8          ; ECX=hash>>8
-                movzx   eax, al         ; EAX=*(key+i)
+                mov     ecx, eax     ; sauve l'état pérécédent du hash dans ECX
+                xor     al, [esi+edx]; AL=*(key+i)
+                add     edx, 1       ; i++
+                shr     ecx, 8       ; ECX=hash>>8
+                movzx   eax, al      ; EAX=*(key+i)
                 mov     eax, dword ptr ds:crctab[eax*4] ; EAX=crctab[EAX]
-                xor     eax, ecx        ; \verb|hash=EAX^ECX|
+                xor     eax, ecx     ; \verb|hash=EAX^ECX|
                 cmp     ebx, edx
                 ja      short loc_80484B8
 

@@ -18,8 +18,9 @@ _tmp$ = -4
 ; subtrahiere 1.0:
 	fsub	QWORD PTR __real@3ff0000000000000
 ; speichere erhaltenen Wert auf dem lokalen Stack und lade ihn erneut:
-	fstp	DWORD PTR tv130[esp+4] ; \verb|\  diese Befehle sind redundant|
-	fld	DWORD PTR tv130[esp+4] ; \verb|/                              |
+; diese Befehle sind redundant:
+	fstp	DWORD PTR tv130[esp+4]
+	fld	DWORD PTR tv130[esp+4]
 	pop	ecx
 	ret	0
 ?float_rand@@YAMXZ ENDP

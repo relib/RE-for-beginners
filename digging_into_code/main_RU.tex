@@ -97,7 +97,8 @@
 \footnote{\url{https://github.com/weidai11/cryptopp/blob/b613522794a7633aa2bd81932a98a0b0a51bc04f/twofish.cpp}}, стало ясно, что все ф-ции расположены в одном модуле (\verb|twofish.cpp|).
 Так что я просто попробовал посмотреть ф-ции следующие за \\
 \verb|Twofish::Base::UncheckedSetKey()| --- так и оказалось,\\
-одна из них была \verb|Twofish::Enc::ProcessAndXorBlock()|, другая --- \verb|Twofish::Dec::ProcessAndXorBlock()|.
+одна из них была \verb|Twofish::Enc::ProcessAndXorBlock()|,\\
+другая --- \verb|Twofish::Dec::ProcessAndXorBlock()|.
 
 \subsection{Крохотные функции}
 
