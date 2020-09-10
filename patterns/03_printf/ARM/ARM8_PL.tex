@@ -42,7 +42,7 @@ Kolejna instrukcja ~--- \INS{STMIA R12, {R0-R3}} ~--- zapisuje zawartość rejes
 
 \item Przekazanie argumentu 4 przez stos.
 
-Najpierw 4 jest zapisywana w \Reg{0}, a następnie za pomocą instrukcji \INS{STR R0, [SP,\#0x18+var\_18]} odkładana jest na stos.
+Najpierw wartość 4 jest zapisywana w \Reg{0}, a następnie za pomocą instrukcji \INS{STR R0, [SP,\#0x18+var\_18]} odkładana jest na stos.
 \emph{var\_18} to -0x18, a więc ostateczne przesunięcie (offset) wynosi 0, a więc wartość z \Reg{0} (4) trafi pod adres z \ac{SP}.
 
 \item Przekazanie argumentów 1, 2, 3 przez rejestry.
@@ -60,7 +60,7 @@ porzucając wszystkie tam zapisane dane.
 Oczywiście odłożone wartości wciąż tam są, ale zostaną nadpisane przy wywołaniach kolejnych funkcji.
 
 \myindex{ARM!\Instructions!LDR}
-Instrukcja \INS{LDR PC, [SP+4+var\_4],\#4} wczytuje do \ac{PC} wcześniej odłożoną na stosie wartość \ac{LR}, powodując wyjście z funkcji.
+Instrukcja \INS{LDR PC, [SP+4+var\_4],\#4} wczytuje do \ac{PC} wcześniej odłożoną na stos wartość \ac{LR}, powodując wyjście z funkcji.
 Tym razem na końcu instrukcji nie ma wykrzyknika --- tak, najpierw \ac{PC} jest ładowany z adresu przechowywanego w \ac{SP}
 ($4+var\_4=4+(-4)=0$), a następnie \ac{SP} jest zwiększany o 4.
 

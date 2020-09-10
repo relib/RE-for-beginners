@@ -33,7 +33,7 @@ ESP+0xC & \argument \#3, \MarkedInIDAAs{} \TT{arg\_8} \\
 Opis innych konwencji wywoływania funkcji znajduje się tutaj: ~(\myref{sec:callingconventions}).
 
 \par Nawiasem mówiąc, funkcja wywoływana nie posiada informacji o liczbie przekazywanych do niej argumentów.
-Funkcje w C o zmiennej liczbie argumentów (jak \printf) ustalają ich liczbę za pomocą  specyfikatorów formatu (rozpoczynających się od znaku \%).
+Funkcja \printf, która może mieć zmienną liczbę argumentów, ustala ich liczbę za pomocą  specyfikatorów formatu (rozpoczynających się od znaku \%).
 
 Jeśli napiszemy:
 
@@ -122,7 +122,7 @@ error:
 ...
 \end{lstlisting}
 
-W razie wystąpienia błędu flaga \TT{CF} zostaje ustawiona. W przeciwnym razie uchwyt (ang. \emph{file handle}) stworzonego pliku zwracany jest przez rejestr \TT{AX}.
+W razie wystąpienia błędu flaga \TT{CF} zostaje ustawiona i instrukcja \TT{JC} skacze do miejsca oznaczonego etykietą error. W przeciwnym razie uchwyt (ang. \emph{file handle}) stworzonego pliku zwracany jest przez rejestr \TT{AX}.
 
 Ta metoda wciąż jest wykorzystywana przez programistów asemblera.
 W kodach źródłowych Windows Research Kernel (który jest bardzo podobny do Windows 2003) możemy znaleźć coś takiego\\

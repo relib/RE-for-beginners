@@ -13,9 +13,9 @@ przesunięcie (przesunięcie może być ujemne, stąd mówimy o zakresie liczby 
 Możemy więc przydzielić do tego celu jakiś rejestr i zaalokować bufor 64KiB na najczęściej wykorzystywane dane.
 
 Rejestr ten nazywamy \q{wskaźnikiem globalnym} (\q{global pointer}) i wskazuje on na środek bufora 64KiB.
-Bufor zwykle zawiera zmienne globalne oraz adresy funkcji importowanych jak \printf, ponieważ deweloperzy GCC stwierdzili, że pobranie adresu pewnych funkcji musi być tak szybkie, jak to możliwe, i powinno zająć jedną instrukcję, a nie dwie.
+Bufor zwykle zawiera zmienne globalne oraz adresy funkcji importowanych, jak \printf, ponieważ deweloperzy GCC stwierdzili, że pobranie adresu pewnych funkcji musi być tak szybkie, jak to możliwe, i powinno zająć jedną instrukcję, a nie dwie.
 
-W plikach ELF ten 64KiB bufor znajduje się częściowo w segmencie .sbss (\q{small \ac{BSS}}) dla danych niezainicjalizowanych i w segmencie .sbss (\q{small \ac{BSS}}) dla danych zainicjalizowanych.
+W plikach ELF ten 64KiB bufor znajduje się częściowo w sekcji .sbss (\q{small \ac{BSS}}) dla danych niezainicjalizowanych i .sdata (\q{small data}) dla danych zainicjalizowanych.
 To oznacza, że programista może wybrać do czego potrzebuje szybszego dostępu i umieścić to
 w segmentach .sdata/.sbss.
 Niektórzy programiści starej daty mogą pamiętać model pamięci w MS-DOS \myref{8086_memory_model}
@@ -115,7 +115,7 @@ Widać również, że \IDA nie rozpoznała instrukcji \ac{NOP} w liniach 22, 26 
 W rzeczywistości \ac{NOP} jest realizowany przez \TT{OR \$AT, \$ZERO}.
 Jest to instrukcja  przeprowadzająca operację \emph{LUB} na rejestrze \$AT i \$ZERO (rejestr zawsze przechowujący stałą 0),
 co jest pustą instrukcją.
-MIPS, jak i inne \ac{ISA}, nie posiada oddzielnej instrukcji \ac{NOP}.
+MIPS, jak i niektóre inne \ac{ISA}, nie posiada oddzielnej instrukcji \ac{NOP}.
 
 \subsubsection{Rola ramki stosu (stack frame) w tym przykładzie}
 

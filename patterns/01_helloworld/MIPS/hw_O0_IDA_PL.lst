@@ -5,11 +5,11 @@
 .text:00000000 var_4           = -4
 .text:00000000
 ; prolog funkcji
-; odłóż RA i FP na stosie:
+; odłóż RA i FP na stos:
 .text:00000000                 addiu   $sp, -0x20
 .text:00000004                 sw      $ra, 0x20+var_4($sp)
 .text:00000008                 sw      $fp, 0x20+var_8($sp)
-; §ustaw FP (stack frame pointer)§:
+; ustaw FP (stack frame pointer):
 .text:0000000C                 move    $fp, $sp
 ; ustaw GP:
 .text:00000010                 la      $gp, __gnu_local_gp
