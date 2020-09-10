@@ -16,7 +16,7 @@ Wartość z \ac{SP} jest kopiowany do rejestru \Reg{1} i razem z łańcuchem zna
 
 Instrukcja \INS{PUSH/POP} zachowuje się inaczej niż na x86 (odwrotnie).
 Są synonimami instrukcji \\ \INS{STM/STMDB/LDM/LDMIA}.
-\INS{PUSH} najpierw zapisuje wartość na stos, \emph{a następnie} zmniejsza \ac{SP} o 4.
+\INS{PUSH} najpierw zapisuje wartość na stosie, \emph{a następnie} zmniejsza \ac{SP} o 4.
 \INS{POP} najpierw dodaje 4 do \ac{SP}, \emph{a następnie} wczytuje wartość ze stosu.
 Stąd po wykonaniu \INS{PUSH}, \ac{SP} pokazuje na nieużywane miejsce na stosie.
 Zostanie ono wykorzystane przez \scanf, a następnie \printf do zapisania i wczytania zmiennej lokalnej.

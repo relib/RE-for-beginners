@@ -19,9 +19,9 @@ $SG3830	DB	'a=%d; b=%d; c=%d', 00H
 
 Kod jest niemal identyczny z tym, który widzieliśmy w \emph{\HelloWorldSectionName}~(\myref{sec:helloworld}), lecz teraz argumenty funkcji \printf zostały odłożone na stos w odwrotnej kolejności. Pierwszy argument jest zapisywany jako ostatni.
 
-Przy okazji, zmienna typu \Tint w środowisku 32-bitowym ma długość 32-bitów, czyli 4 bajty.
+Przy okazji, zmienna typu \Tint w środowisku 32-bitowym ma długość 32 bitów, czyli 4 bajtów.
 
-Mamy więc 4 argumenty. $4*4 = 16$~---zajmują dokładnie 16 bajtów na stosie: a 32-bit wskaźnik na łańcuch znaków i trzy liczby typu \Tint.
+Mamy więc 4 argumenty. $4*4 = 16$~---zajmują dokładnie 16 bajtów na stosie: 32-bitowy wskaźnik na łańcuch znaków i trzy liczby typu \Tint.
 
 \myindex{x86!\Instructions!ADD}
 \myindex{x86!\Registers!ESP}
@@ -30,7 +30,7 @@ Gdy \glslink{stack pointer}{wskaźnik stosu} (rejestr \ESP) jest przywracany za 
 
 Oczywiście dotyczy to tylko konwencji wywołań \emph{cdecl} i środowiska 32-bitowego!
 
-O konwencjach wywołań przeczytasz ~(\myref{sec:callingconventions}).
+O konwencjach wywołań przeczytasz tutaj ~(\myref{sec:callingconventions}).
 
 Kompilator, gdy kilka funkcji jest wywoływanych jedna za drugą, może połączyć kilka instrukcji \q{ADD ESP, X} w jedną i umieścić ją po ostatnim wywołaniu:
 
@@ -107,7 +107,7 @@ Widzimy 3 kolumny: adres na stosie, wartość i dodatkowo komentarz \olly.
 
 Możesz kliknąć prawym przyciskiem myszy na łańcuch znaków z formatem i wybrać \q{Follow in dump}.
 Łańcuch znaków pojawi się w lewym, dolnym oknie debuggera, wyświetlającym zawartość pamięci.
-Możesz edytować jej zawartość.
+Możesz ją tam edytować.
 Mógłbyś zmienić format łańcucha znaków, tak by na wyjście został wypisany inny tekst.
 W tym przykładzie nie jest to użyteczna funkcjonalność, ale możesz jej użyć w ramach ćwiczeń, by lepiej poznać opisane wcześniej mechanizmy.
 
@@ -197,7 +197,7 @@ Breakpoint 1, __printf (format=0x80484f0 "a=%d; b=%d; c=%d") at printf.c:29
 29	printf.c: No such file or directory.
 \end{lstlisting}
 
-Wypisz 10 wartości ze stosu. Skrajna lewa kolumna oznacza adres, pod którym wartości ze stosu znajdują się w pamięci.
+Wypiszmy 10 wartości ze stosu. Skrajna lewa kolumna oznacza adres, pod którym wartości ze stosu znajdują się w pamięci.
 
 \begin{lstlisting}
 (gdb) x/10w $esp
@@ -227,7 +227,7 @@ Drugim elementem jest (\GTT{0x080484f0}) ~--- to adres łańcucha znaków z form
 0x80484f0:	"a=%d; b=%d; c=%d"
 \end{lstlisting}
 
-Kolejne 3 elementy (1,2,3) to argumenty funkcji \printf.
+Kolejne 3 elementy (1, 2, 3) to argumenty funkcji \printf.
 Pozostałe elementy to prawdopodobnie \q{śmieci} znajdujące się na stosie,
 lecz mogłyby to być wartości używane przez inne funkcje, ich zmienne lokalnce, etc.
 Możemy je na razie zignorować.

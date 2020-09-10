@@ -15,8 +15,8 @@ Widać to na wygenerowanym listingu. Stos został przygotowany przy pomocy instr
 
 \lstinputlisting[caption=MSVC 2012 x64,style=customasmx86]{patterns/03_printf/x86/2_MSVC_x64_PL.asm}
 
-Uważny czytelnik może się zastanawiać dlaczego dla wartości typu \Tint zostało zaalokowanych 8 bajtów, skoro wystarczą tylko 4?
-Dla przypomnienia: 8 bajtów jest alokowanych dla każdego typu daych, krótszego niż 64 bity.
+Uważny czytelnik może się zastanawiać, dlaczego dla wartości typu \Tint zostało zaalokowanych 8 bajtów, skoro wystarczą tylko 4?
+Dla przypomnienia: 8 bajtów jest alokowanych dla każdego typu danych, krótszego niż 64 bity.
 Powodem jest wygoda, łatwo w ten sposób wyliczyć adres dowolnego argumentu. Poza tym, wszystkie są przechowywane w pamięci na wyrównanych adresach.
 W środowisku 32-bitowym jest podobnie - 4 bajty są zarezerwowane dla wszystkich typów nie dłuższych niż 4 bajty\footnote{przyp. tłum. - np. zmienna typu long long zajmie 8 bajtów.}.
 
@@ -26,7 +26,7 @@ W środowisku 32-bitowym jest podobnie - 4 bajty są zarezerwowane dla wszystkic
 Kompilacja na x86-64 systemach *NIX daje podobny wynik jak MSVC, jednak teraz 6 pierwszych argumentów jest przekazywanych przez rejestry \RDI, \RSI,
 \RDX, \RCX, \Reg{8} i \Reg{9}, a cała reszta przez stos.
 
-GCC generuje kod, który przechowuje wskaźnik stosu w \EDI zamiast w \RDI{}---co już zdążyliśmy zauważyć: \myref{hw_EDI_instead_of_RDI}.
+GCC generuje kod, który przechowuje wskaźnik stosu w \EDI zamiast w \RDI{} --- co już zdążyliśmy zauważyć: \myref{hw_EDI_instead_of_RDI}.
 
 Widzieliśmy też, że rejestr \EAX został wyzerowany przed wywołaniem funkcji \printf: \myref{SysVABI_input_EAX}.
 
@@ -102,7 +102,7 @@ Wyświetlimy zawartość stosu za pomocą komendy x/g ---\emph{g} oznacza \emph{
 Jak w poprzednim przykładzie, pierwszy elementem na stosie jest adres powrotu \ac{RA}.
 3 wartości przekazywane są przez stos: 6, 7, 8.
 Widać, że 8 przekazywane jest z wypełnionymi 32 starszymim bitami: \GTT{0x00007fff00000008}.
-Nie stanowi to problemu, ponieważ argument jest typu \Tint type, który jest 32-bitowy.
+Nie stanowi to problemu, ponieważ argument jest typu \Tint, który jest 32-bitowy.
 Starsze części rejestrów, albo elementów na stosie, mogą zawierać \q{losowe śmieci}.
 
 Jeśli sprawdzimy gdzie zostanie zwrócone sterowanie po zakończeniu funkcji \printf, \ac{GDB} pokaże funkcję main:

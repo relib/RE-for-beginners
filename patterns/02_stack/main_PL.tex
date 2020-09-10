@@ -51,7 +51,7 @@ Intuicyjnie moglibyśmy pomyśleć, że jak każda inna struktura danych, stos m
 
 Prawdopodobnie stos rośnie w dół ze względów historycznych.
 Kiedy komputery były duże i zajmowały cały pokój, można było bardzo łatwo podzielić pamięć na dwa obszary: na \glslink{heap}{stertę} i na stos.
-Nie było wiadomo z góry jak duża może być \glslink{heap}{sterta} lub stos, dlatego takie rozwiązanie było najprostsze.
+Nie było wiadomo z góry, jak duża może być \glslink{heap}{sterta} lub stos, dlatego takie rozwiązanie było najprostsze.
 
 \input{patterns/02_stack/stack_and_heap}
 
@@ -90,7 +90,7 @@ To trochę przypomina sytuację, gdy uczeń prowadzi notatki z dwóch wykładów
 \subsubsection{Automatyczne zwalnianie miejsca na stosie}
 Zmienne lokalne i wpisy SEH są trzymane na stosie prawdopodobnie dlatego, że kiedy funkcja kończy działanie są one zwalniane automatycznie. Odbywa się to za pomocą tylko jednej instrukcji, zmieniającej wartość wskaźnika stosu ~--- często jest to  instrukcja ADD.
 Argumenty funkcji, można tak powiedzieć, również są automatycznie zwalniane na końcu funkcji.
-Z kolei wszystko, co jest przechowywane na stercie(\emph{heap}), trzeba zwalniać jawnie.
+Z kolei wszystko, co jest przechowywane na stercie (\emph{heap}), trzeba zwalniać jawnie.
 
 % subsections
 \input{patterns/02_stack/07_layout_PL}
