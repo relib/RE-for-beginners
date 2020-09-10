@@ -87,6 +87,7 @@ Então aperte F9 (atualizar). Agora o executável está salvo no disco. Ele exec
 Duas instruções \ac{NOP} não é a abordagem mais estética.
 Outra maneira de rearranjar essa instrução é somente escrever um 0 no operando da instrução jump,
 então \INS{JNZ} só avançará para a próxima instrução.
+% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 Nós poderíamos também ter feito o oposto: mudado o primeiro byte com \TT{EB} e deixa o segundo byte como está.
 Nós teriamos um jump incondicional que é sempre deviado.

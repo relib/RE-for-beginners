@@ -140,6 +140,7 @@ Premiamo quindi F9 (update). L'eseguibile viene quindi salvato su disco, e si co
 Utilizzare due \ac{NOP} non rappresenta l'approccio esteticamente migliore.
 Un altro modo di patchare questa istruzione è scrivere 0 al secondo byte dell'opcode (\gls{jump offset}), 
 in modo che \TT{JNZ} salti sempre alla prossima istruzione.
+% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 Potremmo anche fare l'opposto: sostituire il primo byte con \TT{EB} senza toccare il secondo byte (\gls{jump offset}).
 Otterremmo un jump non condizionale che è sempre eseguito.

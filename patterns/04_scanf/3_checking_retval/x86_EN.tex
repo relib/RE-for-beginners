@@ -141,7 +141,7 @@ Move the cursor to address \TT{.00401027} (where the \TT{JNZ} instruction, we ha
 Then press F9 (update). Now the executable is saved to the disk. It will behave as we wanted.
 
 Two \ac{NOP}s are probably not the most \ae{}sthetic approach.
-Another way to patch this instruction is to write just 0 to the second opcode byte (\gls{jump offset}), 
+Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), 
 so that \TT{JNZ} will always jump to the next instruction.
 
 We could also do the opposite: replace first byte with \TT{EB} while not touching the second byte (\gls{jump offset}).

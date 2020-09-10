@@ -140,6 +140,7 @@ Hiewは\ac{ASCIIZ}文字列を検索し、インポートされた関数の名�
 2つの\ac{NOP}はおそらく最も美しいアプローチではありません。 
 この命令をパッチする別の方法は、第2オペコードバイトに0を書き込むことであり（ \gls{jump offset} ）、 
 \JNZ は常に次の命令にジャンプします。
+% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 また、最初のバイトを\TT{EB}で置き換え、2番目のバイト（ \gls{jump offset} ）には触れないでください。 
 私たちは常に無条件のジャンプを得るでしょう。 

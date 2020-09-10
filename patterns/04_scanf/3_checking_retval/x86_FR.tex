@@ -172,6 +172,7 @@ Deux \ac{NOP}s ne constitue probablement pas l'approche la plus esthétique.
 Une autre façon de modifier cette instruction est d'écrire simplement 0 dans le
 second octet de l'opcode ((\gls{jump offset}), donc ce \TT{JNZ} va toujours sauter
 à l'instruction suivante.
+% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 Nous pouvons également faire le contraire: remplacer le premier octet avec \TT{EB}
 sans modifier le second octet (\gls{jump offset}).

@@ -149,6 +149,7 @@ Wir drücken F9 (update). Die Executable wird gespeichert und verhält sich wie 
 Zwei \ac{NOP}s sind wahrscheinlich nicht der ästhetischte Ansatz. Ein anderer Weg die Executable zu patchen besteht
 darin, das zweite Byte des Opcodes (den \gls{jump offset}) auf 0 zu setzen, sodass \TT{JNZ} immer zum nächsten Befehl
 springt.
+% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 Wir könnten auch das Gegenteil tun: das erste Byte durch \TT{EB} ersetzen und das zweite (\gls{jump offset})
 unangetastet lassen. Wir würde einen unbedingten Sprung erhalten, der stets ausgeführt wird.
