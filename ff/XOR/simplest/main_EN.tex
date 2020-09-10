@@ -1,11 +1,11 @@
 \subsection{Simplest ever XOR encryption}
 
 I once saw a software where all debugging messages has been encrypted using XOR by value of 3.
-In other words, two lowest bits of all characters has been flipped.
+In other words, two lowest bits of each character has been flipped.
 
 ``Hello, world'' would become ``Kfool/\#tlqog'':
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Python,style=custompy]
 #!/usr/bin/python
 
 msg="Hello, world!"
@@ -39,11 +39,7 @@ msg="@ABCDEFGHIJKLMNO"
 print "".join(map(lambda x: chr(ord(x)^3), msg))
 \end{lstlisting}
 
-Result:
-% FIXME \verb
-\begin{lstlisting}
-CBA@GFEDKJIHONML
-\end{lstlisting}
+Result: \verb|CBA@GFEDKJIHONML|.
 
 It's like ``@'' and ``C'' characters has been swapped, and so are ``B'' and ``a''.
 

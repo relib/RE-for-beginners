@@ -3,10 +3,11 @@
 J'ai vu une fois un logiciel où tous les messages de débogage étaient chiffrés en
 utilisant XOR avec une valeur de 3.
 Autrement dit, les deux bits les plus bas de chaque caractères étaient inversés.
+% to be synced: In other words, two lowest bits of each character has been flipped.
 
 ``Hello, world'' devenait ``Kfool/\#tlqog'':
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Python,style=custompy]
 #!/usr/bin/python
 
 msg="Hello, world!"
@@ -43,11 +44,7 @@ msg="@ABCDEFGHIJKLMNO"
 print "".join(map(lambda x: chr(ord(x)^3), msg))
 \end{lstlisting}
 
-Résultat:
-% FIXME \verb
-\begin{lstlisting}
-CBA@GFEDKJIHONML
-\end{lstlisting}
+Résultat: \verb|CBA@GFEDKJIHONML|.
 
 C'est comme si les caractères ``@'' et ``C'' avaient été échangés, ainsi que ``B''
 et ``a''.

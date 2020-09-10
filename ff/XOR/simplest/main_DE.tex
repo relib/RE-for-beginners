@@ -2,10 +2,11 @@
 
 Ich habe einmal eine Software gesehen, bei der alle Debugging-Ausgaben mit XOR mit dem Wert 3
 verschlüsselt wurden. Mit anderen Worten, die beiden niedrigsten Bits aller Buchstaben wurden invertiert.
+% to be synced: In other words, two lowest bits of each character has been flipped.
 
 ``Hello, world'' wurde zu ``Kfool/\#tlqog'':
 
-\begin{lstlisting}
+\begin{lstlisting}[caption=Python,style=custompy]
 #!/usr/bin/python
 
 msg="Hello, world!"
@@ -41,11 +42,7 @@ msg="@ABCDEFGHIJKLMNO"
 print "".join(map(lambda x: chr(ord(x)^3), msg))
 \end{lstlisting}
 
-Ergebnis:
-% FIXME \verb  --  relevant comment for German?
-\begin{lstlisting}
-CBA@GFEDKJIHONML
-\end{lstlisting}
+Ergebnis: \verb|CBA@GFEDKJIHONML|.
 
 Es sieht so aus als würden die Zeichen ``@'' und ``C'' sowie ``B'' und ``A'' vertauscht werden.
 
