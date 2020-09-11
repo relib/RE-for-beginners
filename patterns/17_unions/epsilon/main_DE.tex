@@ -36,8 +36,7 @@ ARM64 kennt keinen Befehl, der eine Zahl zu einem FPU D-Register addieren kann, 
 zunächst nach \ac{GPR} kopiert wird, dann inkrementiert wird und schließlich in das FPU Register \TT{D1} kopiert wird,
 bevor die Subtraktion ausgeführt wird.
 
-\lstinputlisting[caption=\Optimizing GCC 4.9
-ARM64,style=customasmARM]{patterns/17_unions/epsilon/double_GCC49_ARM64_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9 ARM64,style=customasmARM]{patterns/17_unions/epsilon/double_GCC49_ARM64_O3_DE.s}
 Schauen Sie sich dieses Beispiel auch für x64 kompiliert mit SIMB Befehlen an:\myref{machine_epsilon_x64_and_SIMD}.
 
 \subsubsection{MIPS}

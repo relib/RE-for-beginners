@@ -50,8 +50,7 @@ einer Win64 Umgebung über das Register \TT{XMM0} zurückgegeben werden.
 
 GCC 4.4.5 für MIPS erzeugt im Großen und Ganzen den gleichen Code:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(IDA),style=customasmMIPS]{patterns/14_bitfields/35_set_reset_FPU/MIPS_O3_IDA_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/14_bitfields/35_set_reset_FPU/MIPS_O3_IDA_DE.lst}
 
 \myindex{MIPS!\Instructions!LUI}
 Ein einzelner \LUI Befehl wird verwendet, um 0x80000000 in ein Register zu
@@ -62,8 +61,7 @@ Konstanten entsprechen genügt hier ein \LUI ohne nachfolgendes \ORI.
 
 \myparagraph{\OptimizingKeilVI (\ARMMode)}
 
-\lstinputlisting[caption=\OptimizingKeilVI
-(\ARMMode),style=customasmARM]{patterns/14_bitfields/35_set_reset_FPU/abs_Keil_ARM_O3_DE.s}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/14_bitfields/35_set_reset_FPU/abs_Keil_ARM_O3_DE.s}
 
 So weit, so gut.
 \myindex{ARM!\Instructions!BIC}
@@ -90,8 +88,7 @@ Auf diese Weise löscht das Befehlspaar \LSLS/\LSRS das \ac{MSB}.
 
 \myparagraph{\Optimizing GCC 4.6.3 (Raspberry Pi, \ARMMode)}
 
-\lstinputlisting[caption=\Optimizing GCC 4.6.3 for Raspberry Pi
-(\ARMMode),style=customasmARM]{patterns/14_bitfields/35_set_reset_FPU/raspberry_GCC_O3_ARM_mode_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.6.3 for Raspberry Pi (\ARMMode),style=customasmARM]{patterns/14_bitfields/35_set_reset_FPU/raspberry_GCC_O3_ARM_mode_DE.lst}
 Lassen wir den Raspberry Pi Linux in QEMU laufen und emulieren eine ARM FPU,
 dann werden hier S-Register anstelle der R-Register für den Umgang mit
 Fließkommazahlen verwendet.

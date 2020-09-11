@@ -29,8 +29,7 @@ Es ist möglich im ARM mode conditional codes zu verwenden, sodass der Code kür
 \myindex{ARM!\Instructions!MOVcc}
 \INS{MOVcc} wird nur ausgeführt, wenn die Bedingung erfüllt (d.h. wahr) ist:
 
-\lstinputlisting[caption=\OptimizingKeilVI
-(\ARMMode),style=customasmARM]{patterns/07_jcc/minmax/minmax_Keil_ARM_O3_DE.s}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/07_jcc/minmax/minmax_Keil_ARM_O3_DE.s}
 
 \myindex{x86!\Instructions!CMOVcc}
 \Optimizing GCC 4.8.1 und der optimierende MSVC 2013 können den \INS{CMOVcc} Befehl verwenden, der analog zu
@@ -48,8 +47,7 @@ Hier findet ein unnötiges Verschieben von Variablen statt, aber der Code ist ve
 \myparagraph{Verzweigungslos}
 Die Funtionsargumente müssen nicht vom Stack geladen werden, da sie sich bereits in den Registern befinden:
 
-\lstinputlisting[caption=\Optimizing GCC 4.9.1
-x64,style=customasmx86]{patterns/07_jcc/minmax/minmax64_GCC_49_x64_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9.1 x64,style=customasmx86]{patterns/07_jcc/minmax/minmax64_GCC_49_x64_O3_DE.s}
 
 MSVC 2013 tut beinahe das gleiche:
 
@@ -59,15 +57,13 @@ ARM64 verfügt über den \INS{CSEL} Befehl, der genau wie \INS{MOVcc} in ARM ode
 lediglich einen anderen Namen:
 \q{Conditional SELect}.
 
-\lstinputlisting[caption=\Optimizing GCC 4.9.1
-ARM64,style=customasmARM]{patterns/07_jcc/minmax/minmax64_GCC_49_ARM64_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9.1 ARM64,style=customasmARM]{patterns/07_jcc/minmax/minmax64_GCC_49_ARM64_O3_DE.s}
 
 \subsubsection{MIPS}
 
 Leider ist GCC 4.4.5 für MIPS nicht so gut:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(IDA),style=customasmMIPS]{patterns/07_jcc/minmax/minmax_MIPS_O3_IDA_DE.lst} 
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/07_jcc/minmax/minmax_MIPS_O3_IDA_DE.lst} 
 Vergessen Sie nicht die \emph{branch delay slots}: der erste \INS{MOVE} wird \emph{vor} \INS{BEQZ} ausgeführt, der zweite
 \INS{MOVE} wird nur dann ausgeführt, wenn die Verzweigung nicht genommen wird.
 

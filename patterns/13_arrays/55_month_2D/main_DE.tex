@@ -12,8 +12,7 @@ Die Antwort ist: ja, wenn man die Liste aus String als zweidimensionales Array d
 
 Hier ist was wir erhalten:
 
-\lstinputlisting[caption=\Optimizing MSVC 2013
-x64,style=customasmx86]{patterns/13_arrays/55_month_2D/MSVC2013_x64_Ox_DE.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2013 x64,style=customasmx86]{patterns/13_arrays/55_month_2D/MSVC2013_x64_Ox_DE.asm}
 
 Es gibt überhaupt keine Speicherzugriffe.
 Alles, was diese Funktion tut, ist einen Pointer zu berechnen, der auf den ersten Buchstaben des Monats
@@ -43,14 +42,12 @@ Dadurch arbeitet unsere Funktion noch schneller, denn die Startadresse jedes Str
 
 Nicht optimierende Compiler führen die Multiplikation anders durch.
 
-\lstinputlisting[caption=\NonOptimizing GCC 4.9
-x64,style=customasmx86]{patterns/13_arrays/55_month_2D/x64_GCC49_O0_DE.asm}
+\lstinputlisting[caption=\NonOptimizing GCC 4.9 x64,style=customasmx86]{patterns/13_arrays/55_month_2D/x64_GCC49_O0_DE.asm}
 
 \NonOptimizing MSVC verwendet nur den \IMUL Befehl:
 \myindex{x86!\Instructions!IMUL}
 
-\lstinputlisting[caption=\NonOptimizing MSVC 2013
-x64,style=customasmx86]{patterns/13_arrays/55_month_2D/MSVC2013_x64_DE.asm}
+\lstinputlisting[caption=\NonOptimizing MSVC 2013 x64,style=customasmx86]{patterns/13_arrays/55_month_2D/MSVC2013_x64_DE.asm}
 
 \myindex{\CompilerAnomaly}
 \label{MSVC2013_anomaly}
@@ -73,13 +70,11 @@ Artefakte des Compilers nicht allzu sehr wundern soll.
 
 \Optimizing Keil für ARM mode verwendet Additions- und Schiebebefehle:
 
-\lstinputlisting[caption=\OptimizingKeilVI
-(\ARMMode),style=customasmARM]{patterns/13_arrays/55_month_2D/Keil_O3_ARM_DE.asm}
+\lstinputlisting[caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/13_arrays/55_month_2D/Keil_O3_ARM_DE.asm}
 
 \subsubsection{ARM64}
 
-\lstinputlisting[caption=\Optimizing GCC 4.9
-ARM64,style=customasmARM]{patterns/13_arrays/55_month_2D/GCC49_ARM64_DE.asm}
+\lstinputlisting[caption=\Optimizing GCC 4.9 ARM64,style=customasmARM]{patterns/13_arrays/55_month_2D/GCC49_ARM64_DE.asm}
 
 \myindex{ARM!\Instructions!SXTW}
 \myindex{ARM!\Instructions!ADRP/ADD pair}

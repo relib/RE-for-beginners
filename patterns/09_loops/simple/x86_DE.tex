@@ -9,9 +9,7 @@ Compiler, welche ihn automatisch erzeugen. Wenn man also diesen Befehl irgendwo
 im Code entdeckt, dann ist es äußerst wahrscheinlich, dass es sich um ein
 handgeschriebenes Stück Assemblercode handelt.
 
-\par
-
-In \CCpp werden Schleifen normalerweise mittels \TT{for()}-, \TT{while()}- oder
+\par In \CCpp werden Schleifen normalerweise mittels \TT{for()}-, \TT{while()}- oder
 \TT{do/while()}-Ausdrücken erzeugt.
 
 Starten wir mit \TT{for()}.
@@ -24,19 +22,17 @@ ein Grenzwert?), legt fest, was in jedem Durchlauf
 (\glslink{increment}{Inkrement}/\glslink{decrement}{Dekrement}) geschieht und umschließt einen
 Schleifenkörper.
 
-
-\lstinputlisting[style=customc]{patterns/09_loops/simple/loops_1_EN.c}
+\lstinputlisting[style=customc]{patterns/09_loops/simple/loops_1_DE.c}
 
 Der erzeugte Code besteht ebenfalls aus vier Teilen.
 
 Beginnen wir mit einem einfachen Beispiel:
 
-
 \lstinputlisting[label=loops_src,style=customc]{patterns/09_loops/simple/loops_2.c}
 
 Ergebnis (MSVC 2010):
 
-\lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/09_loops/simple/1_MSVC_EN.asm}
+\lstinputlisting[caption=MSVC 2010,style=customasmx86]{patterns/09_loops/simple/1_MSVC_DE.asm}
 
 Hier gibt es nichts Besonderes zu sehen.
 
@@ -63,7 +59,6 @@ Man beachte das \TT{PUSH ESI/POP ESI} bei Funktionsbeginn und -ende.
  
 Probieren wir aus, was GCC 4.4.1 mit maximaler Optimierung (\Othree option)
 liefert:
-
 
 \lstinputlisting[caption=\Optimizing GCC 4.4.1,style=customasmx86]{patterns/09_loops/simple/1_GCC_O3.asm}
 
@@ -144,7 +139,6 @@ nachzuverfolgen. Aus diesem Grund probieren wir \tracer aus.
 Wir öffnen das kompilierte Beispiel in \IDA, finden die Adresse mit dem Befehl
 \INS{PUSH ESI} (das einzige Argument an \ttf übergebend), welche hier
 \TT{0x401026} ist und aktivieren den \tracer:
-
 
 \begin{lstlisting}
 tracer.exe -l:loops_2.exe bpx=loops_2.exe!0x00401026

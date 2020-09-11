@@ -19,8 +19,7 @@ Alte und nicht optimerende Compiler erzeugen Assemblercode als wenn ein \TT{if/e
 
 Neuere Compiler sind ein wenig präziser:
 
-\lstinputlisting[caption=\Optimizing MSVC 2012
-x64,style=customasmx86]{patterns/07_jcc/cond_operator/MSVC2012_Ox_x64_DE.asm}
+\lstinputlisting[caption=\Optimizing MSVC 2012 x64,style=customasmx86]{patterns/07_jcc/cond_operator/MSVC2012_Ox_x64_DE.asm}
 
 \myindex{x86!\Instructions!CMOVcc}
 \Optimizing GCC 4.8 für x86 verwendet ebenfalls den \TT{CMOVcc} Befehl, wohingegen der nicht optimierende GCC 4.8
@@ -31,8 +30,7 @@ bedingte Sprünge verwendet.
 \myindex{x86!\Instructions!ADRcc}
 \Optimizing Keil im ARM mode verwendet ebenfalls bedingte Sprungbefehle \TT{ADRcc}:
 
-\lstinputlisting[label=cond_Keil_ARM_O3,caption=\OptimizingKeilVI
-(\ARMMode),style=customasmARM]{patterns/07_jcc/cond_operator/Keil_ARM_O3_DE.s}
+\lstinputlisting[label=cond_Keil_ARM_O3,caption=\OptimizingKeilVI (\ARMMode),style=customasmARM]{patterns/07_jcc/cond_operator/Keil_ARM_O3_DE.s}
 
 Ohne manuellen Eingriff können die beiden Befehle \TT{ADREQ} und \TT{ADRNE} nicht in einem Durchlauf ausgeführt werden.
 
@@ -57,8 +55,7 @@ scheint nicht ausgereift genug zu sein um ihn in einem solchen Codestück zu ver
 
 Leider ist GCC 4.4.5 für MIPS auch nicht besser:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(\assemblyOutput),style=customasmMIPS]{patterns/07_jcc/cond_operator/MIPS_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (\assemblyOutput),style=customasmMIPS]{patterns/07_jcc/cond_operator/MIPS_O3_DE.s}
 
 \subsubsection{Schreiben wir es mit \TT{if/else}}
 
@@ -71,7 +68,6 @@ Interessanterweise war der optimierende GCC 4.8 für x86 ebenfalls in der Lage \
 
 \Optimizing Keil im ARM mode erzeugt identischen Code zu \lstref{cond_Keil_ARM_O3}.
 Der optimierende MSVC 2012 ist hingegen (noch) nicht so gut.
-
 
 \subsubsection{\Conclusion{}}
 Warum versuchen optimierende Compiler bedingte Sprünge zu entfernen? Mehr dazu finden Sie hier:
