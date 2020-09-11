@@ -2,8 +2,7 @@
 
 Das Beispiel kompiliert zu folgendem Code:
 
-\lstinputlisting[caption=MSVC 2012 /GS-
-/Ob0,label=src:struct_packing_4,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_DE.asm}
+\lstinputlisting[caption=MSVC 2012 /GS- /Ob0,label=src:struct_packing_4,numbers=left,style=customasmx86]{patterns/15_structs/4_packing/packing_DE.asm}
 Wir übergeben das struct als Ganzes, aber im Code können wir sehen, dass das struct in ein temporäres struct kopiert
 wird (ein Platz hierfür wird in Zeile 10 auf dem Stack reserviert), und dass dann alle 4 Felder einzeln (in den Zeilen
 12\ldots 19) kopiert werden und anschließend ihr Pointer (Adresse) übergeben wird.
