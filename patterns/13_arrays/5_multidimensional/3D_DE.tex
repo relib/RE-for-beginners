@@ -30,8 +30,7 @@ verwendet. So geht es schneller.
 
 \myparagraph{ARM + \NonOptimizingXcodeIV (\ThumbMode)}
 
-\lstinputlisting[caption=\NonOptimizingXcodeIV
-(\ThumbMode),style=customasmARM]{patterns/13_arrays/5_multidimensional/multi_Xcode_thumb_O0_DE.asm}
+\lstinputlisting[caption=\NonOptimizingXcodeIV (\ThumbMode),style=customasmARM]{patterns/13_arrays/5_multidimensional/multi_Xcode_thumb_O0_DE.asm}
 
 \NonOptimizing LLVM speichert alle Variablen auf dem lokalen Stack, was redundant ist.
 
@@ -39,8 +38,7 @@ Die Adresse des Arrayelements wird über die eben gezeigte Formel berechnet.
 
 \myparagraph{ARM + \OptimizingXcodeIV (\ThumbMode)}
 
-\lstinputlisting[caption=\OptimizingXcodeIV
-(\ThumbMode),style=customasmARM]{patterns/13_arrays/5_multidimensional/multi_Xcode_thumb_O3_DE.asm}
+\lstinputlisting[caption=\OptimizingXcodeIV (\ThumbMode),style=customasmARM]{patterns/13_arrays/5_multidimensional/multi_Xcode_thumb_O3_DE.asm}
 Die Tricks für das Ersetzen der Multiplikation durch Verschieben, Addieren und Subtrahieren, die wir bereits
 kennengelernt haben, kommen hier auch vor.
 
@@ -66,6 +64,5 @@ Subtraktion dagegen ist nicht kommutativ, weshalb für diese Fälle \RSB existie
 Das Beispiel ist sehr klein, sodass der GCC Compiler entschieden hat das Array $a$ im 64KiB Platz abzulegen, um es durch
 den globalen Pointer zugreifbar zu machen.
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(IDA),style=customasmMIPS]{patterns/13_arrays/5_multidimensional/multi_MIPS_O3_IDA_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/13_arrays/5_multidimensional/multi_MIPS_O3_IDA_DE.lst}
 

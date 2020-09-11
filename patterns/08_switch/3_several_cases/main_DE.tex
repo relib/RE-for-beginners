@@ -51,8 +51,7 @@ Erinnern wir uns, dass alle ARM64 Befehle eine Größe von 4 Bytes haben.
 GCC verwendet den Umstand, dass alle Offsets in unserem Minimalbeispiel in der Nähe voneinander liegen. Daher kann die
 Jumptable aus einzelnen Bytes bestehen.
 
-\lstinputlisting[caption=\Optimizing GCC 4.9.1
-ARM64,style=customasmARM]{patterns/08_switch/3_several_cases/ARM64_GCC491_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.9.1 ARM64,style=customasmARM]{patterns/08_switch/3_several_cases/ARM64_GCC491_O3_DE.s}
 Kompilieren wir dieses Beispiel in eine Object-Datei und öffnen es ist \IDA. Hier ist die Jumptable:
 
 \lstinputlisting[caption=jumptable in IDA,style=customasmARM]{patterns/08_switch/3_several_cases/ARM64_GCC491_O3_IDA.lst}

@@ -15,10 +15,10 @@ void swap_bytes (unsigned char* first, unsigned char* second)
 
 int main()
 {
-	// §copier la chaîne dans la heap, afin de pouvoir la modifier§
+	// copier la chaîne dans la heap, afin de pouvoir la modifier
 	char *s=strdup("string"); 
 
-	// §échanger le 2ème et le 3ème caractères§
+	// échanger le 2ème et le 3ème caractères
 	swap_bytes (s+1, s+2);
 
 	printf ("%s\n", s);

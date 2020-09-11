@@ -32,13 +32,11 @@ Verändern wir unser Beispiel dadurch, dass wir $x$ einen Defaultwert geben:
 
 \IDA zeigt hier, dass die Variable $x$ im .data Segment liegt:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(IDA),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_IDA_init_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_IDA_init_DE.lst}
 Warum nicht .sdata? Vielleicht hängt es mit einer Option von GCC zusammen?
 
 Nichtsdestotrotz befindet sich $x$ jetzt in .data, also dem allgemeinen Speicherbereich, und wir können uns anschauen
 wie hier mit den Variablen gearbeitet wird.
-
 
 \myindex{MIPS!\Instructions!LUI}
 \myindex{MIPS!\Instructions!ADDIU}
@@ -47,8 +45,7 @@ In unserem Fall sind dies \INS{LUI} (\q{Load Upper Immediate}) und \INS{ADDIU} (
 
 Hier ist also das objdump Listing für eine genaue Untersuchung:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(objdump),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_objdump_init_DE.txt}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (objdump),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_objdump_init_DE.txt}
 
 \myindex{MIPS!\Instructions!LUI}
 \myindex{MIPS!\Instructions!ADDIU}
@@ -64,6 +61,5 @@ Die Inhalte dieser Register müssen gespeichert werden, bevor sie in anderen Fun
 % This needs to be clarified a bit, e.g. "the registers need to be preserved if a function is called and it wants to use them
 Das ist der Grund warum der Wert von \$S0 an der Adresse 0x4006cc gesetzt und dann wieder an der Adresse 0x4006e8
 verwendet wurde, nachdem \scanf aufgerufen wurde. Die Funktion \scanf verändert den Wert nicht.
-
 
 % TODO non-optimized example?

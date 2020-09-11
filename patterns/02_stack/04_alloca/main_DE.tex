@@ -24,7 +24,6 @@ Beispiel:
 
 \lstinputlisting[style=customc]{patterns/02_stack/04_alloca/2_1.c}
 
-
 Die \TT{\_snprintf()} Funktion arbeitetet genau wie \printf, nur statt die Ergebnisse nach \gls{stdout} aus zu geben ( bsp. auf dem Terminal oder Konsole), schreibt sie in den \TT{buf} buffer. Die Funktion \puts kopiert den Inhalt aus \TT{buf} nach \gls{stdout}. Sicher könnte man die beiden Funktions Aufrufe könnten durch einen \printf Aufruf ersetzt werden, aber wir sollten einen genaueren Blick auf die Benutzung kleiner Buffer anschauen.
 
 \myparagraph{MSVC}
@@ -41,7 +40,7 @@ Das einzige \\TT{alloca()} Argument wird über \EAX übergeben (anstatt es erst 
 
 GCC 4.4.1 macht das selbe, aber ohne externe Funktions aufrufe.
 
-\lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/02_stack/04_alloca/2_1_gcc_intel_O3_EN.asm}
+\lstinputlisting[caption=GCC 4.7.3,style=customasmx86]{patterns/02_stack/04_alloca/2_1_gcc_intel_O3_DE.asm}
 
 \myparagraph{GCC + \ATTSyntax}
 

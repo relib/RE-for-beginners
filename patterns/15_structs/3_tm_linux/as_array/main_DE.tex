@@ -68,8 +68,7 @@ werden:\myref{struct_tm}.
 
 Hier ist der erzeugte Code:
 
-\lstinputlisting[caption=\Optimizing GCC
-4.8.1,style=customasmx86]{patterns/15_structs/3_tm_linux/as_array/GCC_tm3_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.8.1,style=customasmx86]{patterns/15_structs/3_tm_linux/as_array/GCC_tm3_DE.lst}
 Tatsächlich: der Platz auf dem lokalen Stack wird zuerst wie in struct und dann wie ein Array behandelt.
 
 Es ist sogar möglich, die Felder des structs über diesen Pointer zu verändern.
@@ -101,8 +100,7 @@ Wir haben dieses Beispiel auch zur Systemzeit 23:51:45 26-July-2014 ausgeführt
 Die Werte sind genau dieselben wie im vorherigen Dump(\myref{GCC_tm3_output}) und natürlich steht das LSB vorne, da es
 sich um eine Little-Endian-Architektur handelt(\myref{sec:endianness}). 
 
-\lstinputlisting[caption=\Optimizing GCC
-4.8.1,style=customasmx86]{patterns/15_structs/3_tm_linux/as_array/GCC_tm4_DE.lst}
+\lstinputlisting[caption=\Optimizing GCC 4.8.1,style=customasmx86]{patterns/15_structs/3_tm_linux/as_array/GCC_tm4_DE.lst}
 
 % TBT
 \iffalse
