@@ -23,8 +23,7 @@ Einfacher ist es aber auf jeden Fall, sich die nicht optimierte Version anzuscha
 
 Was würde GCC 4.4.1 mit \Othree hier tun?
 
-\lstinputlisting[caption=\Optimizing GCC
-4.4.1,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_gcc_O3_DE.asm}
+\lstinputlisting[caption=\Optimizing GCC 4.4.1,style=customasmx86]{patterns/15_structs/6_bitfields/float/float_gcc_O3_DE.asm}
 Die Funktion \ttf ist fast verständlich. Viel interessanter ist jedoch, dass GCC trotz des Sammelsuriums an Feldern in
 der Lage war, das Ergebnis von \TT{f(1.234)} während des Kompilierens zu berechnen und der Funktion \printf 
 während der Compilezeit als vorberechneten Wert bereitzustellen.
