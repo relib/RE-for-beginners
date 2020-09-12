@@ -25,3 +25,18 @@ find . -name '*.tex' | xargs wc -l
 echo lines in all lst files:
 find . -name '*.lst' | xargs wc -l
 
+echo lines in all c files:
+find . -name '*.c' | xargs wc -l
+
+echo lines in all cpp files:
+find . -name '*.cpp' | xargs wc -l
+
+echo lines in all s files:
+find . -name '*.s' | xargs wc -l
+
+echo lines in all asm files:
+find . -name '*.asm' | xargs wc -l
+
+echo lines in all py files:
+find . -name '*.py' | xargs wc -l
+
