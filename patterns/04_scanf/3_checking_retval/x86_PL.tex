@@ -142,7 +142,6 @@ Następnie naciśnij F9 (update). Plik wykonywalny został zapisany na dysk i b�
 Dwie instrukcje \ac{NOP} nie są najbardziej eleganckim rozwiązaniem.
 Innym sposobem byłoby poprawienie instrukcji przez zapisanie 0 do drugiego bajtu kodu operacji (\glslink{jump offset}{przesunięcie skoku}),
 by \TT{JNZ} zawsze skakała do kolejnej instrukcji.
-% to be sync: Another way to patch this instruction is to write just 0 to the second byte of opcode (\gls{jump offset}), so that \TT{JNZ} will always jump to the next instruction.
 
 Można też program zmodyfikować w drugą stronę: zastąpić pierwszy bajt przez \TT{EB}, nie zmieniając drugiego bajtu (\glslink{jump offset}{przesunięcie skoku}).
 Otrzymamy wtedy skok bezwarunkowy, który zawsze będzie zachodził, przez co za każdym razem dostaniemy wiadomość o błędzie.
