@@ -1,5 +1,8 @@
 (This file is poorly maintained...)
 
+12-Sep-2020: Some stat: 227k lines in all text files, 91k lines in EN/RU versions.
+             2377 TeX files, 312 C/C++ files, 255 PNG files, 1600 assembly listings.
+
  9-Sep-2020: The size of English/Russian/French version has been increased from ~1000 pp. to ~1300-1400 pp.
              It's because now margins have normal size, as defined by default in TeX.
              Now it would be easier to read the book (both online and printed), because optimial length of a line is ~66 characters.

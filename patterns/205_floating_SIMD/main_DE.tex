@@ -134,8 +134,7 @@ Er lädt lediglich einen Wert in die niedere Hälfte eines XMM Registers.
 Es wird dann für \printf nach \RDX verschoben.
 Der Grund dafür ist möglicherweise, dass \printf eine Funktion mit einer variablen Anzahl an Argumenten ist.
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.6
-x64,style=customasmx86]{patterns/205_floating_SIMD/pow_GCC446_x64_O3_DE.s}
+\lstinputlisting[caption=\Optimizing GCC 4.4.6 x64,style=customasmx86]{patterns/205_floating_SIMD/pow_GCC446_x64_O3_DE.s}
 GCC erzeugt klarer strukturierten Output.
 Der Wert für \printf wird in \XMM{0} übergeben.
 Hier ist übrigens ein Fall, in dem 1 nach \EAX für \printf geschrieben wird um anzuzeigen, dass ein Argument in den

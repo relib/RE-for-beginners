@@ -137,16 +137,14 @@ Laden wir also den Linux Kernel 2.6.31 herunter, kompilieren ihn in Ubuntu
 \TT{do\_filp\_open()}. Am Beginn derselben finden wir den folgenden Code (die
 Kommentare stammen vom Autor):
 
-\lstinputlisting[caption=do\_filp\_open() (Linux Kernel
-2.6.31),style=customasmx86]{patterns/14_bitfields/1_check/check2_DE.asm}
+\lstinputlisting[caption=do\_filp\_open() (Linux Kernel 2.6.31),style=customasmx86]{patterns/14_bitfields/1_check/check2_DE.asm}
 GCC speichert die Werte der ersten drei Argumente auf dem lokalen Stack.
 Der Compiler würde diese Register ansonsten nicht verwenden und das wäre für den
 \gls{register allocator} des Compilers nicht umsetzbar.
 
 Finden wir dieses Codefragment:
 
-\lstinputlisting[caption=do\_filp\_open() (Linux Kernel
-2.6.31),style=customasmx86]{patterns/14_bitfields/1_check/check3.asm}
+\lstinputlisting[caption=do\_filp\_open() (Linux Kernel 2.6.31),style=customasmx86]{patterns/14_bitfields/1_check/check3.asm}
 
 \TT{0x40}---enspricht dem \TT{O\_CREAT} Makro.
 \TT{open\_flag} wird auf Anwesenheit des \TT{0x40} Bits hin überprüft und, wenn

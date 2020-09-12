@@ -9,8 +9,7 @@ Pointer}?\myref{MIPS_GP}), denn die Variable ist zu Beginn nicht initialisiert.
 \lstinputlisting[caption=\Optimizing GCC 4.4.5 (IDA),style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_IDA_DE.lst}
 \IDA reduziert die Anzahl der Informationen; also erzeugen wir auch ein Listing mit objdump und kommentieren es:
 
-\lstinputlisting[caption=\Optimizing GCC 4.4.5
-(objdump),numbers=left,style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_objdump_DE.txt}
+\lstinputlisting[caption=\Optimizing GCC 4.4.5 (objdump),numbers=left,style=customasmMIPS]{patterns/04_scanf/2_global/MIPS/O3_objdump_DE.txt}
 Wir erkennen, dass die Adresse der Variablen $x$ mit GP aus einem 64KiB Datenpuffer gelesen wird und ein negativer
 Offset hinzugefügt wird (Zeile 18). 
 Mehr noch, die Adressen der drei externen Funktionen, die in unserem Beispiel verwendet werden (\puts, \scanf, \printf)

@@ -16,8 +16,14 @@ find . -name '*.asm' | wc -l
 echo s
 find . -name '*.s' | wc -l
 
+echo py
+find . -name '*.py' | wc -l
+
 echo png
 find . -name '*.png' | wc -l
+
+echo jpg
+find . -name '*.jpg' | wc -l
 
 echo lines in all TeX files:
 find . -name '*.tex' | xargs wc -l
