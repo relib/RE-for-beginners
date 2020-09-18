@@ -6,8 +6,7 @@
 La différence entre ces deux fonctions standards est que \emph{memcpy()} copie aveuglément
 un bloc à un autre endroit, alors que \emph{memmove()} gère correctement les blocs
 qui se recouvrent.
-Par exemple, si vous voulez déplacer une chaîne de deux octets en avant:
-% to be sync: For example, you want to tug a string two bytes back:
+Par exemple, si vous voulez déplacer une chaîne de deux octets en arrière:
 
 % TODO TikZ
 \begin{lstlisting}
@@ -15,7 +14,7 @@ Par exemple, si vous voulez déplacer une chaîne de deux octets en avant:
 \end{lstlisting}
 
 \emph{memcpy()} qui copie des mots de 32-bit ou de 64-bit à la fois, ou même \ac{SIMD},
-va manifestement échouer ici, une routine de copie octet par octet doit être utilisée
+va manifestement échouer ici, une routine de copie par octet doit être utilisée
 à la place.
 
 Maintenant un exemple encore plus avancé, insérer deux octets au début d'une chaîne:
