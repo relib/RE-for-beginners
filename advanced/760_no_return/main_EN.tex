@@ -17,7 +17,7 @@ Let's see, why:
 
 \lstinputlisting[style=customasmx86,caption=\NonOptimizing GCC 5.4]{\CURPATH/O0_no_return_works_EN.lst}
 
-If I add \TT{return rt;}, the only instruction is added at the end, which is redundant:
+If I add \TT{return rt;}, only one instruction is added at the end, which is redundant:
 
 \lstinputlisting[style=customasmx86,caption=\NonOptimizing GCC 5.4]{\CURPATH/O0_return_works_EN.lst}
 
