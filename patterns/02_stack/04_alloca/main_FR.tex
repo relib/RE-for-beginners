@@ -16,11 +16,7 @@ ce qui va automatiquement libérer cet espace mémoire.
 
 Intéressons-nous à l'implémentation d'\TT{alloca()}.
 Cette fonction décale simplement \ESP du nombre d'octets demandé vers le bas de la
-pile et définit \ESP comme un pointeur vers la mémoire \emph{allouée}.
-% to be synced
-% rephrased version:
-%In simple terms, this function just shifts \ESP downwards toward the stack bottom by the number of bytes you need,
-%making \ESP pointing to the \emph{allocated} block.
+pile, faisant \ESP sur le bloc \emph{alloué}.
 
 Essayons :
 
@@ -40,7 +36,7 @@ Compilons (MSVC 2010) :
 
 \myindex{Compiler intrinsic}
 Le seul argument d'\TT{alloca()} est passé via \EAX (au lieu de le mettre sur la pile)
-\footnote{C'est parce que alloca() est plutôt une fonctionnalité intrinsèque du compilateur (\myref{sec:compiler_intrinsic}) qu'une fonction normale. Une des raisons pour laquelle nous avons besoin d'une fonction séparée au lieu de quelques instructions dans le code, est parce que l'implémentation d'alloca() par \ac{MSVC} a également du code qui lit depuis la mémoire récemment allouée pour laisser l'\ac{OS} mapper la mémoire physique vers la \ac{VM}. Aprés l'appel à la fonction \TT{alloca()}, \ESP pointe sur un bloc de 600 octets que nous pouvons utiliser pour le tableau \TT{buf}.}.
+\footnote{C'est parce que alloca() est plutôt une fonctionnalité intrinsèque du compilateur (\myref{sec:compiler_intrinsic}) qu'une fonction normale. Une des raisons pour laquelle nous avons besoin d'une fonction séparée au lieu de quelques instructions dans le code, et parce que l'implémentation d'alloca() par \ac{MSVC} a également du code qui lit depuis la mémoire récemment allouée pour laisser l'\ac{OS} mapper la mémoire physique vers la \ac{VM}. Aprés l'appel à la fonction \TT{alloca()}, \ESP pointe sur un bloc de 600 octets que nous pouvons utiliser pour le tableau \TT{buf}.}.
 
 \myparagraph{GCC + \IntelSyntax}
 

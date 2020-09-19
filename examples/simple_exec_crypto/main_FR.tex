@@ -1,8 +1,6 @@
-\mysection{Casser le simple exécutable cryptor}
-% to be sync: \mysection{Breaking simple executable code encryptor}
+\mysection{Casser un simple exécutable de chiffrement de code}
 
-J'ai un fichier exécutable qui est chiffré par un chiffrement relativement simple.
-% to be sync: We've got an executable file which is encrypted by relatively simple encryption.
+Nous avons un fichier exécutable qui est chiffré par du chiffrement relativement simple.
 \href{\RepoURL/examples/simple_exec_crypto/files/cipher.bin}{Il est ici}
 (seule la section exécutable est laissée ici).
 
@@ -32,8 +30,7 @@ fonctionne:
 \caption{Chiffrement avec Propagating Cipher Block Chaining (l'image provient d'un article Wikipédia)}
 \end{figure}
 
-Le problème est qu'il est trop ennuyant de retrouver l'\ac{IV} à chaque fois.
-% to be sync: The problem is to recover \ac{IV}.
+Le problème est de retrouver l'\ac{IV}.
 La force brute n'est pas une option, car l'\ac{IV} est trop long (16 octets).
 Voyons s'il est possible de recouvrer l'\ac{IV} pour un fichier binaire exécutable arbitraire?
 
@@ -287,19 +284,17 @@ Il y a d'autres idées sur la façon de mesurer l'exactitude de code x86 déchif
 
 \begin{itemize}
 
-\item Les compilateurs modernes alignent les fonctions sur une limite de 0x10.
-% to be sync: \item Many modern compilers aligns beginnings of functions at 16-byte border.
+\item De nombreux compilateurs modernes alignent le début des fonctions sur une limite 16-bits.
 Donc l'espace libre avant est rempli avec de NOPs (0x90) ou d'autres instructions
 avec des opcodes connus: \myref{sec:npad}.
-% to be added: Or INT3 instructions (0xCC).
+Ou des instructions INT3 (0xCC).
 
 \item Peut-être que le pattern le plus fréquent dans tout langage d'assemblage est
 l'appel de fonction:\\
 \TT{PUSH chain / CALL / ADD ESP, X}.
 Cette séquence peut facilement être détectée et trouvée.
 J'ai même collecté des statistiques sur le nombre moyen d'arguments des fonctions: \myref{args_stat}.
-(Ainsi, ceci est la longueur moyenne d'une chaîne PUSH.)
-% to be sync: (Hence, this is average length of PUSH instructions chain.)
+(Ainsi, ceci est la longueur moyenne d'une série d'instructions PUSH.)
 
 \end{itemize}
 

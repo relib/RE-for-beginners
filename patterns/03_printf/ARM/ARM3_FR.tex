@@ -1,5 +1,4 @@
-\subsubsection{ARM: 3 arguments}
-% to be sync: \subsubsection{ARM: 3 integer arguments}
+\subsubsection{ARM: 3 arguments entier}
 
 Le schéma ARM traditionnel pour passer des arguments (convention d'appel) se
 comporte de cette façon:
@@ -119,14 +118,11 @@ le pointeur sur la chaîne.
 \myindex{ARM64!lo12}
 \emph{lo12} signifie les 12 bits de poids faible, i.e., le linker va écrire les 12 bits
 de poids faible de l'adresse LC1 dans l'opcode de l'instruction \ADD.
-\GTT{\%d} dans la chaîne de format de \printf est un \Tint 32-bit, les 1, 2 et
-3 sont chargés dans les parties 32-bit des registres.
-% to be synced:
-%1, 2 and 3 are 32-bit \Tint{} values, so they are loaded into 32-bit register parts
-%\footnote{Changing 1 to 1L will make it a 64-bit value that would be loaded into 64-bit register.
-%See more about integer constants/literals:
-%\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
-%\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
+1, 2 et 3 sont des valeurs \Tint{} 32-bit, dons elles sont chargées dans les parties
+32-bit des registres\footnote{Changer 1 par 1L en fera une valeur 64-bit qui sera
+chargée dans un registres 64-bit. En lire plus sur les entiers constants/littéraux:
+\href{https://en.cppreference.com/w/c/language/integer_constant}{1},
+\href{https://en.cppreference.com/w/cpp/language/integer_literal}{2}.}
 
 GCC (Linaro) 4.9 \Optimizing génère le même code.
 

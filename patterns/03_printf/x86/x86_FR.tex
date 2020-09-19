@@ -1,5 +1,4 @@
-\subsubsection{x86: 3 arguments}
-% to be sync: \subsubsection{x86: 3 integer arguments}
+\subsubsection{x86: 3 arguments entier}
 
 \myparagraph{MSVC}
 
@@ -119,9 +118,8 @@ rectangle rouge a été ajouté par l'auteur dans un éditeur graphique)}
 
 Nous pouvons voir 3 colonnes ici: adresse dans la pile, valeur dans la pile et quelques
 commentaires additionnels d'\olly.
-\olly reconnaît les chaînes de type \printf{}, donc il signale ici la chaîne et
-les 3 valeurs \emph{attachées} à elle.
-% to be sync: \olly can detect pointers to ASCII strings in stack, so it reports the \printf{}-string here.
+\olly peut détecter les pointeurs sur des chaînes ASCII dans la pile, donc il
+rapporte la chaîne de \printf{} ici.
 
 Il est possible de faire un clic-droit sur la chaîne de format, cliquer sur \q{Follow in dump},
 et la chaîne de format va apparaître dans la fenêtre en bas à gauche du debugger. qui affiche
@@ -194,7 +192,7 @@ Il est visible que la différence entre le code MSVC et celui de GCC est seuleme
 dans la manière dont les arguments sont stockés sur la pile.
 Ici GCC manipule directement la pile sans utiliser \PUSH/\POP.
 
-\myparagraph{GCC and GDB}
+\myparagraph{GCC et GDB}
 \myindex{GDB}
 
 Essayons cet exemple dans \ac{GDB} sous Linux.
@@ -352,8 +350,7 @@ Dump of assembler code for function main:
 End of assembler dump.
 \end{lstlisting}
 
-Exécuter l'instruction suivante.
-% to be sync: Execute next line of \CCpp{} code.
+Exécuter la ligne suivante de code \CCpp{}.
 \ac{GDB} montre une parenthèse fermante, signifiant la fin du bloc.
 
 \begin{lstlisting}
