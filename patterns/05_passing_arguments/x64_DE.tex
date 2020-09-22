@@ -36,6 +36,7 @@ gespeichert werden aus irgend einem Grund.
 Dies bezeichnet man als \q{shadow space}
 
 \footnote{\href{http://msdn.microsoft.com/en-us/library/zthk2dkh(v=vs.80).aspx}{MSDN}}: 
+% to be sync: every Win64 function may (but is not required to) save all 4 register values there.
 So wird sich wahrscheinlich jede Win64 EXE verhalten und alle vier Register Werte auf dem Stack speichern.
 
 Das wird aus zwei Gründen so gemacht:
@@ -45,7 +46,7 @@ Argument Übergabe, also werden die Argumente über den Stack zugänglich gemach
 2) Der Debugger weiß immer wo die Funktions Argumente zu finden sind bei einem breakpoint\footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
 
-Also, so können größere Funktionen ihre Eingabe Argumente im \q{shadows space} speichern wenn die Funktion
+Also, so können größere Funktionen ihre Eingabe Argumente im \q{shadow space} speichern wenn die Funktion
 auf die Argumente während der Laufzeit zugreifen will, kleinere Funktionen (wie unsere) zeigen dieses Verhalten 
 nicht. 
 

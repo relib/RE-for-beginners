@@ -34,7 +34,7 @@ E questo avviene per due ragioni:
 2) il debugger sa sempre dove trovare gli argomenti della funzione ad un break
 \footnote{\href{http://msdn.microsoft.com/en-us/library/ew5tede7(v=VS.90).aspx}{MSDN}}.
 
-Quindi, alcune funzioni piuttosto estese potrebbero salvare i loro argomenti nello \q{shadows space} nel caso in cui 
+Quindi, alcune funzioni piuttosto estese potrebbero salvare i loro argomenti nello \q{shadow space} nel caso in cui 
 abbiano necessità di utilizzarli durante l'esecuzione della funzione. Altre funzioni più piccole (come la nostra) potrebbero non farlo.
 
 Allocare spazio nello \q{shadow space} è responsabilità del chiamante (\gls{caller}).
