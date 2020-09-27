@@ -29,19 +29,19 @@ Le plus souvent, c'est utilisé pour les sections critiques, les sémaphores et 
 Couramment utilisé avec ADD, AND, BTR, BTS, CMPXCHG, OR, XADD, XOR.
 Vous pouvez en lire plus sur les sections critiques ici (\myref{critical_sections}).
 
-\item[REP] est utilisé avec les instructions MOVSx \AndENRU STOSx:
+\item[REP] est utilisé avec les instructions MOVSx et STOSx:
 exécute l'instruction dans une boucle, le compteur est situé dans le registre CX/ECX/RCX.
 Pour une description plus détaillée de ces instructions, voir MOVSx (\myref{REP_MOVSx})
-\AndENRU STOSx (\myref{REP_STOSx}).
+et STOSx (\myref{REP_STOSx}).
 
 Les instructions préfixées par REP sont sensibles au flag DF, qui est utilisé pour définir la direction.
 
-\item[REPE/REPNE] (\ac{AKA} REPZ/REPNZ) utilisé avec les instructions CMPSx \AndENRU SCASx:
+\item[REPE/REPNE] (\ac{AKA} REPZ/REPNZ) utilisé avec les instructions CMPSx et SCASx:
 exécute la dernière instruction dans une boucle, le compteur est mis dans le registre \TT{CX}/\TT{ECX}/\TT{RCX}.
 Elle s'arrête prématurément si ZF vaut 0 (REPE) ou si ZF vaut 1 (REPNE).
 
 Pour une description plus détaillée de ces instructions, voir CMPSx (\myref{REPE_CMPSx})
-\AndENRU SCASx (\myref{REPNE_SCASx}).
+et SCASx (\myref{REPNE_SCASx}).
 
 Les instructions préfixées par REPE/REPNE sont sensibles au flag DF, qui est utilisé pour définir la direction.
 

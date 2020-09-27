@@ -137,7 +137,7 @@ Les registres 16-bit contiennent le sélecteur de code (CS), le sélecteur de do
 \\
 \myindex{TLS}
 \myindex{Windows!TIB}
-FS \InENRU win32 pointe sur \ac{TLS}, GS prend ce rôle dans Linux.
+FS dans win32 pointe sur \ac{TLS}, GS prend ce rôle dans Linux.
 C'est fait pour accèder plus au \ac{TLS} et autres structures comme le \ac{TIB}.
 \\
 Dans le passé, ces registres étaient utilisés comme registres de segments (\myref{8086_memory_model}).
@@ -290,8 +290,8 @@ Description \\
        &                       & 10 ~--- arrondir vers $+\infty$ \\
        &                       & 11 ~--- arrondir vers 0 \\
 \hline
-12 & IC (Infinity Control) & 0 ~--- (par défaut) traite $+\infty$ \AndENRU $-\infty$ comme non signé \\
-   &                       & 1 ~--- respecte à la fois $+\infty$ \AndENRU $-\infty$ \\
+12 & IC (Infinity Control) & 0 ~--- (par défaut) traite $+\infty$ et $-\infty$ comme non signé \\
+   &                       & 1 ~--- respecte à la fois $+\infty$ et $-\infty$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -399,7 +399,7 @@ Pour chaque tag:
 
 8 registres 64-bit: MM0..MM7.
 
-\subsubsection{\registers{} SSE \AndENRU AVX}
+\subsubsection{\registers{} SSE et AVX}
 
 \myindex{x86-64}
 SSE: 8 registres 128-bit: XMM0..XMM7.
