@@ -9,7 +9,7 @@
 .text:0102062C FF D6              call    esi    ; EnableMenuItem
 .text:0102062E 83 7D 08 01        cmp     [ebp+arg_0], 1
 .text:01020632 BF 42 9C 00 00     mov     edi, 40002
-.text:01020637 75 18              jnz     short loc_1020651 ; must be always
+.text:01020637 75 18              jnz     short loc_1020651 ; must jump always
 .text:01020639 6A 00              push    0      ; uEnable
 .text:0102063B 57                 push    edi    ; uIDEnableItem
 .text:0102063C FF 35 B4 8B 08 01  push    hMenu  ; hMenu
