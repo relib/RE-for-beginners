@@ -268,16 +268,20 @@
 \fancyhead[R]{\thepage} % suppress chapter name, add page number (upper right corner)
 
 \ifdefined\ENGLISH
-\cfoot{\small Please become my patron, so I can spend more time writing this: \href{http://link.yurichev.com/17400?\today p.\thepage}{patreon.com}. Thanks!\normalsize}
+%\cfoot{\small Please become my patron, so I can spend more time writing this: \href{http://link.yurichev.com/17400?\today p.\thepage}{patreon.com}. Thanks!\normalsize}
+\cfoot{\small If you noticed a typo, error or have any suggestions, do not hesitate to drop me a note: \EMAILPRI{}.
+Thanks!\normalsize}
 % https://tex.stackexchange.com/questions/13406/how-to-add-a-horizontal-line-above-the-footer-with-fancyhdr
 \renewcommand{\footrulewidth}{0.4pt}
 \fi
 
-%\ifdefined\RUSSIAN
-%\cfoot{\small (В целях сбора статистики) если вы дочитали до этого места, пожалуйста, нажмите \href{https://beginners.re/stat/RU \today p.\thepage}{здесь}. Спасибо! \normalsize}
-%% https://tex.stackexchange.com/questions/13406/how-to-add-a-horizontal-line-above-the-footer-with-fancyhdr
-%\renewcommand{\footrulewidth}{0.4pt}
-%\fi
+\ifdefined\RUSSIAN
+\cfoot{\small Если вы заметили опечатку, ошибку или имеете какие-то либо соображения, пожелания, пожалуйста, напишите мне: \EMAILPRI{}.
+Спасибо!\normalsize}
+% https://tex.stackexchange.com/questions/13406/how-to-add-a-horizontal-line-above-the-footer-with-fancyhdr
+\renewcommand{\footrulewidth}{0.4pt}
+\fi
+
 % ======================================================================================================================================
 
 \VerbatimFootnotes
