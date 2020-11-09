@@ -16,14 +16,7 @@ initiallement toujours des restes de données aléatoires, dans ce cas \TT{0x6E4
 \clearpage
 Lorsque \scanf s'exécute dans la console, entrons quelque chose qui n'est pas du
 tout un nombre, comme \q{asdasd}.
-\scanf termine avec 0 dans \EAX, ce qui indique qu'une erreur s'est produite:
-
-\begin{figure}[H]
-\centering
-\myincludegraphics{patterns/04_scanf/3_checking_retval/olly_2.png}
-\caption{\olly: \scanf renvoyant une erreur}
-\label{fig:scanf_ex3_olly_2}
-\end{figure}
+\scanf termine avec 0 dans \EAX, ce qui indique qu'une erreur s'est produite.
 
 Nous pouvons vérifier la variable locale dans le pile et noter qu'elle n'a pas changé.
 En effet, qu'aurait écrit \scanf ici?

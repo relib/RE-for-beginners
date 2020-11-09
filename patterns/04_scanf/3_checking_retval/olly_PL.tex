@@ -14,14 +14,7 @@ zmienna początkowo zawiera przypadkową wartość, w tym wypadku \TT{0x6E494714
 
 \clearpage
 Kiedy wykonywana jest funkcja \scanf , w konsoli wpiszmy coś, co z pewnością nie jest liczbą, na przykład \q{asdasd}.
-\scanf kończy działanie z 0 w \EAX, co wskazuje na wystąpienie błędu:
-
-\begin{figure}[H]
-\centering
-\myincludegraphics{patterns/04_scanf/3_checking_retval/olly_2.png}
-\caption{\olly: \scanf zwraca błąd}
-\label{fig:scanf_ex3_olly_2}
-\end{figure}
+\scanf kończy działanie z 0 w \EAX, co wskazuje na wystąpienie błędu.
 
 Możemy sprawdzić wartość zmiennej lokalnej na stosie i zauważyć, że się ona nie zmieniła.
 W rzeczy samej, dlaczego funkcja \scanf miałaby cokolwiek tam zapisać?

@@ -16,13 +16,6 @@
 \scanf が実行されている間、コンソールでは、 \q{asdasd}のように、数字ではないものを入力します。 
 \scanf は、エラーが発生したことを示す \EAX が0で終了します。
 
-\begin{figure}[H]
-\centering
-\myincludegraphics{patterns/04_scanf/3_checking_retval/olly_2.png}
-\caption{\olly: \scanf returning error}
-\label{fig:scanf_ex3_olly_2}
-\end{figure}
-
 また、スタック内のローカル変数をチェックし、変更されていないことに注意してください。 
 実際、 \scanf は何を書いていますか？ 
 ゼロを返す以外は何もしませんでした。

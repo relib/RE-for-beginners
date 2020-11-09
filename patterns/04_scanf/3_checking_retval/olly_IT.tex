@@ -13,14 +13,7 @@ Quando l'indirizzo di una variabile locale è passato a \scanf, la variabile ini
 
 \clearpage
 Quando \scanf viene eseguita, immettiamo nella console qualcosa di diverso da un numero, come \q{asdasd}.
-\scanf finisce con 0 in \EAX, indicante che un errore si è verificato:
-
-\begin{figure}[H]
-\centering
-\myincludegraphics{patterns/04_scanf/3_checking_retval/olly_2.png}
-\caption{\olly: \scanf ritorno errore}
-\label{fig:scanf_ex3_olly_2}
-\end{figure}
+\scanf finisce con 0 in \EAX, indicante che un errore si è verificato.
 
 Possiamo anche controllare la variabile locale nello stack e notare che non è stata modificata.
 Infatti cosa avrebbe potuto scrivere \scanf in essa? Non ha fatto niente oltre che restituire zero. 

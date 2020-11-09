@@ -13,14 +13,8 @@ in diesem Fall \TT{0x6E494714}:
 
 \clearpage
 Während \scanf ausgeführt wird, geben wir in der Konsole etwas ein, das definitiv keine Zahl ist, z.B. \q{asdasd}.
-\scanf beendet sich mit 0 in \EAX, was anzeigt, dass ein Fehler aufgetreten ist:
+\scanf beendet sich mit 0 in \EAX, was anzeigt, dass ein Fehler aufgetreten ist.
 
-\begin{figure}[H]
-\centering
-\myincludegraphics{patterns/04_scanf/3_checking_retval/olly_2.png}
-\caption{\olly: \scanf Rückgabewert bei Fehler}
-\label{fig:scanf_ex3_olly_2}
-\end{figure}
 Wir können auch die lokale Variable auf dem Stack überprüfen und stellen fest, dass sie sich nicht verändert hat.
 Was könnte \scanf hier auch hineinschreiben? Die Funktion hat nichts getan außer 0 zurückzugeben.
 
